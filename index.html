@@ -10,19 +10,21 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
 
   <style>
     :root {
       /* PALETA HAUTE COUTURE */
       --blanco-dior: #FFFFFF;
       --carbon: #181818;
+      --gris-fuerte: #444444; 
       --gris-suave: #666666;
       --rosa-empolvado: #D8C3BC;
-      --dorado: #CBAA63; /* Añadido para el banner VIP */
+      --dorado: #CBAA63; 
+      --dorado-brillo: #E8D090;
       --fondo-editorial: #FCFBF8;
       --linea-fina: rgba(24, 24, 24, 0.1);
-      --transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -42,7 +44,31 @@
 
     a { text-decoration: none; color: inherit; }
 
-    /* NAVEGACIÓN */
+    /* =========================================
+       ANIMACIONES VIP
+    ========================================= */
+    
+    /* 1. Respiración dorada para la navegación */
+    @keyframes navGlow {
+      0%, 100% { color: var(--gris-fuerte); text-shadow: none; }
+      50% { color: var(--dorado); text-shadow: 0 0 8px rgba(203, 170, 99, 0.4); }
+    }
+
+    /* 2. Reflejo metálico cruzando el botón */
+    @keyframes goldShimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+
+    /* 3. Pulso expansivo (Onda) */
+    @keyframes ripplePulse {
+      0% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0.5); }
+      70% { box-shadow: 0 0 0 12px rgba(203, 170, 99, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0); }
+    }
+
+
+    /* NAVEGACIÓN (BOTONES ANIMADOS) */
     .navbar {
       width: 100%;
       padding: 35px 5vw;
@@ -56,9 +82,10 @@
 
     .brand {
       font-family: 'Cinzel', serif;
-      font-size: clamp(1rem, 2vw, 1.4rem);
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
       letter-spacing: 0.35em;
       color: var(--carbon);
+      font-weight: 500;
     }
 
     .nav-links {
@@ -68,32 +95,40 @@
     }
 
     .nav-links a {
-      font-size: 0.6rem;
+      font-size: 0.65rem;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: var(--gris-suave);
+      font-weight: 600;
       position: relative;
       padding-bottom: 4px;
       transition: var(--transition);
+      /* Inyección de la animación de respiración */
+      animation: navGlow 4s infinite ease-in-out;
     }
+
+    /* Desfasar la animación para que brillen uno tras otro */
+    .nav-links a:nth-child(1) { animation-delay: 0s; }
+    .nav-links a:nth-child(2) { animation-delay: 1s; }
+    .nav-links a:nth-child(3) { animation-delay: 2s; }
+    .nav-links a:nth-child(4) { animation-delay: 3s; }
 
     .nav-links a::after {
       content: '';
       position: absolute;
       width: 100%;
-      height: 1px;
+      height: 1.5px; 
       bottom: 0;
       left: 0;
-      background-color: var(--carbon);
+      background-color: var(--dorado); 
       transform: scaleX(0);
       transform-origin: right;
       transition: transform 0.4s ease;
     }
 
-    .nav-links a:hover, .nav-links a.active { color: var(--carbon); }
-    .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); transform-origin: left; }
+    .nav-links a:hover { animation: none; color: var(--carbon); text-shadow: none; }
+    .nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
 
-    /* PORTADA FULL SCREEN (CON TU FOTO portada.PNG) */
+    /* PORTADA FULL SCREEN */
     .hero {
       width: 100%;
       background-color: #000000;
@@ -110,7 +145,7 @@
       object-fit: contain;
     }
 
-    /* BANNER DE CERTIFICACIÓN VIP (NUEVO) */
+    /* BANNER DE CERTIFICACIÓN VIP */
     .cert-banner {
       width: 100%;
       background: linear-gradient(135deg, var(--carbon) 0%, #2A2A2A 100%);
@@ -178,21 +213,23 @@
       display: inline-block;
       padding: 12px 30px;
       border: 1px solid var(--dorado);
-      color: var(--dorado);
+      color: var(--carbon);
+      background-color: var(--dorado);
       font-size: 0.65rem;
       letter-spacing: 3px;
       text-transform: uppercase;
+      font-weight: 600;
       transition: var(--transition);
       position: relative;
       z-index: 2;
     }
 
     .btn-gold:hover {
-      background-color: var(--dorado);
-      color: var(--carbon);
+      background-color: transparent;
+      color: var(--dorado);
     }
 
-    /* EXPERIENCIA EDITORIAL (Contenido visible elegante) */
+    /* EXPERIENCIA EDITORIAL */
     .editorial-magazine {
       background-color: var(--fondo-editorial);
       padding: 120px 5vw;
@@ -213,7 +250,7 @@
       font-family: 'Cinzel', serif;
       font-style: italic;
       font-size: 1rem;
-      color: var(--rosa-empolvado);
+      color: var(--dorado); 
       letter-spacing: 0.2em;
       margin-bottom: 25px;
     }
@@ -238,7 +275,7 @@
       margin: 0 auto;
     }
 
-    /* Capítulos (Textos Legibles de alta costura) */
+    /* Capítulos */
     .chapter-block {
       display: flex;
       flex-direction: column;
@@ -250,15 +287,16 @@
 
     .chapter-block:hover {
       padding-left: 20px;
-      border-bottom-color: var(--rosa-empolvado);
+      border-bottom-color: var(--dorado);
     }
 
     .chapter-number {
       font-family: 'Cinzel', serif;
       font-size: 0.7rem;
       letter-spacing: 4px;
-      color: var(--rosa-empolvado);
+      color: var(--dorado);
       text-transform: uppercase;
+      font-weight: 600;
     }
 
     .chapter-title {
@@ -277,13 +315,14 @@
       max-width: 800px;
     }
 
-    /* El Glosario Visible */
+    /* El Glosario */
     .magazine-index {
       margin-top: 80px;
       padding: 60px;
       background-color: var(--blanco-dior);
-      border: 1px solid var(--linea-fina);
+      border: 1px solid var(--dorado);
       text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
     }
 
     .index-title {
@@ -304,57 +343,70 @@
     }
 
     .index-list li {
-      font-size: 0.65rem;
+      font-size: 0.7rem;
       letter-spacing: 2px;
-      color: var(--gris-suave);
+      color: var(--carbon);
+      font-weight: 500;
       text-transform: uppercase;
     }
     
     .index-list li::before {
-      content: "·";
-      color: var(--rosa-empolvado);
+      content: "✦";
+      color: var(--dorado);
       margin-right: 10px;
-      font-weight: bold;
     }
 
-    /* BOTONES EDITORIALES FINOS */
+    /* =========================================
+       BOTONES EDITORIALES FINOS (ANIMADOS)
+    ========================================= */
     .magazine-cta {
       display: flex;
       justify-content: center;
-      gap: 50px;
+      gap: 30px;
       margin-top: 60px;
       flex-wrap: wrap;
     }
 
     .btn-editorial {
-      font-size: 0.65rem;
+      display: inline-block;
+      padding: 16px 40px;
+      font-size: 0.75rem; /* Un poco más grandes */
       letter-spacing: 4px;
       text-transform: uppercase;
+      font-weight: 600;
       color: var(--carbon);
-      position: relative;
-      padding-bottom: 8px;
+      border: 1px solid var(--dorado);
+      background-color: transparent;
       transition: var(--transition);
       cursor: pointer;
+      /* Animación de onda expansiva */
+      animation: ripplePulse 2.5s infinite;
     }
 
-    .btn-editorial::after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 1px;
-      bottom: 0;
-      left: 0;
-      background-color: var(--carbon);
-      transition: var(--transition);
+    /* Botón Principal (Catálogo) con Brillo Metálico */
+    .btn-editorial.primary {
+      background: linear-gradient(120deg, var(--dorado) 0%, var(--dorado-brillo) 50%, var(--dorado) 100%);
+      background-size: 200% auto;
+      color: var(--carbon);
+      border: none;
+      /* Doble animación: Brillo cruzando + Onda expansiva */
+      animation: goldShimmer 3s infinite linear, ripplePulse 2.5s infinite;
+      box-shadow: 0 5px 15px rgba(203, 170, 99, 0.4);
     }
 
+    /* Retrasar un poco la onda del segundo botón para que no latan al mismo tiempo */
+    .btn-editorial:not(.primary) {
+      animation-delay: 1.25s;
+    }
+
+    /* Hover anula animaciones y muestra estado fijo */
     .btn-editorial:hover {
-      color: var(--rosa-empolvado);
-    }
-
-    .btn-editorial:hover::after {
-      background-color: var(--rosa-empolvado);
-      width: 40%;
+      background: var(--carbon);
+      border: 1px solid var(--carbon);
+      color: var(--dorado);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      animation: none;
     }
 
     /* FOOTER */
@@ -385,23 +437,28 @@
       position: fixed;
       bottom: 30px;
       right: 30px;
-      width: 45px;
-      height: 45px;
+      width: 50px;
+      height: 50px;
       background-color: var(--carbon);
-      color: var(--blanco-dior);
+      color: var(--dorado);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
       z-index: 900;
       transition: var(--transition);
+      border: 1px solid var(--dorado);
+      /* Pulso para el whatsapp también */
+      animation: ripplePulse 3s infinite;
     }
     .whatsapp-float:hover {
       transform: translateY(-5px);
-      background-color: var(--rosa-empolvado);
+      background-color: var(--dorado);
+      color: var(--carbon);
+      animation: none;
     }
-    .whatsapp-float svg { width: 22px; height: 22px; fill: currentColor; }
+    .whatsapp-float svg { width: 26px; height: 26px; fill: currentColor; }
 
     /* RESPONSIVE */
     @media (max-width: 768px) {
@@ -419,7 +476,8 @@
       .chapter-title { font-size: 1.2rem; }
       .magazine-index { padding: 30px 20px; }
       .index-list { flex-direction: column; align-items: center; text-align: center; }
-      .magazine-cta { gap: 30px; flex-direction: column; align-items: center; }
+      .magazine-cta { gap: 20px; flex-direction: column; align-items: center; width: 100%; }
+      .btn-editorial { width: 100%; text-align: center; padding: 16px 20px; }
       .whatsapp-float { bottom: 20px; right: 20px; }
     }
   </style>
@@ -515,7 +573,7 @@
       </div>
 
       <div class="magazine-cta">
-        <a href="catalogo.html" class="btn-editorial">Explorar Catálogo</a>
+        <a href="catalogo.html" class="btn-editorial primary">Explorar Catálogo</a>
         <a href="trabaja.html" class="btn-editorial">Trabaja con Nosotros</a>
       </div>
 
