@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es-HN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>L'Essence | La Casa ÈNIGME</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@200;300;400&family=Great+Vibes&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      /* PALETA PARISINA LUMINOSA */
+      --blanco-dior: #FFFFFF;
+      --carbon: #181818;
+      --gris-suave: #666666;
+      --rosa-empolvado: #D8C3BC;
+      --linea-fina: rgba(24, 24, 24, 0.08);
+      --transition: all 0.5s ease;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    
+    body {
+      background-color: var(--blanco-dior);
+      color: var(--carbon);
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* NAVEGACIÓN HAUTE COUTURE */
+    .navbar {
+      width: 100%;
+      padding: 35px 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--linea-fina);
+      background-color: var(--blanco-dior);
+      z-index: 10;
+    }
+
+    .brand {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1rem, 2vw, 1.4rem);
+      letter-spacing: 0.35em;
+      color: var(--carbon);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 35px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.6rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gris-suave);
+      position: relative;
+      padding-bottom: 4px;
+      transition: var(--transition);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--carbon);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.4s ease;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--carbon);
+    }
+
+    .nav-links a:hover::after, .nav-links a.active::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    /* MANIFIESTO ÍNTIMO */
+    .manifesto-section {
+      flex: 1;
+      padding: 100px 5vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .header-text {
+      max-width: 680px;
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .kicker {
+      font-family: 'Cinzel', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--rosa-empolvado);
+      margin-bottom: 20px;
+      letter-spacing: 0.15em;
+    }
+
+    .title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.8rem, 3.5vw, 3rem);
+      letter-spacing: 0.15em;
+      margin-bottom: 35px;
+      color: var(--carbon);
+      line-height: 1.2;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+
+    .lead-paragraph {
+      font-size: 0.95rem;
+      line-height: 2.2;
+      color: var(--carbon);
+      font-weight: 300;
+    }
+
+    /* LÍNEA DIVISORIA */
+    .divider {
+      width: 1px;
+      height: 70px;
+      background: var(--linea-fina);
+      margin: 0 auto 70px;
+    }
+
+    /* GRID EDITORIAL (VALORES) */
+    .editorial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 50px;
+      max-width: 1000px;
+      width: 100%;
+      margin-bottom: 90px;
+    }
+
+    .editorial-card {
+      text-align: center;
+      padding: 0 15px;
+    }
+
+    .editorial-number {
+      font-family: 'Cinzel', serif;
+      font-style: italic;
+      font-size: 1.4rem;
+      color: var(--rosa-empolvado);
+      margin-bottom: 15px;
+    }
+
+    .core-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--carbon);
+      margin-bottom: 20px;
+    }
+
+    .core-text {
+      font-size: 0.85rem;
+      line-height: 2;
+      color: var(--gris-suave);
+      font-weight: 300;
+    }
+
+    /* POESÍA A LA MUJER */
+    .woman-tribute {
+      max-width: 750px;
+      text-align: center;
+      margin-bottom: 80px;
+      padding: 60px 40px;
+      border: 1px solid var(--linea-fina);
+      background-color: #FAFAFA;
+      position: relative;
+    }
+
+    /* Pequeño adorno en las esquinas */
+    .woman-tribute::before, .woman-tribute::after {
+      content: '';
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      border: 1px solid var(--rosa-empolvado);
+    }
+    .woman-tribute::before { top: 10px; left: 10px; border-right: none; border-bottom: none; }
+    .woman-tribute::after { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+
+    .woman-tribute p {
+      font-family: 'Cinzel', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 2;
+      color: var(--carbon);
+    }
+
+    /* FIRMA DE AUTOR CON GARABATOS (ESTILO MANUSCRITO) */
+    .founder-block {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .signature-script {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(3.5rem, 6vw, 5rem);
+      color: var(--carbon);
+      line-height: 1;
+      transform: rotate(-3deg);
+      opacity: 0.85;
+      margin-bottom: 5px;
+      letter-spacing: 2px;
+    }
+
+    .founder-title {
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gris-suave);
+      margin-top: 10px;
+    }
+
+    /* BOTÓN FLOTANTE WHATSAPP */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 45px;
+      height: 45px;
+      background-color: var(--carbon);
+      color: var(--blanco-dior);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      z-index: 100;
+      transition: var(--transition);
+    }
+    .whatsapp-float:hover {
+      transform: translateY(-5px);
+      background-color: var(--rosa-empolvado);
+      color: var(--carbon);
+    }
+    .whatsapp-float svg { width: 22px; height: 22px; fill: currentColor; }
+
+    /* FOOTER MINIMALISTA */
+    .footer {
+      border-top: 1px solid var(--linea-fina);
+      padding: 50px 20px;
+      text-align: center;
+      background-color: var(--blanco-dior);
+      margin-top: auto;
+    }
+
+    .footer-logo {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      letter-spacing: 0.3em;
+      color: var(--carbon);
+      margin-bottom: 12px;
+    }
+
+    .footer-copy {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gris-suave);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .editorial-grid { grid-template-columns: 1fr; gap: 40px; }
+      .woman-tribute { padding: 40px 25px; }
+    }
+
+    @media (max-width: 768px) {
+      .navbar { flex-direction: column; padding: 25px 20px; }
+      .brand { margin-bottom: 20px; }
+      .nav-links { width: 100%; justify-content: center; flex-wrap: wrap; gap: 15px; }
+      .manifesto-section { padding: 60px 20px; }
+      .lead-paragraph, .core-text { text-align: justify; }
+      .whatsapp-float { bottom: 20px; right: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="brand">È N I G M E</a>
+    <div class="nav-links">
+      <a href="index.html">INICIO</a>
+      <a href="catalogo.html">CATÁLOGO</a>
+      <a href="enigme.html" class="active">ÈNIGME</a>
+      <a href="soporte.html">SOPORTE</a>
+      <a href="trabaja.html">TRABAJA CON NOSOTROS</a>
+    </div>
+  </nav>
+
+  <a href="https://wa.me/34602149162?text=Hola%20necesito%20que%20me%20ayuden%20con%20una%20consulta%20en%20ÈNIGME" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+      <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+    </svg>
+  </a>
+
+  <main class="manifesto-section">
+    
+    <div class="header-text">
+      <div class="kicker">L'essence de la Haute Joaillerie</div>
+      <h1 class="title">Un Diálogo Íntimo con la Belleza</h1>
+      <p class="lead-paragraph">
+        Nacimos en el silencio de un boceto y en el brillo de un metal perfecto. ÈNIGME es una firma boutique que respira con los estándares de la alta costura europea, pero cuyo corazón late orgullosamente en Honduras. Hemos curado cada joya, cada bolso y cada detalle logístico para ofrecerte un servicio inmaculado y exclusivo. Empezando nuestro legado en el sur —Choluteca y Valle—, tenemos la visión inquebrantable de llevar nuestro arte, de sur a norte, a cada mujer que comprende el valor de lo excepcional.
+      </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="woman-tribute">
+      <p>
+        "No diseñamos joyas para completarte, porque tú ya eres una obra de arte entera y perfecta. Nuestras piezas son, simplemente, el acento de luz que subraya tu poder. Una mujer ÈNIGME no sigue tendencias; su sola presencia detiene el tiempo."
+      </p>
+    </div>
+
+    <div class="editorial-grid">
+      
+      <article class="editorial-card">
+        <div class="editorial-number">I.</div>
+        <h2 class="core-title">Intimidad</h2>
+        <p class="core-text">
+          Llevar hasta tu piel piezas de plata de ley y acabados en oro con calidad de importación. Fusionamos el trato íntimo y VIP de un <em>Personal Shopper</em> con la comodidad de nuestra boutique online, porque sabemos que tu tiempo es tu mayor lujo.
+        </p>
+      </article>
+
+      <article class="editorial-card">
+        <div class="editorial-number">II.</div>
+        <h2 class="core-title">Trascendencia</h2>
+        <p class="core-text">
+          Ser el faro de la elegancia a nivel nacional. Queremos ser el nombre que susurres cuando te pregunten el secreto de tu magnetismo, demostrando que el diseño y el servicio hondureño pueden ofrecer una experiencia de clase mundial.
+        </p>
+      </article>
+
+      <article class="editorial-card">
+        <div class="editorial-number">III.</div>
+        <h2 class="core-title">Exclusividad</h2>
+        <p class="core-text">
+          Estándares europeos en cada eslabón. Creemos que el lujo no se trata de estridencias, sino de presencia y poder. Empoderamos a cada mujer brindándole diseños que exhalan exclusividad y celebran su luz interior en cada faceta de su vida.
+        </p>
+      </article>
+      
+    </div>
+
+    <div class="founder-block">
+      <div class="signature-script">C. Armas M.</div>
+      <div class="founder-title">Carlos Armas Martínez · Fundador y Director Creativo</div>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-logo">ÈNIGME</div>
+    <div class="footer-tagline">Aura · Misterio · Presencia</div>
+    <div class="footer-copy">
+      © 2026 ÈNIGME HONDURAS POR CARLOS ARMAS MARTÍNEZ. TODOS LOS DERECHOS RESERVADOS.
+    </div>
+  </footer>
+
+</body>
+</html>

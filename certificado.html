@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es-HN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Certificado de Autenticidad | La Casa ÈNIGME</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --marfil: #FAF9F6;
+      --rosa-palo: #D8C3BC;
+      --carbon: #1C1C1C;
+      --gris-suave: #888888;
+      --dorado: #CBAA63;
+      --dorado-claro: #E8D090;
+      --linea-fina: rgba(216, 195, 188, 0.4);
+      --transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--marfil);
+      color: var(--carbon);
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; transition: var(--transition); }
+
+    /* NAVBAR SIMPLIFICADA (A PETICIÓN) */
+    .navbar {
+      width: 100%;
+      padding: 30px 4vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--linea-fina);
+      background: rgba(250, 249, 246, 0.95);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+      letter-spacing: 0.35em;
+      color: var(--carbon);
+      text-align: center;
+    }
+
+    .nav-group { display: flex; gap: 30px; align-items: center; flex: 1; }
+    .nav-group.right { justify-content: flex-end; }
+    .nav-group a {
+      font-size: 0.6rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gris-suave);
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    .nav-group a::after {
+      content: '';
+      position: absolute;
+      width: 100%; height: 1px; bottom: 0; left: 0;
+      background-color: var(--dorado);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.4s ease;
+    }
+
+    .nav-group a:hover, .nav-group a.active { color: var(--carbon); }
+    .nav-group a:hover::after, .nav-group a.active::after { transform: scaleX(1); transform-origin: left; }
+
+    .counter-badge { color: var(--carbon); font-weight: 500; }
+
+    /* CONTENEDOR PRINCIPAL DEL CERTIFICADO */
+    .cert-main {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 80px 5vw;
+      background: radial-gradient(circle at center, #ffffff 0%, var(--marfil) 100%);
+    }
+
+    /* EFECTO DE DESTELLOS FLOTANTES */
+    .sparkles-container {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .floating-spark {
+      position: absolute;
+      color: var(--dorado);
+      animation: twinkle 4s infinite ease-in-out;
+      opacity: 0;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0; transform: scale(0.5) rotate(0deg); }
+      50% { opacity: 0.8; transform: scale(1.5) rotate(45deg); }
+    }
+
+    /* LA TARJETA VIP (EFECTO CRISTAL/METAL) */
+    .vip-card {
+      position: relative;
+      width: min(100%, 450px);
+      aspect-ratio: 1.6 / 1;
+      background: linear-gradient(135deg, #1C1C1C 0%, #2A2A2A 100%);
+      border-radius: 15px;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.2), inset 0 0 0 1px rgba(203, 170, 99, 0.3);
+      overflow: hidden;
+      z-index: 10;
+      margin-bottom: 50px;
+    }
+
+    /* El brillo que atraviesa la tarjeta */
+    .vip-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -150%;
+      width: 50%; height: 100%;
+      background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(203, 170, 99, 0.4) 50%, rgba(255,255,255,0) 100%);
+      transform: skewX(-25deg);
+      animation: shine 6s infinite;
+    }
+
+    @keyframes shine {
+      0% { left: -150%; }
+      20% { left: 200%; }
+      100% { left: 200%; }
+    }
+
+    .card-logo {
+      width: 60px;
+      margin-bottom: 15px;
+      filter: drop-shadow(0 0 8px rgba(203, 170, 99, 0.5));
+    }
+
+    .card-title {
+      font-family: 'Cinzel', serif;
+      color: var(--dorado-claro);
+      font-size: 1.2rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .card-subtitle {
+      color: var(--marfil);
+      font-size: 0.5rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      opacity: 0.8;
+    }
+
+    .card-signature {
+      margin-top: auto;
+      font-family: 'Cinzel', serif;
+      font-style: italic;
+      color: var(--dorado);
+      font-size: 0.7rem;
+      letter-spacing: 1px;
+    }
+
+    /* INFORMACIÓN DE LA GARANTÍA */
+    .cert-content {
+      max-width: 800px;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .info-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--carbon);
+      margin-bottom: 30px;
+    }
+
+    .info-desc {
+      font-size: 0.95rem;
+      line-height: 2.2;
+      color: var(--gris-suave);
+      font-weight: 300;
+      margin-bottom: 40px;
+    }
+
+    .info-desc strong {
+      color: var(--carbon);
+      font-weight: 500;
+    }
+
+    /* GRID DE CARACTERÍSTICAS */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-top: 20px;
+    }
+
+    .feature-item {
+      padding: 30px;
+      background: white;
+      border: 1px solid var(--linea-fina);
+      transition: var(--transition);
+    }
+
+    .feature-item:hover {
+      box-shadow: 0 10px 30px rgba(216, 195, 188, 0.2);
+      border-color: var(--dorado);
+      transform: translateY(-5px);
+    }
+
+    .feature-icon {
+      margin-bottom: 15px;
+    }
+    .feature-icon svg { width: 30px; height: 30px; fill: var(--dorado); }
+
+    .feature-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      color: var(--carbon);
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .feature-text {
+      font-size: 0.8rem;
+      line-height: 1.8;
+      color: var(--gris-suave);
+    }
+
+    /* FOOTER */
+    .legal-footer {
+      padding: 50px 5vw;
+      text-align: center;
+      border-top: 1px solid var(--linea-fina);
+      font-size: 0.55rem;
+      letter-spacing: 3px;
+      color: var(--gris-suave);
+      text-transform: uppercase;
+      background: white;
+    }
+
+    /* BOTÓN WHATSAPP FLOTANTE DISCRETO */
+    .floating-stack {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+    }
+
+    .pill-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      height: 32px;
+      padding: 0 14px;
+      border-radius: 20px;
+      background: var(--carbon);
+      color: var(--marfil);
+      font-size: 0.45rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 500;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: var(--transition);
+    }
+
+    .pill-btn:hover {
+      transform: translateX(-5px);
+      background: var(--dorado);
+      color: var(--carbon);
+    }
+    .pill-btn svg { width: 12px; height: 12px; fill: currentColor; }
+
+    @media (max-width: 768px) {
+      .navbar { flex-wrap: wrap; justify-content: center; gap: 20px; padding: 25px; }
+      .nav-group { justify-content: center; flex-wrap: wrap; width: 100%; flex: none; gap: 15px;}
+      .brand { order: -1; width: 100%; margin-bottom: 10px; }
+      .vip-card { padding: 20px; }
+      .card-title { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sparkles-container">
+    <div class="floating-spark" style="top: 20%; left: 15%; animation-delay: 0s;">✦</div>
+    <div class="floating-spark" style="top: 40%; left: 80%; animation-delay: 1s;">✦</div>
+    <div class="floating-spark" style="top: 70%; left: 25%; animation-delay: 2s;">✦</div>
+    <div class="floating-spark" style="top: 60%; left: 70%; animation-delay: 3s;">✦</div>
+  </div>
+
+  <nav class="navbar">
+    <div class="nav-group">
+      <a href="index.html">INICIO</a>
+      <a href="catalogo.html">CATÁLOGO</a>
+    </div>
+    
+    <div class="brand">È N I G M E</div>
+    
+    <div class="nav-group right">
+      <a href="soporte.html">SOPORTE</a>
+      <a href="carrito.html">CARRITO (<span id="cart-count" class="counter-badge">0</span>)</a>
+    </div>
+  </nav>
+
+  <main class="cert-main">
+    
+    <div class="vip-card">
+      <img src="sello.png" alt="Sello ÈNIGME" class="card-logo" onerror="this.src='data:image/svg+xml;utf8,<svg viewBox=\'0 0 24 24\' fill=\'%23CBAA63\'><path d=\'M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z\'/></svg>'">
+      <h2 class="card-title">Certificado de Autenticidad</h2>
+      <p class="card-subtitle">Garantía Real y Genuina</p>
+      <p class="card-signature">Carlos Armas Martínez</p>
+    </div>
+
+    <div class="cert-content">
+      <h1 class="info-title">El Sello de lo Genuino</h1>
+      
+      <p class="info-desc">
+        En ÈNIGME, la confianza es nuestra joya más valiosa. Por ello, <strong>cada pieza de Alta Joyería y cada Bolso Boutique</strong> es entregado a usted acompañado de esta <strong>Tarjeta de Certificación Oficial</strong>.<br><br>
+        Este documento físico es nuestra firma de honor. Garantiza que usted posee una creación curada bajo estrictos estándares europeos, importada exclusivamente para nuestra clientela en <strong>Choluteca y Valle</strong>.
+      </p>
+
+      <div class="features-grid">
+        
+        <div class="feature-item">
+          <div class="feature-icon">
+            <svg viewBox="0 0 512 512"><path d="M256 0c11 0 20 9 20 20v196h196c11 0 20 9 20 20s-9 20-20 20H276v196c0 11-9 20-20 20s-20-9-20-20V256H40c-11 0-20-9-20-20s9-20 20-20h196V20c0-11 9-20 20-20z"/></svg>
+          </div>
+          <h3 class="feature-title">Pureza Metálica</h3>
+          <p class="feature-text">
+            Certificamos el uso exclusivo de <strong>Acero Inoxidable 304L y 316L (Grado Quirúrgico)</strong>, y <strong>Plata 925</strong>, recubiertos con inmaculados baños de oro de 14K y 18K para una longevidad absoluta.
+          </p>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon">
+            <svg viewBox="0 0 512 512"><path d="M160 160V128C160 57.3 217.3 0 288 0c70.7 0 128 57.3 128 128v32h64c17.7 0 32 14.3 32 32v256c0 35.3-28.7 64-64 64H128c-35.3 0-64-28.7-64-64V192c0-17.7 14.3-32 32-32h64zM224 160h128v-32c0-35.3-28.7-64-64-64s-64 28.7-64 64v32z"/></svg>
+          </div>
+          <h3 class="feature-title">Excelencia Boutique</h3>
+          <p class="feature-text">
+            Nuestros bolsos están construidos con texturas premium y herrajes de alta resistencia. El certificado avala el <strong>diseño arquitectónico</strong> y la confección de alta costura.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <div class="floating-stack">
+    <a href="https://wa.me/34602149162?text=Hola,%20deseo%20saber%20m%C3%A1s%20sobre%20la%20garant%C3%ADa%20y%20autenticidad%20de%20%C3%88NIGME." class="pill-btn">
+      <svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+      Atención VIP
+    </a>
+  </div>
+
+  <footer class="legal-footer">
+    © 2026 ÈNIGME HONDURAS · DOCUMENTO DE GARANTÍA OFICIAL
+  </footer>
+
+  <script>
+    // Mantener el carrito actualizado
+    function updateCounts() {
+      const cart = JSON.parse(localStorage.getItem('enigme_cart')) || [];
+      if(document.getElementById('cart-count')) document.getElementById('cart-count').innerText = cart.length;
+    }
+    window.onload = updateCounts;
+  </script>
+
+</body>
+</html>

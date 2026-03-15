@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es-HN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mis Favoritos | La Casa ÈNIGME</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --blanco-dior: #FFFFFF;
+      --carbon: #181818;
+      --gris-suave: #666666;
+      --rosa-empolvado: #D8C3BC;
+      --linea-fina: rgba(24, 24, 24, 0.08);
+      --transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background-color: var(--blanco-dior);
+      color: var(--carbon);
+      font-family: 'Montserrat', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* NAVBAR */
+    .navbar {
+      padding: 30px 4vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--linea-fina);
+      position: sticky;
+      top: 0;
+      background: white;
+      z-index: 100;
+    }
+
+    .brand { font-family: 'Cinzel', serif; font-size: 1.2rem; letter-spacing: 0.35em; }
+
+    /* CONTENEDOR PRINCIPAL */
+    .wishlist-container {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 0 5vw;
+      flex-grow: 1;
+      width: 100%;
+    }
+
+    .header-wishlist {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .header-wishlist h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 2rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    /* MENSAJE DE LISTA VACÍA */
+    #empty-message {
+      text-align: center;
+      padding: 100px 20px;
+      display: none;
+    }
+
+    .btn-return {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 15px 30px;
+      border: 1px solid var(--carbon);
+      font-size: 0.6rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      transition: var(--transition);
+    }
+    .btn-return:hover { background: var(--carbon); color: white; }
+
+    /* GRID DE FAVORITOS */
+    .fav-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .fav-item {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      border: 1px solid var(--linea-fina);
+      gap: 30px;
+      transition: var(--transition);
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fav-img {
+      width: 100px;
+      height: 130px;
+      object-fit: cover;
+      background-color: var(--fondo-galeria);
+    }
+
+    .fav-info {
+      flex-grow: 1;
+    }
+
+    .fav-info h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .fav-info p {
+      font-size: 0.75rem;
+      color: var(--gris-suave);
+      margin-bottom: 10px;
+    }
+
+    .fav-price {
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    /* ACCIONES (CARRITO Y ELIMINAR) */
+    .fav-actions {
+      display: flex;
+      gap: 20px;
+    }
+
+    .action-btn {
+      cursor: pointer;
+      background: none;
+      border: none;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--gris-suave);
+    }
+
+    .action-btn svg { width: 20px; height: 20px; fill: none; stroke: var(--carbon); stroke-width: 1.5; }
+    .action-btn:hover { color: var(--carbon); transform: translateY(-3px); }
+    .action-btn.delete:hover svg { stroke: #c0392b; }
+    .action-btn.cart-move:hover svg { stroke: var(--rosa-empolvado); }
+
+    /* FOOTER */
+    .footer {
+      padding: 40px;
+      text-align: center;
+      border-top: 1px solid var(--linea-fina);
+      font-size: 0.6rem;
+      letter-spacing: 2px;
+      color: var(--gris-suave);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .fav-item { gap: 15px; padding: 15px; }
+      .fav-img { width: 70px; height: 90px; }
+      .fav-info h3 { font-size: 0.75rem; }
+      .fav-actions { gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="brand">È N I G M E</a>
+    <div style="font-size: 0.6rem; letter-spacing: 2px;">
+      <a href="catalogo.html">VOLVER AL CATÁLOGO</a>
+    </div>
+  </nav>
+
+  <main class="wishlist-container">
+    <header class="header-wishlist">
+      <h1>Mis Favoritos</h1>
+    </header>
+
+    <div id="empty-message">
+      <p>Tu lista de deseos está esperando ser completada con algo extraordinario.</p>
+      <a href="catalogo.html" class="btn-return">Explorar Colecciones</a>
+    </div>
+
+    <div id="fav-list" class="fav-grid">
+      </div>
+  </main>
+
+  <footer class="footer">
+    © 2026 ÈNIGME HONDURAS · CARLOS ARMAS MARTÍNEZ
+  </footer>
+
+  <script>
+    // Función para cargar los favoritos desde el almacenamiento del navegador
+    function loadFavorites() {
+      const favList = document.getElementById('fav-list');
+      const emptyMsg = document.getElementById('empty-message');
+      
+      // Obtenemos los favoritos guardados (Simulación de localStorage)
+      // En un caso real, esto se llena desde joyeria.html
+      let favorites = JSON.parse(localStorage.getItem('enigme_favs')) || [];
+
+      if (favorites.length === 0) {
+        favList.style.display = 'none';
+        emptyMsg.style.display = 'block';
+        return;
+      }
+
+      emptyMsg.style.display = 'none';
+      favList.innerHTML = '';
+
+      favorites.forEach((item, index) => {
+        favList.innerHTML += `
+          <div class="fav-item" id="item-${index}">
+            <img src="${item.img}" class="fav-img" alt="${item.name}">
+            <div class="fav-info">
+              <h3>${item.name}</h3>
+              <p>REF: ${item.ref}</p>
+              <span class="fav-price">${item.price}</span>
+            </div>
+            <div class="fav-actions">
+              <button class="action-btn cart-move" onclick="moveToCart(${index})">
+                <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                Mover al Carrito
+              </button>
+              <button class="action-btn delete" onclick="removeFavorite(${index})">
+                <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                Quitar
+              </button>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    // Función para borrar de favoritos
+    function removeFavorite(index) {
+      let favorites = JSON.parse(localStorage.getItem('enigme_favs')) || [];
+      favorites.splice(index, 1);
+      localStorage.setItem('enigme_favs', JSON.stringify(favorites));
+      loadFavorites();
+    }
+
+    // Función para mover al carrito
+    function moveToCart(index) {
+      let favorites = JSON.parse(localStorage.getItem('enigme_favs')) || [];
+      let cart = JSON.parse(localStorage.getItem('enigme_cart')) || [];
+      
+      // Añadimos al carrito
+      cart.push(favorites[index]);
+      localStorage.setItem('enigme_cart', JSON.stringify(cart));
+      
+      // Quitamos de favoritos
+      removeFavorite(index);
+      
+      alert("Pieza movida al carrito con éxito.");
+    }
+
+    // Inicializar al cargar la página
+    window.onload = loadFavorites;
+  </script>
+</body>
+</html>
