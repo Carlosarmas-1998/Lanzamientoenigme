@@ -88,14 +88,6 @@
     .nav-link:hover, .nav-link.active { color: var(--carbon); }
     .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); transform-origin: left; }
 
-    /* MENÚ DESPLEGABLE CATÁLOGO */
-    .nav-dropdown { position: relative; display: inline-block; }
-    .dropdown-content { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background-color: var(--blanco-puro); min-width: 200px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); border: 1px solid var(--gris-linea); z-index: 1001; flex-direction: column; padding: 10px 0; margin-top: 10px; }
-    .dropdown-content::before { content: ''; position: absolute; top: -10px; left: 0; width: 100%; height: 10px; }
-    .nav-dropdown:hover .dropdown-content { display: flex; }
-    .dropdown-content a { padding: 12px 25px; font-size: 0.55rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gris-suave); text-align: center; transition: var(--transition); }
-    .dropdown-content a:hover { background-color: var(--marfil); color: var(--dorado); }
-
     /* BOTONES DESTACADOS TENUES Y ELEGANTES */
     .btn-menu-brand {
       display: flex;
@@ -256,8 +248,6 @@
       .navbar { flex-wrap: wrap; justify-content: center; gap: 20px; padding: 25px; }
       .nav-group { justify-content: center; flex-wrap: wrap; width: 100%; flex: none; gap: 15px;}
       .brand-nav { order: -1; width: 100%; margin-bottom: 10px; }
-      .dropdown-content { min-width: 150px; }
-      .dropdown-content a { font-size: 0.45rem; padding: 10px; }
       .btn-back { top: 160px; }
       .forging-container { padding: 80px 20px; }
       .btn-explore { padding: 14px 25px; font-size: 0.55rem; }
@@ -269,27 +259,11 @@
   <nav class="navbar">
     <div class="nav-group">
       <a href="index.html" class="nav-link">INICIO</a>
-      
-      <div class="nav-dropdown">
-        <span class="nav-link">CATÁLOGO ▾</span>
-        <div class="dropdown-content">
-          <a href="joyeria.html">Alta Joyería</a>
-          <a href="boutique.html">Bolsos Boutique</a>
-          <a href="plata.html" style="color: var(--dorado);">Plata de Ley</a>
-          <a href="liquidacion.html">El Archivo</a>
-        </div>
-      </div>
-      
-      <a href="certificado.html" class="btn-menu-brand">
-        <svg viewBox="0 0 24 24"><path d="M17 10h-2V6c0-1.1-.9-2-2-2H5a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2v-4h2c1.1 0 2-.9 2-2V12a2 2 0 0 0-2-2zM5 6h8v4H5V6zm8 12H5V12h8v6zm6-6h-2V12h2v2z"/></svg>
-        CERTIFICADO
-      </a>
     </div>
     
     <div class="brand-nav">È N I G M E</div>
     
     <div class="nav-group right">
-<a href="soporte.html" class="nav-link">SOPORTE</a>      
       <a href="favoritos.html" class="btn-menu-brand">
         <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
         FAVS (<span id="fav-count" class="counter-badge">0</span>)
