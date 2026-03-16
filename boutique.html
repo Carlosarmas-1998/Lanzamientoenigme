@@ -18,7 +18,7 @@
       --gris-suave: #888888;
       --dorado: #CBAA63;
       --linea-fina: rgba(216, 195, 188, 0.4);
-      --transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      --transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -39,7 +39,7 @@
     button { background: none; border: none; font-family: inherit; cursor: pointer; outline: none; }
 
     /* =========================================
-       NAVBAR MINIMALISTA ÈNIGME
+       NAVBAR MINIMALISTA ÈNIGME (SOLO CATÁLOGO, FAVS, BOLSA)
        ========================================= */
     .navbar {
       width: 100%;
@@ -66,41 +66,40 @@
     .nav-group { display: flex; gap: 30px; align-items: center; flex: 1; }
     .nav-group.right { justify-content: flex-end; }
     
-    /* ENLACES NORMALES DE MENÚ */
     .nav-link {
       font-size: 0.6rem;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--gris-suave);
-      font-weight: 300;
+      font-weight: 600;
       position: relative;
       padding-bottom: 4px;
+      cursor: pointer;
+      transition: var(--transition);
     }
 
     .nav-link::after {
       content: '';
       position: absolute;
-      width: 100%; height: 1px; bottom: 0; left: 0;
-      background-color: var(--rosa-palo);
+      width: 100%; height: 1.5px; bottom: 0; left: 0;
+      background-color: var(--dorado);
       transform: scaleX(0);
       transform-origin: right;
       transition: transform 0.4s ease;
     }
 
-    .nav-link:hover { color: var(--carbon); }
-    .nav-link:hover::after { transform: scaleX(1); transform-origin: left; }
+    .nav-link:hover, .nav-link.active { color: var(--carbon); }
+    .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); transform-origin: left; }
 
-    /* =========================================
-       BOTONES DESTACADOS TENUES Y ELEGANTES
-       ========================================= */
+    /* BOTONES DESTACADOS TENUES Y ELEGANTES */
     .btn-menu-brand {
       display: flex;
       align-items: center;
       gap: 8px;
-      background-color: transparent; /* Fondo transparente para no encender la barra */
+      background-color: transparent;
       color: var(--carbon) !important;
       padding: 8px 16px;
-      border: 1px solid rgba(203, 170, 99, 0.5); /* Borde dorado suave */
+      border: 1px solid rgba(203, 170, 99, 0.5);
       border-radius: 2px;
       font-size: 0.6rem;
       font-weight: 500;
@@ -110,7 +109,7 @@
     }
 
     .btn-menu-brand:hover {
-      background-color: var(--dorado); /* Se rellena al pasar el ratón */
+      background-color: var(--dorado);
       border-color: var(--dorado);
     }
 
@@ -121,24 +120,40 @@
       transition: transform 0.3s ease;
     }
 
-    /* CARRITO DINÁMICO (Efecto Latido) */
+    /* EFECTO LATIDO CARRITO */
     @keyframes pulse-soft {
       0% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0.3); }
       70% { box-shadow: 0 0 0 8px rgba(203, 170, 99, 0); }
       100% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0); }
     }
 
-    .btn-cart-nav {
-      animation: pulse-soft 2.5s infinite; /* El pulso continuo y elegante */
-    }
-
-    .btn-cart-nav:hover svg {
-      transform: scale(1.15) rotate(-5deg); /* La bolsita se mueve un poco al hacer hover */
-    }
-
+    .btn-cart-nav { animation: pulse-soft 2.5s infinite; }
+    .btn-cart-nav:hover svg { transform: scale(1.15) rotate(-5deg); }
     .counter-badge { font-weight: 600; }
 
-    /* ENCABEZADO DE LA GALERÍA */
+    /* =========================================
+       BOTÓN VOLVER ATRÁS
+       ========================================= */
+    .btn-back {
+      position: absolute;
+      top: 110px;
+      left: 5vw;
+      font-size: 0.55rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gris-suave);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+      z-index: 10;
+    }
+    .btn-back:hover { color: var(--carbon); transform: translateX(-5px); }
+    .btn-back svg { width: 12px; height: 12px; fill: currentColor; }
+
+    /* =========================================
+       ENCABEZADO DE LA GALERÍA
+       ========================================= */
     .gallery-header {
       text-align: center;
       padding: 80px 20px 50px;
@@ -159,7 +174,9 @@
     .trust-text { font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; color: var(--carbon); font-weight: 500; display: flex; align-items: center; gap: 8px; margin-top: 10px; }
     .trust-text svg { width: 12px; height: 12px; fill: var(--rosa-palo); }
 
-    /* GRID DE PRODUCTOS */
+    /* =========================================
+       GRID DE PRODUCTOS
+       ========================================= */
     .product-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -172,9 +189,7 @@
 
     .product-card { display: flex; flex-direction: column; }
 
-    /* =======================================
-       CARRUSEL SLIDER TÁCTIL (SWIPE)
-       ======================================= */
+    /* CARRUSEL SLIDER TÁCTIL (SWIPE) */
     .carousel-wrapper {
       position: relative;
       background-color: white;
@@ -201,7 +216,6 @@
       pointer-events: none; 
     }
 
-    /* Flechas del Carrusel */
     .carousel-arrow {
       position: absolute;
       top: 50%;
@@ -253,14 +267,46 @@
     .btn-cart:hover { background-color: var(--dorado); color: var(--carbon); }
     .btn-cart.added { background: var(--carbon); color: var(--dorado); }
 
-    /* BOTONES FLOTANTES COMPACTOS (VIP) */
-    .floating-stack { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; align-items: flex-end; gap: 8px; z-index: 999; }
-    .pill-btn { display: flex; align-items: center; gap: 8px; height: 32px; padding: 0 14px; border-radius: 20px; background: var(--carbon); color: var(--marfil); font-size: 0.45rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 1px solid transparent; white-space: nowrap; transition: var(--transition); }
+    /* =========================================
+       BOTONES FLOTANTES COMPACTOS (ACTUALIZADOS)
+       ========================================= */
+    .floating-stack { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; z-index: 999; }
+    
+    .pill-btn { 
+      display: flex; 
+      align-items: center; 
+      gap: 10px; 
+      height: 38px; 
+      padding: 0 16px; 
+      border-radius: 20px; 
+      background: var(--carbon); 
+      color: var(--blanco-dior); 
+      font-size: 0.55rem; 
+      letter-spacing: 2px; 
+      text-transform: uppercase; 
+      font-weight: 600; 
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15); 
+      border: 1px solid transparent; 
+      white-space: nowrap; 
+      transition: var(--transition); 
+    }
+    
     .pill-btn.light { background: var(--marfil); color: var(--carbon); border: 1px solid var(--linea-fina); }
-    .pill-btn:hover { transform: translateX(-5px); background: var(--rosa-palo); color: var(--carbon); border-color: var(--rosa-palo); }
-    .pill-btn svg { width: 12px; height: 12px; fill: currentColor; }
+    
+    /* BOTÓN SOPORTE VIP (DESTACADO) */
+    .pill-btn.support {
+      background: var(--dorado);
+      color: var(--carbon);
+      border: 1px solid var(--dorado);
+      font-weight: 700;
+    }
+    
+    .pill-btn:hover { transform: translateX(-5px); background: var(--carbon); color: var(--dorado); border-color: var(--carbon); }
+    .pill-btn svg { width: 14px; height: 14px; fill: currentColor; }
 
-    /* NOTIFICACIÓN TOAST (AGREGADO AL CARRITO) */
+    /* =========================================
+       NOTIFICACIÓN TOAST (AGREGADO AL CARRITO)
+       ========================================= */
     .toast-notification {
       position: fixed;
       bottom: 40px;
@@ -282,22 +328,25 @@
       gap: 12px;
       pointer-events: none;
     }
-    .toast-notification.show {
-      transform: translateX(-50%) translateY(0);
-      opacity: 1;
-    }
+    .toast-notification.show { transform: translateX(-50%) translateY(0); opacity: 1; }
     .toast-notification svg { width: 16px; height: 16px; fill: currentColor; }
 
-    /* BANNER LEGAL Y FOOTER */
+    /* =========================================
+       BANNER LEGAL Y FOOTER
+       ========================================= */
     .legal-banner { border-top: 1px solid var(--linea-fina); padding: 60px 5vw 40px; text-align: center; margin-top: auto; }
     .trust-badges-container { display: flex; justify-content: center; gap: 30px; margin-bottom: 40px; padding: 0 5vw; flex-wrap: wrap; }
     .trust-badge-item { display: flex; align-items: center; gap: 10px; color: var(--dorado); border: 1px solid var(--dorado); padding: 8px 15px; font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
     .trust-badge-item svg { width: 14px; height: 14px; fill: currentColor; }
     .legal-text { font-size: 0.6rem; line-height: 2.2; letter-spacing: 1.5px; color: var(--gris-suave); max-width: 900px; margin: 0 auto; text-transform: uppercase; }
     .legal-text strong { color: var(--carbon); }
-    .footer-credit { margin-top: 30px; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--carbon); text-transform: uppercase; }
+    
+    /* CRÉDITOS DEL FUNDADOR - TENUE */
+    .founder-credit { margin-top: 40px; font-size: 0.5rem; letter-spacing: 0.25em; color: var(--gris-suave); opacity: 0.5; text-transform: uppercase; font-weight: 300; }
 
-    /* LIGHTBOX */
+    /* =========================================
+       LIGHTBOX (VISUALIZACIÓN DE IMAGEN)
+       ========================================= */
     .lightbox { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(250, 249, 246, 0.98); backdrop-filter: blur(10px); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
     .lightbox.active { opacity: 1; pointer-events: auto; }
     .lightbox img { max-width: 90%; max-height: 90%; object-fit: contain; transform: scale(0.95); transition: transform 0.4s ease; box-shadow: 0 20px 50px rgba(0,0,0,0.15);}
@@ -305,6 +354,8 @@
     .lightbox-close { position: absolute; top: 30px; right: 40px; font-size: 3rem; color: var(--carbon); cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 200; line-height: 1; transition: var(--transition); }
     .lightbox-close:hover { color: var(--rosa-palo); transform: scale(1.1); }
 
+    /* RESPONSIVE */
+    @media (max-width: 900px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 768px) {
       .navbar { flex-wrap: wrap; justify-content: center; gap: 20px; padding: 25px; }
       .nav-group { justify-content: center; flex-wrap: wrap; width: 100%; flex: none; gap: 15px;}
@@ -315,12 +366,18 @@
       .gallery-title { font-size: 1.8rem; }
       .product-name { font-size: 0.85rem; }
       .product-slogan { font-size: 0.65rem; }
+      
+      .floating-stack { bottom: 15px; right: 15px; }
+      .pill-btn { height: 32px; padding: 0 12px; font-size: 0.5rem; }
+      
+      .cert-seal-img { max-width: 80px; } 
       .trust-badges-container { gap: 15px; }
       .trust-badge-item { padding: 6px 12px; font-size: 0.5rem; }
       .qty-selector { width: 70px; }
       .btn-cart { font-size: 0.5rem; letter-spacing: 2px; }
       .carousel-arrow { opacity: 1; width: 25px; height: 25px; font-size: 0.7rem; }
       .toast-notification { width: 90%; justify-content: center; bottom: 20px; font-size: 0.55rem; }
+      .btn-back { top: 160px; }
     }
   </style>
 </head>
@@ -328,17 +385,17 @@
 
   <nav class="navbar">
     <div class="nav-group">
-      <a href="index.html" class="nav-link">INICIO</a>
-      
-      <a href="certificado.html" class="btn-menu-brand">
-        <svg viewBox="0 0 24 24"><path d="M17 10h-2V6c0-1.1-.9-2-2-2H5a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2v-4h2c1.1 0 2-.9 2-2V12a2 2 0 0 0-2-2zM5 6h8v4H5V6zm8 12H5V12h8v6zm6-6h-2V12h2v2z"/></svg>
-        CERTIFICADO
-      </a>
+      <a href="catalogo.html" class="nav-link">CATÁLOGO</a>
     </div>
+    
     <div class="brand">È N I G M E</div>
+    
     <div class="nav-group right">
-      <a href="mailto:info@enigmeofficia.com" class="nav-link">SOPORTE</a>
-      
+      <a href="favoritos.html" class="btn-menu-brand">
+        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        FAVS (<span id="fav-count" class="counter-badge">0</span>)
+      </a>
+
       <a href="carrito.html" class="btn-menu-brand btn-cart-nav">
         <svg viewBox="0 0 24 24"><path d="M16 6V4a4 4 0 0 0-8 0v2H3v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6h-5zm-6-2a2 2 0 0 1 4 0v2h-4V4zm8 16H6V8h2v2a1 1 0 0 0 2 0V8h4v2a1 1 0 0 0 2 0V8h2v12z"/></svg>
         BOLSA (<span id="cart-count" class="counter-badge">0</span>)
@@ -359,11 +416,16 @@
       <svg viewBox="0 0 512 512"><path d="M256 0c11 0 20 9 20 20v196h196c11 0 20 9 20 20s-9 20-20 20H276v196c0 11-9 20-20 20s-20-9-20-20V256H40c-11 0-20-9-20-20s9-20 20-20h196V20c0-11 9-20 20-20z"/></svg>
       Liquidación
     </a>
-    <a href="https://wa.me/34602149162?text=Hola,%20estoy%20en%20la%20Boutique%20de%20Bolsos%20y%20deseo%20asesor%C3%ADa%20VIP." class="pill-btn" target="_blank">
+    <a href="https://wa.me/34602149162?text=Hola,%20estoy%20en%20la%20Boutique%20de%20Bolsos%20y%20deseo%20asesor%C3%ADa%20VIP." class="pill-btn support" target="_blank">
       <svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
-      Atención VIP
+      Soporte en línea
     </a>
   </div>
+
+  <a href="#" onclick="window.history.back(); return false;" class="btn-back">
+    <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+    Volver atrás
+  </a>
 
   <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
     <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
@@ -610,8 +672,9 @@
       <strong>Política de Compra y Envíos:</strong> Operamos bajo la máxima seguridad transaccional cifrada. Debido a la curaduría y altos estándares de importación, las piezas se entregan <strong>25 días hábiles</strong> posteriores a la confirmación de pago. <strong>Cada bolso ÈNIGME es real y auténtico, entregado con su respectiva tarjeta de marca.</strong><br><br>
       Distribución logística exclusiva en <strong>Choluteca y Valle</strong>, <strong>CON ENVÍO INCLUIDO</strong> hasta punto de encuentro seguro en la ciudad.
     </p>
-    <p class="footer-credit">
-      © 2026 ÈNIGME HONDURAS · POR ABRIL ARMAS Y CARLOS ARMAS MARTÍNEZ. TODOS LOS DERECHOS RESERVADOS.
+    
+    <p class="founder-credit">
+      © 2026 ÈNIGME HONDURAS POR CARLOS ARMAS MARTÍNEZ. TODOS LOS DERECHOS RESERVADOS.
     </p>
   </footer>
 
@@ -719,7 +782,6 @@
       updateCounts();
     }
 
-    // Función para mostrar la notificación tipo Toast
     function showToast() {
       const toast = document.getElementById('toast-notification');
       toast.classList.add('show');
@@ -745,7 +807,7 @@
       btn.innerText = "AÑADIDO ✓";
       document.getElementById(qtyId).innerText = "1";
       
-      showToast(); // Llamada a la notificación dorada
+      showToast();
 
       setTimeout(() => {
         btn.classList.remove('added');
@@ -759,7 +821,10 @@
       const favs = JSON.parse(localStorage.getItem('enigme_favs')) || [];
       let totalItems = 0;
       cart.forEach(item => totalItems += (item.qty || 1));
+      
       if(document.getElementById('cart-count')) document.getElementById('cart-count').innerText = totalItems;
+      if(document.getElementById('fav-count')) document.getElementById('fav-count').innerText = favs.length;
+
       document.querySelectorAll('.btn-fav').forEach(btn => {
         const ref = btn.getAttribute('data-ref');
         if(favs.find(i => i.ref === ref)) btn.classList.add('active');
