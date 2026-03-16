@@ -42,6 +42,20 @@
     button { background: none; border: none; font-family: inherit; cursor: pointer; outline: none; }
 
     /* =========================================
+       ANIMACIONES VIP
+       ========================================= */
+    @keyframes pulse-soft {
+      0% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0.3); }
+      70% { box-shadow: 0 0 0 8px rgba(203, 170, 99, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0); }
+    }
+
+    @keyframes goldShimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+
+    /* =========================================
        NAVBAR MINIMALISTA ÈNIGME (UNIFICADA)
        ========================================= */
     .navbar {
@@ -120,14 +134,35 @@
     .btn-menu-brand svg { width: 13px; height: 13px; fill: currentColor; transition: transform 0.3s ease; }
 
     /* EFECTO LATIDO CARRITO */
-    @keyframes pulse-soft {
-      0% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0.3); }
-      70% { box-shadow: 0 0 0 8px rgba(203, 170, 99, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0); }
-    }
     .btn-cart-nav { animation: pulse-soft 2.5s infinite; }
     .btn-cart-nav:hover svg { transform: scale(1.15) rotate(-5deg); }
     .counter-badge { font-weight: 600; }
+
+    /* BOTÓN MÁGICO DEL FUNDADOR */
+    .btn-magic-founder {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(120deg, transparent 0%, rgba(203, 170, 99, 0.15) 50%, transparent 100%);
+      background-size: 200% auto;
+      color: var(--dorado) !important;
+      padding: 8px 16px;
+      border: 1px solid var(--dorado);
+      border-radius: 2px;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: var(--transition);
+      animation: goldShimmer 4s infinite linear, pulse-soft 3s infinite;
+    }
+    .btn-magic-founder:hover {
+      background: var(--dorado);
+      color: var(--carbon) !important;
+      animation: none;
+      box-shadow: 0 5px 15px rgba(203, 170, 99, 0.4);
+    }
+    .btn-magic-founder svg { width: 14px; height: 14px; fill: currentColor; }
 
     /* =========================================
        SECCIÓN PRINCIPAL Y FIRMA
@@ -417,7 +452,7 @@
     .btn-submit:hover { background-color: var(--dorado); color: var(--carbon); border-color: var(--dorado); }
 
     /* =========================================
-       BOTÓN FLOTANTE WHATSAPP VIP
+       BOTÓN FLOTANTE WHATSAPP
        ========================================= */
     .whatsapp-float {
       position: fixed;
@@ -450,7 +485,7 @@
       .nav-group { justify-content: center; flex-wrap: wrap; width: 100%; flex: none; gap: 15px;}
       .brand-nav { order: -1; width: 100%; margin-bottom: 10px; }
       .nav-link { font-size: 0.55rem; letter-spacing: 2px; }
-      .btn-menu-brand { padding: 8px 14px; font-size: 0.55rem; }
+      .btn-menu-brand, .btn-magic-founder { padding: 8px 14px; font-size: 0.55rem; }
       .dropdown-content { min-width: 150px; }
       .dropdown-content a { font-size: 0.45rem; padding: 10px; }
       
@@ -487,11 +522,16 @@
     <div class="brand-nav">È N I G M E</div>
     
     <div class="nav-group right">
+      <a href="fundador.html" class="btn-magic-founder">
+        <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        EL FUNDADOR
+      </a>
+      
       <a href="certificado.html" class="btn-menu-brand">
         <svg viewBox="0 0 24 24"><path d="M17 10h-2V6c0-1.1-.9-2-2-2H5a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2v-4h2c1.1 0 2-.9 2-2V12a2 2 0 0 0-2-2zM5 6h8v4H5V6zm8 12H5V12h8v6zm6-6h-2V12h2v2z"/></svg>
         CERTIFICADO
       </a>
-      
+
       <a href="favoritos.html" class="btn-menu-brand">
         <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
         FAVS (<span id="fav-count" class="counter-badge">0</span>)
