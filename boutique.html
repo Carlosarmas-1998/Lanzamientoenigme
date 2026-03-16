@@ -71,7 +71,7 @@
       padding-bottom: 4px;
     }
 
-    .nav-group a::after {
+    .nav-group a.nav-link::after {
       content: '';
       position: absolute;
       width: 100%; height: 1px; bottom: 0; left: 0;
@@ -81,10 +81,28 @@
       transition: transform 0.4s ease;
     }
 
-    .nav-group a:hover, .nav-group a.active { color: var(--carbon); }
-    .nav-group a:hover::after, .nav-group a.active::after { transform: scaleX(1); transform-origin: left; }
+    .nav-group a.nav-link:hover, .nav-group a.nav-link.active { color: var(--carbon); }
+    .nav-group a.nav-link:hover::after, .nav-group a.nav-link.active::after { transform: scaleX(1); transform-origin: left; }
 
-    .counter-badge { color: var(--carbon); font-weight: 500; }
+    /* BOTÓN DE CARRITO DESTACADO */
+    .cart-nav-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background-color: var(--dorado);
+      color: var(--carbon) !important;
+      padding: 10px 18px;
+      border-radius: 2px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      box-shadow: 0 4px 15px rgba(203, 170, 99, 0.2);
+    }
+    .cart-nav-btn:hover {
+      background-color: var(--carbon);
+      color: var(--dorado) !important;
+    }
+    .cart-nav-btn svg { width: 14px; height: 14px; fill: currentColor; }
+    .counter-badge { font-weight: 600; }
 
     /* ENCABEZADO DE LA GALERÍA */
     .gallery-header {
@@ -120,9 +138,7 @@
 
     .product-card { display: flex; flex-direction: column; }
 
-    /* =======================================
-       CARRUSEL SLIDER DE ALTA COSTURA
-       ======================================= */
+    /* CARRUSEL SLIDER DE ALTA COSTURA */
     .carousel-wrapper {
       position: relative;
       background-color: white;
@@ -134,7 +150,7 @@
 
     .carousel-track {
       display: flex;
-      width: 200%; /* Ajustado al 200% porque son 2 fotos */
+      width: 200%; 
       height: 100%;
       transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
       cursor: grab;
@@ -143,10 +159,10 @@
     .carousel-track:active { cursor: grabbing; }
 
     .product-image {
-      width: 50%; /* Cada imagen ocupa la mitad del track (el 100% de la vista) */
+      width: 50%; 
       height: 100%;
       object-fit: cover;
-      pointer-events: none; /* Delega los clics al contenedor */
+      pointer-events: none; 
     }
 
     /* Flechas del Carrusel */
@@ -166,7 +182,7 @@
       align-items: center;
       justify-content: center;
       font-size: 0.9rem;
-      opacity: 0; /* Ocultas por defecto */
+      opacity: 0; 
       transition: var(--transition);
       backdrop-filter: blur(4px);
     }
@@ -208,6 +224,34 @@
     .pill-btn:hover { transform: translateX(-5px); background: var(--rosa-palo); color: var(--carbon); border-color: var(--rosa-palo); }
     .pill-btn svg { width: 12px; height: 12px; fill: currentColor; }
 
+    /* NOTIFICACIÓN TOAST (AGREGADO AL CARRITO) */
+    .toast-notification {
+      position: fixed;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background-color: var(--carbon);
+      color: var(--dorado);
+      padding: 14px 28px;
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 500;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+      z-index: 10000;
+      opacity: 0;
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      pointer-events: none;
+    }
+    .toast-notification.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+    .toast-notification svg { width: 16px; height: 16px; fill: currentColor; }
+
     /* BANNER LEGAL Y FOOTER */
     .legal-banner { border-top: 1px solid var(--linea-fina); padding: 60px 5vw 40px; text-align: center; margin-top: auto; }
     .trust-badges-container { display: flex; justify-content: center; gap: 30px; margin-bottom: 40px; padding: 0 5vw; flex-wrap: wrap; }
@@ -237,7 +281,9 @@
       .trust-badge-item { padding: 6px 12px; font-size: 0.5rem; }
       .qty-selector { width: 70px; }
       .btn-cart { font-size: 0.5rem; letter-spacing: 2px; }
-      .carousel-arrow { opacity: 1; width: 25px; height: 25px; font-size: 0.7rem; } /* Flechas visibles en móvil */
+      .carousel-arrow { opacity: 1; width: 25px; height: 25px; font-size: 0.7rem; }
+      .cart-nav-btn { font-size: 0.5rem; padding: 8px 12px; }
+      .toast-notification { width: 90%; justify-content: center; bottom: 20px; font-size: 0.55rem; }
     }
   </style>
 </head>
@@ -245,13 +291,16 @@
 
   <nav class="navbar">
     <div class="nav-group">
-      <a href="index.html">INICIO</a>
-      <a href="certificado.html">CERTIFICADO</a>
+      <a href="index.html" class="nav-link">INICIO</a>
+      <a href="certificado.html" class="nav-link">CERTIFICADO</a>
     </div>
     <div class="brand">È N I G M E</div>
     <div class="nav-group right">
-      <a href="index.html#contacto">SOPORTE</a>
-      <a href="carrito.html">CARRITO (<span id="cart-count" class="counter-badge">0</span>)</a>
+      <a href="index.html#contacto" class="nav-link">SOPORTE</a>
+      <a href="carrito.html" class="cart-nav-btn">
+        <svg viewBox="0 0 24 24"><path d="M16 6V4a4 4 0 0 0-8 0v2H3v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6h-5zm-6-2a2 2 0 0 1 4 0v2h-4V4zm8 16H6V8h2v2a1 1 0 0 0 2 0V8h4v2a1 1 0 0 0 2 0V8h2v12z"/></svg>
+        BOLSA (<span id="cart-count" class="counter-badge">0</span>)
+      </a>
     </div>
   </nav>
 
@@ -296,13 +345,13 @@
 
     <article class="product-card">
       <div class="carousel-wrapper">
-        <button class="btn-fav" data-ref="895623" onclick="toggleFav('895623', 'Bolso Enigma', 'L 999', 'b1.png', this)">
+        <button class="btn-fav" data-ref="895623" onclick="toggleFav('895623', 'Bolso Enigma', 'L 999', 'b11.jpg', this)">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <button class="carousel-arrow prev" onclick="moveSlide(this, -1)">&#10094;</button>
         <div class="carousel-track" data-index="0">
-          <img src="b1.png" class="product-image" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
           <img src="b11.jpg" class="product-image" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
+          <img src="b1.png" class="product-image" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
         </div>
         <button class="carousel-arrow next" onclick="moveSlide(this, 1)">&#10095;</button>
       </div>
@@ -318,20 +367,20 @@
             <span id="qty-895623">1</span>
             <button onclick="changeCardQty('qty-895623', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('895623', 'Bolso Enigma', 'L 999', 'b1.png', this, 'qty-895623')">Añadir</button>
+          <button class="btn-cart" onclick="addToCart('895623', 'Bolso Enigma', 'L 999', 'b11.jpg', this, 'qty-895623')">Añadir</button>
         </div>
       </div>
     </article>
 
     <article class="product-card">
       <div class="carousel-wrapper">
-        <button class="btn-fav" data-ref="895500" onclick="toggleFav('895500', 'Bolso Electric', 'L 999', 'b2.png', this)">
+        <button class="btn-fav" data-ref="895500" onclick="toggleFav('895500', 'Bolso Electric', 'L 999', 'b22.jpg', this)">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <button class="carousel-arrow prev" onclick="moveSlide(this, -1)">&#10094;</button>
         <div class="carousel-track" data-index="0">
-          <img src="b2.png" class="product-image" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
           <img src="b22.jpg" class="product-image" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
+          <img src="b2.png" class="product-image" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
         </div>
         <button class="carousel-arrow next" onclick="moveSlide(this, 1)">&#10095;</button>
       </div>
@@ -347,20 +396,20 @@
             <span id="qty-895500">1</span>
             <button onclick="changeCardQty('qty-895500', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('895500', 'Bolso Electric', 'L 999', 'b2.png', this, 'qty-895500')">Añadir</button>
+          <button class="btn-cart" onclick="addToCart('895500', 'Bolso Electric', 'L 999', 'b22.jpg', this, 'qty-895500')">Añadir</button>
         </div>
       </div>
     </article>
 
     <article class="product-card">
       <div class="carousel-wrapper">
-        <button class="btn-fav" data-ref="894477" onclick="toggleFav('894477', 'Bolso Elegance', 'L 1399', 'b3.png', this)">
+        <button class="btn-fav" data-ref="894477" onclick="toggleFav('894477', 'Bolso Elegance', 'L 1399', 'b33.jpg', this)">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <button class="carousel-arrow prev" onclick="moveSlide(this, -1)">&#10094;</button>
         <div class="carousel-track" data-index="0">
-          <img src="b3.png" class="product-image" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
           <img src="b33.jpg" class="product-image" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
+          <img src="b3.png" class="product-image" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
         </div>
         <button class="carousel-arrow next" onclick="moveSlide(this, 1)">&#10095;</button>
       </div>
@@ -376,20 +425,20 @@
             <span id="qty-894477">1</span>
             <button onclick="changeCardQty('qty-894477', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('894477', 'Bolso Elegance', 'L 1399', 'b3.png', this, 'qty-894477')">Añadir</button>
+          <button class="btn-cart" onclick="addToCart('894477', 'Bolso Elegance', 'L 1399', 'b33.jpg', this, 'qty-894477')">Añadir</button>
         </div>
       </div>
     </article>
 
     <article class="product-card">
       <div class="carousel-wrapper">
-        <button class="btn-fav" data-ref="894488" onclick="toggleFav('894488', 'Bolso Aura', 'L 1199', 'b4.png', this)">
+        <button class="btn-fav" data-ref="894488" onclick="toggleFav('894488', 'Bolso Aura', 'L 1199', 'b44.jpg', this)">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <button class="carousel-arrow prev" onclick="moveSlide(this, -1)">&#10094;</button>
         <div class="carousel-track" data-index="0">
-          <img src="b4.png" class="product-image" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
           <img src="b44.jpg" class="product-image" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
+          <img src="b4.png" class="product-image" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
         </div>
         <button class="carousel-arrow next" onclick="moveSlide(this, 1)">&#10095;</button>
       </div>
@@ -405,20 +454,20 @@
             <span id="qty-894488">1</span>
             <button onclick="changeCardQty('qty-894488', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('894488', 'Bolso Aura', 'L 1199', 'b4.png', this, 'qty-894488')">Añadir</button>
+          <button class="btn-cart" onclick="addToCart('894488', 'Bolso Aura', 'L 1199', 'b44.jpg', this, 'qty-894488')">Añadir</button>
         </div>
       </div>
     </article>
 
     <article class="product-card">
       <div class="carousel-wrapper">
-        <button class="btn-fav" data-ref="894499" onclick="toggleFav('894499', 'Bolso Misterio', 'L 1299', 'b5.png', this)">
+        <button class="btn-fav" data-ref="894499" onclick="toggleFav('894499', 'Bolso Misterio', 'L 1299', 'b55.jpg', this)">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <button class="carousel-arrow prev" onclick="moveSlide(this, -1)">&#10094;</button>
         <div class="carousel-track" data-index="0">
-          <img src="b5.png" class="product-image" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
           <img src="b55.jpg" class="product-image" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
+          <img src="b5.png" class="product-image" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
         </div>
         <button class="carousel-arrow next" onclick="moveSlide(this, 1)">&#10095;</button>
       </div>
@@ -434,20 +483,20 @@
             <span id="qty-894499">1</span>
             <button onclick="changeCardQty('qty-894499', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('894499', 'Bolso Misterio', 'L 1299', 'b5.png', this, 'qty-894499')">Añadir</button>
+          <button class="btn-cart" onclick="addToCart('894499', 'Bolso Misterio', 'L 1299', 'b55.jpg', this, 'qty-894499')">Añadir</button>
         </div>
       </div>
     </article>
 
     <article class="product-card">
       <div class="carousel-wrapper">
-        <button class="btn-fav" data-ref="890371" onclick="toggleFav('890371', 'Bolso BurdeúX', 'L 899', 'b6.png', this)">
+        <button class="btn-fav" data-ref="890371" onclick="toggleFav('890371', 'Bolso BurdeúX', 'L 899', 'b66.jpg', this)">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <button class="carousel-arrow prev" onclick="moveSlide(this, -1)">&#10094;</button>
         <div class="carousel-track" data-index="0">
-          <img src="b6.png" class="product-image" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
           <img src="b66.jpg" class="product-image" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
+          <img src="b6.png" class="product-image" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
         </div>
         <button class="carousel-arrow next" onclick="moveSlide(this, 1)">&#10095;</button>
       </div>
@@ -463,20 +512,20 @@
             <span id="qty-890371">1</span>
             <button onclick="changeCardQty('qty-890371', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('890371', 'Bolso BurdeúX', 'L 899', 'b6.png', this, 'qty-890371')">Añadir</button>
+          <button class="btn-cart" onclick="addToCart('890371', 'Bolso BurdeúX', 'L 899', 'b66.jpg', this, 'qty-890371')">Añadir</button>
         </div>
       </div>
     </article>
 
     <article class="product-card">
       <div class="carousel-wrapper">
-        <button class="btn-fav" data-ref="899927" onclick="toggleFav('899927', 'Bolso Red Soul', 'L 819', 'b7.png', this)">
+        <button class="btn-fav" data-ref="899927" onclick="toggleFav('899927', 'Bolso Red Soul', 'L 819', 'b77.jpg', this)">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <button class="carousel-arrow prev" onclick="moveSlide(this, -1)">&#10094;</button>
         <div class="carousel-track" data-index="0">
-          <img src="b7.png" class="product-image" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
           <img src="b77.jpg" class="product-image" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
+          <img src="b7.png" class="product-image" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
         </div>
         <button class="carousel-arrow next" onclick="moveSlide(this, 1)">&#10095;</button>
       </div>
@@ -492,7 +541,7 @@
             <span id="qty-899927">1</span>
             <button onclick="changeCardQty('qty-899927', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('899927', 'Bolso Red Soul', 'L 819', 'b7.png', this, 'qty-899927')">Añadir</button>
+          <button class="btn-cart" onclick="addToCart('899927', 'Bolso Red Soul', 'L 819', 'b77.jpg', this, 'qty-899927')">Añadir</button>
         </div>
       </div>
     </article>
@@ -525,6 +574,11 @@
     </p>
   </footer>
 
+  <div id="toast-notification" class="toast-notification">
+    <svg viewBox="0 0 24 24"><path d="M16 6V4a4 4 0 0 0-8 0v2H3v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6h-5zm-6-2a2 2 0 0 1 4 0v2h-4V4zm8 16H6V8h2v2a1 1 0 0 0 2 0V8h4v2a1 1 0 0 0 2 0V8h2v12z"/></svg>
+    Se agregó a tu bolsa con éxito
+  </div>
+
   <script>
     /* =========================================
        MOTOR DEL CARRUSEL (DRAG & SWIPE)
@@ -536,7 +590,6 @@
       
       currentIndex += direction;
       
-      // Como solo hay 2 imágenes, el límite es 0 y 1
       if (currentIndex < 0) currentIndex = 0;
       if (currentIndex > 1) currentIndex = 1;
       
@@ -549,7 +602,6 @@
       let startX;
       let isDragged = false;
 
-      // Eventos para Mouse (Escritorio)
       track.addEventListener('mousedown', (e) => {
         isDown = true;
         isDragged = false;
@@ -558,7 +610,6 @@
 
       track.addEventListener('mousemove', (e) => {
         if (!isDown) return;
-        // Si el usuario mueve el ratón más de 10px, lo consideramos un arrastre (swipe)
         if (Math.abs(e.pageX - startX) > 10) {
           isDragged = true;
         }
@@ -567,14 +618,13 @@
       track.addEventListener('mouseup', (e) => {
         isDown = false;
         if (isDragged) {
-          if (startX > e.pageX) moveSlide({parentElement: track.parentElement}, 1); // Derecha
-          else moveSlide({parentElement: track.parentElement}, -1); // Izquierda
+          if (startX > e.pageX) moveSlide({parentElement: track.parentElement}, 1);
+          else moveSlide({parentElement: track.parentElement}, -1);
         }
       });
 
       track.addEventListener('mouseleave', () => { isDown = false; });
 
-      // Eventos para Touch (Celulares)
       track.addEventListener('touchstart', (e) => {
         startX = e.touches[0].clientX;
         isDragged = false;
@@ -589,17 +639,16 @@
       track.addEventListener('touchend', (e) => {
         if (isDragged) {
           let endX = e.changedTouches[0].clientX;
-          if (startX > endX) moveSlide({parentElement: track.parentElement}, 1); // Derecha
-          else moveSlide({parentElement: track.parentElement}, -1); // Izquierda
+          if (startX > endX) moveSlide({parentElement: track.parentElement}, 1);
+          else moveSlide({parentElement: track.parentElement}, -1);
         }
       });
 
-      // Evento de clic en el Centro (Para abrir Lightbox)
       track.addEventListener('click', (e) => {
         if (!isDragged) {
           let idx = parseInt(track.getAttribute('data-index') || 0);
           let imgs = track.querySelectorAll('img');
-          openLightbox(imgs[idx].src); // Abre en el lightbox la imagen actual
+          openLightbox(imgs[idx].src); 
         }
       });
     });
@@ -629,6 +678,15 @@
       updateCounts();
     }
 
+    // Función para mostrar la notificación tipo Toast
+    function showToast() {
+      const toast = document.getElementById('toast-notification');
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+
     function addToCart(ref, name, price, img, btn, qtyId) {
       if (btn.classList.contains('added')) return; 
       const qtyToAdd = parseInt(document.getElementById(qtyId).innerText) || 1;
@@ -640,10 +698,14 @@
         cart.push({ref, name, price, img, qty: qtyToAdd});
       }
       localStorage.setItem('enigme_cart', JSON.stringify(cart));
+      
       const originalText = btn.innerText;
       btn.classList.add('added');
       btn.innerText = "AÑADIDO ✓";
       document.getElementById(qtyId).innerText = "1";
+      
+      showToast(); // Llamada a la notificación dorada
+
       setTimeout(() => {
         btn.classList.remove('added');
         btn.innerText = originalText;
