@@ -18,7 +18,7 @@
       --gris-fuerte: #333333;
       --gris-suave: #888888;
       --dorado: #CBAA63;
-      --borde-lujo: rgba(203, 170, 99, 0.2);
+      --borde-lujo: rgba(203, 170, 99, 0.25);
       --transition: all 0.5s ease;
     }
 
@@ -28,29 +28,91 @@
       background-color: var(--marfil);
       color: var(--carbon);
       font-family: 'Montserrat', sans-serif;
-      padding: 5vw;
       -webkit-font-smoothing: antialiased;
       display: flex;
-      justify-content: center;
-      align-items: center;
+      flex-direction: column;
       min-height: 100vh;
     }
 
-    a { text-decoration: none; color: inherit; }
+    a { text-decoration: none; color: inherit; transition: var(--transition); }
+
+    /* =========================================
+       NAVBAR ULTRA-MINIMALISTA (SOLO CATÁLOGO Y SOPORTE)
+       ========================================= */
+    .navbar {
+      width: 100%;
+      padding: 30px 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--borde-lujo);
+      background: rgba(250, 249, 246, 0.98);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .brand-nav {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      letter-spacing: 0.4em;
+      color: var(--carbon);
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .nav-group { display: flex; gap: 30px; align-items: center; flex: 1; }
+    .nav-group.right { justify-content: flex-end; }
+    
+    .nav-link {
+      font-size: 0.65rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--carbon);
+      font-weight: 600;
+      position: relative;
+      padding-bottom: 6px;
+      cursor: pointer;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 100%; height: 1.5px; bottom: 0; left: 0;
+      background-color: var(--dorado);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.4s ease;
+    }
+
+    .nav-link:hover { color: var(--dorado); }
+    .nav-link:hover::after { transform: scaleX(1); transform-origin: left; }
+
+    /* =========================================
+       WRAPPER PRINCIPAL
+       ========================================= */
+    .main-wrapper {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 5vw;
+    }
 
     /* =========================================
        CONTENEDOR TIPO CV EDITORIAL SOBRIO
        ========================================= */
     .cv-container {
-      max-width: 1000px;
+      max-width: 1100px;
       width: 100%;
       display: grid;
       grid-template-columns: 0.8fr 1.2fr;
-      gap: 60px;
-      padding: 60px;
+      gap: 70px;
+      padding: 70px 60px;
       background: var(--blanco-dior);
       border: 1px solid var(--borde-lujo);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.03);
       position: relative;
     }
 
@@ -68,44 +130,45 @@
 
     .brand-header {
       font-family: 'Cinzel', serif;
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       letter-spacing: 0.3em;
       color: var(--carbon);
-      margin-bottom: 45px;
+      margin-bottom: 40px;
       font-weight: 500;
     }
 
-    /* FOTO VERTICAL SIN RECORTAR */
+    /* FOTO VERTICAL SIN RECORTAR (Intacta y Majestuosa) */
     .founder-photo {
       width: 100%; 
-      max-width: 220px; 
+      max-width: 240px; 
       height: auto; 
       object-fit: contain; 
-      margin-bottom: 25px;
+      margin-bottom: 30px;
       border: 1px solid var(--borde-lujo);
-      padding: 10px; 
-      filter: contrast(1.02) saturate(0.9) sepia(0.02);
-      transition: var(--transition);
+      padding: 12px; 
+      filter: contrast(1.05) saturate(0.9) sepia(0.03);
+      transition: all 0.8s ease;
     }
     
     .founder-photo:hover {
-      filter: contrast(1.05) saturate(1) sepia(0);
+      filter: contrast(1.1) saturate(1) sepia(0);
       border-color: var(--dorado);
+      box-shadow: 0 10px 25px rgba(203, 170, 99, 0.15);
     }
 
     .founder-name {
       font-family: 'Cinzel', serif;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       color: var(--carbon);
       font-weight: 600;
-      margin-bottom: 5px;
+      margin-bottom: 8px;
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
 
     .founder-title {
-      font-size: 0.6rem;
-      letter-spacing: 3px;
+      font-size: 0.65rem;
+      letter-spacing: 4px;
       text-transform: uppercase;
       color: var(--dorado);
       margin-bottom: 50px;
@@ -115,7 +178,7 @@
     .contact-info {
       text-align: left;
       width: 100%;
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       line-height: 1.8;
       color: var(--gris-suave);
     }
@@ -128,26 +191,11 @@
       letter-spacing: 2px;
       font-size: 0.65rem;
       margin-bottom: 3px;
-      margin-top: 20px;
+      margin-top: 25px;
     }
-
-    /* BOTÓN VOLVER */
-    .btn-back {
-      margin-top: 50px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.55rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--gris-suave);
-      transition: var(--transition);
-    }
-    .btn-back:hover { color: var(--dorado); transform: translateX(-5px); }
-    .btn-back svg { width: 12px; height: 12px; fill: currentColor; }
 
     /* =========================================
-       COLUMNA DERECHA (EL MANIFIESTO SOBRIO)
+       COLUMNA DERECHA (EL MANIFIESTO DE ORO)
        ========================================= */
     .manifesto-main {
       display: flex;
@@ -157,28 +205,28 @@
 
     .section-title {
       font-family: 'Cinzel', serif;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       letter-spacing: 4px;
       text-transform: uppercase;
       color: var(--dorado);
-      margin-bottom: 15px;
-      padding-bottom: 5px;
+      margin-bottom: 20px;
+      padding-bottom: 8px;
       border-bottom: 1px solid var(--borde-lujo);
     }
 
     .polimata-title {
       font-family: 'Cinzel', serif;
-      font-size: 1.8rem;
-      line-height: 1.2;
+      font-size: 2.4rem;
+      line-height: 1.15;
       color: var(--carbon);
-      margin-bottom: 25px;
+      margin-bottom: 30px;
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
 
     .manifesto-text {
-      font-size: 0.9rem;
-      line-height: 2.1;
+      font-size: 0.95rem;
+      line-height: 2.2;
       color: var(--carbon);
       font-weight: 300;
       text-align: justify;
@@ -190,12 +238,12 @@
       font-family: 'Cinzel', serif;
       font-weight: 700;
       color: var(--carbon);
-      /* Esto crea el borde dorado alrededor de las letras */
       -webkit-text-stroke: 0.5px var(--dorado);
       text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 0.95rem;
-      padding: 0 4px;
+      letter-spacing: 3px;
+      font-size: 1.05rem;
+      padding: 0 2px;
+      text-shadow: 0 2px 10px rgba(203, 170, 99, 0.2);
     }
 
     /* GRID DE ÁREAS DE EXPERIENCIA CORPORATIVA Y ARTÍSTICA */
@@ -203,46 +251,49 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 30px;
-      margin-bottom: 40px;
-      margin-top: 10px;
+      margin-bottom: 50px;
+      margin-top: 15px;
     }
 
     .skill-col ul { list-style: none; }
     .skill-col li {
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       color: var(--gris-fuerte);
       line-height: 2.2;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       font-weight: 300;
     }
     .skill-col li::before {
       content: '';
       display: inline-block;
-      width: 4px;
-      height: 4px;
+      width: 5px;
+      height: 5px;
       background-color: var(--dorado);
       border-radius: 50%;
+      box-shadow: 0 0 5px var(--dorado);
     }
 
-    /* SECCIÓN DE VISIÓN PROFESIONAL */
+    /* SECCIÓN DE VISIÓN (MAGIA Y AURA) */
     .vision-block {
       background-color: var(--marfil);
-      padding: 30px 35px;
-      border-left: 2px solid var(--dorado);
+      padding: 35px 40px;
+      border-left: 3px solid var(--dorado);
       margin-bottom: 40px;
+      box-shadow: inset 0 0 20px rgba(203, 170, 99, 0.05);
     }
     .vision-quote {
       font-family: 'Cinzel', serif;
-      font-size: 0.95rem;
-      line-height: 1.8;
-      color: var(--gris-fuerte);
+      font-size: 1rem;
+      line-height: 1.9;
+      color: var(--carbon);
+      font-style: italic;
     }
 
     /* FIRMA MANUSCRITA FINAL */
     .signature-wrapper {
-      margin-top: 10px;
+      margin-top: 20px;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
@@ -250,114 +301,135 @@
 
     .signature-script {
       font-family: 'Great Vibes', cursive;
-      font-size: 4rem;
+      font-size: 4.5rem;
       color: var(--carbon);
       line-height: 0.8;
       transform: rotate(-5deg);
       opacity: 0.9;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
 
     .signature-title {
       font-family: 'Cinzel', serif;
-      font-size: 0.55rem;
-      letter-spacing: 5px;
+      font-size: 0.6rem;
+      letter-spacing: 6px;
       text-transform: uppercase;
       color: var(--dorado);
     }
 
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      .cv-container { grid-template-columns: 1fr; padding: 40px; gap: 40px; }
-      .profile-sidebar { border-right: none; border-bottom: 1px solid var(--borde-lujo); padding-right: 0; padding-bottom: 40px; }
-      .founder-photo { max-width: 180px; }
+    /* RESPONSIVE EXTREMO */
+    @media (max-width: 950px) {
+      .cv-container { grid-template-columns: 1fr; padding: 50px; gap: 50px; }
+      .profile-sidebar { border-right: none; border-bottom: 1px solid var(--borde-lujo); padding-right: 0; padding-bottom: 50px; }
+      .founder-photo { max-width: 200px; }
       .manifesto-text { text-align: left; }
-      .polimata-title { font-size: 1.6rem; text-align: center; }
-      .btn-back { margin-top: 30px; }
-      .signature-wrapper { align-items: center; margin-top: 30px; }
+      .polimata-title { font-size: 2rem; text-align: center; }
+      .signature-wrapper { align-items: center; margin-top: 40px; }
+    }
+
+    @media (max-width: 600px) {
+      .navbar { padding: 25px 20px; }
+      .nav-link { font-size: 0.55rem; letter-spacing: 2px; }
+      .brand-nav { font-size: 1.4rem; letter-spacing: 0.25em; }
+      .main-wrapper { padding: 20px 10px; }
+      .cv-container { padding: 40px 25px; box-shadow: none; border-left: none; border-right: none; }
+      .polimata-title { font-size: 1.7rem; }
+      .skills-grid { grid-template-columns: 1fr; gap: 20px; }
+      .vision-block { padding: 25px 20px; }
+      .vision-quote { font-size: 0.9rem; text-align: justify; }
+      .signature-script { font-size: 3.8rem; }
     }
   </style>
 </head>
 <body>
 
-  <main class="cv-container">
+  <nav class="navbar">
+    <div class="nav-group">
+      <a href="catalogo.html" class="nav-link">CATÁLOGO</a>
+    </div>
     
-    <aside class="profile-sidebar">
-      <div class="brand-header">ÈNIGME</div>
-      
-      <img src="cj.jpg" alt="Carlos Armas Martínez" class="founder-photo" onerror="this.src='https://via.placeholder.com/220x300?text=Retrato+Profesional'">
-      
-      <h1 class="founder-name">Carlos Armas M.</h1>
-      <p class="founder-title">Fundador y Director Creativo</p>
-      
-      <div class="contact-info">
-        <div class="contact-item">
-          <strong>Dirección Creativa</strong>
-          Madrid, España
-        </div>
-        <div class="contact-item">
-          <strong>Origen</strong>
-          Honduras
-        </div>
-        <div class="contact-item">
-          <strong>Edad</strong>
-          28 Años
-        </div>
-      </div>
+    <div class="brand-nav">È N I G M E</div>
+    
+    <div class="nav-group right">
+      <a href="soporte.html" class="nav-link">SOPORTE</a>
+    </div>
+  </nav>
 
-      <a href="index.html" class="btn-back">
-        <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
-        Volver a la Casa
-      </a>
-    </aside>
-
-    <article class="manifesto-main">
+  <div class="main-wrapper">
+    <main class="cv-container">
       
-      <section>
-        <h2 class="section-title">Perfil</h2>
-        <h3 class="polimata-title">Convergencia<br>Multidisciplinaria</h3>
-        <p class="manifesto-text">
-          Originario de Honduras y establecido en <strong>Madrid, España</strong>, Carlos lidera la visión estratégica y creativa de La Casa ÈNIGME. Su perfil une la exigencia de la gestión corporativa con la sensibilidad del diseño premium. Esta convergencia le permite un control directo sobre la excelencia operativa y la calidad artística de la marca.
-        </p>
-        <p class="manifesto-text">
-          Su propuesta de valor se basa en el <span class="text-lujo">lujo accesible de alta gama</span>, donde la calidad de importación y el servicio especializado elevan la experiencia del cliente hondureño hacia un estándar de clase mundial.
-        </p>
-      </section>
-
-      <section>
-        <h2 class="section-title">Conocimientos</h2>
-        <div class="skills-grid">
-          <div class="skill-col">
-            <ul title="Gestión y Estructura">
-              <li>Ciencias del Derecho</li>
-              <li>Administración Corporativa</li>
-              <li>Contabilidad</li>
-              <li>Ingeniería y Programación</li>
-            </ul>
+      <aside class="profile-sidebar">
+        <div class="brand-header">ÈNIGME</div>
+        
+        <img src="cj.jpg" alt="Carlos Armas Martínez" class="founder-photo" onerror="this.src='https://via.placeholder.com/240x320?text=Retrato+Profesional'">
+        
+        <h1 class="founder-name">Carlos Armas M.</h1>
+        <p class="founder-title">Fundador y Director Creativo</p>
+        
+        <div class="contact-info">
+          <div class="contact-item">
+            <strong>Dirección Creativa</strong>
+            Madrid, España
           </div>
-          <div class="skill-col">
-            <ul title="Creación y Diseño">
-              <li>Alta Joyería</li>
-              <li>Estructura y Costura</li>
-              <li>Perfumería</li>
-            </ul>
+          <div class="contact-item">
+            <strong>Origen</strong>
+            Honduras
+          </div>
+          <div class="contact-item">
+            <strong>Edad</strong>
+            28 Años
           </div>
         </div>
-      </section>
+      </aside>
 
-      <section class="vision-block">
-        <p class="vision-quote">
-          "Buscamos que nuestras piezas aporten una presencia inconfundible. No se trata solo de accesorios, sino de elementos que proyecten la personalidad y seguridad de quien los porta. Nuestro compromiso es la calidad técnica y la estética refinada en cada creación."
-        </p>
-      </section>
+      <article class="manifesto-main">
+        
+        <section>
+          <h2 class="section-title">El Arquitecto del Aura</h2>
+          <h3 class="polimata-title">Convergencia<br>Multidisciplinaria</h3>
+          <p class="manifesto-text">
+            Nacido bajo el sol de Honduras y forjado en el rigor corporativo de <strong>Madrid, España</strong>, Carlos no crea simples colecciones; él diseña el lenguaje silencioso del poder. Su mente representa una alquimia perfecta: la firmeza técnica de la estructura empresarial colisionando con el fuego y la sensibilidad del arte puro. 
+          </p>
+          <p class="manifesto-text">
+            Creemos ciegamente en la <strong>magia de la ambición</strong> y en el instinto indomable de la mujer por salir adelante y conquistar su entorno. Por ello, Carlos ha cimentado la firma sobre un pilar inquebrantable de <span class="text-lujo">Exclusividad Inclusiva</span>. El lujo verdadero no es un accidente de cuna; es el reflejo material de tus ganas de triunfar.
+          </p>
+        </section>
 
-      <div class="signature-wrapper">
-        <div class="signature-script">Carlos Armas M.</div>
-        <div class="signature-title">El Fundador</div>
-      </div>
+        <section>
+          <h2 class="section-title">Conocimientos</h2>
+          <div class="skills-grid">
+            <div class="skill-col">
+              <ul title="La Estructura y la Razón">
+                <li>Ciencias del Derecho</li>
+                <li>Administración Corporativa</li>
+                <li>Contabilidad Financiera</li>
+                <li>Ingeniería y Programación</li>
+              </ul>
+            </div>
+            <div class="skill-col">
+              <ul title="El Arte y la Sensibilidad">
+                <li>Diseño de Alta Joyería</li>
+                <li>Estructura y Costura</li>
+                <li>Alta Perfumería</li>
+              </ul>
+            </div>
+          </div>
+        </section>
 
-    </article>
-  </main>
+        <section class="vision-block">
+          <p class="vision-quote">
+            "Con la fuerza inquebrantable del acero y revestidas en la luz del <strong>oro y el rodio</strong>, nuestras piezas no buscan completarte, pues tú ya eres una obra maestra. Son talismanes diseñados exclusivamente para desatar tu <strong>misterio</strong>, amplificar tu <strong>aura</strong> y dejar claro al mundo que tus ganas de salir adelante merecen un lujo a tu altura."
+          </p>
+        </section>
+
+        <div class="signature-wrapper">
+          <div class="signature-script">Carlos Armas M.</div>
+          <div class="signature-title">El Fundador</div>
+        </div>
+
+      </article>
+    </main>
+  </div>
 
 </body>
 </html>
