@@ -11,13 +11,14 @@
 
   <style>
     :root {
+      /* PALETA DE MARCA ÈNIGME */
       --marfil: #FAF9F6;
       --rosa-palo: #D8C3BC;
       --carbon: #1C1C1C;
       --gris-suave: #888888;
       --dorado: #CBAA63;
       --linea-fina: rgba(216, 195, 188, 0.4);
-      --transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      --transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -37,7 +38,9 @@
     a { text-decoration: none; color: inherit; transition: var(--transition); }
     button { background: none; border: none; font-family: inherit; cursor: pointer; outline: none; }
 
-    /* NAVBAR COMPLETA Y PERSISTENTE */
+    /* =========================================
+       NAVBAR MINIMALISTA ÈNIGME
+       ========================================= */
     .navbar {
       width: 100%;
       padding: 30px 4vw;
@@ -49,7 +52,7 @@
       backdrop-filter: blur(10px);
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
     }
 
     .brand {
@@ -62,16 +65,19 @@
 
     .nav-group { display: flex; gap: 30px; align-items: center; flex: 1; }
     .nav-group.right { justify-content: flex-end; }
-    .nav-group a {
+    
+    /* ENLACES NORMALES DE MENÚ */
+    .nav-link {
       font-size: 0.6rem;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--gris-suave);
+      font-weight: 300;
       position: relative;
       padding-bottom: 4px;
     }
 
-    .nav-group a.nav-link::after {
+    .nav-link::after {
       content: '';
       position: absolute;
       width: 100%; height: 1px; bottom: 0; left: 0;
@@ -81,27 +87,55 @@
       transition: transform 0.4s ease;
     }
 
-    .nav-group a.nav-link:hover, .nav-group a.nav-link.active { color: var(--carbon); }
-    .nav-group a.nav-link:hover::after, .nav-group a.nav-link.active::after { transform: scaleX(1); transform-origin: left; }
+    .nav-link:hover { color: var(--carbon); }
+    .nav-link:hover::after { transform: scaleX(1); transform-origin: left; }
 
-    /* BOTÓN DE CARRITO DESTACADO */
-    .cart-nav-btn {
+    /* =========================================
+       BOTONES DESTACADOS TENUES Y ELEGANTES
+       ========================================= */
+    .btn-menu-brand {
       display: flex;
       align-items: center;
       gap: 8px;
-      background-color: var(--dorado);
+      background-color: transparent; /* Fondo transparente para no encender la barra */
       color: var(--carbon) !important;
-      padding: 10px 18px;
+      padding: 8px 16px;
+      border: 1px solid rgba(203, 170, 99, 0.5); /* Borde dorado suave */
       border-radius: 2px;
-      font-weight: 600;
+      font-size: 0.6rem;
+      font-weight: 500;
       letter-spacing: 2px;
-      box-shadow: 0 4px 15px rgba(203, 170, 99, 0.2);
+      text-transform: uppercase;
+      transition: var(--transition);
     }
-    .cart-nav-btn:hover {
-      background-color: var(--carbon);
-      color: var(--dorado) !important;
+
+    .btn-menu-brand:hover {
+      background-color: var(--dorado); /* Se rellena al pasar el ratón */
+      border-color: var(--dorado);
     }
-    .cart-nav-btn svg { width: 14px; height: 14px; fill: currentColor; }
+
+    .btn-menu-brand svg {
+      width: 13px;
+      height: 13px;
+      fill: currentColor;
+      transition: transform 0.3s ease;
+    }
+
+    /* CARRITO DINÁMICO (Efecto Latido) */
+    @keyframes pulse-soft {
+      0% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0.3); }
+      70% { box-shadow: 0 0 0 8px rgba(203, 170, 99, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0); }
+    }
+
+    .btn-cart-nav {
+      animation: pulse-soft 2.5s infinite; /* El pulso continuo y elegante */
+    }
+
+    .btn-cart-nav:hover svg {
+      transform: scale(1.15) rotate(-5deg); /* La bolsita se mueve un poco al hacer hover */
+    }
+
     .counter-badge { font-weight: 600; }
 
     /* ENCABEZADO DE LA GALERÍA */
@@ -138,7 +172,9 @@
 
     .product-card { display: flex; flex-direction: column; }
 
-    /* CARRUSEL SLIDER DE ALTA COSTURA */
+    /* =======================================
+       CARRUSEL SLIDER TÁCTIL (SWIPE)
+       ======================================= */
     .carousel-wrapper {
       position: relative;
       background-color: white;
@@ -217,7 +253,7 @@
     .btn-cart:hover { background-color: var(--dorado); color: var(--carbon); }
     .btn-cart.added { background: var(--carbon); color: var(--dorado); }
 
-    /* BOTONES FLOTANTES COMPACTOS (VIP MINIATURE) */
+    /* BOTONES FLOTANTES COMPACTOS (VIP) */
     .floating-stack { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; align-items: flex-end; gap: 8px; z-index: 999; }
     .pill-btn { display: flex; align-items: center; gap: 8px; height: 32px; padding: 0 14px; border-radius: 20px; background: var(--carbon); color: var(--marfil); font-size: 0.45rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 1px solid transparent; white-space: nowrap; transition: var(--transition); }
     .pill-btn.light { background: var(--marfil); color: var(--carbon); border: 1px solid var(--linea-fina); }
@@ -259,7 +295,7 @@
     .trust-badge-item svg { width: 14px; height: 14px; fill: currentColor; }
     .legal-text { font-size: 0.6rem; line-height: 2.2; letter-spacing: 1.5px; color: var(--gris-suave); max-width: 900px; margin: 0 auto; text-transform: uppercase; }
     .legal-text strong { color: var(--carbon); }
-    .footer-credit { margin-top: 30px; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--carbon); }
+    .footer-credit { margin-top: 30px; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--carbon); text-transform: uppercase; }
 
     /* LIGHTBOX */
     .lightbox { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(250, 249, 246, 0.98); backdrop-filter: blur(10px); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
@@ -273,6 +309,8 @@
       .navbar { flex-wrap: wrap; justify-content: center; gap: 20px; padding: 25px; }
       .nav-group { justify-content: center; flex-wrap: wrap; width: 100%; flex: none; gap: 15px;}
       .brand { order: -1; width: 100%; margin-bottom: 10px; }
+      .nav-link { font-size: 0.55rem; letter-spacing: 2px; }
+      .btn-menu-brand { padding: 8px 14px; font-size: 0.55rem; }
       .product-grid { grid-template-columns: 1fr 1fr; gap: 40px 15px; padding: 40px 15px; }
       .gallery-title { font-size: 1.8rem; }
       .product-name { font-size: 0.85rem; }
@@ -282,7 +320,6 @@
       .qty-selector { width: 70px; }
       .btn-cart { font-size: 0.5rem; letter-spacing: 2px; }
       .carousel-arrow { opacity: 1; width: 25px; height: 25px; font-size: 0.7rem; }
-      .cart-nav-btn { font-size: 0.5rem; padding: 8px 12px; }
       .toast-notification { width: 90%; justify-content: center; bottom: 20px; font-size: 0.55rem; }
     }
   </style>
@@ -292,12 +329,17 @@
   <nav class="navbar">
     <div class="nav-group">
       <a href="index.html" class="nav-link">INICIO</a>
-      <a href="certificado.html" class="nav-link">CERTIFICADO</a>
+      
+      <a href="certificado.html" class="btn-menu-brand">
+        <svg viewBox="0 0 24 24"><path d="M17 10h-2V6c0-1.1-.9-2-2-2H5a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2v-4h2c1.1 0 2-.9 2-2V12a2 2 0 0 0-2-2zM5 6h8v4H5V6zm8 12H5V12h8v6zm6-6h-2V12h2v2z"/></svg>
+        CERTIFICADO
+      </a>
     </div>
     <div class="brand">È N I G M E</div>
     <div class="nav-group right">
-      <a href="index.html#contacto" class="nav-link">SOPORTE</a>
-      <a href="carrito.html" class="cart-nav-btn">
+      <a href="mailto:info@enigmeofficia.com" class="nav-link">SOPORTE</a>
+      
+      <a href="carrito.html" class="btn-menu-brand btn-cart-nav">
         <svg viewBox="0 0 24 24"><path d="M16 6V4a4 4 0 0 0-8 0v2H3v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6h-5zm-6-2a2 2 0 0 1 4 0v2h-4V4zm8 16H6V8h2v2a1 1 0 0 0 2 0V8h4v2a1 1 0 0 0 2 0V8h2v12z"/></svg>
         BOLSA (<span id="cart-count" class="counter-badge">0</span>)
       </a>
@@ -549,7 +591,6 @@
   </main>
 
   <footer class="legal-banner">
-    
     <div class="trust-badges-container">
       <div class="trust-badge-item">
         <svg viewBox="0 0 448 512"><path d="M400 224h-24v-72C376 68.2 307.8 0 224 0S72 68.2 72 152v72H48c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V272c0-26.5-21.5-48-48-48zm-224-72c0-26.5 21.5-48 48-48s48 21.5 48 48v72H176v-72zm112 300c-13.3 0-24-10.7-24-24s10.7-24 24-24 24 10.7 24 24-10.7 24-24 24z"/></svg>
