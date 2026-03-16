@@ -81,52 +81,75 @@
     }
 
     /* =========================================
-       NAVBAR MINIMALISTA ÈNIGME (UNIFICADA)
+       NAVBAR DE ALTA COSTURA (REDISEÑADA)
        ========================================= */
     .navbar {
       width: 100%;
-      padding: 30px 4vw;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid var(--linea-fina);
       background: rgba(250, 249, 246, 0.98);
       backdrop-filter: blur(10px);
       position: sticky;
       top: 0;
       z-index: 1000;
+      border-bottom: 1px solid var(--linea-fina);
+      display: flex;
+      flex-direction: column; /* Coloca el logo arriba y los botones abajo */
+      align-items: center;
+      padding: 20px 4vw 15px;
+      gap: 20px;
     }
 
     .brand-nav {
       font-family: 'Cinzel', serif;
-      font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+      font-size: clamp(1.5rem, 3vw, 2rem);
       letter-spacing: 0.35em;
       color: var(--carbon);
       text-align: center;
       font-weight: 500;
     }
 
-    .nav-group { display: flex; gap: 30px; align-items: center; flex: 1; }
-    .nav-group.right { justify-content: flex-end; }
+    .nav-bottom {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .nav-links-text {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
     
     .nav-link {
       font-size: 0.6rem;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--gris-suave);
-      font-weight: 500;
+      font-weight: 600;
       position: relative;
       padding-bottom: 4px;
       cursor: pointer;
-      /* Animación de respiración */
+      white-space: nowrap; /* Evita que el texto se rompa */
       animation: navGlow 4s infinite ease-in-out;
     }
 
-    /* Desfase para que brillen en cascada */
-    .nav-group:first-child .nav-link:nth-child(1) { animation-delay: 0s; }
-    .nav-group:first-child .nav-dropdown { animation-delay: 1s; }
-    .nav-group:first-child .nav-link:nth-child(3) { animation-delay: 2s; }
-    .nav-group:first-child .nav-link:nth-child(4) { animation-delay: 3s; }
+    .nav-links-text .nav-link:nth-child(1) { animation-delay: 0s; }
+    .nav-links-text .nav-dropdown { animation-delay: 1s; }
+    .nav-links-text .nav-link:nth-child(3) { animation-delay: 2s; }
+    .nav-links-text .nav-link:nth-child(4) { animation-delay: 3s; }
+    .nav-links-text .nav-link:nth-child(5) { animation-delay: 4s; }
 
     .nav-link::after {
       content: '';
@@ -165,10 +188,38 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       transition: var(--transition);
+      white-space: nowrap; /* Evita que el botón se rompa en 2 líneas */
       animation: none;
     }
     .btn-menu-brand:hover { background-color: var(--dorado); border-color: var(--dorado); }
     .btn-menu-brand svg { width: 13px; height: 13px; fill: currentColor; transition: transform 0.3s ease; }
+
+    /* BOTÓN MÁGICO DEL FUNDADOR */
+    .btn-magic-founder {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(120deg, transparent 0%, rgba(203, 170, 99, 0.15) 50%, transparent 100%);
+      background-size: 200% auto;
+      color: var(--dorado) !important;
+      padding: 8px 16px;
+      border: 1px solid var(--dorado);
+      border-radius: 2px;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      white-space: nowrap; /* Evita rotura */
+      transition: var(--transition);
+      animation: goldShimmer 4s infinite linear, pulse-soft 3s infinite;
+    }
+    .btn-magic-founder:hover {
+      background: var(--dorado);
+      color: var(--carbon) !important;
+      animation: none;
+      box-shadow: 0 5px 15px rgba(203, 170, 99, 0.4);
+    }
+    .btn-magic-founder svg { width: 14px; height: 14px; fill: currentColor; }
 
     /* EFECTO LATIDO CARRITO */
     .btn-cart-nav { animation: pulse-soft 2.5s infinite; }
@@ -196,13 +247,11 @@
       object-fit: contain;
     }
 
-    /* La segunda imagen se superpone y hace fade-in/fade-out */
     .hero .top-img {
       position: absolute;
       top: 0;
       left: 0;
       opacity: 0;
-      /* Animación de 6s totales (3s portada.png, 3s ppp2.png) */
       animation: heroCrossfade 6s infinite ease-in-out;
     }
 
@@ -346,7 +395,6 @@
       margin: 0 auto;
     }
 
-    /* Capítulos */
     .chapter-block {
       display: flex;
       flex-direction: column;
@@ -386,7 +434,6 @@
       max-width: 800px;
     }
 
-    /* El Glosario */
     .magazine-index {
       margin-top: 80px;
       padding: 60px;
@@ -453,7 +500,6 @@
       animation: ripplePulse 2.5s infinite;
     }
 
-    /* Botón Principal (Catálogo) con Brillo Metálico */
     .btn-editorial.primary {
       background: linear-gradient(120deg, var(--dorado) 0%, var(--dorado-brillo) 50%, var(--dorado) 100%);
       background-size: 200% auto;
@@ -533,18 +579,25 @@
     }
 
     /* =========================================
-       RESPONSIVE
+       RESPONSIVE (EVITA EL CHOQUE DE BOTONES)
        ========================================= */
-    @media (max-width: 900px) {
-      .nav-group { gap: 15px; }
+    @media (max-width: 1100px) {
+      .nav-bottom {
+        flex-direction: column;
+        justify-content: center;
+        gap: 15px;
+      }
     }
 
     @media (max-width: 768px) {
-      .navbar { flex-wrap: wrap; justify-content: center; gap: 20px; padding: 25px 20px; }
-      .nav-group { justify-content: center; flex-wrap: wrap; width: 100%; flex: none; gap: 15px;}
-      .brand-nav { order: -1; width: 100%; margin-bottom: 10px; }
+      .navbar { padding: 20px 10px; }
+      .brand-nav { font-size: 1.8rem; margin-bottom: 5px; }
+      .nav-links-text { gap: 15px; }
+      .nav-actions { gap: 10px; }
+      
       .nav-link { font-size: 0.55rem; letter-spacing: 2px; }
-      .btn-menu-brand { padding: 8px 14px; font-size: 0.55rem; }
+      .btn-menu-brand, .btn-magic-founder { padding: 8px 12px; font-size: 0.5rem; }
+      
       .dropdown-content { min-width: 150px; }
       .dropdown-content a { font-size: 0.45rem; padding: 10px; }
       
@@ -568,42 +621,50 @@
 <body>
 
   <nav class="navbar">
-    <div class="nav-group">
-      <a href="index.html" class="nav-link active">INICIO</a>
-      
-      <div class="nav-dropdown">
-        <span class="nav-link">CATÁLOGO ▾</span>
-        <div class="dropdown-content">
-          <a href="joyeria.html">Alta Joyería</a>
-          <a href="boutique.html">Bolsos Boutique</a>
-          <a href="plata.html">Plata de Ley</a>
-          <a href="liquidacion.html">El Archivo</a>
-        </div>
-      </div>
-
-      <a href="enigme.html" class="nav-link">L'ESSENCE</a>
-      <a href="trabaja.html" class="nav-link">TRABAJA CON NOSOTROS</a>
-      
-      <a href="certificado.html" class="btn-menu-brand">
-        <svg viewBox="0 0 24 24"><path d="M17 10h-2V6c0-1.1-.9-2-2-2H5a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2v-4h2c1.1 0 2-.9 2-2V12a2 2 0 0 0-2-2zM5 6h8v4H5V6zm8 12H5V12h8v6zm6-6h-2V12h2v2z"/></svg>
-        CERTIFICADO
-      </a>
-    </div>
-    
     <div class="brand-nav">È N I G M E</div>
     
-    <div class="nav-group right">
-      <a href="soporte.html" class="nav-link">SOPORTE</a>
+    <div class="nav-bottom">
       
-      <a href="favoritos.html" class="btn-menu-brand">
-        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-        FAVS (<span id="fav-count" class="counter-badge">0</span>)
-      </a>
+      <div class="nav-links-text">
+        <a href="index.html" class="nav-link active">INICIO</a>
+        
+        <div class="nav-dropdown">
+          <span class="nav-link">CATÁLOGO ▾</span>
+          <div class="dropdown-content">
+            <a href="joyeria.html">Alta Joyería</a>
+            <a href="boutique.html">Bolsos Boutique</a>
+            <a href="plata.html">Plata de Ley</a>
+            <a href="liquidacion.html">El Archivo</a>
+          </div>
+        </div>
 
-      <a href="carrito.html" class="btn-menu-brand btn-cart-nav">
-        <svg viewBox="0 0 24 24"><path d="M16 6V4a4 4 0 0 0-8 0v2H3v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6h-5zm-6-2a2 2 0 0 1 4 0v2h-4V4zm8 16H6V8h2v2a1 1 0 0 0 2 0V8h4v2a1 1 0 0 0 2 0V8h2v12z"/></svg>
-        BOLSA (<span id="cart-count" class="counter-badge">0</span>)
-      </a>
+        <a href="enigme.html" class="nav-link">L'ESSENCE</a>
+        <a href="trabaja.html" class="nav-link">TRABAJA CON NOSOTROS</a>
+        <a href="soporte.html" class="nav-link">SOPORTE</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="certificado.html" class="btn-menu-brand">
+          <svg viewBox="0 0 24 24"><path d="M17 10h-2V6c0-1.1-.9-2-2-2H5a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2v-4h2c1.1 0 2-.9 2-2V12a2 2 0 0 0-2-2zM5 6h8v4H5V6zm8 12H5V12h8v6zm6-6h-2V12h2v2z"/></svg>
+          CERTIFICADO
+        </a>
+
+        <a href="fundador.html" class="btn-magic-founder">
+          <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          EL FUNDADOR
+        </a>
+        
+        <a href="favoritos.html" class="btn-menu-brand">
+          <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          FAVS (<span id="fav-count" class="counter-badge">0</span>)
+        </a>
+
+        <a href="carrito.html" class="btn-menu-brand btn-cart-nav">
+          <svg viewBox="0 0 24 24"><path d="M16 6V4a4 4 0 0 0-8 0v2H3v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6h-5zm-6-2a2 2 0 0 1 4 0v2h-4V4zm8 16H6V8h2v2a1 1 0 0 0 2 0V8h4v2a1 1 0 0 0 2 0V8h2v12z"/></svg>
+          BOLSA (<span id="cart-count" class="counter-badge">0</span>)
+        </a>
+      </div>
+
     </div>
   </nav>
 
