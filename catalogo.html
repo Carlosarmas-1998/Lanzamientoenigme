@@ -7,17 +7,19 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
 
   <style>
     :root {
       /* PALETA PARISINA LUMINOSA */
       --blanco-dior: #FFFFFF;
-      --carbon: #181818;
-      --gris-suave: #666666;
-      --rosa-empolvado: #D8C3BC;
+      --marfil: #FAF9F6;
+      --carbon: #1C1C1C;
+      --gris-suave: #888888;
+      --rosa-palo: #D8C3BC;
+      --dorado: #CBAA63;
       --fondo-galeria: #FAFAFA;
-      --linea-fina: rgba(24, 24, 24, 0.08);
+      --linea-fina: rgba(216, 195, 188, 0.4);
       --transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
@@ -36,9 +38,11 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
-    a { text-decoration: none; color: inherit; }
+    a { text-decoration: none; color: inherit; transition: var(--transition); }
 
-    /* NAVEGACIÓN HAUTE COUTURE CON CARRITO Y FAVORITOS */
+    /* =========================================
+       NAVBAR MINIMALISTA ÈNIGME
+       ========================================= */
     .navbar {
       width: 100%;
       padding: 30px 4vw;
@@ -46,93 +50,123 @@
       align-items: center;
       justify-content: space-between;
       border-bottom: 1px solid var(--linea-fina);
-      background-color: var(--blanco-dior);
-      z-index: 100;
+      background: rgba(250, 249, 246, 0.95);
+      backdrop-filter: blur(10px);
       position: sticky;
       top: 0;
+      z-index: 1000;
     }
 
     .brand {
       font-family: 'Cinzel', serif;
-      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      font-size: clamp(1.2rem, 2.5vw, 1.5rem);
       letter-spacing: 0.35em;
       color: var(--carbon);
       text-align: center;
     }
 
-    .nav-group {
-      display: flex;
-      gap: 30px;
-      align-items: center;
-      flex: 1;
-    }
-
-    .nav-group.right {
-      justify-content: flex-end;
-    }
-
-    .nav-group a {
+    .nav-group { display: flex; gap: 30px; align-items: center; flex: 1; }
+    .nav-group.right { justify-content: flex-end; }
+    
+    .nav-link {
       font-size: 0.6rem;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--gris-suave);
+      font-weight: 300;
       position: relative;
       padding-bottom: 4px;
-      transition: var(--transition);
-      white-space: nowrap;
     }
 
-    .nav-group a::after {
+    .nav-link::after {
       content: '';
       position: absolute;
-      width: 100%;
-      height: 1px;
-      bottom: 0;
-      left: 0;
-      background-color: var(--carbon);
+      width: 100%; height: 1px; bottom: 0; left: 0;
+      background-color: var(--rosa-palo);
       transform: scaleX(0);
       transform-origin: right;
       transition: transform 0.4s ease;
     }
 
-    .nav-group a:hover, .nav-group a.active { color: var(--carbon); }
-    .nav-group a:hover::after, .nav-group a.active::after { transform: scaleX(1); transform-origin: left; }
+    .nav-link:hover, .nav-link.active { color: var(--carbon); }
+    .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); transform-origin: left; }
 
-    /* ENCABEZADO MINIMALISTA */
+    .btn-menu-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background-color: transparent;
+      color: var(--carbon) !important;
+      padding: 8px 16px;
+      border: 1px solid rgba(203, 170, 99, 0.5);
+      border-radius: 2px;
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: var(--transition);
+    }
+
+    .btn-menu-brand:hover {
+      background-color: var(--dorado);
+      border-color: var(--dorado);
+    }
+
+    .btn-menu-brand svg {
+      width: 13px;
+      height: 13px;
+      fill: currentColor;
+      transition: transform 0.3s ease;
+    }
+
+    @keyframes pulse-soft {
+      0% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0.3); }
+      70% { box-shadow: 0 0 0 8px rgba(203, 170, 99, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0); }
+    }
+
+    .btn-cart-nav { animation: pulse-soft 2.5s infinite; }
+    .btn-cart-nav:hover svg { transform: scale(1.15) rotate(-5deg); }
+    .counter-badge { font-weight: 600; }
+
+    /* =========================================
+       ENCABEZADO MINIMALISTA
+       ========================================= */
     .catalog-header {
       text-align: center;
-      padding: 50px 20px 40px;
+      padding: 60px 20px 40px;
     }
 
     .catalog-title {
       font-family: 'Cinzel', serif;
-      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--carbon);
-      margin-bottom: 5px;
+      margin-bottom: 8px;
     }
 
     .catalog-subtitle {
       font-size: 0.65rem;
-      letter-spacing: 4px;
+      letter-spacing: 5px;
       text-transform: uppercase;
       color: var(--gris-suave);
     }
 
-    /* GRID DE PANTALLA DIVIDIDA (SIN RECORTES) */
+    /* =========================================
+       GRID DE CATÁLOGO (DISEÑO EDITORIAL)
+       ========================================= */
     .split-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px; /* Separación elegante */
-      padding: 0 5vw 80px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 50px 30px; 
+      padding: 0 5vw 100px;
       flex-grow: 1; 
-      max-width: 1400px;
+      max-width: 1200px; 
       margin: 0 auto;
       width: 100%;
     }
 
-    /* TARJETA DE CATEGORÍA TIPO GALERÍA */
     .category-card {
       display: flex;
       flex-direction: column;
@@ -141,11 +175,6 @@
       cursor: pointer;
     }
 
-    .category-card:hover {
-      transform: translateY(-5px);
-    }
-
-    /* EL LIENZO DE LA FOTO (Respeta proporciones) */
     .image-wrapper {
       background-color: var(--fondo-galeria);
       border: 1px solid var(--linea-fina);
@@ -154,49 +183,50 @@
       align-items: center;
       justify-content: center;
       transition: var(--transition);
+      aspect-ratio: 4/5; 
+      overflow: hidden;
     }
 
     .category-card:hover .image-wrapper {
-      border-color: var(--rosa-empolvado);
+      border-color: var(--dorado);
     }
 
-    /* LA IMAGEN EN SÍ (CERO RECORTES) */
     .image-wrapper img {
       width: 100%;
-      height: auto; /* La altura se adapta automáticamente a la foto */
-      object-fit: contain; /* Garantiza que no haya recortes */
+      height: 100%; 
+      object-fit: contain; 
       display: block;
       transition: transform 0.8s ease;
     }
 
     .category-card:hover img {
-      transform: scale(1.03); /* Un zoom súper delicado */
+      transform: scale(1.04); 
     }
 
-    /* TEXTOS DEBAJO DE LA FOTO (Limpios y legibles) */
     .card-content {
       text-align: center;
-      padding: 30px 10px;
+      padding: 25px 10px 10px;
     }
 
     .card-title {
       font-family: 'Cinzel', serif;
-      font-size: clamp(1.2rem, 2vw, 1.8rem);
+      font-size: clamp(1.2rem, 2vw, 1.5rem);
       letter-spacing: 0.15em;
       color: var(--carbon);
       text-transform: uppercase;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
     }
 
     .card-btn {
       display: inline-block;
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--gris-suave);
-      border-bottom: 1px solid var(--gris-suave);
+      border-bottom: 1px solid transparent;
       padding-bottom: 3px;
       transition: var(--transition);
+      font-weight: 500;
     }
 
     .category-card:hover .card-btn {
@@ -204,38 +234,9 @@
       border-color: var(--carbon);
     }
 
-    /* BANNER LEGAL Y DE POLÍTICAS */
-    .legal-banner {
-      background-color: var(--fondo-galeria);
-      border-top: 1px solid var(--linea-fina);
-      padding: 40px 5vw;
-      text-align: center;
-      margin-top: auto;
-    }
-
-    .legal-text {
-      font-size: 0.6rem;
-      line-height: 2;
-      letter-spacing: 1.5px;
-      color: var(--gris-suave);
-      max-width: 900px;
-      margin: 0 auto;
-      text-transform: uppercase;
-    }
-
-    .legal-text strong {
-      color: var(--carbon);
-      font-weight: 500;
-    }
-
-    .founder-credit {
-      margin-top: 25px;
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      color: var(--carbon);
-    }
-
-    /* BOTÓN FLOTANTE WHATSAPP */
+    /* =========================================
+       BOTÓN FLOTANTE WHATSAPP
+       ========================================= */
     .whatsapp-float {
       position: fixed;
       bottom: 30px;
@@ -254,32 +255,74 @@
     }
     .whatsapp-float:hover {
       transform: translateY(-5px);
-      background-color: var(--rosa-empolvado);
+      background-color: var(--dorado);
       color: var(--carbon);
     }
     .whatsapp-float svg { width: 22px; height: 22px; fill: currentColor; }
 
-    /* RESPONSIVE MÓVIL */
+    /* =========================================
+       BANNER LEGAL Y FOOTER
+       ========================================= */
+    .legal-banner {
+      background-color: var(--fondo-galeria);
+      border-top: 1px solid var(--linea-fina);
+      padding: 50px 5vw;
+      text-align: center;
+      margin-top: auto;
+    }
+
+    .legal-text {
+      font-size: 0.6rem;
+      line-height: 2;
+      letter-spacing: 1.5px;
+      color: var(--gris-suave);
+      max-width: 900px;
+      margin: 0 auto;
+      text-transform: uppercase;
+    }
+
+    .legal-text strong { color: var(--carbon); font-weight: 500; }
+
+    /* CRÉDITOS DEL FUNDADOR - MUY TENUE */
+    .founder-credit { 
+      margin-top: 40px; 
+      font-size: 0.5rem; 
+      letter-spacing: 0.25em; 
+      color: var(--gris-suave); /* Color más suave */
+      opacity: 0.5; /* Efecto marca de agua sutil */
+      text-transform: uppercase; 
+      font-weight: 300; /* Letra más fina */
+    }
+
+    /* =========================================
+       RESPONSIVE MÓVIL
+       ========================================= */
     @media (max-width: 768px) {
       .navbar { flex-wrap: wrap; justify-content: center; gap: 20px; padding: 25px; }
       .nav-group { justify-content: center; flex-wrap: wrap; width: 100%; flex: none; gap: 15px;}
       .brand { order: -1; width: 100%; margin-bottom: 10px; }
+      .nav-link { font-size: 0.55rem; letter-spacing: 2px; }
+      .btn-menu-brand { padding: 8px 14px; font-size: 0.55rem; }
       
+      .catalog-header { padding: 30px 10px 20px; }
+      .catalog-title { font-size: 1.5rem; margin-bottom: 5px; }
+      .catalog-subtitle { font-size: 0.55rem; }
+
       .split-grid {
-        /* Mantenemos las dos columnas en móvil, muy juntas */
-        grid-template-columns: 1fr 1fr;
-        gap: 15px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px 10px;
         padding: 0 15px 40px;
       }
 
-      .image-wrapper { padding: 10px; }
-      .card-content { padding: 20px 5px 10px; }
-      .card-title { font-size: 1rem; margin-bottom: 10px; }
-      .card-btn { font-size: 0.5rem; letter-spacing: 1px; }
+      .image-wrapper { padding: 5px; }
+      .card-content { padding: 15px 0 5px; }
+      .card-title { font-size: 0.8rem; margin-bottom: 5px; letter-spacing: 0.1em; }
+      .card-btn { font-size: 0.45rem; letter-spacing: 1px; }
 
-      .legal-banner { padding: 30px 15px; }
-      .legal-text { font-size: 0.55rem; line-height: 1.8; }
-      .whatsapp-float { bottom: 20px; right: 20px; }
+      .legal-banner { padding: 40px 20px; }
+      .legal-text { font-size: 0.5rem; line-height: 1.8; }
+      .whatsapp-float { bottom: 20px; right: 20px; width: 40px; height: 40px; }
+      .whatsapp-float svg { width: 20px; height: 20px; }
     }
   </style>
 </head>
@@ -287,18 +330,21 @@
 
   <nav class="navbar">
     <div class="nav-group">
-      <a href="index.html">INICIO</a>
-      <a href="enigme.html">ÈNIGME</a>
-      <a href="soporte.html">SOPORTE</a>
-      <a href="trabaja.html">TRABAJA CON NOSOTROS</a>
+      <a href="index.html" class="nav-link">INICIO</a>
+      <a href="certificado.html" class="btn-menu-brand">
+        <svg viewBox="0 0 24 24"><path d="M17 10h-2V6c0-1.1-.9-2-2-2H5a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2v-4h2c1.1 0 2-.9 2-2V12a2 2 0 0 0-2-2zM5 6h8v4H5V6zm8 12H5V12h8v6zm6-6h-2V12h2v2z"/></svg>
+        CERTIFICADO
+      </a>
     </div>
     
     <div class="brand">È N I G M E</div>
     
     <div class="nav-group right">
-      <a href="catalogo.html" class="active">CATÁLOGO</a>
-      <a href="favoritos.html">FAVORITOS (0)</a>
-      <a href="carrito.html">CARRITO (0)</a>
+      <a href="mailto:info@enigmeofficia.com" class="nav-link">SOPORTE</a>
+      <a href="carrito.html" class="btn-menu-brand btn-cart-nav">
+        <svg viewBox="0 0 24 24"><path d="M16 6V4a4 4 0 0 0-8 0v2H3v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6h-5zm-6-2a2 2 0 0 1 4 0v2h-4V4zm8 16H6V8h2v2a1 1 0 0 0 2 0V8h4v2a1 1 0 0 0 2 0V8h2v12z"/></svg>
+        BOLSA (<span id="cart-count" class="counter-badge">0</span>)
+      </a>
     </div>
   </nav>
 
@@ -314,10 +360,9 @@
   </div>
 
   <main class="split-grid">
-    
     <a href="joyeria.html" class="category-card">
       <div class="image-wrapper">
-        <img src="modelo1.png" alt="Alta Joyería ÈNIGME">
+        <img src="modelo1.png" alt="Alta Joyería ÈNIGME" onerror="this.src='https://via.placeholder.com/600x800?text=JOYERÍA'">
       </div>
       <div class="card-content">
         <h2 class="card-title">Joyería</h2>
@@ -327,7 +372,7 @@
 
     <a href="boutique.html" class="category-card">
       <div class="image-wrapper">
-        <img src="modelo2.png" alt="Bolsos Boutique ÈNIGME">
+        <img src="modelo2.png" alt="Bolsos Boutique ÈNIGME" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE'">
       </div>
       <div class="card-content">
         <h2 class="card-title">Boutique</h2>
@@ -335,22 +380,23 @@
       </div>
     </a>
 
-        <a href="plata.html" class="category-card">
+    <a href="plata.html" class="category-card">
       <div class="image-wrapper">
-        <img src="modelo3.png" alt="Línea Plata de ley ÈNIGME">
+        <img src="modelo3.png" alt="Línea Plata de ley ÈNIGME" onerror="this.src='https://via.placeholder.com/600x800?text=PLATA'">
       </div>
       <div class="card-content">
-        <h2 class="card-title">Plata de ley</h2>
+        <h2 class="card-title">Plata de Ley</h2>
         <span class="card-btn">Descubrir Piezas</span>
       </div>
     </a>
-            <a href="liquidacion.html" class="category-card">
+            
+    <a href="liquidacion.html" class="category-card">
       <div class="image-wrapper">
-        <img src="modelo4.png" alt="Línea Liquidación, joyeria ÈNIGME">
+        <img src="modelo4.png" alt="Línea Liquidación ÈNIGME" onerror="this.src='https://via.placeholder.com/600x800?text=ARCHIVO'">
       </div>
       <div class="card-content">
-        <h2 class="card-title">Liquidación</h2>
-        <span class="card-btn">Descubrir Piezas</span>
+        <h2 class="card-title">El Archivo</h2>
+        <span class="card-btn">Últimas Piezas</span>
       </div>
     </a>
   </main>
@@ -364,6 +410,18 @@
       © 2026 ÈNIGME HONDURAS POR CARLOS ARMAS MARTÍNEZ. TODOS LOS DERECHOS RESERVADOS.
     </p>
   </footer>
+
+  <script>
+    function updateCounts() {
+      const cart = JSON.parse(localStorage.getItem('enigme_cart')) || [];
+      let totalItems = 0;
+      cart.forEach(item => totalItems += (item.qty || 1));
+      if(document.getElementById('cart-count')) {
+        document.getElementById('cart-count').innerText = totalItems;
+      }
+    }
+    window.onload = updateCounts;
+  </script>
 
 </body>
 </html>
