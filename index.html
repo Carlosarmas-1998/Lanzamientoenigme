@@ -3,10 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ÈNIGME | Alta Joyería y Boutique en Honduras</title>
   
-  <meta name="description" content="ÈNIGME Honduras: Alta joyería, bolsos boutique, carteras, mochilas, aritos y pendientes. Lujo accesible, joyas baratas y bonitas en Choluteca, Valle, Francisco Morazán y Cortés. Oportunidades de trabajo como gerente y distribuidora." />
-  <meta name="keywords" content="joyería, boutique, bolsos, cadenas, aritos, pendientes, trabajo en choluteca y valle, trabajo como gerente, marca honduras, carteras, mochilas, accesorios, lujo accesible, ventas, joyas baratas, joyas bonitas" />
+  <title>ÈNIGME | Alta Joyería, Bolsos Boutique y Lujo Accesible en Honduras</title>
+  <meta name="description" content="Descubre ÈNIGME Honduras: Alta joyería, bolsos boutique, carteras, mochilas, aritos, cadenas y pulseras de lujo accesible. Joyas hermosas y asequibles en Choluteca, Valle, Tegucigalpa, San Pedro Sula y todo el país. Oportunidades de trabajo, ventas por catálogo y crecimiento comercial para mujeres emprendedoras." />
+  <meta name="keywords" content="ÈNIGME, joyería, joyeria, alta joyeria, joyas, boutique, bolsos, carteras, mochilas, carteras de marca, cadenas, aritos, pendientes, pulseras, accesorios de mujer, lujo, lujo accesible, joyas baratas, joyas bonitas, ofertas, perfumes, fragancias, cosméticos, trabajo en Honduras, trabajo en Choluteca, trabajo en Valle, ventas por catálogo, venta directa, emprendimiento, distribuidora, gerente de ventas, Avon, Arabela, Scentia, Esika, L'bel, Cyzone, Yanbal, oro 14k, acero inoxidable, plata 925" />
+  <meta name="author" content="Carlos Armas Martínez" />
+  <meta name="robots" content="index, follow" />
+  
+  <meta property="og:title" content="ÈNIGME | Alta Joyería y Boutique" />
+  <meta property="og:description" content="El arte de la exclusividad en Honduras. Alta joyería, bolsos de lujo y oportunidades de crecimiento comercial. Únete al legado ÈNIGME." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_HN" />
+
+  <link rel="preload" as="image" href="portada.png">
+  <link rel="preload" as="image" href="ppp2.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,14 +26,15 @@
     :root {
       /* PALETA HAUTE COUTURE */
       --blanco-dior: #FFFFFF;
-      --carbon: #181818;
+      --marfil: #FAF9F6;
+      --carbon: #1C1C1C;
       --gris-fuerte: #444444; 
-      --gris-suave: #666666;
-      --rosa-empolvado: #D8C3BC;
+      --gris-suave: #888888;
+      --rosa-palo: #D8C3BC;
       --dorado: #CBAA63; 
       --dorado-brillo: #E8D090;
       --fondo-editorial: #FCFBF8;
-      --linea-fina: rgba(24, 24, 24, 0.1);
+      --linea-fina: rgba(216, 195, 188, 0.4);
       --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
@@ -31,7 +42,7 @@
     html { scroll-behavior: smooth; }
     
     body {
-      background-color: var(--blanco-dior);
+      background-color: var(--marfil);
       color: var(--carbon);
       font-family: 'Montserrat', sans-serif;
       overflow-x: hidden;
@@ -42,102 +53,142 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
-    a { text-decoration: none; color: inherit; }
+    a { text-decoration: none; color: inherit; transition: var(--transition); }
 
     /* =========================================
        ANIMACIONES VIP
-    ========================================= */
-    
-    /* 1. Respiración dorada para la navegación */
+       ========================================= */
     @keyframes navGlow {
-      0%, 100% { color: var(--gris-fuerte); text-shadow: none; }
+      0%, 100% { color: var(--gris-suave); text-shadow: none; }
       50% { color: var(--dorado); text-shadow: 0 0 8px rgba(203, 170, 99, 0.4); }
     }
 
-    /* 2. Reflejo metálico cruzando el botón */
     @keyframes goldShimmer {
       0% { background-position: -200% center; }
       100% { background-position: 200% center; }
     }
 
-    /* 3. Pulso expansivo (Onda) */
     @keyframes ripplePulse {
       0% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0.5); }
       70% { box-shadow: 0 0 0 12px rgba(203, 170, 99, 0); }
       100% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0); }
     }
 
+    @keyframes pulse-soft {
+      0% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0.3); }
+      70% { box-shadow: 0 0 0 8px rgba(203, 170, 99, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0); }
+    }
 
-    /* NAVEGACIÓN (BOTONES ANIMADOS) */
+    /* =========================================
+       NAVBAR MINIMALISTA ÈNIGME (UNIFICADA)
+       ========================================= */
     .navbar {
       width: 100%;
-      padding: 35px 5vw;
+      padding: 30px 4vw;
       display: flex;
       align-items: center;
       justify-content: space-between;
       border-bottom: 1px solid var(--linea-fina);
-      background-color: var(--blanco-dior);
-      z-index: 100;
+      background: rgba(250, 249, 246, 0.98);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
-    .brand {
+    .brand-nav {
       font-family: 'Cinzel', serif;
-      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      font-size: clamp(1.2rem, 2.5vw, 1.5rem);
       letter-spacing: 0.35em;
       color: var(--carbon);
+      text-align: center;
       font-weight: 500;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 35px;
-      align-items: center;
-    }
-
-    .nav-links a {
-      font-size: 0.65rem;
+    .nav-group { display: flex; gap: 30px; align-items: center; flex: 1; }
+    .nav-group.right { justify-content: flex-end; }
+    
+    .nav-link {
+      font-size: 0.6rem;
       letter-spacing: 3px;
       text-transform: uppercase;
-      font-weight: 600;
+      color: var(--gris-suave);
+      font-weight: 500;
       position: relative;
       padding-bottom: 4px;
-      transition: var(--transition);
-      /* Inyección de la animación de respiración */
+      cursor: pointer;
+      /* Animación de respiración */
       animation: navGlow 4s infinite ease-in-out;
     }
 
-    /* Desfasar la animación para que brillen uno tras otro */
-    .nav-links a:nth-child(1) { animation-delay: 0s; }
-    .nav-links a:nth-child(2) { animation-delay: 1s; }
-    .nav-links a:nth-child(3) { animation-delay: 2s; }
-    .nav-links a:nth-child(4) { animation-delay: 3s; }
+    /* Desfase para que brillen en cascada */
+    .nav-group:first-child .nav-link:nth-child(1) { animation-delay: 0s; }
+    .nav-group:first-child .nav-dropdown { animation-delay: 1s; }
+    .nav-group:first-child .nav-link:nth-child(3) { animation-delay: 2s; }
+    .nav-group:first-child .nav-link:nth-child(4) { animation-delay: 3s; }
 
-    .nav-links a::after {
+    .nav-link::after {
       content: '';
       position: absolute;
-      width: 100%;
-      height: 1.5px; 
-      bottom: 0;
-      left: 0;
-      background-color: var(--dorado); 
+      width: 100%; height: 1.5px; bottom: 0; left: 0;
+      background-color: var(--dorado);
       transform: scaleX(0);
       transform-origin: right;
       transition: transform 0.4s ease;
     }
 
-    .nav-links a:hover { animation: none; color: var(--carbon); text-shadow: none; }
-    .nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+    .nav-link:hover, .nav-link.active { animation: none; color: var(--carbon); text-shadow: none; }
+    .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); transform-origin: left; }
 
-    /* PORTADA FULL SCREEN */
+    /* MENÚ DESPLEGABLE CATÁLOGO */
+    .nav-dropdown { position: relative; display: inline-block; animation: navGlow 4s infinite ease-in-out; }
+    .nav-dropdown:hover { animation: none; }
+    .dropdown-content { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background-color: var(--blanco-dior); min-width: 200px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); border: 1px solid var(--linea-fina); z-index: 1001; flex-direction: column; padding: 10px 0; margin-top: 10px; }
+    .dropdown-content::before { content: ''; position: absolute; top: -10px; left: 0; width: 100%; height: 10px; }
+    .nav-dropdown:hover .dropdown-content { display: flex; }
+    .dropdown-content a { padding: 12px 25px; font-size: 0.55rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gris-suave); text-align: center; transition: var(--transition); animation: none;}
+    .dropdown-content a:hover { background-color: var(--marfil); color: var(--dorado); }
+
+    /* BOTONES DESTACADOS TENUES Y ELEGANTES */
+    .btn-menu-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background-color: transparent;
+      color: var(--carbon) !important;
+      padding: 8px 16px;
+      border: 1px solid rgba(203, 170, 99, 0.5);
+      border-radius: 2px;
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: var(--transition);
+      animation: none;
+    }
+    .btn-menu-brand:hover { background-color: var(--dorado); border-color: var(--dorado); }
+    .btn-menu-brand svg { width: 13px; height: 13px; fill: currentColor; transition: transform 0.3s ease; }
+
+    /* EFECTO LATIDO CARRITO */
+    .btn-cart-nav { animation: pulse-soft 2.5s infinite; }
+    .btn-cart-nav:hover svg { transform: scale(1.15) rotate(-5deg); }
+    .counter-badge { font-weight: 600; }
+
+    /* =========================================
+       PORTADA DINÁMICA DE ALTO RENDIMIENTO
+       ========================================= */
     .hero {
+      position: relative;
       width: 100%;
-      background-color: #000000;
+      background-color: var(--carbon);
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow: hidden;
     }
 
-    .hero img {
+    .hero-img {
       width: 100%;
       height: auto;
       max-width: 100%;
@@ -145,7 +196,25 @@
       object-fit: contain;
     }
 
-    /* BANNER DE CERTIFICACIÓN VIP */
+    /* La segunda imagen se superpone y hace fade-in/fade-out */
+    .hero .top-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      /* Animación de 6s totales (3s portada.png, 3s ppp2.png) */
+      animation: heroCrossfade 6s infinite ease-in-out;
+    }
+
+    @keyframes heroCrossfade {
+      0%, 45% { opacity: 0; }
+      50%, 95% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    /* =========================================
+       BANNER DE CERTIFICACIÓN VIP
+       ========================================= */
     .cert-banner {
       width: 100%;
       background: linear-gradient(135deg, var(--carbon) 0%, #2A2A2A 100%);
@@ -229,7 +298,9 @@
       color: var(--dorado);
     }
 
-    /* EXPERIENCIA EDITORIAL */
+    /* =========================================
+       EXPERIENCIA EDITORIAL
+       ========================================= */
     .editorial-magazine {
       background-color: var(--fondo-editorial);
       padding: 120px 5vw;
@@ -358,7 +429,7 @@
 
     /* =========================================
        BOTONES EDITORIALES FINOS (ANIMADOS)
-    ========================================= */
+       ========================================= */
     .magazine-cta {
       display: flex;
       justify-content: center;
@@ -370,7 +441,7 @@
     .btn-editorial {
       display: inline-block;
       padding: 16px 40px;
-      font-size: 0.75rem; /* Un poco más grandes */
+      font-size: 0.75rem; 
       letter-spacing: 4px;
       text-transform: uppercase;
       font-weight: 600;
@@ -379,7 +450,6 @@
       background-color: transparent;
       transition: var(--transition);
       cursor: pointer;
-      /* Animación de onda expansiva */
       animation: ripplePulse 2.5s infinite;
     }
 
@@ -389,17 +459,14 @@
       background-size: 200% auto;
       color: var(--carbon);
       border: none;
-      /* Doble animación: Brillo cruzando + Onda expansiva */
       animation: goldShimmer 3s infinite linear, ripplePulse 2.5s infinite;
       box-shadow: 0 5px 15px rgba(203, 170, 99, 0.4);
     }
 
-    /* Retrasar un poco la onda del segundo botón para que no latan al mismo tiempo */
     .btn-editorial:not(.primary) {
       animation-delay: 1.25s;
     }
 
-    /* Hover anula animaciones y muestra estado fijo */
     .btn-editorial:hover {
       background: var(--carbon);
       border: 1px solid var(--carbon);
@@ -409,30 +476,9 @@
       animation: none;
     }
 
-    /* FOOTER */
-    .footer {
-      border-top: 1px solid var(--linea-fina);
-      padding: 50px 20px;
-      text-align: center;
-      background-color: var(--blanco-dior);
-    }
-
-    .footer-logo {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-      letter-spacing: 0.3em;
-      color: var(--carbon);
-      margin-bottom: 12px;
-    }
-
-    .footer-copy {
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gris-suave);
-    }
-
-    /* BOTÓN FLOTANTE WHATSAPP */
+    /* =========================================
+       BOTÓN FLOTANTE WHATSAPP
+       ========================================= */
     .whatsapp-float {
       position: fixed;
       bottom: 30px;
@@ -449,7 +495,6 @@
       z-index: 900;
       transition: var(--transition);
       border: 1px solid var(--dorado);
-      /* Pulso para el whatsapp también */
       animation: ripplePulse 3s infinite;
     }
     .whatsapp-float:hover {
@@ -460,11 +505,48 @@
     }
     .whatsapp-float svg { width: 26px; height: 26px; fill: currentColor; }
 
-    /* RESPONSIVE */
+    /* =========================================
+       FOOTER MINIMALISTA
+       ========================================= */
+    .footer {
+      border-top: 1px solid var(--linea-fina);
+      padding: 50px 20px;
+      text-align: center;
+      background-color: var(--blanco-dior);
+    }
+
+    .footer-logo {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      letter-spacing: 0.3em;
+      color: var(--carbon);
+      margin-bottom: 12px;
+    }
+
+    .footer-copy {
+      font-size: 0.5rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gris-suave);
+      opacity: 0.6;
+      font-weight: 300;
+    }
+
+    /* =========================================
+       RESPONSIVE
+       ========================================= */
+    @media (max-width: 900px) {
+      .nav-group { gap: 15px; }
+    }
+
     @media (max-width: 768px) {
-      .navbar { flex-direction: column; padding: 25px 20px; }
-      .brand { margin-bottom: 20px; }
-      .nav-links { width: 100%; justify-content: center; flex-wrap: wrap; gap: 15px; }
+      .navbar { flex-wrap: wrap; justify-content: center; gap: 20px; padding: 25px 20px; }
+      .nav-group { justify-content: center; flex-wrap: wrap; width: 100%; flex: none; gap: 15px;}
+      .brand-nav { order: -1; width: 100%; margin-bottom: 10px; }
+      .nav-link { font-size: 0.55rem; letter-spacing: 2px; }
+      .btn-menu-brand { padding: 8px 14px; font-size: 0.55rem; }
+      .dropdown-content { min-width: 150px; }
+      .dropdown-content a { font-size: 0.45rem; padding: 10px; }
       
       .cert-banner { padding: 60px 20px; }
       .cert-banner-title { font-size: 1.5rem; }
@@ -478,19 +560,50 @@
       .index-list { flex-direction: column; align-items: center; text-align: center; }
       .magazine-cta { gap: 20px; flex-direction: column; align-items: center; width: 100%; }
       .btn-editorial { width: 100%; text-align: center; padding: 16px 20px; }
-      .whatsapp-float { bottom: 20px; right: 20px; }
+      .whatsapp-float { bottom: 20px; right: 20px; width: 45px; height: 45px; }
+      .whatsapp-float svg { width: 22px; height: 22px; }
     }
   </style>
 </head>
 <body>
 
   <nav class="navbar">
-    <a href="index.html" class="brand">È N I G M E</a>
-    <div class="nav-links">
-      <a href="catalogo.html">CATÁLOGO</a>
-      <a href="enigme.html">ÈNIGME</a>
-      <a href="soporte.html">SOPORTE</a>
-      <a href="trabaja.html">TRABAJA CON NOSOTROS</a>
+    <div class="nav-group">
+      <a href="index.html" class="nav-link active">INICIO</a>
+      
+      <div class="nav-dropdown">
+        <span class="nav-link">CATÁLOGO ▾</span>
+        <div class="dropdown-content">
+          <a href="joyeria.html">Alta Joyería</a>
+          <a href="boutique.html">Bolsos Boutique</a>
+          <a href="plata.html">Plata de Ley</a>
+          <a href="liquidacion.html">El Archivo</a>
+        </div>
+      </div>
+
+      <a href="enigme.html" class="nav-link">L'ESSENCE</a>
+      <a href="trabaja.html" class="nav-link">TRABAJA CON NOSOTROS</a>
+      
+      <a href="certificado.html" class="btn-menu-brand">
+        <svg viewBox="0 0 24 24"><path d="M17 10h-2V6c0-1.1-.9-2-2-2H5a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2v-4h2c1.1 0 2-.9 2-2V12a2 2 0 0 0-2-2zM5 6h8v4H5V6zm8 12H5V12h8v6zm6-6h-2V12h2v2z"/></svg>
+        CERTIFICADO
+      </a>
+    </div>
+    
+    <div class="brand-nav">È N I G M E</div>
+    
+    <div class="nav-group right">
+      <a href="mailto:info@enigmeofficia.com" class="nav-link">SOPORTE</a>
+      
+      <a href="favoritos.html" class="btn-menu-brand">
+        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        FAVS (<span id="fav-count" class="counter-badge">0</span>)
+      </a>
+
+      <a href="carrito.html" class="btn-menu-brand btn-cart-nav">
+        <svg viewBox="0 0 24 24"><path d="M16 6V4a4 4 0 0 0-8 0v2H3v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6h-5zm-6-2a2 2 0 0 1 4 0v2h-4V4zm8 16H6V8h2v2a1 1 0 0 0 2 0V8h4v2a1 1 0 0 0 2 0V8h2v12z"/></svg>
+        BOLSA (<span id="cart-count" class="counter-badge">0</span>)
+      </a>
     </div>
   </nav>
 
@@ -501,12 +614,13 @@
   </a>
 
   <main class="hero">
-    <img src="portada.png" alt="ÈNIGME Colección Cero">
+    <img src="portada.png" alt="ÈNIGME Colección Cero" class="hero-img">
+    <img src="ppp2.png" alt="ÈNIGME Alta Costura" loading="lazy" class="hero-img top-img">
   </main>
 
   <section class="cert-banner">
     <a href="certificado.html" class="cert-banner-link" title="Ver Certificado Oficial">
-      <img src="sello.png" alt="Sello de Certificación ÈNIGME" class="cert-banner-img" onerror="this.src='data:image/svg+xml;utf8,<svg viewBox=\'0 0 24 24\' fill=\'%23CBAA63\'><path d=\'M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z\'/></svg>'">
+      <img src="sello.png" alt="Sello de Certificación ÈNIGME" loading="lazy" class="cert-banner-img" onerror="this.src='data:image/svg+xml;utf8,<svg viewBox=\'0 0 24 24\' fill=\'%23CBAA63\'><path d=\'M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z\'/></svg>'">
     </a>
     <h2 class="cert-banner-title">Garantía de Autenticidad</h2>
     <p class="cert-banner-text">
@@ -586,6 +700,25 @@
       © 2026 ÈNIGME HONDURAS POR CARLOS ARMAS MARTÍNEZ. TODOS LOS DERECHOS RESERVADOS.
     </div>
   </footer>
+
+  <script>
+    function updateCounts() {
+      const cart = JSON.parse(localStorage.getItem('enigme_cart')) || [];
+      const favs = JSON.parse(localStorage.getItem('enigme_favs')) || [];
+      
+      let totalItems = 0;
+      cart.forEach(item => totalItems += (item.qty || 1));
+      
+      if(document.getElementById('cart-count')) {
+        document.getElementById('cart-count').innerText = totalItems;
+      }
+      if(document.getElementById('fav-count')) {
+        document.getElementById('fav-count').innerText = favs.length;
+      }
+    }
+    
+    window.onload = updateCounts;
+  </script>
 
 </body>
 </html>
