@@ -41,7 +41,7 @@
     a { text-decoration: none; color: inherit; transition: var(--transition); }
 
     /* =========================================
-       NAVBAR MINIMALISTA ÈNIGME
+       NAVBAR MINIMALISTA ÈNIGME (UNIFICADA)
        ========================================= */
     .navbar {
       width: 100%;
@@ -68,6 +68,7 @@
     .nav-group { display: flex; gap: 30px; align-items: center; flex: 1; }
     .nav-group.right { justify-content: flex-end; }
     
+    /* ENLACES NORMALES DE MENÚ */
     .nav-link {
       font-size: 0.6rem;
       letter-spacing: 3px;
@@ -91,6 +92,7 @@
     .nav-link:hover, .nav-link.active { color: var(--carbon); }
     .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); transform-origin: left; }
 
+    /* BOTONES DESTACADOS TENUES Y ELEGANTES (CERTIFICADO, FAVS, BOLSA) */
     .btn-menu-brand {
       display: flex;
       align-items: center;
@@ -119,6 +121,7 @@
       transition: transform 0.3s ease;
     }
 
+    /* CARRITO DINÁMICO (Efecto Latido) */
     @keyframes pulse-soft {
       0% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0.3); }
       70% { box-shadow: 0 0 0 8px rgba(203, 170, 99, 0); }
@@ -235,7 +238,7 @@
     }
 
     /* =========================================
-       BOTÓN FLOTANTE WHATSAPP
+       BOTÓN FLOTANTE WHATSAPP (CLÁSICO)
        ========================================= */
     .whatsapp-float {
       position: fixed;
@@ -282,20 +285,20 @@
     }
 
     .legal-text strong { color: var(--carbon); font-weight: 500; }
-
-    /* CRÉDITOS DEL FUNDADOR - MUY TENUE */
+    
+    /* CRÉDITOS DEL FUNDADOR - TENUE */
     .founder-credit { 
       margin-top: 40px; 
       font-size: 0.5rem; 
       letter-spacing: 0.25em; 
-      color: var(--gris-suave); /* Color más suave */
-      opacity: 0.5; /* Efecto marca de agua sutil */
+      color: var(--gris-suave); 
+      opacity: 0.5; 
       text-transform: uppercase; 
-      font-weight: 300; /* Letra más fina */
+      font-weight: 300; 
     }
 
     /* =========================================
-       RESPONSIVE MÓVIL
+       RESPONSIVE MÓVIL (AJUSTE 2x2 COMPACTO)
        ========================================= */
     @media (max-width: 768px) {
       .navbar { flex-wrap: wrap; justify-content: center; gap: 20px; padding: 25px; }
@@ -308,6 +311,7 @@
       .catalog-title { font-size: 1.5rem; margin-bottom: 5px; }
       .catalog-subtitle { font-size: 0.55rem; }
 
+      /* GRID 2x2 COMPACTO */
       .split-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 15px 10px;
@@ -331,6 +335,7 @@
   <nav class="navbar">
     <div class="nav-group">
       <a href="index.html" class="nav-link">INICIO</a>
+      <a href="enigme.html" class="nav-link">ÈNIGME</a>
       <a href="certificado.html" class="btn-menu-brand">
         <svg viewBox="0 0 24 24"><path d="M17 10h-2V6c0-1.1-.9-2-2-2H5a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2v-4h2c1.1 0 2-.9 2-2V12a2 2 0 0 0-2-2zM5 6h8v4H5V6zm8 12H5V12h8v6zm6-6h-2V12h2v2z"/></svg>
         CERTIFICADO
@@ -341,6 +346,12 @@
     
     <div class="nav-group right">
       <a href="mailto:info@enigmeofficia.com" class="nav-link">SOPORTE</a>
+      
+      <a href="favoritos.html" class="btn-menu-brand">
+        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        FAVS (<span id="fav-count" class="counter-badge">0</span>)
+      </a>
+
       <a href="carrito.html" class="btn-menu-brand btn-cart-nav">
         <svg viewBox="0 0 24 24"><path d="M16 6V4a4 4 0 0 0-8 0v2H3v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6h-5zm-6-2a2 2 0 0 1 4 0v2h-4V4zm8 16H6V8h2v2a1 1 0 0 0 2 0V8h4v2a1 1 0 0 0 2 0V8h2v12z"/></svg>
         BOLSA (<span id="cart-count" class="counter-badge">0</span>)
@@ -360,6 +371,7 @@
   </div>
 
   <main class="split-grid">
+    
     <a href="joyeria.html" class="category-card">
       <div class="image-wrapper">
         <img src="modelo1.png" alt="Alta Joyería ÈNIGME" onerror="this.src='https://via.placeholder.com/600x800?text=JOYERÍA'">
@@ -414,10 +426,16 @@
   <script>
     function updateCounts() {
       const cart = JSON.parse(localStorage.getItem('enigme_cart')) || [];
+      const favs = JSON.parse(localStorage.getItem('enigme_favs')) || [];
+      
       let totalItems = 0;
       cart.forEach(item => totalItems += (item.qty || 1));
+      
       if(document.getElementById('cart-count')) {
         document.getElementById('cart-count').innerText = totalItems;
+      }
+      if(document.getElementById('fav-count')) {
+        document.getElementById('fav-count').innerText = favs.length;
       }
     }
     window.onload = updateCounts;
