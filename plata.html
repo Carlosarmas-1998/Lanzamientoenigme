@@ -3,20 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>La Forja | Colección Plata ÈNIGME</title>
+  <title>Plata de Ley | La Casa ÈNIGME</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
 
   <style>
     :root {
+      /* PALETA DE MARCA ÈNIGME */
       --marfil: #FAF9F6;
-      --rosa-palo: #D8C3BC;
+      --blanco-puro: #FFFFFF;
       --carbon: #1C1C1C;
       --gris-suave: #888888;
-      --linea-fina: rgba(216, 195, 188, 0.4);
-      --transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      --gris-linea: #EAEAEA;
+      --dorado: #CBAA63;
+      --rosa-palo: #D8C3BC;
+      --transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -29,47 +32,50 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
 
     a { text-decoration: none; color: inherit; transition: var(--transition); }
 
-    /* NAVBAR COMPLETA Y PERSISTENTE */
+    /* =========================================
+       NAVBAR MINIMALISTA ÈNIGME
+       ========================================= */
     .navbar {
       width: 100%;
       padding: 30px 4vw;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid var(--linea-fina);
-      background: rgba(250, 249, 246, 0.9);
-      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--gris-linea);
+      background: rgba(250, 249, 246, 0.98);
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
     }
 
-    .brand {
+    .brand-nav {
       font-family: 'Cinzel', serif;
       font-size: clamp(1.2rem, 2.5vw, 1.5rem);
       letter-spacing: 0.35em;
-      text-transform: uppercase;
+      color: var(--carbon);
       text-align: center;
     }
 
     .nav-group { display: flex; gap: 30px; align-items: center; flex: 1; }
     .nav-group.right { justify-content: flex-end; }
-    .nav-group a {
+    
+    .nav-link {
       font-size: 0.6rem;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--gris-suave);
+      font-weight: 300;
       position: relative;
       padding-bottom: 4px;
+      cursor: pointer;
     }
 
-    .nav-group a::after {
+    .nav-link::after {
       content: '';
       position: absolute;
       width: 100%; height: 1px; bottom: 0; left: 0;
@@ -79,173 +85,182 @@
       transition: transform 0.4s ease;
     }
 
-    .nav-group a:hover { color: var(--carbon); }
-    .nav-group a:hover::after { transform: scaleX(1); transform-origin: left; }
+    .nav-link:hover, .nav-link.active { color: var(--carbon); }
+    .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); transform-origin: left; }
 
-    /* SECCIÓN DE CARGA: LA FORJA */
-    .forge-container {
+    /* MENÚ DESPLEGABLE CATÁLOGO */
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-content { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background-color: var(--blanco-puro); min-width: 200px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); border: 1px solid var(--gris-linea); z-index: 1001; flex-direction: column; padding: 10px 0; margin-top: 10px; }
+    .dropdown-content::before { content: ''; position: absolute; top: -10px; left: 0; width: 100%; height: 10px; }
+    .nav-dropdown:hover .dropdown-content { display: flex; }
+    .dropdown-content a { padding: 12px 25px; font-size: 0.55rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gris-suave); text-align: center; transition: var(--transition); }
+    .dropdown-content a:hover { background-color: var(--marfil); color: var(--dorado); }
+
+    /* BOTONES DESTACADOS TENUES Y ELEGANTES */
+    .btn-menu-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background-color: transparent;
+      color: var(--carbon) !important;
+      padding: 8px 16px;
+      border: 1px solid rgba(203, 170, 99, 0.5);
+      border-radius: 2px;
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: var(--transition);
+    }
+    .btn-menu-brand:hover { background-color: var(--dorado); border-color: var(--dorado); }
+    .btn-menu-brand svg { width: 13px; height: 13px; fill: currentColor; }
+
+    /* EFECTO LATIDO CARRITO */
+    @keyframes pulse-soft {
+      0% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0.3); }
+      70% { box-shadow: 0 0 0 8px rgba(203, 170, 99, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0); }
+    }
+    .btn-cart-nav { animation: pulse-soft 2.5s infinite; }
+    .btn-cart-nav:hover svg { transform: scale(1.15) rotate(-5deg); }
+    .counter-badge { font-weight: 600; }
+
+    /* =========================================
+       BOTÓN VOLVER ATRÁS
+       ========================================= */
+    .btn-back {
+      position: absolute;
+      top: 110px;
+      left: 5vw;
+      font-size: 0.55rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gris-suave);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+      z-index: 10;
+    }
+    .btn-back:hover { color: var(--carbon); transform: translateX(-5px); }
+    .btn-back svg { width: 12px; height: 12px; fill: currentColor; }
+
+    /* =========================================
+       ESTADO DE FORJA (COMING SOON)
+       ========================================= */
+    .forging-container {
       flex-grow: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      padding: 100px 5vw;
       text-align: center;
-      padding: 80px 5vw;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
-    /* Animación Metal Líquido y Destello */
-    .forge-animation {
-      position: relative;
-      width: 140px;
-      height: 140px;
-      margin-bottom: 40px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    .forging-icon {
+      margin-bottom: 30px;
+      animation: float 4s ease-in-out infinite;
+    }
+    .forging-icon svg {
+      width: 40px;
+      height: 40px;
+      fill: var(--dorado);
     }
 
-    .metal-ring {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      border: 1px solid var(--linea-fina);
-      border-radius: 50%;
-      animation: spin 8s linear infinite;
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
     }
 
-    .metal-ring::before {
-      content: '';
-      position: absolute;
-      top: -2px; left: 50%;
-      width: 4px; height: 4px;
-      background: var(--rosa-palo);
-      border-radius: 50%;
-      box-shadow: 0 0 10px var(--rosa-palo);
-    }
-
-    .liquid-silver {
-      width: 70px;
-      height: 70px;
-      background: linear-gradient(135deg, #ffffff 0%, var(--rosa-palo) 50%, #d3d3d3 100%);
-      border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-      animation: morph 5s linear infinite alternate;
-      filter: blur(1px);
-      box-shadow: 0 0 20px rgba(216, 195, 188, 0.3);
-    }
-
-    @keyframes spin { 100% { transform: rotate(360deg); } }
-    @keyframes morph {
-      0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; transform: scale(0.9) rotate(0deg); }
-      100% { border-radius: 70% 30% 50% 50% / 30% 60% 40% 70%; transform: scale(1.1) rotate(180deg); }
-    }
-
-    /* TEXTOS */
-    .kicker {
+    .forging-kicker {
       font-family: 'Cinzel', serif;
       font-style: italic;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       color: var(--rosa-palo);
       letter-spacing: 5px;
       text-transform: uppercase;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
 
-    .title {
+    .forging-title {
       font-family: 'Cinzel', serif;
-      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-size: clamp(2rem, 4vw, 3.5rem);
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      margin-bottom: 30px;
-      line-height: 1.2;
+      color: var(--carbon);
+      margin-bottom: 25px;
     }
 
-    .description {
-      font-size: 0.95rem;
-      line-height: 2.6;
+    .forging-desc {
+      font-size: 0.85rem;
+      line-height: 2.2;
       color: var(--gris-suave);
-      max-width: 700px;
+      margin-bottom: 50px;
       font-weight: 300;
-      margin-bottom: 40px;
     }
 
-    .description strong { color: var(--carbon); font-weight: 500; }
-
-    .separator {
-      width: 60px;
-      height: 1px;
-      background: var(--rosa-palo);
-      margin: 0 auto 20px;
+    .forging-desc strong {
+      color: var(--carbon);
+      font-weight: 500;
     }
 
-    /* BOTONES FLOTANTES PRO (REGLA DE LAS 3 SECCIONES RESTANTES) */
-    .floating-stack {
+    .btn-explore {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 35px;
+      background-color: var(--carbon);
+      color: var(--blanco-puro);
+      font-size: 0.65rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 600;
+      border: 1px solid var(--carbon);
+      transition: var(--transition);
+    }
+    .btn-explore:hover { background-color: var(--dorado); border-color: var(--dorado); color: var(--carbon); }
+    .btn-explore svg { width: 14px !important; height: 14px !important; }
+
+    /* =========================================
+       BOTÓN FLOTANTE WHATSAPP VIP
+       ========================================= */
+    .whatsapp-float {
       position: fixed;
       bottom: 30px;
       right: 30px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 12px;
-      z-index: 999;
-    }
-
-    .pill-btn {
+      width: 45px;
+      height: 45px;
+      background-color: var(--carbon);
+      color: var(--blanco-puro);
+      border-radius: 50%;
       display: flex;
       align-items: center;
-      gap: 12px;
-      height: 42px;
-      padding: 0 20px;
-      border-radius: 25px;
-      background: var(--carbon);
-      color: var(--marfil);
-      font-size: 0.5rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-weight: 600;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-      border: 1px solid transparent;
-      white-space: nowrap;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      z-index: 900;
+      transition: var(--transition);
     }
-
-    .pill-btn.light {
-      background: var(--marfil);
-      color: var(--carbon);
-      border: 1px solid var(--linea-fina);
-      box-shadow: 0 4px 15px rgba(216, 195, 188, 0.15);
-    }
-
-    .pill-btn:hover {
-      transform: translateX(-8px);
-      background: var(--rosa-palo);
-      color: var(--carbon);
-      border-color: var(--rosa-palo);
-    }
-
-    .pill-btn svg { width: 14px; height: 14px; fill: currentColor; }
+    .whatsapp-float:hover { background-color: var(--dorado); color: var(--carbon); transform: translateY(-5px); }
+    .whatsapp-float svg { width: 22px; height: 22px; fill: currentColor; }
 
     /* FOOTER */
-    .legal-footer {
-      padding: 50px 5vw;
-      text-align: center;
-      border-top: 1px solid var(--linea-fina);
-      font-size: 0.55rem;
-      letter-spacing: 3px;
-      color: var(--gris-suave);
-      text-transform: uppercase;
-    }
+    .footer { padding: 50px 5vw; text-align: center; border-top: 1px solid var(--gris-linea); font-size: 0.5rem; letter-spacing: 0.25em; color: var(--gris-suave); text-transform: uppercase; background: #FFF; opacity: 0.5; font-weight: 300;}
 
-    @media (max-width: 900px) {
-      .nav-group { gap: 15px; }
-      .nav-group a { font-size: 0.5rem; letter-spacing: 1px; }
-    }
-
+    /* RESPONSIVE */
     @media (max-width: 768px) {
       .navbar { flex-wrap: wrap; justify-content: center; gap: 20px; padding: 25px; }
-      .nav-group { justify-content: center; flex-wrap: wrap; width: 100%; flex: none; }
-      .brand { order: -1; width: 100%; margin-bottom: 10px; }
-      .title { font-size: 1.8rem; }
-      .floating-stack { bottom: 20px; right: 20px; }
-      .pill-btn { height: 38px; padding: 0 15px; font-size: 0.45rem; }
+      .nav-group { justify-content: center; flex-wrap: wrap; width: 100%; flex: none; gap: 15px;}
+      .brand-nav { order: -1; width: 100%; margin-bottom: 10px; }
+      .dropdown-content { min-width: 150px; }
+      .dropdown-content a { font-size: 0.45rem; padding: 10px; }
+      .btn-back { top: 160px; }
+      .forging-container { padding: 80px 20px; }
+      .btn-explore { padding: 14px 25px; font-size: 0.55rem; }
     }
   </style>
 </head>
@@ -253,65 +268,77 @@
 
   <nav class="navbar">
     <div class="nav-group">
-      <a href="index.html">Inicio</a>
-      <a href="enigme.html">ÈNIGME</a>
-      <a href="soporte.html">Soporte</a>
+      <a href="index.html" class="nav-link">INICIO</a>
+      
+      <div class="nav-dropdown">
+        <span class="nav-link">CATÁLOGO ▾</span>
+        <div class="dropdown-content">
+          <a href="joyeria.html">Alta Joyería</a>
+          <a href="boutique.html">Bolsos Boutique</a>
+          <a href="plata.html" style="color: var(--dorado);">Plata de Ley</a>
+          <a href="liquidacion.html">El Archivo</a>
+        </div>
+      </div>
+      
+      <a href="certificado.html" class="btn-menu-brand">
+        <svg viewBox="0 0 24 24"><path d="M17 10h-2V6c0-1.1-.9-2-2-2H5a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2v-4h2c1.1 0 2-.9 2-2V12a2 2 0 0 0-2-2zM5 6h8v4H5V6zm8 12H5V12h8v6zm6-6h-2V12h2v2z"/></svg>
+        CERTIFICADO
+      </a>
     </div>
     
-    <a href="index.html" class="brand">È N I G M E</a>
+    <div class="brand-nav">È N I G M E</div>
     
     <div class="nav-group right">
-      <a href="catalogo.html">Catálogo</a>
-      <a href="favoritos.html">Favoritos (<span id="fav-count">0</span>)</a>
-      <a href="carrito.html">Carrito (<span id="cart-count">0</span>)</a>
+      <a href="mailto:info@enigmeofficia.com" class="nav-link">SOPORTE</a>
+      
+      <a href="favoritos.html" class="btn-menu-brand">
+        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        FAVS (<span id="fav-count" class="counter-badge">0</span>)
+      </a>
+
+      <a href="carrito.html" class="btn-menu-brand btn-cart-nav">
+        <svg viewBox="0 0 24 24"><path d="M16 6V4a4 4 0 0 0-8 0v2H3v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6h-5zm-6-2a2 2 0 0 1 4 0v2h-4V4zm8 16H6V8h2v2a1 1 0 0 0 2 0V8h4v2a1 1 0 0 0 2 0V8h2v12z"/></svg>
+        BOLSA (<span id="cart-count" class="counter-badge">0</span>)
+      </a>
     </div>
   </nav>
 
-  <main class="forge-container">
+  <a href="#" onclick="window.history.back(); return false;" class="btn-back">
+    <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+    Volver atrás
+  </a>
+
+  <main class="forging-container">
     
-    <div class="forge-animation">
-      <div class="metal-ring"></div>
-      <div class="liquid-silver"></div>
+    <div class="forging-icon">
+      <svg viewBox="0 0 24 24">
+        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+      </svg>
     </div>
 
-    <p class="kicker">Atelier en Operación</p>
-    <h1 class="title">Estamos forjándolo</h1>
+    <p class="forging-kicker">Capítulo III</p>
+    <h1 class="forging-title">La Forja en Proceso</h1>
     
-    <p class="description">
-      La pureza de la <strong>Plata 925</strong> exige tiempo, precisión y el rigor del diseño europeo. En este momento, nuestros artesanos están esculpiendo una colección diseñada para elevar tu presencia en <strong>Choluteca y Valle</strong>.<br><br>
-      Muy pronto, la esencia de la plata será revelada.
+    <p class="forging-desc">
+      El arte requiere precisión, paciencia y dedicación absoluta. Nuestros maestros orfebres se encuentran dando vida a la <strong>Colección Plata de Ley</strong>.<br><br>
+      Cada pieza está siendo meticulosamente forjada bajo los más altos estándares europeos. Pronto revelaremos estas nuevas obras maestras en la Casa ÈNIGME.
     </p>
 
-    <div class="separator"></div>
-    <p style="font-size: 0.6rem; letter-spacing: 3px; color: var(--gris-suave); text-transform: uppercase;">Colección Purity · Próximamente</p>
+    <a href="catalogo.html" class="btn-explore">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Explorar el Catálogo
+    </a>
 
   </main>
 
-  <div class="floating-stack">
-    
-    <a href="joyeria.html" class="pill-btn light">
-      <svg viewBox="0 0 512 512"><path d="M441.5 137.9L281.3 22.2C273.7 16.7 265 14 256 14s-17.7 2.7-25.3 8.2L70.5 137.9C64 142.6 59.8 149.6 58.6 157.6l-14.1 98.7c-1.2 8.1 1.2 16.3 6.6 22.5L242.3 487.6c3.4 3.9 8.2 6.1 13.3 6.1s9.9-2.2 13.3-6.1L460.9 278.8c5.4-6.2 7.8-14.4 6.6-22.5l-14.1-98.7c-1.2-8-5.4-15-11.9-19.7zM256 439.4L81 240l10.3-71.9L256 261.2l164.7-93.1 10.3 71.9L256 439.4zM256 220L112.5 139.1l111.4-80.4c9.1-6.6 21-6.6 30.1 0L365.4 139 256 220z"/></svg>
-      Joyería Acero
-    </a>
+  <a href="https://wa.me/34602149162?text=Hola,%20deseo%20ser%20notificado%20cuando%20la%20Colección%20Plata%20de%20Ley%20esté%20disponible." class="whatsapp-float" target="_blank" title="Notificarme disponibilidad">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+      <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+    </svg>
+  </a>
 
-    <a href="boutique.html" class="pill-btn light">
-      <svg viewBox="0 0 512 512"><path d="M160 160V128C160 57.3 217.3 0 288 0c70.7 0 128 57.3 128 128v32h64c17.7 0 32 14.3 32 32v256c0 35.3-28.7 64-64 64H128c-35.3 0-64-28.7-64-64V192c0-17.7 14.3-32 32-32h64zM224 160h128v-32c0-35.3-28.7-64-64-64s-64 28.7-64 64v32z"/></svg>
-      Bolsos Boutique
-    </a>
-
-    <a href="liquidacion.html" class="pill-btn light">
-      <svg viewBox="0 0 512 512"><path d="M256 0c11 0 20 9 20 20v196h196c11 0 20 9 20 20s-9 20-20 20H276v196c0 11-9 20-20 20s-20-9-20-20V256H40c-11 0-20-9-20-20s9-20 20-20h196V20c0-11 9-20 20-20z"/></svg>
-      Liquidación
-    </a>
-
-    <a href="https://wa.me/34602149162?text=hola%20estoy%20interesado%20en%20la%20coleccion%20plata%20de%20%C3%88NIGME" class="pill-btn">
-      <svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
-      Atención VIP
-    </a>
-  </div>
-
-  <footer class="legal-footer">
-    © 2026 ÈNIGME HONDURAS · UNA VISIÓN DE CARLOS ARMAS MARTÍNEZ
+  <footer class="footer">
+    © 2026 ÈNIGME HONDURAS POR CARLOS ARMAS MARTÍNEZ. TODOS LOS DERECHOS RESERVADOS.
   </footer>
 
   <script>
@@ -319,8 +346,15 @@
       const cart = JSON.parse(localStorage.getItem('enigme_cart')) || [];
       const favs = JSON.parse(localStorage.getItem('enigme_favs')) || [];
       
-      if(document.getElementById('cart-count')) document.getElementById('cart-count').innerText = cart.length;
-      if(document.getElementById('fav-count')) document.getElementById('fav-count').innerText = favs.length;
+      let totalItems = 0;
+      cart.forEach(item => totalItems += (item.qty || 1));
+      
+      if(document.getElementById('cart-count')) {
+        document.getElementById('cart-count').innerText = totalItems;
+      }
+      if(document.getElementById('fav-count')) {
+        document.getElementById('fav-count').innerText = favs.length;
+      }
     }
     
     window.onload = updateCounts;
