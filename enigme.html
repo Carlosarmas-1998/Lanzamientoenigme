@@ -41,7 +41,16 @@
     a { text-decoration: none; color: inherit; transition: var(--transition); }
 
     /* =========================================
-       NAVBAR MINIMALISTA ÈNIGME (UNIFICADA)
+       ANIMACIÓN DE AURA MÁGICA (EFECTO RESPIRACIÓN)
+       ========================================= */
+    @keyframes aura-glow {
+      0% { box-shadow: 0 0 40px 10px rgba(203, 170, 99, 0.02); background-color: rgba(203, 170, 99, 0.01); }
+      50% { box-shadow: 0 0 80px 30px rgba(203, 170, 99, 0.08); background-color: rgba(203, 170, 99, 0.04); }
+      100% { box-shadow: 0 0 40px 10px rgba(203, 170, 99, 0.02); background-color: rgba(203, 170, 99, 0.01); }
+    }
+
+    /* =========================================
+       NAVBAR PURISTA (SOLO CATÁLOGO Y TRABAJA CON NOSOTROS)
        ========================================= */
     .navbar {
       width: 100%;
@@ -49,7 +58,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid var(--gris-linea);
+      border-bottom: 1px solid var(--linea-fina); /* Borde más fino y elegante */
       background: rgba(250, 249, 246, 0.98);
       position: sticky;
       top: 0;
@@ -58,86 +67,50 @@
 
     .brand-nav {
       font-family: 'Cinzel', serif;
-      font-size: clamp(1.2rem, 2.5vw, 1.5rem);
-      letter-spacing: 0.35em;
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      letter-spacing: 0.4em;
       color: var(--carbon);
       text-align: center;
+      font-weight: 500;
     }
 
     .nav-group { display: flex; gap: 30px; align-items: center; flex: 1; }
     .nav-group.right { justify-content: flex-end; }
     
     .nav-link {
-      font-size: 0.6rem;
-      letter-spacing: 3px;
+      font-size: 0.65rem;
+      letter-spacing: 4px;
       text-transform: uppercase;
-      color: var(--gris-suave);
-      font-weight: 300;
+      color: var(--carbon);
+      font-weight: 500;
       position: relative;
-      padding-bottom: 4px;
+      padding-bottom: 6px;
       cursor: pointer;
     }
 
     .nav-link::after {
       content: '';
       position: absolute;
-      width: 100%; height: 1px; bottom: 0; left: 0;
-      background-color: var(--rosa-palo);
+      width: 100%; height: 1.5px; bottom: 0; left: 0;
+      background-color: var(--dorado);
       transform: scaleX(0);
       transform-origin: right;
-      transition: transform 0.4s ease;
+      transition: transform 0.6s ease;
     }
 
-    .nav-link:hover, .nav-link.active { color: var(--carbon); }
-    .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); transform-origin: left; }
-
-    /* MENÚ DESPLEGABLE CATÁLOGO */
-    .nav-dropdown { position: relative; display: inline-block; }
-    .dropdown-content { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background-color: var(--blanco-puro); min-width: 200px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); border: 1px solid var(--gris-linea); z-index: 1001; flex-direction: column; padding: 10px 0; margin-top: 10px; }
-    .dropdown-content::before { content: ''; position: absolute; top: -10px; left: 0; width: 100%; height: 10px; }
-    .nav-dropdown:hover .dropdown-content { display: flex; }
-    .dropdown-content a { padding: 12px 25px; font-size: 0.55rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gris-suave); text-align: center; transition: var(--transition); }
-    .dropdown-content a:hover { background-color: var(--marfil); color: var(--dorado); }
-
-    /* BOTONES DESTACADOS TENUES Y ELEGANTES */
-    .btn-menu-brand {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background-color: transparent;
-      color: var(--carbon) !important;
-      padding: 8px 16px;
-      border: 1px solid rgba(203, 170, 99, 0.5);
-      border-radius: 2px;
-      font-size: 0.6rem;
-      font-weight: 500;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      transition: var(--transition);
-    }
-    .btn-menu-brand:hover { background-color: var(--dorado); border-color: var(--dorado); }
-    .btn-menu-brand svg { width: 13px; height: 13px; fill: currentColor; transition: transform 0.3s ease; }
-
-    /* EFECTO LATIDO CARRITO */
-    @keyframes pulse-soft {
-      0% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0.3); }
-      70% { box-shadow: 0 0 0 8px rgba(203, 170, 99, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0); }
-    }
-    .btn-cart-nav { animation: pulse-soft 2.5s infinite; }
-    .btn-cart-nav:hover svg { transform: scale(1.15) rotate(-5deg); }
-    .counter-badge { font-weight: 600; }
+    .nav-link:hover { color: var(--dorado); }
+    .nav-link:hover::after { transform: scaleX(1); transform-origin: left; }
 
     /* =========================================
-       MANIFIESTO ÍNTIMO
+       MANIFIESTO ÍNTIMO (CON AURA)
        ========================================= */
     .manifesto-section {
       flex: 1;
-      padding: 100px 5vw;
+      padding: 120px 5vw;
       display: flex;
       flex-direction: column;
       align-items: center;
-      background-image: radial-gradient(circle at 50% 0%, rgba(203, 170, 99, 0.05), transparent 60%);
+      position: relative;
     }
 
     .header-text {
@@ -145,25 +118,29 @@
       text-align: center;
       margin-bottom: 90px;
       position: relative;
+      padding: 40px;
+      border-radius: 50%;
+      /* El Aura que respira */
+      animation: aura-glow 8s ease-in-out infinite;
     }
 
-    /* Brillo sutil de fondo */
+    /* Brillo sutil superior */
     .header-text::before {
       content: '';
       position: absolute;
-      top: -50px; left: 50%;
+      top: -30px; left: 50%;
       transform: translateX(-50%);
-      width: 1px; height: 40px;
+      width: 1px; height: 60px;
       background: linear-gradient(to bottom, transparent, var(--dorado));
     }
 
     .kicker {
       font-family: 'Cinzel', serif;
       font-style: italic;
-      font-size: 1rem;
+      font-size: 1.05rem;
       color: var(--dorado);
       margin-bottom: 25px;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.25em;
     }
 
     .title {
@@ -179,32 +156,39 @@
 
     .lead-paragraph {
       font-size: 1rem;
-      line-height: 2.2;
+      line-height: 2.3;
       color: var(--carbon);
       font-weight: 300;
+      text-shadow: 0 0 1px rgba(0,0,0,0.01);
     }
 
     /* =========================================
-       POESÍA A LA MUJER (TRIBUTO)
+       POESÍA A LA MUJER (EL ENIGMA)
        ========================================= */
     .woman-tribute {
       max-width: 800px;
       text-align: center;
       margin-bottom: 100px;
       padding: 70px 50px;
-      border: 1px solid rgba(203, 170, 99, 0.3); /* Borde dorado muy tenue */
+      border: 1px solid rgba(203, 170, 99, 0.4); 
       background-color: var(--blanco-puro);
       position: relative;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.02);
+      box-shadow: 0 20px 50px rgba(203, 170, 99, 0.05);
+      transition: var(--transition);
+    }
+
+    .woman-tribute:hover {
+      box-shadow: 0 20px 60px rgba(203, 170, 99, 0.15);
+      transform: translateY(-2px);
     }
 
     /* Adornos en las esquinas */
     .woman-tribute::before, .woman-tribute::after {
       content: '';
       position: absolute;
-      width: 20px;
-      height: 20px;
-      border: 1px solid var(--dorado);
+      width: 25px;
+      height: 25px;
+      border: 1.5px solid var(--dorado);
     }
     .woman-tribute::before { top: 15px; left: 15px; border-right: none; border-bottom: none; }
     .woman-tribute::after { bottom: 15px; right: 15px; border-left: none; border-top: none; }
@@ -212,7 +196,7 @@
     .woman-tribute p {
       font-family: 'Cinzel', serif;
       font-style: italic;
-      font-size: 1.3rem;
+      font-size: 1.35rem;
       line-height: 2.2;
       color: var(--carbon);
     }
@@ -232,21 +216,32 @@
     .editorial-card {
       text-align: center;
       padding: 40px 20px;
-      background-color: var(--blanco-puro);
+      background-color: transparent;
       border: 1px solid transparent;
       transition: var(--transition);
+      position: relative;
     }
 
+    .editorial-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 0; height: 1px;
+      background-color: var(--dorado);
+      transition: width 0.6s ease;
+    }
+
+    .editorial-card:hover::after { width: 50px; }
+
     .editorial-card:hover {
-      border-color: var(--linea-fina);
       transform: translateY(-5px);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.03);
     }
 
     .editorial-number {
       font-family: 'Cinzel', serif;
       font-style: italic;
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       color: var(--dorado);
       margin-bottom: 20px;
     }
@@ -370,15 +365,13 @@
       .navbar { flex-wrap: wrap; justify-content: center; gap: 20px; padding: 25px; }
       .nav-group { justify-content: center; flex-wrap: wrap; width: 100%; flex: none; gap: 15px;}
       .brand-nav { order: -1; width: 100%; margin-bottom: 10px; }
-      .nav-link { font-size: 0.55rem; letter-spacing: 2px; }
-      .btn-menu-brand { padding: 8px 14px; font-size: 0.55rem; }
-      .dropdown-content { min-width: 150px; }
-      .dropdown-content a { font-size: 0.45rem; padding: 10px; }
+      .nav-link { font-size: 0.6rem; letter-spacing: 3px; }
 
       .manifesto-section { padding: 80px 20px; }
       .title { font-size: 1.8rem; margin-bottom: 25px; }
       .lead-paragraph, .core-text { text-align: justify; }
       .woman-tribute p { font-size: 1.1rem; }
+      
       .whatsapp-float { bottom: 20px; right: 20px; width: 40px; height: 40px; }
       .whatsapp-float svg { width: 20px; height: 20px; }
     }
@@ -388,39 +381,17 @@
 
   <nav class="navbar">
     <div class="nav-group">
-      <a href="index.html" class="nav-link">INICIO</a>
-      
-      <div class="nav-dropdown">
-        <span class="nav-link">CATÁLOGO ▾</span>
-        <div class="dropdown-content">
-          <a href="joyeria.html">Alta Joyería</a>
-          <a href="boutique.html">Bolsos Boutique</a>
-          <a href="plata.html">Plata de Ley</a>
-          <a href="liquidacion.html">El Archivo</a>
-        </div>
-      </div>
-
-      <a href="enigme.html" class="nav-link active" style="color: var(--carbon);">L'ESSENCE</a>
+      <a href="catalogo.html" class="nav-link">CATÁLOGO</a>
     </div>
     
     <div class="brand-nav">È N I G M E</div>
     
     <div class="nav-group right">
-      <a href="soporte.html" class="nav-link">SOPORTE</a>
-      
-      <a href="favoritos.html" class="btn-menu-brand">
-        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-        FAVS (<span id="fav-count" class="counter-badge">0</span>)
-      </a>
-
-      <a href="carrito.html" class="btn-menu-brand btn-cart-nav">
-        <svg viewBox="0 0 24 24"><path d="M16 6V4a4 4 0 0 0-8 0v2H3v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6h-5zm-6-2a2 2 0 0 1 4 0v2h-4V4zm8 16H6V8h2v2a1 1 0 0 0 2 0V8h4v2a1 1 0 0 0 2 0V8h2v12z"/></svg>
-        BOLSA (<span id="cart-count" class="counter-badge">0</span>)
-      </a>
+      <a href="trabaja.html" class="nav-link">TRABAJA CON NOSOTROS</a>
     </div>
   </nav>
 
-  <a href="https://wa.me/34602149162?text=Hola,%20deseo%20hablar%20con%20un%20asesor%20sobre%20la%20visión%20de%20ÈNIGME." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+  <a href="https://wa.me/34602149162?text=Hola,%20deseo%20hablar%20con%20un%20asesor%20sobre%20la%20magia%20de%20ÈNIGME." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
       <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
     </svg>
@@ -429,16 +400,16 @@
   <main class="manifesto-section">
     
     <div class="header-text">
-      <div class="kicker">L'essence de la Haute Joaillerie</div>
-      <h1 class="title">Un Diálogo Íntimo con el Poder Absoluto</h1>
+      <div class="kicker">L'Aura et le Mystère</div>
+      <h1 class="title">El Enigma del Poder Absoluto</h1>
       <p class="lead-paragraph">
-        Nacimos en el silencio de un boceto y en la pureza de un metal forjado. ÈNIGME es más que una casa boutique; es el lenguaje silencioso del lujo europeo cuyo corazón late orgullosamente en Honduras. Hemos curado cada joya y cada detalle logístico para ofrecer un servicio inmaculado de Alta Costura. Desde el sur —Choluteca y Valle— expandimos un legado de luz y magnetismo, diseñado exclusivamente para la mujer que comprende el valor incuestionable de lo excepcional.
+        Nacimos de un susurro, en el silencio impecable de un boceto y en la pureza de un metal forjado. ÈNIGME no es solo una casa de alta costura; es un hechizo, el lenguaje silencioso del lujo cuyo corazón late profundamente en Honduras. Hemos curado cada joya para que se convierta en un catalizador de tu magia personal. Desde el sur expandimos un legado de luz, misterio y magnetismo, diseñado exclusivamente para la mujer que envuelve su entorno con su sola presencia.
       </p>
     </div>
 
     <div class="woman-tribute">
       <p>
-        "No diseñamos joyas para completarte, porque tú ya eres una obra de arte entera y perfecta. Nuestras piezas son, sencillamente, el acento de luz que subraya tu autoridad. Una mujer ÈNIGME no sigue tendencias; su sola presencia domina el espacio y detiene el tiempo."
+        "No diseñamos joyas para completarte, porque tú ya eres el origen de la magia. Nuestras piezas son, sencillamente, el destello de luz que subraya tu aura. Una mujer ÈNIGME no busca ser vista; su misterio domina el espacio y su presencia detiene el tiempo."
       </p>
     </div>
 
@@ -446,25 +417,25 @@
       
       <article class="editorial-card">
         <div class="editorial-number">I.</div>
-        <h2 class="core-title">Intimidad V.I.P.</h2>
+        <h2 class="core-title">El Misterio</h2>
         <p class="core-text">
-          Llevar hasta tu piel piezas con calidad de importación y metales puros. Fusionamos la asesoría confidencial de un <em>Concierge de Lujo</em> con la precisión de nuestra boutique online, honrando tu tiempo como tu recurso más valioso.
+          Llevar hasta tu piel el secreto de la alta costura con calidad de importación. Fusionamos el servicio íntimo de un <em>Concierge de Lujo</em> con la inmediatez de nuestra boutique, garantizando que el origen de tus piezas siga siendo un misterio cautivador.
         </p>
       </article>
 
       <article class="editorial-card">
         <div class="editorial-number">II.</div>
-        <h2 class="core-title">Trascendencia</h2>
+        <h2 class="core-title">El Aura</h2>
         <p class="core-text">
-          Ser el faro incuestionable de la elegancia nacional. Buscamos ser el nombre que susurres cuando te pregunten por el secreto de tu magnetismo, demostrando que el diseño y el servicio hondureño ofrecen una experiencia de clase mundial.
+          Buscamos ser el nombre que susurres cuando te pregunten por el origen de tu magnetismo. Hemos nacido para demostrar que el estándar y la elegancia hondureña irradian un aura capaz de competir con las grandes metrópolis de la moda mundial.
         </p>
       </article>
 
       <article class="editorial-card">
         <div class="editorial-number">III.</div>
-        <h2 class="core-title">La Exclusividad</h2>
+        <h2 class="core-title">La Magia</h2>
         <p class="core-text">
-          Estándares europeos en cada eslabón y costura. Creemos que el verdadero lujo no requiere de estridencias, sino de presencia y aura. Empoderamos a cada mujer celebrando su luz interior en todas sus facetas.
+          El verdadero lujo no hace ruido, respira y envuelve. Cimentamos cada creación en la pureza de los metales para empoderar tu fuerza interior, celebrando la magia que desprendes al caminar, transformando la exclusividad en tu derecho.
         </p>
       </article>
       
@@ -484,24 +455,6 @@
       © 2026 ÈNIGME HONDURAS POR CARLOS ARMAS MARTÍNEZ. TODOS LOS DERECHOS RESERVADOS.
     </div>
   </footer>
-
-  <script>
-    function updateCounts() {
-      const cart = JSON.parse(localStorage.getItem('enigme_cart')) || [];
-      const favs = JSON.parse(localStorage.getItem('enigme_favs')) || [];
-      
-      let totalItems = 0;
-      cart.forEach(item => totalItems += (item.qty || 1));
-      
-      if(document.getElementById('cart-count')) {
-        document.getElementById('cart-count').innerText = totalItems;
-      }
-      if(document.getElementById('fav-count')) {
-        document.getElementById('fav-count').innerText = favs.length;
-      }
-    }
-    window.onload = updateCounts;
-  </script>
 
 </body>
 </html>
