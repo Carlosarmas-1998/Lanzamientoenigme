@@ -7,19 +7,18 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      /* PALETA HAUTE COUTURE */
       --blanco-dior: #FFFFFF;
       --marfil: #FAF9F6;
       --carbon: #1C1C1C;
       --gris-suave: #888888;
-      --rosa-palo: #D8C3BC;
       --dorado: #CBAA63;
+      --dorado-brillo: #E8D090;
       --linea-fina: rgba(216, 195, 188, 0.4);
-      --transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -39,19 +38,33 @@
     a { text-decoration: none; color: inherit; transition: var(--transition); }
 
     /* =========================================
-       ANIMACIÓN MÁGICA DE LOS BOTONES
+       ANIMACIONES MÁGICAS (AURA Y DESTELLOS)
        ========================================= */
-    @keyframes magic-glow {
-      0%, 100% { text-shadow: 0 0 5px rgba(203, 170, 99, 0); color: var(--carbon); }
-      50% { text-shadow: 0 0 15px rgba(203, 170, 99, 0.6); color: var(--dorado); }
+    
+    /* Efecto de flotación suave */
+    @keyframes floating {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    /* Resplandor dorado pulsante */
+    @keyframes aura-glow {
+      0%, 100% { text-shadow: 0 0 10px rgba(203, 170, 99, 0.2); color: var(--carbon); }
+      50% { text-shadow: 0 0 25px rgba(203, 170, 99, 0.8), 0 0 40px rgba(203, 170, 99, 0.4); color: var(--dorado); }
+    }
+
+    /* Brillo que recorre las letras (Shimmer) */
+    @keyframes gold-shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
     }
 
     /* =========================================
-       NAVBAR ULTRA-MINIMALISTA
+       NAVBAR MÁGICA ÈNIGME
        ========================================= */
     .navbar {
       width: 100%;
-      padding: 35px 5vw;
+      padding: 40px 5vw;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -62,13 +75,36 @@
       z-index: 1000;
     }
 
-    .brand {
+    /* EL LOGO CENTRAL MÁGICO */
+    .brand-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .brand-magic {
       font-family: 'Cinzel', serif;
-      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
-      letter-spacing: 0.4em;
-      color: var(--carbon);
-      text-align: center;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      letter-spacing: 0.5em;
       font-weight: 500;
+      text-transform: uppercase;
+      position: relative;
+      cursor: pointer;
+      padding: 10px 20px;
+      
+      /* Configuración para el brillo metálico */
+      background: linear-gradient(90deg, var(--carbon) 0%, var(--dorado) 45%, var(--dorado-brillo) 50%, var(--dorado) 55%, var(--carbon) 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      
+      animation: gold-shimmer 4s infinite linear, floating 4s infinite ease-in-out;
+      transition: var(--transition);
+    }
+
+    .brand-magic:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 15px rgba(203, 170, 99, 0.5));
     }
 
     .nav-group { display: flex; align-items: center; flex: 1; }
@@ -78,10 +114,10 @@
       font-size: 0.65rem;
       letter-spacing: 4px;
       text-transform: uppercase;
-      color: var(--carbon);
       font-weight: 600;
+      color: var(--carbon);
       position: relative;
-      animation: magic-glow 4s infinite ease-in-out;
+      animation: aura-glow 5s infinite ease-in-out;
     }
 
     .nav-link-magic::after {
@@ -92,47 +128,55 @@
       transform: scaleX(0);
       transition: transform 0.4s ease;
     }
-
     .nav-link-magic:hover::after { transform: scaleX(1); }
 
     /* =========================================
-       ENCABEZADO Y AVISO V.I.P.
+       AVISO V.I.P. ESTRATÉGICO
        ========================================= */
-    .catalog-header {
-      text-align: center;
-      padding: 80px 20px 40px;
+    .vip-notice-wrapper {
+      padding: 40px 5vw 0;
+      display: flex;
+      justify-content: center;
     }
 
-    .catalog-title {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--carbon);
-      margin-bottom: 15px;
-    }
-
-    /* EL ANUNCIO BREVE */
     .vip-notice {
-      max-width: 600px;
-      margin: 0 auto 50px;
-      padding: 20px;
-      border: 1px solid var(--linea-fina);
+      max-width: 800px;
+      width: 100%;
+      padding: 25px;
+      text-align: center;
+      border: 1px solid var(--dorado);
       background-color: var(--marfil);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Destello sutil en el aviso */
+    .vip-notice::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%; width: 50%; height: 100%;
+      background: linear-gradient(to right, transparent, rgba(203, 170, 99, 0.1), transparent);
+      transform: skewX(-25deg);
+      animation: gold-shimmer 6s infinite linear;
     }
 
     .vip-notice p {
       font-size: 0.65rem;
       letter-spacing: 2px;
-      line-height: 1.8;
+      line-height: 2;
       text-transform: uppercase;
-      color: var(--dorado);
+      color: var(--carbon);
       font-weight: 600;
     }
 
+    .vip-notice strong { color: var(--dorado); }
+
     /* =========================================
-       GRID DE CATEGORÍAS (EDITORIAL)
+       GRID DE CATEGORÍAS
        ========================================= */
+    .catalog-header { text-align: center; padding: 60px 20px 40px; }
+    .catalog-title { font-family: 'Cinzel', serif; font-size: clamp(2rem, 4vw, 3.5rem); letter-spacing: 0.15em; text-transform: uppercase; color: var(--carbon); }
+
     .split-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -143,117 +187,35 @@
       width: 100%;
     }
 
-    .category-card {
-      display: flex;
-      flex-direction: column;
-      transition: var(--transition);
-    }
-
-    .image-wrapper {
-      background-color: var(--marfil);
-      border: 1px solid var(--linea-fina);
-      padding: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      aspect-ratio: 4/5; 
-      overflow: hidden;
-      position: relative;
-    }
-
-    /* Efecto de máscara dorada al hover */
-    .image-wrapper::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background-color: rgba(203, 170, 99, 0.05);
-      opacity: 0;
-      transition: var(--transition);
-    }
-
-    .category-card:hover .image-wrapper::after { opacity: 1; }
+    .category-card { display: flex; flex-direction: column; transition: var(--transition); }
+    .image-wrapper { background-color: var(--marfil); border: 1px solid var(--linea-fina); padding: 30px; display: flex; align-items: center; justify-content: center; aspect-ratio: 4/5; overflow: hidden; position: relative; }
     .category-card:hover .image-wrapper { border-color: var(--dorado); }
-
-    .image-wrapper img {
-      width: 100%;
-      height: 100%; 
-      object-fit: contain; 
-      transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
+    .image-wrapper img { width: 100%; height: 100%; object-fit: contain; transition: transform 1.5s cubic-bezier(0.23, 1, 0.32, 1); }
     .category-card:hover img { transform: scale(1.05); }
 
     .card-content { text-align: center; padding-top: 30px; }
-
-    .card-title {
-      font-family: 'Cinzel', serif;
-      font-size: 1.4rem;
-      letter-spacing: 0.2em;
-      color: var(--carbon);
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-
-    .card-btn {
-      font-size: 0.6rem;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--gris-suave);
-      font-weight: 600;
-      border-bottom: 1px solid transparent;
-      padding-bottom: 4px;
-      transition: var(--transition);
-    }
-
-    .category-card:hover .card-btn {
-      color: var(--carbon);
-      border-bottom-color: var(--carbon);
-    }
+    .card-title { font-family: 'Cinzel', serif; font-size: 1.4rem; letter-spacing: 0.2em; color: var(--carbon); text-transform: uppercase; margin-bottom: 10px; }
+    .card-btn { font-size: 0.6rem; letter-spacing: 4px; text-transform: uppercase; color: var(--gris-suave); font-weight: 600; border-bottom: 1px solid transparent; padding-bottom: 4px; }
+    .category-card:hover .card-btn { color: var(--carbon); border-bottom-color: var(--carbon); }
 
     /* =========================================
        FOOTER
        ========================================= */
-    .footer {
-      border-top: 1px solid var(--linea-fina);
-      padding: 60px 20px;
-      text-align: center;
-      background-color: var(--marfil);
-      margin-top: auto;
-    }
-
-    .footer-logo {
-      font-family: 'Cinzel', serif;
-      font-size: 1.5rem;
-      letter-spacing: 0.3em;
-      color: var(--carbon);
-      margin-bottom: 15px;
-    }
-
-    .footer-copy {
-      font-size: 0.5rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--gris-suave);
-      opacity: 0.6;
-    }
+    .footer { border-top: 1px solid var(--linea-fina); padding: 60px 20px; text-align: center; background-color: var(--marfil); margin-top: auto; }
+    .footer-logo { font-family: 'Cinzel', serif; font-size: 1.5rem; letter-spacing: 0.3em; color: var(--carbon); margin-bottom: 15px; }
+    .footer-copy { font-size: 0.5rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gris-suave); opacity: 0.6; }
 
     /* =========================================
        RESPONSIVE
        ========================================= */
     @media (max-width: 768px) {
       .navbar { padding: 25px 20px; flex-wrap: wrap; }
-      .brand { width: 100%; order: -1; margin-bottom: 20px; }
+      .brand-container { width: 100%; order: -1; margin-bottom: 15px; }
       .nav-group { justify-content: center; }
       
-      .catalog-header { padding: 40px 20px; }
-      .catalog-title { font-size: 1.8rem; }
-      .vip-notice { padding: 15px; margin-bottom: 40px; }
-      .vip-notice p { font-size: 0.55rem; letter-spacing: 1.5px; }
-
-      .split-grid { grid-template-columns: repeat(2, 1fr); gap: 20px 15px; padding-bottom: 60px; }
-      .image-wrapper { padding: 10px; }
-      .card-title { font-size: 0.9rem; }
-      .card-btn { font-size: 0.45rem; letter-spacing: 2px; }
+      .vip-notice p { font-size: 0.55rem; }
+      .split-grid { grid-template-columns: repeat(2, 1fr); gap: 20px 15px; }
+      .card-title { font-size: 1rem; }
     }
   </style>
 </head>
@@ -264,69 +226,50 @@
       <a href="fundador.html" class="nav-link-magic">FUNDADOR</a>
     </div>
     
-    <a href="index.html" class="brand">È N I G M E</a>
+    <div class="brand-container">
+      <a href="enigme.html" class="brand-magic">È N I G M E</a>
+    </div>
     
     <div class="nav-group right">
       <a href="certificado.html" class="nav-link-magic">CERTIFICADO</a>
     </div>
   </nav>
 
-  <header class="catalog-header">
-    <h1 class="catalog-title">Colección Cero</h1>
-    
+  <div class="vip-notice-wrapper">
     <div class="vip-notice">
-      <p>Gestión de Selección Privada: Para visualizar su Bolsa o Favoritos, le invitamos a ingresar en cualquiera de nuestras colecciones.</p>
+      <p>Aviso de Privacidad: Para gestionar sus <strong>Favoritos</strong> o su <strong>Bolsa de Compra</strong>, por favor ingrese en la colección de su preferencia.</p>
     </div>
+  </div>
+
+  <header class="catalog-header">
+    <h1 class="catalog-title">Catálogo Oficial</h1>
   </header>
 
   <main class="split-grid">
-    
     <a href="joyeria.html" class="category-card">
-      <div class="image-wrapper">
-        <img src="modelo1.png" alt="Alta Joyería ÈNIGME" onerror="this.src='https://via.placeholder.com/600x800?text=JOYERÍA'">
-      </div>
-      <div class="card-content">
-        <h2 class="card-title">Joyería</h2>
-        <span class="card-btn">Explorar</span>
-      </div>
+      <div class="image-wrapper"><img src="modelo1.png" alt="Alta Joyería" onerror="this.src='https://via.placeholder.com/600x800?text=JOYERÍA'"></div>
+      <div class="card-content"><h2 class="card-title">Joyería</h2><span class="card-btn">Explorar</span></div>
     </a>
 
     <a href="boutique.html" class="category-card">
-      <div class="image-wrapper">
-        <img src="modelo2.png" alt="Bolsos Boutique ÈNIGME" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE'">
-      </div>
-      <div class="card-content">
-        <h2 class="card-title">Boutique</h2>
-        <span class="card-btn">Explorar</span>
-      </div>
+      <div class="image-wrapper"><img src="modelo2.png" alt="Boutique" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE'"></div>
+      <div class="card-content"><h2 class="card-title">Boutique</h2><span class="card-btn">Explorar</span></div>
     </a>
 
     <a href="plata.html" class="category-card">
-      <div class="image-wrapper">
-        <img src="modelo3.png" alt="Plata de ley ÈNIGME" onerror="this.src='https://via.placeholder.com/600x800?text=PLATA'">
-      </div>
-      <div class="card-content">
-        <h2 class="card-title">Plata de Ley</h2>
-        <span class="card-btn">Explorar</span>
-      </div>
+      <div class="image-wrapper"><img src="modelo3.png" alt="Plata" onerror="this.src='https://via.placeholder.com/600x800?text=PLATA'"></div>
+      <div class="card-content"><h2 class="card-title">Plata de Ley</h2><span class="card-btn">Explorar</span></div>
     </a>
             
     <a href="liquidacion.html" class="category-card">
-      <div class="image-wrapper">
-        <img src="modelo4.png" alt="El Archivo ÈNIGME" onerror="this.src='https://via.placeholder.com/600x800?text=ARCHIVO'">
-      </div>
-      <div class="card-content">
-        <h2 class="card-title">El Archivo</h2>
-        <span class="card-btn">Explorar</span>
-      </div>
+      <div class="image-wrapper"><img src="modelo4.png" alt="El Archivo" onerror="this.src='https://via.placeholder.com/600x800?text=ARCHIVO'"></div>
+      <div class="card-content"><h2 class="card-title">El Archivo</h2><span class="card-btn">Explorar</span></div>
     </a>
   </main>
 
   <footer class="footer">
     <div class="footer-logo">ÈNIGME</div>
-    <div class="footer-copy">
-      © 2026 ÈNIGME HONDURAS POR CARLOS ARMAS MARTÍNEZ. TODOS LOS DERECHOS RESERVADOS.
-    </div>
+    <div class="footer-copy">© 2026 ÈNIGME HONDURAS POR CARLOS ARMAS MARTÍNEZ. TODOS LOS DERECHOS RESERVADOS.</div>
   </footer>
 
 </body>
