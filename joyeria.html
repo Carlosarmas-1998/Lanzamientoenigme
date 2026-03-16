@@ -3,17 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alta Joyería | La Casa ÈNIGME</title>
+  <title>Alta Joyería | El Imperio ÈNIGME</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      /* PALETA DE MARCA ÈNIGME */
       --marfil: #FAF9F6;
-      --rosa-palo: #D8C3BC;
+      --blanco-puro: #FFFFFF;
       --carbon: #1C1C1C;
       --gris-suave: #888888;
       --dorado: #CBAA63;
@@ -36,10 +35,18 @@
     }
 
     a { text-decoration: none; color: inherit; transition: var(--transition); }
-    button { background: none; border: none; font-family: inherit; cursor: pointer; outline: none; }
 
     /* =========================================
-       NAVBAR MINIMALISTA ÈNIGME (UNIFICADA)
+       ANIMACIÓN DE AURA MÁGICA
+       ========================================= */
+    @keyframes aura-expansion {
+      0% { background: radial-gradient(circle at 50% 50%, rgba(203, 170, 99, 0.05) 0%, transparent 50%); }
+      50% { background: radial-gradient(circle at 50% 50%, rgba(203, 170, 99, 0.12) 0%, transparent 70%); }
+      100% { background: radial-gradient(circle at 50% 50%, rgba(203, 170, 99, 0.05) 0%, transparent 50%); }
+    }
+
+    /* =========================================
+       NAVBAR PURISTA ÈNIGME
        ========================================= */
     .navbar {
       width: 100%;
@@ -48,14 +55,13 @@
       align-items: center;
       justify-content: space-between;
       border-bottom: 1px solid var(--linea-fina);
-      background: rgba(250, 249, 246, 0.95);
-      backdrop-filter: blur(10px);
+      background: rgba(250, 249, 246, 0.98);
       position: sticky;
       top: 0;
       z-index: 1000;
     }
 
-    .brand {
+    .brand-nav {
       font-family: 'Cinzel', serif;
       font-size: clamp(1.2rem, 2.5vw, 1.5rem);
       letter-spacing: 0.35em;
@@ -66,13 +72,12 @@
     .nav-group { display: flex; gap: 30px; align-items: center; flex: 1; }
     .nav-group.right { justify-content: flex-end; }
     
-    /* ENLACES NORMALES DE MENÚ */
     .nav-link {
       font-size: 0.6rem;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--gris-suave);
-      font-weight: 300;
+      font-weight: 600;
       position: relative;
       padding-bottom: 4px;
     }
@@ -81,22 +86,19 @@
       content: '';
       position: absolute;
       width: 100%; height: 1px; bottom: 0; left: 0;
-      background-color: var(--rosa-palo);
+      background-color: var(--dorado);
       transform: scaleX(0);
       transform-origin: right;
       transition: transform 0.4s ease;
     }
 
-    .nav-link:hover, .nav-link.active { color: var(--carbon); }
-    .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); transform-origin: left; }
+    .nav-link:hover { color: var(--carbon); }
+    .nav-link:hover::after { transform: scaleX(1); transform-origin: left; }
 
-    /* BOTONES DESTACADOS TENUES Y ELEGANTES (FAVS Y BOLSA) */
     .btn-menu-brand {
       display: flex;
       align-items: center;
       gap: 8px;
-      background-color: transparent;
-      color: var(--carbon) !important;
       padding: 8px 16px;
       border: 1px solid rgba(203, 170, 99, 0.5);
       border-radius: 2px;
@@ -104,202 +106,110 @@
       font-weight: 500;
       letter-spacing: 2px;
       text-transform: uppercase;
-      transition: var(--transition);
     }
-
-    .btn-menu-brand:hover {
-      background-color: var(--dorado);
-      border-color: var(--dorado);
-    }
-
-    .btn-menu-brand svg {
-      width: 13px;
-      height: 13px;
-      fill: currentColor;
-      transition: transform 0.3s ease;
-    }
-
-    /* CARRITO DINÁMICO (Efecto Latido) */
-    @keyframes pulse-soft {
-      0% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0.3); }
-      70% { box-shadow: 0 0 0 8px rgba(203, 170, 99, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0); }
-    }
-
-    .btn-cart-nav { animation: pulse-soft 2.5s infinite; }
-    .btn-cart-nav:hover svg { transform: scale(1.15) rotate(-5deg); }
-    .counter-badge { font-weight: 600; }
+    .btn-menu-brand:hover { background-color: var(--dorado); border-color: var(--dorado); }
 
     /* =========================================
-       ENCABEZADO DE LA GALERÍA
+       SECCIÓN DE FORJA (EL IMPERIO)
        ========================================= */
-    .gallery-header {
-      text-align: center;
-      padding: 80px 20px 50px;
-      border-bottom: 1px solid var(--linea-fina);
+    .empire-section {
+      flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
-    }
-
-    .gallery-kicker { font-family: 'Cinzel', serif; font-style: italic; font-size: 0.9rem; color: var(--rosa-palo); letter-spacing: 5px; text-transform: uppercase; margin-bottom: 15px; }
-    .gallery-title { font-family: 'Cinzel', serif; font-size: clamp(2rem, 4vw, 3.5rem); letter-spacing: 0.15em; text-transform: uppercase; color: var(--carbon); margin-bottom: 20px; }
-    .gallery-desc { font-size: 0.85rem; line-height: 2.2; color: var(--gris-suave); max-width: 650px; margin: 0 auto 15px; font-weight: 300; }
-
-    .cert-seal-link { display: inline-block; margin-top: 5px; margin-bottom: 15px; transition: var(--transition); }
-    .cert-seal-link:hover { transform: scale(1.05); }
-    .cert-seal-img { max-width: 100px; height: auto; }
-
-    .trust-text { font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; color: var(--carbon); font-weight: 500; display: flex; align-items: center; gap: 8px; margin-top: 10px; }
-    .trust-text svg { width: 12px; height: 12px; fill: var(--rosa-palo); }
-
-    /* =========================================
-       GRID DE PRODUCTOS
-       ========================================= */
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 70px 40px;
-      padding: 80px 5vw;
-      max-width: 1400px;
-      margin: 0 auto;
-      width: 100%;
-    }
-
-    .product-card { display: flex; flex-direction: column; }
-
-    /* IMAGEN DE PRODUCTO (RESPECTANDO UNA SOLA IMAGEN) */
-    .image-wrapper {
-      position: relative;
-      background-color: white;
-      aspect-ratio: 3/4;
-      display: flex;
-      align-items: center;
       justify-content: center;
-      overflow: hidden;
-      margin-bottom: 25px;
-      border: 1px solid var(--linea-fina);
+      padding: 100px 5vw;
+      text-align: center;
+      position: relative;
+      animation: aura-expansion 10s infinite ease-in-out;
     }
 
-    .product-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; cursor: zoom-in; }
-    .product-card:hover .product-image { transform: scale(1.03); }
+    .empire-content {
+      max-width: 850px;
+      z-index: 2;
+    }
 
-    /* BOTÓN FAVORITOS (SOBRE LA IMAGEN) */
-    .btn-fav { position: absolute; top: 15px; right: 15px; width: 35px; height: 35px; background-color: var(--marfil); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05); z-index: 10; transition: var(--transition); color: var(--carbon); }
-    .btn-fav:hover { transform: scale(1.1); }
-    .btn-fav svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; transition: var(--transition); }
-    .btn-fav.active svg { fill: var(--rosa-palo); stroke: var(--rosa-palo); }
-
-    /* INFO DEL PRODUCTO */
-    .product-info { text-align: center; display: flex; flex-direction: column; flex-grow: 1; }
-    .product-code { font-size: 0.55rem; letter-spacing: 2px; color: var(--gris-suave); margin-bottom: 8px; }
-    .product-name { font-family: 'Cinzel', serif; font-size: 1.1rem; letter-spacing: 0.1em; color: var(--carbon); margin-bottom: 8px; text-transform: uppercase; }
-    .product-slogan { font-size: 0.75rem; line-height: 1.6; color: var(--gris-suave); margin-bottom: 15px; font-weight: 300; }
-    .product-slogan strong { color: var(--carbon); font-weight: 600; }
-    .product-price { font-size: 0.9rem; letter-spacing: 2px; color: var(--carbon); font-weight: 500; margin-bottom: 25px; display: flex; align-items: center; justify-content: center; gap: 10px; }
-
-    /* CONTROL DE CANTIDAD + AÑADIR */
-    .purchase-action { display: flex; margin-top: auto; border: 1px solid var(--linea-fina); border-radius: 0; overflow: hidden; height: 42px; }
-    .qty-selector { display: flex; align-items: center; justify-content: space-between; width: 90px; background: var(--marfil); border-right: 1px solid var(--linea-fina); }
-    .qty-selector button { width: 30px; height: 100%; font-size: 1.1rem; color: var(--gris-suave); display: flex; align-items: center; justify-content: center; }
-    .qty-selector button:hover { color: var(--carbon); background: rgba(0,0,0,0.03); }
-    .qty-selector span { font-size: 0.75rem; font-weight: 500; color: var(--carbon); flex-grow: 1; }
-    
-    .btn-cart {
-      flex-grow: 1;
-      background-color: transparent;
-      border: none;
-      color: var(--carbon);
-      font-size: 0.55rem;
-      letter-spacing: 3px;
+    .kicker {
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+      letter-spacing: 6px;
       text-transform: uppercase;
-      transition: var(--transition);
-      font-weight: 600;
-    }
-    .btn-cart:hover { background-color: var(--dorado); color: var(--carbon); }
-    .btn-cart.added { background: var(--carbon); color: var(--dorado); }
-
-    /* =========================================
-       BOTONES FLOTANTES COMPACTOS
-       ========================================= */
-    .floating-stack { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; align-items: flex-end; gap: 8px; z-index: 999; }
-    .pill-btn { display: flex; align-items: center; gap: 8px; height: 32px; padding: 0 14px; border-radius: 20px; background: var(--carbon); color: var(--marfil); font-size: 0.45rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 1px solid transparent; white-space: nowrap; transition: var(--transition); }
-    .pill-btn.light { background: var(--marfil); color: var(--carbon); border: 1px solid var(--linea-fina); }
-    .pill-btn:hover { transform: translateX(-5px); background: var(--dorado); color: var(--carbon); border-color: var(--dorado); }
-    .pill-btn svg { width: 12px; height: 12px; fill: currentColor; }
-
-    /* =========================================
-       NOTIFICACIÓN TOAST (AGREGADO AL CARRITO)
-       ========================================= */
-    .toast-notification {
-      position: fixed;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%) translateY(100px);
-      background-color: var(--carbon);
       color: var(--dorado);
-      padding: 14px 28px;
-      font-size: 0.65rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-weight: 500;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-      z-index: 10000;
-      opacity: 0;
-      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      pointer-events: none;
+      margin-bottom: 30px;
+      font-style: italic;
     }
-    .toast-notification.show { transform: translateX(-50%) translateY(0); opacity: 1; }
-    .toast-notification svg { width: 16px; height: 16px; fill: currentColor; }
+
+    .main-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      line-height: 1.1;
+      color: var(--carbon);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 40px;
+    }
+
+    .manifesto-text {
+      font-size: 1.1rem;
+      line-height: 2.2;
+      color: var(--carbon);
+      font-weight: 300;
+      margin-bottom: 50px;
+    }
+
+    .highlight-gold {
+      font-weight: 600;
+      color: var(--dorado);
+      border-bottom: 1px solid var(--dorado);
+    }
+
+    /* Línea decorativa infinita */
+    .divider-gold {
+      width: 60px;
+      height: 1px;
+      background-color: var(--dorado);
+      margin: 40px auto;
+    }
 
     /* =========================================
-       BANNER LEGAL Y FOOTER
+       BOTONES FLOTANTES COMPACTOS VIP
        ========================================= */
-    .legal-banner { border-top: 1px solid var(--linea-fina); padding: 60px 5vw 40px; text-align: center; margin-top: auto; }
-    .trust-badges-container { display: flex; justify-content: center; gap: 30px; margin-bottom: 40px; padding: 0 5vw; flex-wrap: wrap; }
-    .trust-badge-item { display: flex; align-items: center; gap: 10px; color: var(--dorado); border: 1px solid var(--dorado); padding: 8px 15px; font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
-    .trust-badge-item svg { width: 14px; height: 14px; fill: currentColor; }
-    .legal-text { font-size: 0.6rem; line-height: 2.2; letter-spacing: 1.5px; color: var(--gris-suave); max-width: 900px; margin: 0 auto; text-transform: uppercase; }
-    .legal-text strong { color: var(--carbon); }
+    .floating-stack { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; z-index: 999; }
     
-    /* CRÉDITOS DEL FUNDADOR - TENUE */
-    .founder-credit { margin-top: 40px; font-size: 0.5rem; letter-spacing: 0.25em; color: var(--gris-suave); opacity: 0.5; text-transform: uppercase; font-weight: 300; }
+    .pill-btn { 
+      display: flex; 
+      align-items: center; 
+      gap: 10px; 
+      height: 40px; 
+      padding: 0 18px; 
+      border-radius: 25px; 
+      background: var(--carbon); 
+      color: #fff; 
+      font-size: 0.55rem; 
+      letter-spacing: 2px; 
+      text-transform: uppercase; 
+      font-weight: 600; 
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15); 
+      border: 1px solid transparent; 
+      white-space: nowrap; 
+      transition: var(--transition); 
+    }
+    
+    .pill-btn.light { background: var(--marfil); color: var(--carbon); border: 1px solid var(--dorado); }
+    .pill-btn.support { background: var(--dorado); color: var(--carbon); font-weight: 700; }
+    .pill-btn:hover { transform: translateX(-5px); }
+    .pill-btn svg { width: 16px; height: 16px; fill: currentColor; }
 
-    /* =========================================
-       LIGHTBOX (VISUALIZACIÓN DE IMAGEN)
-       ========================================= */
-    .lightbox { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(250, 249, 246, 0.98); backdrop-filter: blur(10px); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
-    .lightbox.active { opacity: 1; pointer-events: auto; }
-    .lightbox img { max-width: 90%; max-height: 90%; object-fit: contain; transform: scale(0.95); transition: transform 0.4s ease; box-shadow: 0 20px 50px rgba(0,0,0,0.15);}
-    .lightbox.active img { transform: scale(1); }
-    .lightbox-close { position: absolute; top: 30px; right: 40px; font-size: 3rem; color: var(--carbon); cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 200; line-height: 1; transition: var(--transition); }
-    .lightbox-close:hover { color: var(--dorado); transform: scale(1.1); }
+    /* FOOTER */
+    .footer { padding: 50px 5vw; text-align: center; border-top: 1px solid var(--gris-linea); font-size: 0.5rem; letter-spacing: 3px; color: var(--gris-suave); text-transform: uppercase; background: #FFF; margin-top: auto;}
 
-    /* =========================================
-       RESPONSIVE MÓVIL
-       ========================================= */
-    @media (max-width: 900px) { .nav-group { gap: 15px; } .nav-group a { font-size: 0.5rem; letter-spacing: 1px; } }
     @media (max-width: 768px) {
-      .navbar { flex-wrap: wrap; justify-content: center; gap: 20px; padding: 25px; }
-      .nav-group { justify-content: center; flex-wrap: wrap; width: 100%; flex: none; gap: 15px;}
-      .brand { order: -1; width: 100%; margin-bottom: 10px; }
-      .nav-link { font-size: 0.55rem; letter-spacing: 2px; }
-      .btn-menu-brand { padding: 8px 14px; font-size: 0.55rem; }
-      .product-grid { grid-template-columns: 1fr 1fr; gap: 40px 15px; padding: 40px 15px; }
-      .gallery-title { font-size: 1.8rem; }
-      .product-name { font-size: 0.85rem; }
-      .product-slogan { font-size: 0.65rem; }
-      .floating-stack { bottom: 15px; right: 15px; }
-      .pill-btn { height: 28px; padding: 0 10px; font-size: 0.4rem; }
-      .cert-seal-img { max-width: 80px; } 
-      .trust-badges-container { gap: 15px; }
-      .trust-badge-item { padding: 6px 12px; font-size: 0.5rem; }
-      .qty-selector { width: 70px; }
-      .btn-cart { font-size: 0.5rem; letter-spacing: 2px; }
-      .toast-notification { width: 90%; justify-content: center; bottom: 20px; font-size: 0.55rem; }
+      .navbar { padding: 20px; flex-wrap: wrap; justify-content: center; gap: 15px; }
+      .brand-nav { width: 100%; order: -1; margin-bottom: 5px; }
+      .nav-group { justify-content: center; width: 100%; }
+      .main-title { font-size: 2rem; }
+      .manifesto-text { font-size: 0.95rem; text-align: justify; }
+      .pill-btn { height: 35px; font-size: 0.5rem; }
     }
   </style>
 </head>
@@ -308,441 +218,49 @@
   <nav class="navbar">
     <div class="nav-group">
       <a href="index.html" class="nav-link">INICIO</a>
-      <a href="catalogo.html" class="nav-link">CATÁLOGO</a>
-      <a href="certificado.html" class="btn-menu-brand">
-        <svg viewBox="0 0 24 24"><path d="M17 10h-2V6c0-1.1-.9-2-2-2H5a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2v-4h2c1.1 0 2-.9 2-2V12a2 2 0 0 0-2-2zM5 6h8v4H5V6zm8 12H5V12h8v6zm6-6h-2V12h2v2z"/></svg>
-        CERTIFICADO
-      </a>
     </div>
     
-    <div class="brand">È N I G M E</div>
+    <div class="brand-nav">È N I G M E</div>
     
     <div class="nav-group right">
-      <a href="soporte.html" class="nav-link">SOPORTE</a>
-      
-      <a href="favoritos.html" class="btn-menu-brand">
-        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-        FAVS (<span id="fav-count" class="counter-badge">0</span>)
-      </a>
-      
-      <a href="carrito.html" class="btn-menu-brand btn-cart-nav">
-        <svg viewBox="0 0 24 24"><path d="M16 6V4a4 4 0 0 0-8 0v2H3v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6h-5zm-6-2a2 2 0 0 1 4 0v2h-4V4zm8 16H6V8h2v2a1 1 0 0 0 2 0V8h4v2a1 1 0 0 0 2 0V8h2v12z"/></svg>
-        BOLSA (<span id="cart-count" class="counter-badge">0</span>)
-      </a>
+      <a href="favoritos.html" class="btn-menu-brand">FAVS</a>
+      <a href="carrito.html" class="btn-menu-brand">BOLSA</a>
     </div>
   </nav>
 
-  <div class="floating-stack">
-    <a href="plata.html" class="pill-btn light">
-      <svg viewBox="0 0 576 512"><path d="M312 24l210.3 226.7c18.5 19.9 18.5 50.7 0 70.6L312 488c-13.3 14.3-34.7 14.3-48 0L53.7 321.3c-18.5-19.9-18.5-50.7 0-70.6L264 24c13.3-14.3 34.7-14.3 48 0zM170.8 288l117.2 126.3L405.2 288H170.8z"/></svg>
-      Colección Plata
-    </a>
-    <a href="boutique.html" class="pill-btn light">
-      <svg viewBox="0 0 512 512"><path d="M160 160V128C160 57.3 217.3 0 288 0c70.7 0 128 57.3 128 128v32h64c17.7 0 32 14.3 32 32v256c0 35.3-28.7 64-64 64H128c-35.3 0-64-28.7-64-64V192c0-17.7 14.3-32 32-32h64zM224 160h128v-32c0-35.3-28.7-64-64-64s-64 28.7-64 64v32z"/></svg>
-      Bolsos Boutique
-    </a>
-    <a href="liquidacion.html" class="pill-btn light">
-      <svg viewBox="0 0 512 512"><path d="M256 0c11 0 20 9 20 20v196h196c11 0 20 9 20 20s-9 20-20 20H276v196c0 11-9 20-20 20s-20-9-20-20V256H40c-11 0-20-9-20-20s9-20 20-20h196V20c0-11 9-20 20-20z"/></svg>
-      Liquidación
-    </a>
-    <a href="https://wa.me/34602149162?text=Hola,%20estoy%20en%20la%20secci%C3%B3n%20de%20Alta%20Joyer%C3%ADa%20y%20deseo%20asesor%C3%ADa%20con%20una%20pieza." class="pill-btn" target="_blank">
-      <svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
-      Atención VIP
-    </a>
-  </div>
-
-  <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
-    <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
-    <img id="lightbox-img" src="" alt="Joyas ÈNIGME" onclick="event.stopPropagation()">
-  </div>
-
-  <header class="gallery-header">
-    <p class="gallery-kicker">Capítulo I</p>
-    <h1 class="gallery-title">Alta Joyería</h1>
-    <p class="gallery-desc">
-      Piezas exclusivas curadas bajo los más altos estándares europeos.
-    </p>
-    
-    <a href="certificado.html" class="cert-seal-link" title="Ver Garantía de Certificación">
-      <img src="sello.png" alt="Sello de Certificación ÈNIGME" class="cert-seal-img" onerror="this.src='data:image/svg+xml;utf8,<svg viewBox=\'0 0 24 24\' fill=\'%23CBAA63\'><path d=\'M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z\'/></svg>'">
-    </a>
-
-    <p class="trust-text">
-      <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z"/></svg>
-      Posesión Real y Genuina. Garantía de Autenticidad ÈNIGME en cada joya.
-    </p>
-  </header>
-
-  <main class="product-grid">
-
-    <article class="product-card">
-      <div class="image-wrapper">
-        <button class="btn-fav" data-ref="300010" onclick="toggleFav('300010', 'Set Primavera Eterna', 'L 399', 'acero01.png', this)">
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-        </button>
-        <img src="acero01.png" class="product-image" onclick="openLightbox(this.src)" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
-      </div>
-      <div class="product-info">
-        <span class="product-code">REF: 300010</span>
-        <h2 class="product-name">Set Primavera Eterna</h2>
-        <p class="product-slogan">El renacer de tu luz. Cadena y aretes de <strong>acero inoxidable</strong> con impecable chapado en <strong>oro de 14K</strong>.</p>
-        <div class="product-price">L 399</div>
-        <div class="purchase-action">
-          <div class="qty-selector">
-            <button onclick="changeCardQty('qty-300010', -1)">-</button>
-            <span id="qty-300010">1</span>
-            <button onclick="changeCardQty('qty-300010', 1)">+</button>
-          </div>
-          <button class="btn-cart" onclick="addToCart('300010', 'Set Primavera Eterna', 'L 399', 'acero01.png', this, 'qty-300010')">Añadir</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="product-card">
-      <div class="image-wrapper">
-        <button class="btn-fav" data-ref="301222" onclick="toggleFav('301222', 'Set Presencia Absoluta', 'L 499', 'acero02.jpg', this)">
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-        </button>
-        <img src="acero02.jpg" class="product-image" onclick="openLightbox(this.src)" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
-      </div>
-      <div class="product-info">
-        <span class="product-code">REF: 301222</span>
-        <h2 class="product-name">Set Presencia Absoluta</h2>
-        <p class="product-slogan">Tu esencia inquebrantable. Pulsera, aretes y collar con exquisito baño de <strong>oro de 18K</strong>.</p>
-        <div class="product-price">L 499</div>
-        <div class="purchase-action">
-          <div class="qty-selector">
-            <button onclick="changeCardQty('qty-301222', -1)">-</button>
-            <span id="qty-301222">1</span>
-            <button onclick="changeCardQty('qty-301222', 1)">+</button>
-          </div>
-          <button class="btn-cart" onclick="addToCart('301222', 'Set Presencia Absoluta', 'L 499', 'acero02.jpg', this, 'qty-301222')">Añadir</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="product-card">
-      <div class="image-wrapper">
-        <button class="btn-fav" data-ref="301212" onclick="toggleFav('301212', 'Pulsera Divina Fe', 'L 299', 'acero03.jpg', this)">
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-        </button>
-        <img src="acero03.jpg" class="product-image" onclick="openLightbox(this.src)" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
-      </div>
-      <div class="product-info">
-        <span class="product-code">REF: 301212</span>
-        <h2 class="product-name">Pulsera Divina Fe</h2>
-        <p class="product-slogan">Devoción y vanguardia. Preciosa cruz de <strong>acero inoxidable</strong> con baño de <strong>oro blanco de 14K</strong>.</p>
-        <div class="product-price">L 299</div>
-        <div class="purchase-action">
-          <div class="qty-selector">
-            <button onclick="changeCardQty('qty-301212', -1)">-</button>
-            <span id="qty-301212">1</span>
-            <button onclick="changeCardQty('qty-301212', 1)">+</button>
-          </div>
-          <button class="btn-cart" onclick="addToCart('301212', 'Pulsera Divina Fe', 'L 299', 'acero03.jpg', this, 'qty-301212')">Añadir</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="product-card">
-      <div class="image-wrapper">
-        <button class="btn-fav" data-ref="301289" onclick="toggleFav('301289', 'Pulsera Cruz Eterna', 'L 319', 'acero04.jpg', this)">
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-        </button>
-        <img src="acero04.jpg" class="product-image" onclick="openLightbox(this.src)" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
-      </div>
-      <div class="product-info">
-        <span class="product-code">REF: 301289</span>
-        <h2 class="product-name">Pulsera Cruz Eterna</h2>
-        <p class="product-slogan">El peso de lo eterno. Estructura imponente en <strong>acero</strong> realzada por un brillante baño de <strong>oro de 18K</strong>.</p>
-        <div class="product-price">L 319</div>
-        <div class="purchase-action">
-          <div class="qty-selector">
-            <button onclick="changeCardQty('qty-301289', -1)">-</button>
-            <span id="qty-301289">1</span>
-            <button onclick="changeCardQty('qty-301289', 1)">+</button>
-          </div>
-          <button class="btn-cart" onclick="addToCart('301289', 'Pulsera Cruz Eterna', 'L 319', 'acero04.jpg', this, 'qty-301289')">Añadir</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="product-card">
-      <div class="image-wrapper">
-        <button class="btn-fav" data-ref="301062" onclick="toggleFav('301062', 'Set Lazo de Oro', 'L 419', 'acero05.jpg', this)">
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-        </button>
-        <img src="acero05.jpg" class="product-image" onclick="openLightbox(this.src)" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
-      </div>
-      <div class="product-info">
-        <span class="product-code">REF: 301062</span>
-        <h2 class="product-name">Set Lazo de Oro</h2>
-        <p class="product-slogan">Vínculos de elegancia. Cadena, pulsera y aretes de <strong>acero puro</strong> con baño de <strong>oro de 14K</strong>.</p>
-        <div class="product-price">L 419</div>
-        <div class="purchase-action">
-          <div class="qty-selector">
-            <button onclick="changeCardQty('qty-301062', -1)">-</button>
-            <span id="qty-301062">1</span>
-            <button onclick="changeCardQty('qty-301062', 1)">+</button>
-          </div>
-          <button class="btn-cart" onclick="addToCart('301062', 'Set Lazo de Oro', 'L 419', 'acero05.jpg', this, 'qty-301062')">Añadir</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="product-card">
-      <div class="image-wrapper">
-        <button class="btn-fav" data-ref="300913" onclick="toggleFav('300913', 'Pulsera Gracia Inmaculada', 'L 299', 'acero06.jpg', this)">
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-        </button>
-        <img src="acero06.jpg" class="product-image" onclick="openLightbox(this.src)" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
-      </div>
-      <div class="product-info">
-        <span class="product-code">REF: 300913</span>
-        <h2 class="product-name">Pulsera Gracia Inmaculada</h2>
-        <p class="product-slogan">Protección y estilo. Diseño forjado con altísima precisión en <strong>acero inoxidable quirúrgico</strong>.</p>
-        <div class="product-price">L 299</div>
-        <div class="purchase-action">
-          <div class="qty-selector">
-            <button onclick="changeCardQty('qty-300913', -1)">-</button>
-            <span id="qty-300913">1</span>
-            <button onclick="changeCardQty('qty-300913', 1)">+</button>
-          </div>
-          <button class="btn-cart" onclick="addToCart('300913', 'Pulsera Gracia', 'L 299', 'acero06.jpg', this, 'qty-300913')">Añadir</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="product-card">
-      <div class="image-wrapper">
-        <button class="btn-fav" data-ref="301956" onclick="toggleFav('301956', 'Collar Cruz Sagrada', 'L 349', 'acero07.jpg', this)">
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-        </button>
-        <img src="acero07.jpg" class="product-image" onclick="openLightbox(this.src)" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
-      </div>
-      <div class="product-info">
-        <span class="product-code">REF: 301956</span>
-        <h2 class="product-name">Collar Cruz Sagrada</h2>
-        <p class="product-slogan">Geometría de fe. Precioso collar de <strong>acero</strong> recubierto con un delicado baño de <strong>oro</strong>.</p>
-        <div class="product-price">L 349</div>
-        <div class="purchase-action">
-          <div class="qty-selector">
-            <button onclick="changeCardQty('qty-301956', -1)">-</button>
-            <span id="qty-301956">1</span>
-            <button onclick="changeCardQty('qty-301956', 1)">+</button>
-          </div>
-          <button class="btn-cart" onclick="addToCart('301956', 'Collar Cruz', 'L 349', 'acero07.jpg', this, 'qty-301956')">Añadir</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="product-card">
-      <div class="image-wrapper">
-        <button class="btn-fav" data-ref="301102" onclick="toggleFav('301102', 'Collar Órbita Saturno', 'L 299', 'acero08.jpg', this)">
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-        </button>
-        <img src="acero08.jpg" class="product-image" onclick="openLightbox(this.src)" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
-      </div>
-      <div class="product-info">
-        <span class="product-code">REF: 301102</span>
-        <h2 class="product-name">Collar Órbita Saturno</h2>
-        <p class="product-slogan">Magnetismo estelar. Inspiración planetaria pulida a la perfección en <strong>acero inoxidable 304L</strong>.</p>
-        <div class="product-price">L 299</div>
-        <div class="purchase-action">
-          <div class="qty-selector">
-            <button onclick="changeCardQty('qty-301102', -1)">-</button>
-            <span id="qty-301102">1</span>
-            <button onclick="changeCardQty('qty-301102', 1)">+</button>
-          </div>
-          <button class="btn-cart" onclick="addToCart('301102', 'Collar Saturno', 'L 299', 'acero08.jpg', this, 'qty-301102')">Añadir</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="product-card">
-      <div class="image-wrapper">
-        <button class="btn-fav" data-ref="301616" onclick="toggleFav('301616', 'Pulsera Mariposa Real', 'L 319', 'acero09.jpg', this)">
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-        </button>
-        <img src="acero09.jpg" class="product-image" onclick="openLightbox(this.src)" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
-      </div>
-      <div class="product-info">
-        <span class="product-code">REF: 301616</span>
-        <h2 class="product-name">Pulsera Mariposa Real</h2>
-        <p class="product-slogan">Metamorfosis de lujo. Detalle alado en <strong>acero</strong> sellado con baño de <strong>oro de 14K</strong>.</p>
-        <div class="product-price">L 319</div>
-        <div class="purchase-action">
-          <div class="qty-selector">
-            <button onclick="changeCardQty('qty-301616', -1)">-</button>
-            <span id="qty-301616">1</span>
-            <button onclick="changeCardQty('qty-301616', 1)">+</button>
-          </div>
-          <button class="btn-cart" onclick="addToCart('301616', 'Pulsera Mariposa', 'L 319', 'acero09.jpg', this, 'qty-301616')">Añadir</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="product-card">
-      <div class="image-wrapper">
-        <button class="btn-fav" data-ref="302278" onclick="toggleFav('302278', 'Set Corazón de Perla', 'L 299', 'acero10.jpg', this)">
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-        </button>
-        <img src="acero10.jpg" class="product-image" onclick="openLightbox(this.src)" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
-      </div>
-      <div class="product-info">
-        <span class="product-code">REF: 302278</span>
-        <h2 class="product-name">Set Corazón de Perla</h2>
-        <p class="product-slogan">Latidos de pureza. Delicado conjunto de collar y aretes en inmaculado <strong>acero</strong>.</p>
-        <div class="product-price">L 299</div>
-        <div class="purchase-action">
-          <div class="qty-selector">
-            <button onclick="changeCardQty('qty-302278', -1)">-</button>
-            <span id="qty-302278">1</span>
-            <button onclick="changeCardQty('qty-302278', 1)">+</button>
-          </div>
-          <button class="btn-cart" onclick="addToCart('302278', 'Set Corazón Perla', 'L 299', 'acero10.jpg', this, 'qty-302278')">Añadir</button>
-        </div>
-      </div>
-    </article>
-
+  <main class="empire-section">
+    <div class="empire-content">
+      <p class="kicker">Capítulo I: El Origen</p>
+      <h1 class="main-title">Forjando el Imperio de tu <span style="font-style: italic;">Aura</span></h1>
+      
+      <div class="divider-gold"></div>
+      
+      <p class="manifesto-text">
+        El lujo no se apresura; se esculpe. En este momento, nuestros maestros artesanos están seleccionando una <span class="highlight-gold">variedad sin precedentes</span> de piezas donde la magia del diseño europeo se funde con el espíritu de la mujer hondureña. 
+      </p>
+      
+      <p class="manifesto-text">
+        Estamos creando un imperio de exclusividad diseñado para ti. Muy pronto, el misterio será revelado y podrás poseer el brillo que tu presencia merece. 
+      </p>
+      
+      <div class="divider-gold"></div>
+      
+      <p style="font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; color: var(--gris-suave);">
+        Próximamente · Alta Joyería ÈNIGME
+      </p>
+    </div>
   </main>
 
-  <footer class="legal-banner">
-    <div class="trust-badges-container">
-      <div class="trust-badge-item">
-        <svg viewBox="0 0 448 512"><path d="M400 224h-24v-72C376 68.2 307.8 0 224 0S72 68.2 72 152v72H48c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V272c0-26.5-21.5-48-48-48zm-224-72c0-26.5 21.5-48 48-48s48 21.5 48 48v72H176v-72zm112 300c-13.3 0-24-10.7-24-24s10.7-24 24-24 24 10.7 24 24-10.7 24-24 24z"/></svg>
-        Pago Cifrado Seguro
-      </div>
-      <div class="trust-badge-item">
-        <svg viewBox="0 0 512 512"><path d="M256 0c11 0 20 9 20 20v196h196c11 0 20 9 20 20s-9 20-20 20H276v196c0 11-9 20-20 20s-20-9-20-20V256H40c-11 0-20-9-20-20s9-20 20-20h196V20c0-11 9-20 20-20z"/></svg>
-        Autenticidad Real Garantizada
-      </div>
-      <div class="trust-badge-item">
-        <svg viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
-        Distribución Exclusiva HN
-      </div>
-    </div>
-
-    <p class="legal-text">
-      <strong>Política de Compra y Envíos:</strong> Operamos bajo la máxima seguridad transaccional cifrada. Debido a la curaduría y altos estándares de importación, las piezas se entregan <strong>25 días hábiles</strong> posteriores a la confirmación de pago. <strong>Cada joya ÈNIGME es real y auténtica, entregada con su respectiva tarjeta de marca.</strong><br><br>
-      Distribución logística exclusiva en <strong>Choluteca y Valle</strong>, <strong>CON ENVÍO INCLUIDO</strong> hasta punto de encuentro seguro en la ciudad.
-    </p>
-    <p class="founder-credit">
-      © 2026 ÈNIGME HONDURAS POR CARLOS ARMAS MARTÍNEZ. TODOS LOS DERECHOS RESERVADOS.
-    </p>
-  </footer>
-
-  <div id="toast-notification" class="toast-notification">
-    <svg viewBox="0 0 24 24"><path d="M16 6V4a4 4 0 0 0-8 0v2H3v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6h-5zm-6-2a2 2 0 0 1 4 0v2h-4V4zm8 16H6V8h2v2a1 1 0 0 0 2 0V8h4v2a1 1 0 0 0 2 0V8h2v12z"/></svg>
-    Se agregó a tu bolsa con éxito
+  <div class="floating-stack">
+    <a href="boutique.html" class="pill-btn light">Bolsos Boutique</a>
+    <a href="plata.html" class="pill-btn light">Plata de Ley</a>
+    <a href="liquidacion.html" class="pill-btn light">El Archivo</a>
+    <a href="https://wa.me/34602149162" class="pill-btn support" target="_blank">Soporte en línea</a>
   </div>
 
-  <script>
-    /* CONTROL DE CANTIDAD EN LA TARJETA */
-    function changeCardQty(id, delta) {
-      let el = document.getElementById(id);
-      let current = parseInt(el.innerText);
-      if (current + delta > 0) {
-        el.innerText = current + delta;
-      }
-    }
-
-    /* FAVORITOS */
-    function toggleFav(ref, name, price, img, btn) {
-      let favs = JSON.parse(localStorage.getItem('enigme_favs')) || [];
-      const index = favs.findIndex(i => i.ref === ref);
-      
-      if(index > -1) {
-        favs.splice(index, 1);
-        btn.classList.remove('active');
-      } else {
-        favs.push({ref, name, price, img});
-        btn.classList.add('active');
-      }
-      
-      localStorage.setItem('enigme_favs', JSON.stringify(favs));
-      updateCounts();
-    }
-
-    /* AÑADIR AL CARRITO (CON CANTIDAD Y NOTIFICACIÓN TOAST) */
-    function addToCart(ref, name, price, img, btn, qtyId) {
-      if (btn.classList.contains('added')) return; 
-      
-      const qtyToAdd = parseInt(document.getElementById(qtyId).innerText) || 1;
-      let cart = JSON.parse(localStorage.getItem('enigme_cart')) || [];
-      
-      let existing = cart.find(i => i.ref === ref);
-      if(existing) {
-        existing.qty += qtyToAdd;
-      } else {
-        cart.push({ref, name, price, img, qty: qtyToAdd});
-      }
-      
-      localStorage.setItem('enigme_cart', JSON.stringify(cart));
-      
-      // Feedback visual en el botón
-      const originalText = btn.innerText;
-      btn.classList.add('added');
-      btn.innerText = "AÑADIDO ✓";
-      
-      // Reset cantidad en tarjeta
-      document.getElementById(qtyId).innerText = "1";
-      
-      // MOSTRAR NOTIFICACIÓN TOAST (NUEVO)
-      const toast = document.getElementById('toast-notification');
-      toast.classList.add('show');
-
-      // Ocultar notificación y reset botón tras delay
-      setTimeout(() => {
-        toast.classList.remove('show');
-        btn.classList.remove('added');
-        btn.innerText = originalText;
-      }, 2500);
-
-      updateCounts();
-    }
-
-    /* ACTUALIZAR CONTADORES NAVBAR (CON FAVS Y BOLSA UNIFICADAS) */
-    function updateCounts() {
-      const cart = JSON.parse(localStorage.getItem('enigme_cart')) || [];
-      const favs = JSON.parse(localStorage.getItem('enigme_favs')) || [];
-      
-      let totalItems = 0;
-      cart.forEach(item => totalItems += (item.qty || 1));
-
-      // Actualizar contadores en la navbar unificada
-      if(document.getElementById('cart-count')) document.getElementById('cart-count').innerText = totalItems;
-      if(document.getElementById('fav-count')) document.getElementById('fav-count').innerText = favs.length;
-
-      // Marcar corazones activos en la grid
-      document.querySelectorAll('.btn-fav').forEach(btn => {
-        const ref = btn.getAttribute('data-ref');
-        if(favs.find(i => i.ref === ref)) {
-          btn.classList.add('active');
-        } else {
-          btn.classList.remove('active');
-        }
-      });
-    }
-
-    /* LIGHTBOX PARA VER LAS FOTOS EN GRANDE */
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-
-    function openLightbox(src) {
-      lightboxImg.src = src;
-      lightbox.classList.add('active');
-      document.body.style.overflow = 'hidden'; // Bloquear scroll
-    }
-
-    function closeLightbox(e) {
-      lightbox.classList.remove('active');
-      document.body.style.overflow = 'auto'; // Reanudar scroll
-    }
-
-    // Cargar contadores al inicio
-    window.onload = updateCounts;
-  </script>
+  <footer class="footer">
+    © 2026 ÈNIGME HONDURAS · POR CARLOS ARMAS MARTÍNEZ
+  </footer>
 
 </body>
 </html>
