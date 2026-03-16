@@ -18,7 +18,6 @@
       --gris-suave: #888888;
       --gris-linea: #EAEAEA;
       --dorado: #CBAA63;
-      --rosa-palo: #D8C3BC;
       --linea-fina: rgba(216, 195, 188, 0.4);
       --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
     }
@@ -56,15 +55,15 @@
     }
 
     /* =========================================
-       NAVBAR MINIMALISTA ÈNIGME (UNIFICADA)
+       NAVBAR ULTRA-MINIMALISTA (SOLO INICIO, TRABAJA Y FUNDADOR)
        ========================================= */
     .navbar {
       width: 100%;
-      padding: 30px 4vw;
+      padding: 30px 5vw;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid var(--gris-linea);
+      border-bottom: 1px solid var(--linea-fina);
       background: rgba(250, 249, 246, 0.98);
       position: sticky;
       top: 0;
@@ -74,69 +73,39 @@
     .brand-nav {
       font-family: 'Cinzel', serif;
       font-size: clamp(1.2rem, 2.5vw, 1.5rem);
-      letter-spacing: 0.35em;
+      letter-spacing: 0.4em;
       color: var(--carbon);
       text-align: center;
+      font-weight: 500;
     }
 
-    .nav-group { display: flex; gap: 30px; align-items: center; flex: 1; }
+    .nav-group { display: flex; gap: 40px; align-items: center; flex: 1; }
     .nav-group.right { justify-content: flex-end; }
     
     .nav-link {
-      font-size: 0.6rem;
-      letter-spacing: 3px;
+      font-size: 0.55rem;
+      letter-spacing: 4px;
       text-transform: uppercase;
       color: var(--gris-suave);
-      font-weight: 300;
+      font-weight: 500;
       position: relative;
-      padding-bottom: 4px;
+      padding-bottom: 6px;
       cursor: pointer;
+      transition: var(--transition);
     }
 
     .nav-link::after {
       content: '';
       position: absolute;
       width: 100%; height: 1px; bottom: 0; left: 0;
-      background-color: var(--rosa-palo);
+      background-color: var(--dorado);
       transform: scaleX(0);
       transform-origin: right;
-      transition: transform 0.4s ease;
+      transition: transform 0.6s ease;
     }
 
     .nav-link:hover, .nav-link.active { color: var(--carbon); }
     .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); transform-origin: left; }
-
-    /* MENÚ DESPLEGABLE CATÁLOGO */
-    .nav-dropdown { position: relative; display: inline-block; }
-    .dropdown-content { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background-color: var(--blanco-puro); min-width: 200px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); border: 1px solid var(--gris-linea); z-index: 1001; flex-direction: column; padding: 10px 0; margin-top: 10px; }
-    .dropdown-content::before { content: ''; position: absolute; top: -10px; left: 0; width: 100%; height: 10px; }
-    .nav-dropdown:hover .dropdown-content { display: flex; }
-    .dropdown-content a { padding: 12px 25px; font-size: 0.55rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gris-suave); text-align: center; transition: var(--transition); }
-    .dropdown-content a:hover { background-color: var(--marfil); color: var(--dorado); }
-
-    /* BOTONES DESTACADOS TENUES Y ELEGANTES */
-    .btn-menu-brand {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background-color: transparent;
-      color: var(--carbon) !important;
-      padding: 8px 16px;
-      border: 1px solid rgba(203, 170, 99, 0.5);
-      border-radius: 2px;
-      font-size: 0.6rem;
-      font-weight: 500;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      transition: var(--transition);
-    }
-    .btn-menu-brand:hover { background-color: var(--dorado); border-color: var(--dorado); }
-    .btn-menu-brand svg { width: 13px; height: 13px; fill: currentColor; transition: transform 0.3s ease; }
-
-    /* EFECTO LATIDO CARRITO */
-    .btn-cart-nav { animation: pulse-soft 2.5s infinite; }
-    .btn-cart-nav:hover svg { transform: scale(1.15) rotate(-5deg); }
-    .counter-badge { font-weight: 600; }
 
     /* BOTÓN MÁGICO DEL FUNDADOR */
     .btn-magic-founder {
@@ -146,12 +115,12 @@
       background: linear-gradient(120deg, transparent 0%, rgba(203, 170, 99, 0.15) 50%, transparent 100%);
       background-size: 200% auto;
       color: var(--dorado) !important;
-      padding: 8px 16px;
+      padding: 10px 20px;
       border: 1px solid var(--dorado);
       border-radius: 2px;
-      font-size: 0.6rem;
+      font-size: 0.55rem;
       font-weight: 600;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       text-transform: uppercase;
       transition: var(--transition);
       animation: goldShimmer 4s infinite linear, pulse-soft 3s infinite;
@@ -165,7 +134,7 @@
     .btn-magic-founder svg { width: 14px; height: 14px; fill: currentColor; }
 
     /* =========================================
-       SECCIÓN PRINCIPAL Y FIRMA
+       SECCIÓN PRINCIPAL
        ========================================= */
     .careers-section {
       flex: 1;
@@ -201,39 +170,56 @@
       font-weight: 400;
     }
 
-    /* EL MANIFIESTO DEL FUNDADOR */
+    /* =========================================
+       EL MANIFIESTO DEL FUNDADOR (TIPO CV INQUEBRANTABLE)
+       ========================================= */
     .founder-manifesto {
       background-color: var(--blanco-puro);
       border: 1px solid var(--dorado);
-      padding: 50px 40px;
+      padding: 40px;
       margin-bottom: 80px;
-      position: relative;
+      width: 100%;
+      max-width: 900px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.03);
-    }
-    
-    .founder-manifesto p {
-      font-size: 0.95rem;
-      line-height: 2.2;
-      color: var(--carbon);
-      font-weight: 300;
-      text-align: justify;
-      text-align-last: center;
-      margin-bottom: 30px;
+      
+      /* Display Grid constante (no cambia en móvil) */
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 30px;
+      align-items: center;
     }
 
-    .founder-manifesto strong {
-      font-weight: 500;
+    .manifesto-photo {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      border: 1px solid var(--linea-fina);
+      filter: contrast(1.05) saturate(0.9) sepia(0.05);
+    }
+
+    .manifesto-text-container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .manifesto-text-container p {
+      font-size: 0.9rem;
+      line-height: 2;
       color: var(--carbon);
+      font-weight: 300;
+      text-align: left;
+      margin-bottom: 20px;
     }
 
     .signature-block {
-      text-align: center;
-      margin-top: 20px;
+      text-align: left;
+      margin-top: 10px;
     }
 
     .signature-script {
       font-family: 'Great Vibes', cursive;
-      font-size: 3.5rem;
+      font-size: 2.5rem;
       color: var(--carbon);
       line-height: 1;
       transform: rotate(-3deg);
@@ -242,7 +228,7 @@
 
     .founder-title {
       font-family: 'Cinzel', serif;
-      font-size: 0.6rem;
+      font-size: 0.5rem;
       letter-spacing: 0.3em;
       text-transform: uppercase;
       color: var(--dorado);
@@ -273,7 +259,6 @@
       overflow: hidden;
     }
 
-    /* Borde superior dorado */
     .position-card::before {
       content: '';
       position: absolute;
@@ -479,19 +464,27 @@
     .footer-copy { font-size: 0.5rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gris-suave); font-weight: 300; opacity: 0.6; }
 
     /* RESPONSIVE */
-    @media (max-width: 950px) { .positions-grid { grid-template-columns: 1fr; gap: 30px; } }
+    @media (max-width: 950px) { 
+      .positions-grid { grid-template-columns: 1fr; gap: 30px; } 
+    }
+    
     @media (max-width: 768px) {
       .navbar { flex-wrap: wrap; justify-content: center; gap: 20px; padding: 25px 20px; }
-      .nav-group { justify-content: center; flex-wrap: wrap; width: 100%; flex: none; gap: 15px;}
+      .nav-group { justify-content: center; flex-wrap: wrap; width: 100%; flex: none; gap: 20px;}
       .brand-nav { order: -1; width: 100%; margin-bottom: 10px; }
-      .nav-link { font-size: 0.55rem; letter-spacing: 2px; }
-      .btn-menu-brand, .btn-magic-founder { padding: 8px 14px; font-size: 0.55rem; }
-      .dropdown-content { min-width: 150px; }
-      .dropdown-content a { font-size: 0.45rem; padding: 10px; }
       
       .careers-section { padding: 60px 20px; }
       .title { font-size: 2rem; margin-bottom: 20px;}
-      .founder-manifesto { padding: 30px 20px; }
+      
+      /* Ajuste clave para el CV en móvil */
+      .founder-manifesto { 
+        padding: 30px 20px; 
+        grid-template-columns: 80px 1fr; /* Mantiene la foto a la izq, pero más pequeña */
+        gap: 15px;
+      }
+      .manifesto-text-container p { font-size: 0.8rem; line-height: 1.8; margin-bottom: 10px; }
+      .signature-script { font-size: 2rem; }
+      .founder-title { font-size: 0.45rem; }
       
       .modal-content { padding: 40px 20px; width: 95%; }
       .form-grid { grid-template-columns: 1fr; gap: 20px; }
@@ -504,18 +497,6 @@
   <nav class="navbar">
     <div class="nav-group">
       <a href="index.html" class="nav-link">INICIO</a>
-      
-      <div class="nav-dropdown">
-        <span class="nav-link">CATÁLOGO ▾</span>
-        <div class="dropdown-content">
-          <a href="joyeria.html">Alta Joyería</a>
-          <a href="boutique.html">Bolsos Boutique</a>
-          <a href="plata.html">Plata de Ley</a>
-          <a href="liquidacion.html">El Archivo</a>
-        </div>
-      </div>
-
-      <a href="enigme.html" class="nav-link">L'ESSENCE</a>
       <a href="trabaja.html" class="nav-link active" style="color: var(--carbon);">TRABAJA CON NOSOTROS</a>
     </div>
     
@@ -525,21 +506,6 @@
       <a href="fundador.html" class="btn-magic-founder">
         <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
         EL FUNDADOR
-      </a>
-      
-      <a href="certificado.html" class="btn-menu-brand">
-        <svg viewBox="0 0 24 24"><path d="M17 10h-2V6c0-1.1-.9-2-2-2H5a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2v-4h2c1.1 0 2-.9 2-2V12a2 2 0 0 0-2-2zM5 6h8v4H5V6zm8 12H5V12h8v6zm6-6h-2V12h2v2z"/></svg>
-        CERTIFICADO
-      </a>
-
-      <a href="favoritos.html" class="btn-menu-brand">
-        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-        FAVS (<span id="fav-count" class="counter-badge">0</span>)
-      </a>
-
-      <a href="carrito.html" class="btn-menu-brand btn-cart-nav">
-        <svg viewBox="0 0 24 24"><path d="M16 6V4a4 4 0 0 0-8 0v2H3v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6h-5zm-6-2a2 2 0 0 1 4 0v2h-4V4zm8 16H6V8h2v2a1 1 0 0 0 2 0V8h4v2a1 1 0 0 0 2 0V8h2v12z"/></svg>
-        BOLSA (<span id="cart-count" class="counter-badge">0</span>)
       </a>
     </div>
   </nav>
@@ -558,12 +524,15 @@
     </div>
 
     <div class="founder-manifesto">
-      <p>
-        "ÈNIGME no es simplemente una firma; es una declaración de poder y elegancia nacida en Honduras bajo la inquebrantable precisión de la alta costura europea. Buscamos mentes excepcionales, líderes natos que compartan nuestra visión de lujo y exclusividad. Si tienes la convicción de forjar un legado, esta Casa te ofrece las herramientas para trascender."
-      </p>
-      <div class="signature-block">
-        <div class="signature-script">C. Armas M.</div>
-        <div class="founder-title">Carlos Armas Martínez · Fundador y Director Creativo</div>
+      <img src="cj.jpg" alt="Carlos Armas Martínez" class="manifesto-photo" onerror="this.src='https://via.placeholder.com/200x300?text=C.A.M.'">
+      <div class="manifesto-text-container">
+        <p>
+          "ÈNIGME no es simplemente una firma; es una declaración de poder y elegancia nacida en Honduras bajo la inquebrantable precisión de la alta costura europea. Buscamos mentes excepcionales, líderes natos que compartan nuestra visión de lujo y exclusividad. Si tienes la convicción de forjar un legado, esta Casa te ofrece las herramientas para trascender."
+        </p>
+        <div class="signature-block">
+          <div class="signature-script">C. Armas M.</div>
+          <div class="founder-title">Carlos Armas Martínez · Fundador y Director Creativo</div>
+        </div>
       </div>
     </div>
 
@@ -694,26 +663,6 @@
   </footer>
 
   <script>
-    /* =========================================
-       LÓGICA DEL CARRITO Y NAV
-       ========================================= */
-    function updateCounts() {
-      const cart = JSON.parse(localStorage.getItem('enigme_cart')) || [];
-      const favs = JSON.parse(localStorage.getItem('enigme_favs')) || [];
-      
-      let totalItems = 0;
-      cart.forEach(item => totalItems += (item.qty || 1));
-      
-      if(document.getElementById('cart-count')) {
-        document.getElementById('cart-count').innerText = totalItems;
-      }
-      if(document.getElementById('fav-count')) {
-        document.getElementById('fav-count').innerText = favs.length;
-      }
-    }
-    
-    window.onload = updateCounts;
-
     /* =========================================
        LÓGICA DEL MODAL DE APLICACIÓN
        ========================================= */
