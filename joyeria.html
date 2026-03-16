@@ -11,6 +11,7 @@
 
   <style>
     :root {
+      /* PALETA DE MARCA ÈNIGME */
       --marfil: #FAF9F6;
       --rosa-palo: #D8C3BC;
       --carbon: #1C1C1C;
@@ -37,7 +38,9 @@
     a { text-decoration: none; color: inherit; transition: var(--transition); }
     button { background: none; border: none; font-family: inherit; cursor: pointer; outline: none; }
 
-    /* NAVBAR COMPLETA Y PERSISTENTE */
+    /* =========================================
+       NAVBAR MINIMALISTA ÈNIGME (UNIFICADA)
+       ========================================= */
     .navbar {
       width: 100%;
       padding: 30px 4vw;
@@ -49,7 +52,7 @@
       backdrop-filter: blur(10px);
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
     }
 
     .brand {
@@ -62,16 +65,19 @@
 
     .nav-group { display: flex; gap: 30px; align-items: center; flex: 1; }
     .nav-group.right { justify-content: flex-end; }
-    .nav-group a {
+    
+    /* ENLACES NORMALES DE MENÚ */
+    .nav-link {
       font-size: 0.6rem;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--gris-suave);
+      font-weight: 300;
       position: relative;
       padding-bottom: 4px;
     }
 
-    .nav-group a::after {
+    .nav-link::after {
       content: '';
       position: absolute;
       width: 100%; height: 1px; bottom: 0; left: 0;
@@ -81,12 +87,52 @@
       transition: transform 0.4s ease;
     }
 
-    .nav-group a:hover, .nav-group a.active { color: var(--carbon); }
-    .nav-group a:hover::after, .nav-group a.active::after { transform: scaleX(1); transform-origin: left; }
+    .nav-link:hover, .nav-link.active { color: var(--carbon); }
+    .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); transform-origin: left; }
 
-    .counter-badge { color: var(--carbon); font-weight: 500; }
+    /* BOTONES DESTACADOS TENUES Y ELEGANTES (FAVS Y BOLSA) */
+    .btn-menu-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background-color: transparent;
+      color: var(--carbon) !important;
+      padding: 8px 16px;
+      border: 1px solid rgba(203, 170, 99, 0.5);
+      border-radius: 2px;
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: var(--transition);
+    }
 
-    /* ENCABEZADO DE LA GALERÍA */
+    .btn-menu-brand:hover {
+      background-color: var(--dorado);
+      border-color: var(--dorado);
+    }
+
+    .btn-menu-brand svg {
+      width: 13px;
+      height: 13px;
+      fill: currentColor;
+      transition: transform 0.3s ease;
+    }
+
+    /* CARRITO DINÁMICO (Efecto Latido) */
+    @keyframes pulse-soft {
+      0% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0.3); }
+      70% { box-shadow: 0 0 0 8px rgba(203, 170, 99, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0); }
+    }
+
+    .btn-cart-nav { animation: pulse-soft 2.5s infinite; }
+    .btn-cart-nav:hover svg { transform: scale(1.15) rotate(-5deg); }
+    .counter-badge { font-weight: 600; }
+
+    /* =========================================
+       ENCABEZADO DE LA GALERÍA
+       ========================================= */
     .gallery-header {
       text-align: center;
       padding: 80px 20px 50px;
@@ -96,35 +142,10 @@
       align-items: center;
     }
 
-    .gallery-kicker {
-      font-family: 'Cinzel', serif;
-      font-style: italic;
-      font-size: 0.9rem;
-      color: var(--rosa-palo);
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      margin-bottom: 15px;
-    }
+    .gallery-kicker { font-family: 'Cinzel', serif; font-style: italic; font-size: 0.9rem; color: var(--rosa-palo); letter-spacing: 5px; text-transform: uppercase; margin-bottom: 15px; }
+    .gallery-title { font-family: 'Cinzel', serif; font-size: clamp(2rem, 4vw, 3.5rem); letter-spacing: 0.15em; text-transform: uppercase; color: var(--carbon); margin-bottom: 20px; }
+    .gallery-desc { font-size: 0.85rem; line-height: 2.2; color: var(--gris-suave); max-width: 650px; margin: 0 auto 15px; font-weight: 300; }
 
-    .gallery-title {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--carbon);
-      margin-bottom: 20px;
-    }
-
-    .gallery-desc {
-      font-size: 0.85rem;
-      line-height: 2.2;
-      color: var(--gris-suave);
-      max-width: 650px;
-      margin: 0 auto 15px;
-      font-weight: 300;
-    }
-
-    /* ENLACE DEL SELLO DE CERTIFICACIÓN */
     .cert-seal-link { display: inline-block; margin-top: 5px; margin-bottom: 15px; transition: var(--transition); }
     .cert-seal-link:hover { transform: scale(1.05); }
     .cert-seal-img { max-width: 100px; height: auto; }
@@ -132,7 +153,9 @@
     .trust-text { font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; color: var(--carbon); font-weight: 500; display: flex; align-items: center; gap: 8px; margin-top: 10px; }
     .trust-text svg { width: 12px; height: 12px; fill: var(--rosa-palo); }
 
-    /* GRID DE PRODUCTOS */
+    /* =========================================
+       GRID DE PRODUCTOS
+       ========================================= */
     .product-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -145,7 +168,7 @@
 
     .product-card { display: flex; flex-direction: column; }
 
-    /* IMAGEN DE PRODUCTO */
+    /* IMAGEN DE PRODUCTO (RESPECTANDO UNA SOLA IMAGEN) */
     .image-wrapper {
       position: relative;
       background-color: white;
@@ -161,7 +184,7 @@
     .product-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; cursor: zoom-in; }
     .product-card:hover .product-image { transform: scale(1.03); }
 
-    /* BOTÓN FAVORITOS */
+    /* BOTÓN FAVORITOS (SOBRE LA IMAGEN) */
     .btn-fav { position: absolute; top: 15px; right: 15px; width: 35px; height: 35px; background-color: var(--marfil); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05); z-index: 10; transition: var(--transition); color: var(--carbon); }
     .btn-fav:hover { transform: scale(1.1); }
     .btn-fav svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; transition: var(--transition); }
@@ -175,43 +198,13 @@
     .product-slogan strong { color: var(--carbon); font-weight: 600; }
     .product-price { font-size: 0.9rem; letter-spacing: 2px; color: var(--carbon); font-weight: 500; margin-bottom: 25px; display: flex; align-items: center; justify-content: center; gap: 10px; }
 
-    /* CONTROL DE CANTIDAD + AÑADIR (REDESIGN V.I.P) */
-    .purchase-action {
-      display: flex;
-      margin-top: auto;
-      border: 1px solid var(--linea-fina);
-      border-radius: 0;
-      overflow: hidden;
-      height: 42px;
-    }
-
-    .qty-selector {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 90px;
-      background: var(--marfil);
-      border-right: 1px solid var(--linea-fina);
-    }
-
-    .qty-selector button {
-      width: 30px;
-      height: 100%;
-      font-size: 1.1rem;
-      color: var(--gris-suave);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+    /* CONTROL DE CANTIDAD + AÑADIR */
+    .purchase-action { display: flex; margin-top: auto; border: 1px solid var(--linea-fina); border-radius: 0; overflow: hidden; height: 42px; }
+    .qty-selector { display: flex; align-items: center; justify-content: space-between; width: 90px; background: var(--marfil); border-right: 1px solid var(--linea-fina); }
+    .qty-selector button { width: 30px; height: 100%; font-size: 1.1rem; color: var(--gris-suave); display: flex; align-items: center; justify-content: center; }
     .qty-selector button:hover { color: var(--carbon); background: rgba(0,0,0,0.03); }
-
-    .qty-selector span {
-      font-size: 0.75rem;
-      font-weight: 500;
-      color: var(--carbon);
-      flex-grow: 1;
-    }
-
+    .qty-selector span { font-size: 0.75rem; font-weight: 500; color: var(--carbon); flex-grow: 1; }
+    
     .btn-cart {
       flex-grow: 1;
       background-color: transparent;
@@ -223,40 +216,78 @@
       transition: var(--transition);
       font-weight: 600;
     }
-
     .btn-cart:hover { background-color: var(--dorado); color: var(--carbon); }
     .btn-cart.added { background: var(--carbon); color: var(--dorado); }
 
-    /* BANNER LEGAL Y FOOTER */
+    /* =========================================
+       BOTONES FLOTANTES COMPACTOS
+       ========================================= */
+    .floating-stack { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; align-items: flex-end; gap: 8px; z-index: 999; }
+    .pill-btn { display: flex; align-items: center; gap: 8px; height: 32px; padding: 0 14px; border-radius: 20px; background: var(--carbon); color: var(--marfil); font-size: 0.45rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 1px solid transparent; white-space: nowrap; transition: var(--transition); }
+    .pill-btn.light { background: var(--marfil); color: var(--carbon); border: 1px solid var(--linea-fina); }
+    .pill-btn:hover { transform: translateX(-5px); background: var(--dorado); color: var(--carbon); border-color: var(--dorado); }
+    .pill-btn svg { width: 12px; height: 12px; fill: currentColor; }
+
+    /* =========================================
+       NOTIFICACIÓN TOAST (AGREGADO AL CARRITO)
+       ========================================= */
+    .toast-notification {
+      position: fixed;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background-color: var(--carbon);
+      color: var(--dorado);
+      padding: 14px 28px;
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 500;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+      z-index: 10000;
+      opacity: 0;
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      pointer-events: none;
+    }
+    .toast-notification.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+    .toast-notification svg { width: 16px; height: 16px; fill: currentColor; }
+
+    /* =========================================
+       BANNER LEGAL Y FOOTER
+       ========================================= */
     .legal-banner { border-top: 1px solid var(--linea-fina); padding: 60px 5vw 40px; text-align: center; margin-top: auto; }
     .trust-badges-container { display: flex; justify-content: center; gap: 30px; margin-bottom: 40px; padding: 0 5vw; flex-wrap: wrap; }
     .trust-badge-item { display: flex; align-items: center; gap: 10px; color: var(--dorado); border: 1px solid var(--dorado); padding: 8px 15px; font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
     .trust-badge-item svg { width: 14px; height: 14px; fill: currentColor; }
     .legal-text { font-size: 0.6rem; line-height: 2.2; letter-spacing: 1.5px; color: var(--gris-suave); max-width: 900px; margin: 0 auto; text-transform: uppercase; }
     .legal-text strong { color: var(--carbon); }
-    .footer-credit { margin-top: 30px; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--carbon); }
+    
+    /* CRÉDITOS DEL FUNDADOR - TENUE */
+    .founder-credit { margin-top: 40px; font-size: 0.5rem; letter-spacing: 0.25em; color: var(--gris-suave); opacity: 0.5; text-transform: uppercase; font-weight: 300; }
 
-    /* BOTONES FLOTANTES COMPACTOS */
-    .floating-stack { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; align-items: flex-end; gap: 8px; z-index: 999; }
-    .pill-btn { display: flex; align-items: center; gap: 8px; height: 32px; padding: 0 14px; border-radius: 20px; background: var(--carbon); color: var(--marfil); font-size: 0.45rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 1px solid transparent; white-space: nowrap; transition: var(--transition); }
-    .pill-btn.light { background: var(--marfil); color: var(--carbon); border: 1px solid var(--linea-fina); }
-    .pill-btn:hover { transform: translateX(-5px); background: var(--rosa-palo); color: var(--carbon); border-color: var(--rosa-palo); }
-    .pill-btn svg { width: 12px; height: 12px; fill: currentColor; }
-
-    /* LIGHTBOX */
-    .lightbox { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(250, 249, 246, 0.95); backdrop-filter: blur(5px); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
+    /* =========================================
+       LIGHTBOX (VISUALIZACIÓN DE IMAGEN)
+       ========================================= */
+    .lightbox { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(250, 249, 246, 0.98); backdrop-filter: blur(10px); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
     .lightbox.active { opacity: 1; pointer-events: auto; }
-    .lightbox img { max-width: 90%; max-height: 90%; object-fit: contain; transform: scale(0.95); transition: transform 0.4s ease; }
+    .lightbox img { max-width: 90%; max-height: 90%; object-fit: contain; transform: scale(0.95); transition: transform 0.4s ease; box-shadow: 0 20px 50px rgba(0,0,0,0.15);}
     .lightbox.active img { transform: scale(1); }
     .lightbox-close { position: absolute; top: 30px; right: 40px; font-size: 3rem; color: var(--carbon); cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 200; line-height: 1; transition: var(--transition); }
-    .lightbox-close:hover { color: var(--rosa-palo); transform: scale(1.1); }
+    .lightbox-close:hover { color: var(--dorado); transform: scale(1.1); }
 
-    /* RESPONSIVE */
+    /* =========================================
+       RESPONSIVE MÓVIL
+       ========================================= */
     @media (max-width: 900px) { .nav-group { gap: 15px; } .nav-group a { font-size: 0.5rem; letter-spacing: 1px; } }
     @media (max-width: 768px) {
       .navbar { flex-wrap: wrap; justify-content: center; gap: 20px; padding: 25px; }
       .nav-group { justify-content: center; flex-wrap: wrap; width: 100%; flex: none; gap: 15px;}
       .brand { order: -1; width: 100%; margin-bottom: 10px; }
+      .nav-link { font-size: 0.55rem; letter-spacing: 2px; }
+      .btn-menu-brand { padding: 8px 14px; font-size: 0.55rem; }
       .product-grid { grid-template-columns: 1fr 1fr; gap: 40px 15px; padding: 40px 15px; }
       .gallery-title { font-size: 1.8rem; }
       .product-name { font-size: 0.85rem; }
@@ -268,6 +299,7 @@
       .trust-badge-item { padding: 6px 12px; font-size: 0.5rem; }
       .qty-selector { width: 70px; }
       .btn-cart { font-size: 0.5rem; letter-spacing: 2px; }
+      .toast-notification { width: 90%; justify-content: center; bottom: 20px; font-size: 0.55rem; }
     }
   </style>
 </head>
@@ -275,23 +307,34 @@
 
   <nav class="navbar">
     <div class="nav-group">
-      <a href="index.html">INICIO</a>
-      <a href="enigme.html">ÈNIGME</a>
-      <a href="soporte.html">SOPORTE</a>
+      <a href="index.html" class="nav-link">INICIO</a>
+      <a href="catalogo.html" class="nav-link">CATÁLOGO</a>
+      <a href="certificado.html" class="btn-menu-brand">
+        <svg viewBox="0 0 24 24"><path d="M17 10h-2V6c0-1.1-.9-2-2-2H5a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2v-4h2c1.1 0 2-.9 2-2V12a2 2 0 0 0-2-2zM5 6h8v4H5V6zm8 12H5V12h8v6zm6-6h-2V12h2v2z"/></svg>
+        CERTIFICADO
+      </a>
     </div>
     
     <div class="brand">È N I G M E</div>
     
     <div class="nav-group right">
-      <a href="catalogo.html">CATÁLOGO</a>
-      <a href="favoritos.html">FAVORITOS (<span id="fav-count" class="counter-badge">0</span>)</a>
-      <a href="carrito.html">CARRITO (<span id="cart-count" class="counter-badge">0</span>)</a>
+      <a href="mailto:info@enigmeofficia.com" class="nav-link">SOPORTE</a>
+      
+      <a href="favoritos.html" class="btn-menu-brand">
+        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        FAVS (<span id="fav-count" class="counter-badge">0</span>)
+      </a>
+      
+      <a href="carrito.html" class="btn-menu-brand btn-cart-nav">
+        <svg viewBox="0 0 24 24"><path d="M16 6V4a4 4 0 0 0-8 0v2H3v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6h-5zm-6-2a2 2 0 0 1 4 0v2h-4V4zm8 16H6V8h2v2a1 1 0 0 0 2 0V8h4v2a1 1 0 0 0 2 0V8h2v12z"/></svg>
+        BOLSA (<span id="cart-count" class="counter-badge">0</span>)
+      </a>
     </div>
   </nav>
 
   <div class="floating-stack">
     <a href="plata.html" class="pill-btn light">
-      <svg viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></svg>
+      <svg viewBox="0 0 576 512"><path d="M312 24l210.3 226.7c18.5 19.9 18.5 50.7 0 70.6L312 488c-13.3 14.3-34.7 14.3-48 0L53.7 321.3c-18.5-19.9-18.5-50.7 0-70.6L264 24c13.3-14.3 34.7-14.3 48 0zM170.8 288l117.2 126.3L405.2 288H170.8z"/></svg>
       Colección Plata
     </a>
     <a href="boutique.html" class="pill-btn light">
@@ -302,7 +345,7 @@
       <svg viewBox="0 0 512 512"><path d="M256 0c11 0 20 9 20 20v196h196c11 0 20 9 20 20s-9 20-20 20H276v196c0 11-9 20-20 20s-20-9-20-20V256H40c-11 0-20-9-20-20s9-20 20-20h196V20c0-11 9-20 20-20z"/></svg>
       Liquidación
     </a>
-    <a href="https://wa.me/34602149162?text=Hola,%20estoy%20en%20la%20secci%C3%B3n%20de%20Alta%20Joyer%C3%ADa%20y%20deseo%20asesor%C3%ADa%20con%20una%20pieza." class="pill-btn">
+    <a href="https://wa.me/34602149162?text=Hola,%20estoy%20en%20la%20secci%C3%B3n%20de%20Alta%20Joyer%C3%ADa%20y%20deseo%20asesor%C3%ADa%20con%20una%20pieza." class="pill-btn" target="_blank">
       <svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
       Atención VIP
     </a>
@@ -344,7 +387,6 @@
         <h2 class="product-name">Set Primavera Eterna</h2>
         <p class="product-slogan">El renacer de tu luz. Cadena y aretes de <strong>acero inoxidable</strong> con impecable chapado en <strong>oro de 14K</strong>.</p>
         <div class="product-price">L 399</div>
-        
         <div class="purchase-action">
           <div class="qty-selector">
             <button onclick="changeCardQty('qty-300010', -1)">-</button>
@@ -368,7 +410,6 @@
         <h2 class="product-name">Set Presencia Absoluta</h2>
         <p class="product-slogan">Tu esencia inquebrantable. Pulsera, aretes y collar con exquisito baño de <strong>oro de 18K</strong>.</p>
         <div class="product-price">L 499</div>
-        
         <div class="purchase-action">
           <div class="qty-selector">
             <button onclick="changeCardQty('qty-301222', -1)">-</button>
@@ -392,7 +433,6 @@
         <h2 class="product-name">Pulsera Divina Fe</h2>
         <p class="product-slogan">Devoción y vanguardia. Preciosa cruz de <strong>acero inoxidable</strong> con baño de <strong>oro blanco de 14K</strong>.</p>
         <div class="product-price">L 299</div>
-        
         <div class="purchase-action">
           <div class="qty-selector">
             <button onclick="changeCardQty('qty-301212', -1)">-</button>
@@ -416,7 +456,6 @@
         <h2 class="product-name">Pulsera Cruz Eterna</h2>
         <p class="product-slogan">El peso de lo eterno. Estructura imponente en <strong>acero</strong> realzada por un brillante baño de <strong>oro de 18K</strong>.</p>
         <div class="product-price">L 319</div>
-        
         <div class="purchase-action">
           <div class="qty-selector">
             <button onclick="changeCardQty('qty-301289', -1)">-</button>
@@ -440,7 +479,6 @@
         <h2 class="product-name">Set Lazo de Oro</h2>
         <p class="product-slogan">Vínculos de elegancia. Cadena, pulsera y aretes de <strong>acero puro</strong> con baño de <strong>oro de 14K</strong>.</p>
         <div class="product-price">L 419</div>
-        
         <div class="purchase-action">
           <div class="qty-selector">
             <button onclick="changeCardQty('qty-301062', -1)">-</button>
@@ -464,7 +502,6 @@
         <h2 class="product-name">Pulsera Gracia Inmaculada</h2>
         <p class="product-slogan">Protección y estilo. Diseño forjado con altísima precisión en <strong>acero inoxidable quirúrgico</strong>.</p>
         <div class="product-price">L 299</div>
-        
         <div class="purchase-action">
           <div class="qty-selector">
             <button onclick="changeCardQty('qty-300913', -1)">-</button>
@@ -488,7 +525,6 @@
         <h2 class="product-name">Collar Cruz Sagrada</h2>
         <p class="product-slogan">Geometría de fe. Precioso collar de <strong>acero</strong> recubierto con un delicado baño de <strong>oro</strong>.</p>
         <div class="product-price">L 349</div>
-        
         <div class="purchase-action">
           <div class="qty-selector">
             <button onclick="changeCardQty('qty-301956', -1)">-</button>
@@ -512,7 +548,6 @@
         <h2 class="product-name">Collar Órbita Saturno</h2>
         <p class="product-slogan">Magnetismo estelar. Inspiración planetaria pulida a la perfección en <strong>acero inoxidable 304L</strong>.</p>
         <div class="product-price">L 299</div>
-        
         <div class="purchase-action">
           <div class="qty-selector">
             <button onclick="changeCardQty('qty-301102', -1)">-</button>
@@ -536,7 +571,6 @@
         <h2 class="product-name">Pulsera Mariposa Real</h2>
         <p class="product-slogan">Metamorfosis de lujo. Detalle alado en <strong>acero</strong> sellado con baño de <strong>oro de 14K</strong>.</p>
         <div class="product-price">L 319</div>
-        
         <div class="purchase-action">
           <div class="qty-selector">
             <button onclick="changeCardQty('qty-301616', -1)">-</button>
@@ -560,7 +594,6 @@
         <h2 class="product-name">Set Corazón de Perla</h2>
         <p class="product-slogan">Latidos de pureza. Delicado conjunto de collar y aretes en inmaculado <strong>acero</strong>.</p>
         <div class="product-price">L 299</div>
-        
         <div class="purchase-action">
           <div class="qty-selector">
             <button onclick="changeCardQty('qty-302278', -1)">-</button>
@@ -575,7 +608,6 @@
   </main>
 
   <footer class="legal-banner">
-    
     <div class="trust-badges-container">
       <div class="trust-badge-item">
         <svg viewBox="0 0 448 512"><path d="M400 224h-24v-72C376 68.2 307.8 0 224 0S72 68.2 72 152v72H48c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V272c0-26.5-21.5-48-48-48zm-224-72c0-26.5 21.5-48 48-48s48 21.5 48 48v72H176v-72zm112 300c-13.3 0-24-10.7-24-24s10.7-24 24-24 24 10.7 24 24-10.7 24-24 24z"/></svg>
@@ -595,10 +627,15 @@
       <strong>Política de Compra y Envíos:</strong> Operamos bajo la máxima seguridad transaccional cifrada. Debido a la curaduría y altos estándares de importación, las piezas se entregan <strong>25 días hábiles</strong> posteriores a la confirmación de pago. <strong>Cada joya ÈNIGME es real y auténtica, entregada con su respectiva tarjeta de marca.</strong><br><br>
       Distribución logística exclusiva en <strong>Choluteca y Valle</strong>, <strong>CON ENVÍO INCLUIDO</strong> hasta punto de encuentro seguro en la ciudad.
     </p>
-    <p class="footer-credit">
+    <p class="founder-credit">
       © 2026 ÈNIGME HONDURAS POR CARLOS ARMAS MARTÍNEZ. TODOS LOS DERECHOS RESERVADOS.
     </p>
   </footer>
+
+  <div id="toast-notification" class="toast-notification">
+    <svg viewBox="0 0 24 24"><path d="M16 6V4a4 4 0 0 0-8 0v2H3v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6h-5zm-6-2a2 2 0 0 1 4 0v2h-4V4zm8 16H6V8h2v2a1 1 0 0 0 2 0V8h4v2a1 1 0 0 0 2 0V8h2v12z"/></svg>
+    Se agregó a tu bolsa con éxito
+  </div>
 
   <script>
     /* CONTROL DE CANTIDAD EN LA TARJETA */
@@ -627,7 +664,7 @@
       updateCounts();
     }
 
-    /* AÑADIR AL CARRITO (CON CANTIDAD) */
+    /* AÑADIR AL CARRITO (CON CANTIDAD Y NOTIFICACIÓN TOAST) */
     function addToCart(ref, name, price, img, btn, qtyId) {
       if (btn.classList.contains('added')) return; 
       
@@ -643,21 +680,29 @@
       
       localStorage.setItem('enigme_cart', JSON.stringify(cart));
       
+      // Feedback visual en el botón
       const originalText = btn.innerText;
       btn.classList.add('added');
       btn.innerText = "AÑADIDO ✓";
       
+      // Reset cantidad en tarjeta
       document.getElementById(qtyId).innerText = "1";
       
+      // MOSTRAR NOTIFICACIÓN TOAST (NUEVO)
+      const toast = document.getElementById('toast-notification');
+      toast.classList.add('show');
+
+      // Ocultar notificación y reset botón tras delay
       setTimeout(() => {
+        toast.classList.remove('show');
         btn.classList.remove('added');
         btn.innerText = originalText;
-      }, 1500);
+      }, 2500);
 
       updateCounts();
     }
 
-    /* ACTUALIZAR CONTADORES NAVBAR */
+    /* ACTUALIZAR CONTADORES NAVBAR (CON FAVS Y BOLSA UNIFICADAS) */
     function updateCounts() {
       const cart = JSON.parse(localStorage.getItem('enigme_cart')) || [];
       const favs = JSON.parse(localStorage.getItem('enigme_favs')) || [];
@@ -665,13 +710,17 @@
       let totalItems = 0;
       cart.forEach(item => totalItems += (item.qty || 1));
 
+      // Actualizar contadores en la navbar unificada
       if(document.getElementById('cart-count')) document.getElementById('cart-count').innerText = totalItems;
       if(document.getElementById('fav-count')) document.getElementById('fav-count').innerText = favs.length;
 
+      // Marcar corazones activos en la grid
       document.querySelectorAll('.btn-fav').forEach(btn => {
         const ref = btn.getAttribute('data-ref');
         if(favs.find(i => i.ref === ref)) {
           btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
         }
       });
     }
@@ -683,14 +732,15 @@
     function openLightbox(src) {
       lightboxImg.src = src;
       lightbox.classList.add('active');
-      document.body.style.overflow = 'hidden'; 
+      document.body.style.overflow = 'hidden'; // Bloquear scroll
     }
 
     function closeLightbox(e) {
       lightbox.classList.remove('active');
-      document.body.style.overflow = 'auto'; 
+      document.body.style.overflow = 'auto'; // Reanudar scroll
     }
 
+    // Cargar contadores al inicio
     window.onload = updateCounts;
   </script>
 
