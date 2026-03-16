@@ -81,7 +81,7 @@
     }
 
     /* =========================================
-       NAVBAR DE ALTA COSTURA (REDISEÑADA)
+       NAVBAR DE ALTA COSTURA (REDISEÑADA DOS FILAS)
        ========================================= */
     .navbar {
       width: 100%;
@@ -92,7 +92,7 @@
       z-index: 1000;
       border-bottom: 1px solid var(--linea-fina);
       display: flex;
-      flex-direction: column; /* Coloca el logo arriba y los botones abajo */
+      flex-direction: column;
       align-items: center;
       padding: 20px 4vw 15px;
       gap: 20px;
@@ -141,15 +141,12 @@
       position: relative;
       padding-bottom: 4px;
       cursor: pointer;
-      white-space: nowrap; /* Evita que el texto se rompa */
+      white-space: nowrap;
       animation: navGlow 4s infinite ease-in-out;
     }
 
-    .nav-links-text .nav-link:nth-child(1) { animation-delay: 0s; }
-    .nav-links-text .nav-dropdown { animation-delay: 1s; }
-    .nav-links-text .nav-link:nth-child(3) { animation-delay: 2s; }
-    .nav-links-text .nav-link:nth-child(4) { animation-delay: 3s; }
-    .nav-links-text .nav-link:nth-child(5) { animation-delay: 4s; }
+    .nav-links-text .nav-dropdown { animation-delay: 0s; }
+    .nav-links-text .nav-link:nth-child(2) { animation-delay: 1s; }
 
     .nav-link::after {
       content: '';
@@ -188,7 +185,7 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       transition: var(--transition);
-      white-space: nowrap; /* Evita que el botón se rompa en 2 líneas */
+      white-space: nowrap;
       animation: none;
     }
     .btn-menu-brand:hover { background-color: var(--dorado); border-color: var(--dorado); }
@@ -209,7 +206,7 @@
       font-weight: 600;
       letter-spacing: 2px;
       text-transform: uppercase;
-      white-space: nowrap; /* Evita rotura */
+      white-space: nowrap;
       transition: var(--transition);
       animation: goldShimmer 4s infinite linear, pulse-soft 3s infinite;
     }
@@ -220,11 +217,6 @@
       box-shadow: 0 5px 15px rgba(203, 170, 99, 0.4);
     }
     .btn-magic-founder svg { width: 14px; height: 14px; fill: currentColor; }
-
-    /* EFECTO LATIDO CARRITO */
-    .btn-cart-nav { animation: pulse-soft 2.5s infinite; }
-    .btn-cart-nav:hover svg { transform: scale(1.15) rotate(-5deg); }
-    .counter-badge { font-weight: 600; }
 
     /* =========================================
        PORTADA DINÁMICA DE ALTO RENDIMIENTO
@@ -474,9 +466,6 @@
       margin-right: 10px;
     }
 
-    /* =========================================
-       BOTONES EDITORIALES FINOS (ANIMADOS)
-       ========================================= */
     .magazine-cta {
       display: flex;
       justify-content: center;
@@ -626,8 +615,6 @@
     <div class="nav-bottom">
       
       <div class="nav-links-text">
-        <a href="index.html" class="nav-link active">INICIO</a>
-        
         <div class="nav-dropdown">
           <span class="nav-link">CATÁLOGO ▾</span>
           <div class="dropdown-content">
@@ -637,10 +624,7 @@
             <a href="liquidacion.html">El Archivo</a>
           </div>
         </div>
-
-        <a href="enigme.html" class="nav-link">L'ESSENCE</a>
         <a href="trabaja.html" class="nav-link">TRABAJA CON NOSOTROS</a>
-        <a href="soporte.html" class="nav-link">SOPORTE</a>
       </div>
 
       <div class="nav-actions">
@@ -652,16 +636,6 @@
         <a href="fundador.html" class="btn-magic-founder">
           <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
           EL FUNDADOR
-        </a>
-        
-        <a href="favoritos.html" class="btn-menu-brand">
-          <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-          FAVS (<span id="fav-count" class="counter-badge">0</span>)
-        </a>
-
-        <a href="carrito.html" class="btn-menu-brand btn-cart-nav">
-          <svg viewBox="0 0 24 24"><path d="M16 6V4a4 4 0 0 0-8 0v2H3v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6h-5zm-6-2a2 2 0 0 1 4 0v2h-4V4zm8 16H6V8h2v2a1 1 0 0 0 2 0V8h4v2a1 1 0 0 0 2 0V8h2v12z"/></svg>
-          BOLSA (<span id="cart-count" class="counter-badge">0</span>)
         </a>
       </div>
 
@@ -761,25 +735,6 @@
       © 2026 ÈNIGME HONDURAS POR CARLOS ARMAS MARTÍNEZ. TODOS LOS DERECHOS RESERVADOS.
     </div>
   </footer>
-
-  <script>
-    function updateCounts() {
-      const cart = JSON.parse(localStorage.getItem('enigme_cart')) || [];
-      const favs = JSON.parse(localStorage.getItem('enigme_favs')) || [];
-      
-      let totalItems = 0;
-      cart.forEach(item => totalItems += (item.qty || 1));
-      
-      if(document.getElementById('cart-count')) {
-        document.getElementById('cart-count').innerText = totalItems;
-      }
-      if(document.getElementById('fav-count')) {
-        document.getElementById('fav-count').innerText = favs.length;
-      }
-    }
-    
-    window.onload = updateCounts;
-  </script>
 
 </body>
 </html>
