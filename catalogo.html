@@ -18,7 +18,7 @@
       --dorado: #CBAA63;
       --dorado-brillo: #E8D090;
       --linea-fina: rgba(216, 195, 188, 0.4);
-      --transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      --transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -40,31 +40,28 @@
     /* =========================================
        ANIMACIONES MÁGICAS (AURA Y DESTELLOS)
        ========================================= */
-    
-    /* Efecto de flotación suave */
     @keyframes floating {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
+      50% { transform: translateY(-3px); }
     }
 
-    /* Resplandor dorado pulsante */
-    @keyframes aura-glow {
-      0%, 100% { text-shadow: 0 0 10px rgba(203, 170, 99, 0.2); color: var(--carbon); }
-      50% { text-shadow: 0 0 25px rgba(203, 170, 99, 0.8), 0 0 40px rgba(203, 170, 99, 0.4); color: var(--dorado); }
-    }
-
-    /* Brillo que recorre las letras (Shimmer) */
     @keyframes gold-shimmer {
       0% { background-position: -200% center; }
       100% { background-position: 200% center; }
     }
 
+    @keyframes pulse-gold {
+      0% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0.4); }
+      70% { box-shadow: 0 0 0 15px rgba(203, 170, 99, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0); }
+    }
+
     /* =========================================
-       NAVBAR MÁGICA ÈNIGME
+       NAVBAR RESPONSIVA ÈNIGME
        ========================================= */
     .navbar {
       width: 100%;
-      padding: 40px 5vw;
+      padding: 30px 4vw;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -75,55 +72,46 @@
       z-index: 1000;
     }
 
-    /* EL LOGO CENTRAL MÁGICO */
+    .nav-group { display: flex; align-items: center; gap: 20px; flex: 1; }
+    .nav-group.right { justify-content: flex-end; }
+
     .brand-container {
-      flex: 1;
+      flex: 0 1 auto;
       display: flex;
       justify-content: center;
+      min-width: fit-content;
     }
 
     .brand-magic {
       font-family: 'Cinzel', serif;
-      font-size: clamp(1.4rem, 2.5vw, 2rem);
-      letter-spacing: 0.5em;
+      font-size: clamp(1.2rem, 4vw, 1.8rem);
+      letter-spacing: 0.4em;
       font-weight: 500;
       text-transform: uppercase;
-      position: relative;
+      white-space: nowrap;
       cursor: pointer;
-      padding: 10px 20px;
-      
-      /* Configuración para el brillo metálico */
+      padding: 5px 10px;
       background: linear-gradient(90deg, var(--carbon) 0%, var(--dorado) 45%, var(--dorado-brillo) 50%, var(--dorado) 55%, var(--carbon) 100%);
       background-size: 200% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      
-      animation: gold-shimmer 4s infinite linear, floating 4s infinite ease-in-out;
-      transition: var(--transition);
+      animation: gold-shimmer 5s infinite linear, floating 3s infinite ease-in-out;
+      display: inline-block;
     }
 
-    .brand-magic:hover {
-      transform: scale(1.05);
-      filter: drop-shadow(0 0 15px rgba(203, 170, 99, 0.5));
-    }
-
-    .nav-group { display: flex; align-items: center; flex: 1; }
-    .nav-group.right { justify-content: flex-end; }
-    
     .nav-link-magic {
-      font-size: 0.65rem;
-      letter-spacing: 4px;
+      font-size: 0.6rem;
+      letter-spacing: 2px;
       text-transform: uppercase;
       font-weight: 600;
       color: var(--carbon);
       position: relative;
-      animation: aura-glow 5s infinite ease-in-out;
     }
 
     .nav-link-magic::after {
       content: '';
       position: absolute;
-      width: 100%; height: 1px; bottom: -5px; left: 0;
+      width: 100%; height: 1px; bottom: -4px; left: 0;
       background-color: var(--dorado);
       transform: scaleX(0);
       transition: transform 0.4s ease;
@@ -131,91 +119,97 @@
     .nav-link-magic:hover::after { transform: scaleX(1); }
 
     /* =========================================
-       AVISO V.I.P. ESTRATÉGICO
+       AVISO V.I.P.
        ========================================= */
-    .vip-notice-wrapper {
-      padding: 40px 5vw 0;
-      display: flex;
-      justify-content: center;
-    }
-
+    .vip-notice-wrapper { padding: 30px 5vw 0; display: flex; justify-content: center; }
     .vip-notice {
       max-width: 800px;
       width: 100%;
-      padding: 25px;
+      padding: 15px 25px;
       text-align: center;
       border: 1px solid var(--dorado);
       background-color: var(--marfil);
-      position: relative;
-      overflow: hidden;
     }
-
-    /* Destello sutil en el aviso */
-    .vip-notice::before {
-      content: '';
-      position: absolute;
-      top: 0; left: -100%; width: 50%; height: 100%;
-      background: linear-gradient(to right, transparent, rgba(203, 170, 99, 0.1), transparent);
-      transform: skewX(-25deg);
-      animation: gold-shimmer 6s infinite linear;
-    }
-
     .vip-notice p {
-      font-size: 0.65rem;
-      letter-spacing: 2px;
-      line-height: 2;
+      font-size: 0.6rem;
+      letter-spacing: 1px;
+      line-height: 1.6;
       text-transform: uppercase;
       color: var(--carbon);
       font-weight: 600;
     }
 
-    .vip-notice strong { color: var(--dorado); }
-
     /* =========================================
        GRID DE CATEGORÍAS
        ========================================= */
-    .catalog-header { text-align: center; padding: 60px 20px 40px; }
-    .catalog-title { font-family: 'Cinzel', serif; font-size: clamp(2rem, 4vw, 3.5rem); letter-spacing: 0.15em; text-transform: uppercase; color: var(--carbon); }
+    .catalog-header { text-align: center; padding: 40px 20px 30px; }
+    .catalog-title { font-family: 'Cinzel', serif; font-size: clamp(1.8rem, 5vw, 3rem); letter-spacing: 0.1em; text-transform: uppercase; color: var(--carbon); }
 
     .split-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 60px 40px; 
-      padding: 0 5vw 120px;
-      max-width: 1300px; 
+      gap: 30px 20px; 
+      padding: 0 4vw 100px;
+      max-width: 1200px; 
       margin: 0 auto;
-      width: 100%;
     }
 
-    .category-card { display: flex; flex-direction: column; transition: var(--transition); }
-    .image-wrapper { background-color: var(--marfil); border: 1px solid var(--linea-fina); padding: 30px; display: flex; align-items: center; justify-content: center; aspect-ratio: 4/5; overflow: hidden; position: relative; }
-    .category-card:hover .image-wrapper { border-color: var(--dorado); }
-    .image-wrapper img { width: 100%; height: 100%; object-fit: contain; transition: transform 1.5s cubic-bezier(0.23, 1, 0.32, 1); }
+    .category-card { display: flex; flex-direction: column; text-align: center; }
+    .image-wrapper { background-color: var(--marfil); border: 1px solid var(--linea-fina); aspect-ratio: 4/5; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 15px; }
+    .image-wrapper img { width: 100%; height: 100%; object-fit: contain; transition: transform 1s ease; }
     .category-card:hover img { transform: scale(1.05); }
+    .category-card:hover .image-wrapper { border-color: var(--dorado); }
 
-    .card-content { text-align: center; padding-top: 30px; }
-    .card-title { font-family: 'Cinzel', serif; font-size: 1.4rem; letter-spacing: 0.2em; color: var(--carbon); text-transform: uppercase; margin-bottom: 10px; }
-    .card-btn { font-size: 0.6rem; letter-spacing: 4px; text-transform: uppercase; color: var(--gris-suave); font-weight: 600; border-bottom: 1px solid transparent; padding-bottom: 4px; }
-    .category-card:hover .card-btn { color: var(--carbon); border-bottom-color: var(--carbon); }
-
-    /* =========================================
-       FOOTER
-       ========================================= */
-    .footer { border-top: 1px solid var(--linea-fina); padding: 60px 20px; text-align: center; background-color: var(--marfil); margin-top: auto; }
-    .footer-logo { font-family: 'Cinzel', serif; font-size: 1.5rem; letter-spacing: 0.3em; color: var(--carbon); margin-bottom: 15px; }
-    .footer-copy { font-size: 0.5rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gris-suave); opacity: 0.6; }
+    .card-title { font-family: 'Cinzel', serif; font-size: 1.1rem; letter-spacing: 0.1em; color: var(--carbon); margin-top: 15px; text-transform: uppercase; }
+    .card-btn { font-size: 0.5rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gris-suave); font-weight: 600; margin-top: 5px; }
 
     /* =========================================
-       RESPONSIVE
+       BOTÓN FLOTANTE WHATSAPP (ATENCIÓN EN LÍNEA)
        ========================================= */
+    .whatsapp-btn-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background-color: var(--carbon);
+      color: var(--dorado);
+      padding: 12px 24px;
+      border-radius: 50px;
+      border: 1px solid var(--dorado);
+      font-size: 0.65rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 700;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      animation: pulse-gold 3s infinite;
+      transition: var(--transition);
+    }
+
+    .whatsapp-btn-float:hover {
+      transform: translateY(-5px) scale(1.02);
+      background-color: var(--dorado);
+      color: var(--carbon);
+    }
+
+    .whatsapp-btn-float svg { width: 20px; height: 20px; fill: currentColor; }
+
+    /* FOOTER */
+    .footer { border-top: 1px solid var(--linea-fina); padding: 40px 20px; text-align: center; background-color: var(--marfil); margin-top: auto; }
+    .footer-logo { font-family: 'Cinzel', serif; font-size: 1.2rem; letter-spacing: 0.3em; color: var(--carbon); margin-bottom: 10px; }
+    .footer-copy { font-size: 0.45rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gris-suave); }
+
+    /* RESPONSIVE MOBILE */
     @media (max-width: 768px) {
-      .navbar { padding: 25px 20px; flex-wrap: wrap; }
-      .brand-container { width: 100%; order: -1; margin-bottom: 15px; }
-      .nav-group { justify-content: center; }
+      .navbar { padding: 15px 3vw; flex-wrap: wrap; justify-content: center; }
+      .brand-container { order: -1; width: 100%; margin-bottom: 15px; }
+      .brand-magic { font-size: 1.3rem; letter-spacing: 0.25em; }
+      .nav-group { gap: 15px; justify-content: center; }
       
-      .vip-notice p { font-size: 0.55rem; }
-      .split-grid { grid-template-columns: repeat(2, 1fr); gap: 20px 15px; }
-      .card-title { font-size: 1rem; }
+      .whatsapp-btn-float { bottom: 20px; right: 20px; padding: 10px 20px; font-size: 0.55rem; }
+      .split-grid { gap: 20px 10px; }
     }
   </style>
 </head>
@@ -223,6 +217,7 @@
 
   <nav class="navbar">
     <div class="nav-group">
+      <a href="index.html" class="nav-link-magic">INICIO</a>
       <a href="fundador.html" class="nav-link-magic">FUNDADOR</a>
     </div>
     
@@ -237,7 +232,7 @@
 
   <div class="vip-notice-wrapper">
     <div class="vip-notice">
-      <p>Aviso de Privacidad: Para gestionar sus <strong>Favoritos</strong> o su <strong>Bolsa de Compra</strong>, por favor ingrese en la colección de su preferencia.</p>
+      <p>Gestión de Selección Privada: Para visualizar su <strong>Favoritos</strong> o su <strong>Bolsa</strong>, por favor ingrese en una colección.</p>
     </div>
   </div>
 
@@ -247,25 +242,34 @@
 
   <main class="split-grid">
     <a href="joyeria.html" class="category-card">
-      <div class="image-wrapper"><img src="modelo1.png" alt="Alta Joyería" onerror="this.src='https://via.placeholder.com/600x800?text=JOYERÍA'"></div>
-      <div class="card-content"><h2 class="card-title">Joyería</h2><span class="card-btn">Explorar</span></div>
+      <div class="image-wrapper"><img src="modelo1.png" alt="Joyería" onerror="this.src='https://via.placeholder.com/400x500?text=JOYERÍA'"></div>
+      <h2 class="card-title">Joyería</h2>
+      <span class="card-btn">Explorar</span>
     </a>
 
     <a href="boutique.html" class="category-card">
-      <div class="image-wrapper"><img src="modelo2.png" alt="Boutique" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE'"></div>
-      <div class="card-content"><h2 class="card-title">Boutique</h2><span class="card-btn">Explorar</span></div>
+      <div class="image-wrapper"><img src="modelo2.png" alt="Boutique" onerror="this.src='https://via.placeholder.com/400x500?text=BOUTIQUE'"></div>
+      <h2 class="card-title">Boutique</h2>
+      <span class="card-btn">Explorar</span>
     </a>
 
     <a href="plata.html" class="category-card">
-      <div class="image-wrapper"><img src="modelo3.png" alt="Plata" onerror="this.src='https://via.placeholder.com/600x800?text=PLATA'"></div>
-      <div class="card-content"><h2 class="card-title">Plata de Ley</h2><span class="card-btn">Explorar</span></div>
+      <div class="image-wrapper"><img src="modelo3.png" alt="Plata" onerror="this.src='https://via.placeholder.com/400x500?text=PLATA'"></div>
+      <h2 class="card-title">Plata de Ley</h2>
+      <span class="card-btn">Explorar</span>
     </a>
             
     <a href="liquidacion.html" class="category-card">
-      <div class="image-wrapper"><img src="modelo4.png" alt="El Archivo" onerror="this.src='https://via.placeholder.com/600x800?text=ARCHIVO'"></div>
-      <div class="card-content"><h2 class="card-title">El Archivo</h2><span class="card-btn">Explorar</span></div>
+      <div class="image-wrapper"><img src="modelo4.png" alt="Archivo" onerror="this.src='https://via.placeholder.com/400x500?text=ARCHIVO'"></div>
+      <h2 class="card-title">El Archivo</h2>
+      <span class="card-btn">Explorar</span>
     </a>
   </main>
+
+  <a href="https://wa.me/34602149162?text=Hola,%20solicito%20atención%20en%20línea%20sobre%20el%20Catálogo%20ÈNIGME." class="whatsapp-btn-float" target="_blank">
+    <svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+    Atención en línea
+  </a>
 
   <footer class="footer">
     <div class="footer-logo">ÈNIGME</div>
