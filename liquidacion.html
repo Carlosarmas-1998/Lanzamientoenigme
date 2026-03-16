@@ -3,39 +3,45 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>El Archivo | Liquidación Exclusiva ÈNIGME</title>
+  <title>El Archivo | La Casa ÈNIGME</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
 
   <style>
     :root {
+      /* PALETA DE MARCA ÈNIGME */
       --marfil: #FAF9F6;
       --rosa-palo: #D8C3BC;
       --carbon: #1C1C1C;
       --gris-suave: #888888;
+      --gris-claro: #F5F5F5;
+      --dorado: #CBAA63;
       --linea-fina: rgba(216, 195, 188, 0.4);
-      --transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      --transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-
+    
     body {
       background-color: var(--marfil);
       color: var(--carbon);
       font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
 
     a { text-decoration: none; color: inherit; transition: var(--transition); }
+    button { background: none; border: none; font-family: inherit; cursor: pointer; outline: none; }
 
-    /* NAVBAR COMPLETA Y PERSISTENTE */
+    /* =========================================
+       NAVBAR MINIMALISTA ÈNIGME (UNIFICADA)
+       ========================================= */
     .navbar {
       width: 100%;
       padding: 30px 4vw;
@@ -43,33 +49,36 @@
       align-items: center;
       justify-content: space-between;
       border-bottom: 1px solid var(--linea-fina);
-      background: rgba(250, 249, 246, 0.9);
+      background: rgba(250, 249, 246, 0.95);
       backdrop-filter: blur(10px);
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
     }
 
-    .brand {
+    .brand-nav {
       font-family: 'Cinzel', serif;
       font-size: clamp(1.2rem, 2.5vw, 1.5rem);
       letter-spacing: 0.35em;
-      text-transform: uppercase;
+      color: var(--carbon);
       text-align: center;
     }
 
     .nav-group { display: flex; gap: 30px; align-items: center; flex: 1; }
     .nav-group.right { justify-content: flex-end; }
-    .nav-group a {
+    
+    .nav-link {
       font-size: 0.6rem;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--gris-suave);
+      font-weight: 300;
       position: relative;
       padding-bottom: 4px;
+      cursor: pointer;
     }
 
-    .nav-group a::after {
+    .nav-link::after {
       content: '';
       position: absolute;
       width: 100%; height: 1px; bottom: 0; left: 0;
@@ -79,172 +88,188 @@
       transition: transform 0.4s ease;
     }
 
-    .nav-group a:hover { color: var(--carbon); }
-    .nav-group a:hover::after { transform: scaleX(1); transform-origin: left; }
+    .nav-link:hover, .nav-link.active { color: var(--carbon); }
+    .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); transform-origin: left; }
 
-    /* CONTENEDOR CENTRAL: EL ARCHIVO */
-    .selection-main {
+    /* MENÚ DESPLEGABLE CATÁLOGO */
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-content { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background-color: #FFFFFF; min-width: 200px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); border: 1px solid var(--linea-fina); z-index: 1001; flex-direction: column; padding: 10px 0; margin-top: 10px; }
+    .dropdown-content::before { content: ''; position: absolute; top: -10px; left: 0; width: 100%; height: 10px; }
+    .nav-dropdown:hover .dropdown-content { display: flex; }
+    .dropdown-content a { padding: 12px 25px; font-size: 0.55rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gris-suave); text-align: center; transition: var(--transition); }
+    .dropdown-content a:hover { background-color: var(--marfil); color: var(--dorado); }
+
+    /* BOTONES DESTACADOS TENUES Y ELEGANTES */
+    .btn-menu-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background-color: transparent;
+      color: var(--carbon) !important;
+      padding: 8px 16px;
+      border: 1px solid rgba(203, 170, 99, 0.5);
+      border-radius: 2px;
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: var(--transition);
+    }
+    .btn-menu-brand:hover { background-color: var(--dorado); border-color: var(--dorado); }
+    .btn-menu-brand svg { width: 13px; height: 13px; fill: currentColor; transition: transform 0.3s ease; }
+
+    /* EFECTO LATIDO CARRITO */
+    @keyframes pulse-soft {
+      0% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0.3); }
+      70% { box-shadow: 0 0 0 8px rgba(203, 170, 99, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0); }
+    }
+    .btn-cart-nav { animation: pulse-soft 2.5s infinite; }
+    .btn-cart-nav:hover svg { transform: scale(1.15) rotate(-5deg); }
+    .counter-badge { font-weight: 600; }
+
+    /* =========================================
+       BOTÓN VOLVER ATRÁS
+       ========================================= */
+    .btn-back {
+      position: absolute;
+      top: 110px;
+      left: 5vw;
+      font-size: 0.55rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gris-suave);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+      z-index: 10;
+    }
+    .btn-back:hover { color: var(--carbon); transform: translateX(-5px); }
+    .btn-back svg { width: 12px; height: 12px; fill: currentColor; }
+
+    /* =========================================
+       ESTADO DE ESPERA (LA CURADURÍA)
+       ========================================= */
+    .forging-container {
       flex-grow: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      padding: 100px 5vw;
       text-align: center;
-      padding: 80px 5vw;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
-    /* Animación de Escáner y Curaduría */
-    .precision-anim {
-      position: relative;
-      width: 120px;
-      height: 120px;
-      margin-bottom: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .forging-icon {
+      margin-bottom: 30px;
+      animation: float 4s ease-in-out infinite;
+    }
+    .forging-icon svg {
+      width: 40px;
+      height: 40px;
+      fill: var(--dorado);
     }
 
-    .outer-ring {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      border: 1px dashed var(--rosa-palo);
-      border-radius: 50%;
-      animation: spin 10s linear infinite;
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
     }
 
-    .inner-spark {
-      font-size: 2.5rem;
-      color: var(--carbon);
-      animation: pulse 2.5s infinite ease-in-out;
-    }
-
-    .scanner-line {
-      position: absolute;
-      width: 140%;
-      height: 1px;
-      background: var(--rosa-palo);
-      box-shadow: 0 0 10px var(--rosa-palo);
-      animation: scan 3s ease-in-out infinite;
-    }
-
-    @keyframes spin { 100% { transform: rotate(360deg); } }
-    @keyframes pulse {
-      0%, 100% { transform: scale(0.9); opacity: 0.6; }
-      50% { transform: scale(1.1); opacity: 1; color: var(--rosa-palo); }
-    }
-    @keyframes scan {
-      0%, 100% { transform: translateY(-50px); opacity: 0; }
-      50% { transform: translateY(50px); opacity: 1; }
-    }
-
-    /* TEXTOS */
-    .kicker {
+    .forging-kicker {
       font-family: 'Cinzel', serif;
       font-style: italic;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       color: var(--rosa-palo);
       letter-spacing: 5px;
       text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    .forging-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--carbon);
       margin-bottom: 25px;
     }
 
-    .title {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 35px;
-      line-height: 1.2;
-    }
-
-    .description {
-      font-size: 0.95rem;
-      line-height: 2.4;
+    .forging-desc {
+      font-size: 0.85rem;
+      line-height: 2.2;
       color: var(--gris-suave);
-      max-width: 780px;
+      margin-bottom: 50px;
       font-weight: 300;
-      margin-bottom: 40px;
     }
 
-    .description strong { color: var(--carbon); font-weight: 500; }
-
-    .separator {
-      width: 60px;
-      height: 1px;
-      background: var(--rosa-palo);
-      margin: 0 auto 20px;
+    .forging-desc strong {
+      color: var(--carbon);
+      font-weight: 500;
     }
 
-    /* BOTONES FLOTANTES PRO (REGLA DE LAS 3 SECCIONES RESTANTES) */
-    .floating-stack {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 12px;
-      z-index: 999;
-    }
-
-    .pill-btn {
-      display: flex;
+    .btn-explore {
+      display: inline-flex;
       align-items: center;
-      gap: 12px;
-      height: 42px;
-      padding: 0 20px;
-      border-radius: 25px;
-      background: var(--carbon);
-      color: var(--marfil);
-      font-size: 0.5rem;
-      letter-spacing: 2px;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 35px;
+      background-color: var(--carbon);
+      color: #FFFFFF;
+      font-size: 0.65rem;
+      letter-spacing: 3px;
       text-transform: uppercase;
       font-weight: 600;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-      border: 1px solid transparent;
-      white-space: nowrap;
+      border: 1px solid var(--carbon);
+      transition: var(--transition);
     }
+    .btn-explore:hover { background-color: var(--dorado); border-color: var(--dorado); color: var(--carbon); }
+    .btn-explore svg { width: 14px !important; height: 14px !important; }
 
-    .pill-btn.light {
-      background: var(--marfil);
-      color: var(--carbon);
-      border: 1px solid var(--linea-fina);
-      box-shadow: 0 4px 15px rgba(216, 195, 188, 0.15);
-    }
+    /* =========================================
+       BOTONES FLOTANTES COMPACTOS
+       ========================================= */
+    .floating-stack { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; align-items: flex-end; gap: 8px; z-index: 999; }
+    .pill-btn { display: flex; align-items: center; gap: 8px; height: 32px; padding: 0 14px; border-radius: 20px; background: var(--carbon); color: #FFFFFF; font-size: 0.45rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 1px solid transparent; white-space: nowrap; transition: var(--transition); }
+    .pill-btn.light { background: var(--marfil); color: var(--carbon); border: 1px solid var(--linea-fina); }
+    .pill-btn:hover { transform: translateX(-5px); background: var(--dorado); color: var(--carbon); border-color: var(--dorado); }
+    .pill-btn svg { width: 12px; height: 12px; fill: currentColor; }
 
-    .pill-btn:hover {
-      transform: translateX(-8px);
-      background: var(--rosa-palo);
-      color: var(--carbon);
-      border-color: var(--rosa-palo);
-    }
+    /* =========================================
+       BANNER LEGAL Y FOOTER
+       ========================================= */
+    .legal-banner { border-top: 1px solid var(--linea-fina); padding: 60px 5vw 40px; text-align: center; margin-top: auto; }
+    .trust-badges-container { display: flex; justify-content: center; gap: 30px; margin-bottom: 40px; padding: 0 5vw; flex-wrap: wrap; }
+    .trust-badge-item { display: flex; align-items: center; gap: 10px; color: var(--dorado); border: 1px solid var(--dorado); padding: 8px 15px; font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
+    .trust-badge-item svg { width: 14px; height: 14px; fill: currentColor; }
+    .legal-text { font-size: 0.6rem; line-height: 2.2; letter-spacing: 1.5px; color: var(--gris-suave); max-width: 900px; margin: 0 auto; text-transform: uppercase; }
+    .legal-text strong { color: var(--carbon); }
+    
+    /* CRÉDITOS DEL FUNDADOR - TENUE */
+    .founder-credit { margin-top: 40px; font-size: 0.5rem; letter-spacing: 0.25em; color: var(--gris-suave); opacity: 0.5; text-transform: uppercase; font-weight: 300; }
 
-    .pill-btn svg { width: 14px; height: 14px; fill: currentColor; }
-
-    /* FOOTER */
-    .legal-footer {
-      padding: 50px 5vw;
-      text-align: center;
-      border-top: 1px solid var(--linea-fina);
-      font-size: 0.55rem;
-      letter-spacing: 3px;
-      color: var(--gris-suave);
-      text-transform: uppercase;
-    }
-
-    @media (max-width: 900px) {
-      .nav-group { gap: 15px; }
-      .nav-group a { font-size: 0.5rem; letter-spacing: 1px; }
-    }
-
+    /* =========================================
+       RESPONSIVE MÓVIL
+       ========================================= */
+    @media (max-width: 900px) { .nav-group { gap: 15px; } .nav-group a { font-size: 0.5rem; letter-spacing: 1px; } }
     @media (max-width: 768px) {
       .navbar { flex-wrap: wrap; justify-content: center; gap: 20px; padding: 25px; }
-      .nav-group { justify-content: center; flex-wrap: wrap; width: 100%; flex: none; }
-      .brand { order: -1; width: 100%; margin-bottom: 10px; }
-      .title { font-size: 1.8rem; }
-      .floating-stack { bottom: 20px; right: 20px; }
-      .pill-btn { height: 38px; padding: 0 15px; font-size: 0.45rem; }
+      .nav-group { justify-content: center; flex-wrap: wrap; width: 100%; flex: none; gap: 15px;}
+      .brand-nav { order: -1; width: 100%; margin-bottom: 10px; }
+      .nav-link { font-size: 0.55rem; letter-spacing: 2px; }
+      .btn-menu-brand { padding: 8px 14px; font-size: 0.55rem; }
+      .dropdown-content { min-width: 150px; }
+      .dropdown-content a { font-size: 0.45rem; padding: 10px; }
+      
+      .btn-back { top: 160px; }
+      .forging-container { padding: 80px 20px; }
+      .forging-title { font-size: 1.6rem; }
+      .btn-explore { padding: 14px 25px; font-size: 0.55rem; }
+      .trust-badges-container { gap: 15px; }
+      .trust-badge-item { padding: 6px 12px; font-size: 0.5rem; }
     }
   </style>
 </head>
@@ -252,66 +277,108 @@
 
   <nav class="navbar">
     <div class="nav-group">
-      <a href="index.html">Inicio</a>
-      <a href="enigme.html">ÈNIGME</a>
-      <a href="soporte.html">Soporte</a>
+      <a href="index.html" class="nav-link">INICIO</a>
+      
+      <div class="nav-dropdown">
+        <span class="nav-link active">CATÁLOGO ▾</span>
+        <div class="dropdown-content">
+          <a href="joyeria.html">Alta Joyería</a>
+          <a href="boutique.html">Bolsos Boutique</a>
+          <a href="plata.html">Plata de Ley</a>
+          <a href="liquidacion.html" style="color: var(--dorado);">El Archivo</a>
+        </div>
+      </div>
+
+      <a href="certificado.html" class="btn-menu-brand">
+        <svg viewBox="0 0 24 24"><path d="M17 10h-2V6c0-1.1-.9-2-2-2H5a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2v-4h2c1.1 0 2-.9 2-2V12a2 2 0 0 0-2-2zM5 6h8v4H5V6zm8 12H5V12h8v6zm6-6h-2V12h2v2z"/></svg>
+        CERTIFICADO
+      </a>
     </div>
     
-    <a href="index.html" class="brand">È N I G M E</a>
+    <div class="brand-nav">È N I G M E</div>
     
     <div class="nav-group right">
-      <a href="catalogo.html">Catálogo</a>
-      <a href="favoritos.html">Favoritos (<span id="fav-count">0</span>)</a>
-      <a href="carrito.html">Carrito (<span id="cart-count">0</span>)</a>
+      <a href="mailto:info@enigmeofficia.com" class="nav-link">SOPORTE</a>
+      
+      <a href="favoritos.html" class="btn-menu-brand">
+        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        FAVS (<span id="fav-count" class="counter-badge">0</span>)
+      </a>
+
+      <a href="carrito.html" class="btn-menu-brand btn-cart-nav">
+        <svg viewBox="0 0 24 24"><path d="M16 6V4a4 4 0 0 0-8 0v2H3v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6h-5zm-6-2a2 2 0 0 1 4 0v2h-4V4zm8 16H6V8h2v2a1 1 0 0 0 2 0V8h4v2a1 1 0 0 0 2 0V8h2v12z"/></svg>
+        BOLSA (<span id="cart-count" class="counter-badge">0</span>)
+      </a>
     </div>
   </nav>
 
-  <main class="selection-main">
+  <a href="#" onclick="window.history.back(); return false;" class="btn-back">
+    <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+    Volver atrás
+  </a>
+
+  <main class="forging-container">
     
-    <div class="precision-anim">
-      <div class="outer-ring"></div>
-      <div class="inner-spark">✦</div>
-      <div class="scanner-line"></div>
+    <div class="forging-icon">
+      <svg viewBox="0 0 24 24">
+        <path d="M6 3h12l4 6-10 13L2 9l4-6zm-1.5 6.5h15M12 22l4-12.5H8L12 22z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+      </svg>
     </div>
 
-    <p class="kicker">The Archive Selection</p>
-    <h1 class="title">El Archivo Privado</h1>
+    <p class="forging-kicker">Capítulo IV</p>
+    <h1 class="forging-title">Curaduría de Archivo</h1>
     
-    <p class="description">
-      Acceder a <strong>El Archivo</strong> es descubrir concesiones de valor sin precedentes. Nuestras piezas de <strong>Acero Inoxidable 304L y 316L (Grado Quirúrgico)</strong>, junto a sus exclusivas variantes con <strong>chapado en oro</strong>, están siendo meticulosamente curadas para una liberación extraordinaria.<br><br>
-      Hablamos de <strong>grandes rebajas</strong> donde los precios descienden dramáticamente, pero el aura, la presencia y los estándares europeos de ÈNIGME permanecen intocables para <strong>Choluteca y Valle</strong>.
+    <p class="forging-desc">
+      Nuestro equipo está coleccionando y seleccionando minuciosamente las últimas piezas de temporadas pasadas bajo el <strong>alto estándar europeo</strong> que define a nuestra casa.<br><br>
+      Pronto revelaremos una oportunidad irrepetible, con piezas exclusivas cuyos precios estarán comprendidos de forma excepcional entre los <strong>L 99 y L 299</strong>.
     </p>
 
-    <div class="separator"></div>
-    <p style="font-size: 0.6rem; letter-spacing: 3px; color: var(--gris-suave); text-transform: uppercase;">Liquidación Exclusiva · Próximamente</p>
+    <a href="catalogo.html" class="btn-explore">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Regresar al Catálogo
+    </a>
 
   </main>
 
   <div class="floating-stack">
-    
     <a href="joyeria.html" class="pill-btn light">
-      <svg viewBox="0 0 512 512"><path d="M441.5 137.9L281.3 22.2C273.7 16.7 265 14 256 14s-17.7 2.7-25.3 8.2L70.5 137.9C64 142.6 59.8 149.6 58.6 157.6l-14.1 98.7c-1.2 8.1 1.2 16.3 6.6 22.5L242.3 487.6c3.4 3.9 8.2 6.1 13.3 6.1s9.9-2.2 13.3-6.1L460.9 278.8c5.4-6.2 7.8-14.4 6.6-22.5l-14.1-98.7c-1.2-8-5.4-15-11.9-19.7zM256 439.4L81 240l10.3-71.9L256 261.2l164.7-93.1 10.3 71.9L256 439.4zM256 220L112.5 139.1l111.4-80.4c9.1-6.6 21-6.6 30.1 0L365.4 139 256 220z"/></svg>
-      Joyería Acero
-    </a>
-
-    <a href="plata.html" class="pill-btn light">
       <svg viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></svg>
-      Colección Plata
+      Alta Joyería
     </a>
-
     <a href="boutique.html" class="pill-btn light">
       <svg viewBox="0 0 512 512"><path d="M160 160V128C160 57.3 217.3 0 288 0c70.7 0 128 57.3 128 128v32h64c17.7 0 32 14.3 32 32v256c0 35.3-28.7 64-64 64H128c-35.3 0-64-28.7-64-64V192c0-17.7 14.3-32 32-32h64zM224 160h128v-32c0-35.3-28.7-64-64-64s-64 28.7-64 64v32z"/></svg>
       Bolsos Boutique
     </a>
-
-    <a href="https://wa.me/34602149162?text=hola%20estoy%20interesado%20en%20el%20Archivo%20de%20Liquidacion%20de%20%C3%88NIGME" class="pill-btn">
+    <a href="https://wa.me/34602149162?text=Hola,%20deseo%20que%20me%20notifiquen%20cuando%20se%20abra%20El%20Archivo%20de%20ÈNIGME." class="pill-btn" target="_blank">
       <svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
       Atención VIP
     </a>
   </div>
 
-  <footer class="legal-footer">
-    © 2026 ÈNIGME HONDURAS · UNA VISIÓN DE CARLOS ARMAS MARTÍNEZ
+  <footer class="legal-banner">
+    <div class="trust-badges-container">
+      <div class="trust-badge-item">
+        <svg viewBox="0 0 448 512"><path d="M400 224h-24v-72C376 68.2 307.8 0 224 0S72 68.2 72 152v72H48c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V272c0-26.5-21.5-48-48-48zm-224-72c0-26.5 21.5-48 48-48s48 21.5 48 48v72H176v-72zm112 300c-13.3 0-24-10.7-24-24s10.7-24 24-24 24 10.7 24 24-10.7 24-24 24z"/></svg>
+        Pago Cifrado Seguro
+      </div>
+      <div class="trust-badge-item">
+        <svg viewBox="0 0 512 512"><path d="M256 0c11 0 20 9 20 20v196h196c11 0 20 9 20 20s-9 20-20 20H276v196c0 11-9 20-20 20s-20-9-20-20V256H40c-11 0-20-9-20-20s9-20 20-20h196V20c0-11 9-20 20-20z"/></svg>
+        Autenticidad Real Garantizada
+      </div>
+      <div class="trust-badge-item">
+        <svg viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+        Distribución Exclusiva HN
+      </div>
+    </div>
+
+    <p class="legal-text">
+      <strong>Política de Compra y Envíos:</strong> Operamos bajo la máxima seguridad transaccional cifrada. Debido a la curaduría y altos estándares de importación, las piezas se entregan <strong>25 días hábiles</strong> posteriores a la confirmación de pago. <strong>Cada joya ÈNIGME es real y auténtica, entregada con su respectiva tarjeta de marca.</strong><br><br>
+      Distribución logística exclusiva en <strong>Choluteca y Valle</strong>, <strong>CON ENVÍO INCLUIDO</strong> hasta punto de encuentro seguro en la ciudad.
+    </p>
+    
+    <p class="founder-credit">
+      © 2026 ÈNIGME HONDURAS POR CARLOS ARMAS MARTÍNEZ. TODOS LOS DERECHOS RESERVADOS.
+    </p>
   </footer>
 
   <script>
@@ -319,8 +386,15 @@
       const cart = JSON.parse(localStorage.getItem('enigme_cart')) || [];
       const favs = JSON.parse(localStorage.getItem('enigme_favs')) || [];
       
-      if(document.getElementById('cart-count')) document.getElementById('cart-count').innerText = cart.length;
-      if(document.getElementById('fav-count')) document.getElementById('fav-count').innerText = favs.length;
+      let totalItems = 0;
+      cart.forEach(item => totalItems += (item.qty || 1));
+      
+      if(document.getElementById('cart-count')) {
+        document.getElementById('cart-count').innerText = totalItems;
+      }
+      if(document.getElementById('fav-count')) {
+        document.getElementById('fav-count').innerText = favs.length;
+      }
     }
     
     window.onload = updateCounts;
