@@ -3,32 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Plata de Ley | La Casa ÈNIGME</title>
+  <title>Colección Plata | La Casa ÈNIGME</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      /* PALETA DE MARCA ÈNIGME */
       --marfil: #FAF9F6;
       --blanco-puro: #FFFFFF;
       --carbon: #1C1C1C;
       --gris-suave: #888888;
-      --gris-linea: #EAEAEA;
       --dorado: #CBAA63;
+      --plata: #C0C0C0;
+      --celeste: #8CBED6;
       --rosa-palo: #D8C3BC;
+      --linea-fina: rgba(216, 195, 188, 0.4);
       --transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-
+    
     body {
       background-color: var(--marfil);
       color: var(--carbon);
       font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -36,9 +38,10 @@
     }
 
     a { text-decoration: none; color: inherit; transition: var(--transition); }
+    button { background: none; border: none; font-family: inherit; cursor: pointer; outline: none; }
 
     /* =========================================
-       NAVBAR MINIMALISTA ÈNIGME
+       NAVBAR PURISTA ÈNIGME
        ========================================= */
     .navbar {
       width: 100%;
@@ -46,8 +49,9 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid var(--gris-linea);
+      border-bottom: 1px solid var(--linea-fina);
       background: rgba(250, 249, 246, 0.98);
+      backdrop-filter: blur(10px);
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -59,6 +63,7 @@
       letter-spacing: 0.35em;
       color: var(--carbon);
       text-align: center;
+      font-weight: 500;
     }
 
     .nav-group { display: flex; gap: 30px; align-items: center; flex: 1; }
@@ -69,17 +74,16 @@
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--gris-suave);
-      font-weight: 300;
+      font-weight: 600;
       position: relative;
       padding-bottom: 4px;
-      cursor: pointer;
     }
 
     .nav-link::after {
       content: '';
       position: absolute;
-      width: 100%; height: 1px; bottom: 0; left: 0;
-      background-color: var(--rosa-palo);
+      width: 100%; height: 1.5px; bottom: 0; left: 0;
+      background-color: var(--dorado);
       transform: scaleX(0);
       transform-origin: right;
       transition: transform 0.4s ease;
@@ -88,7 +92,6 @@
     .nav-link:hover, .nav-link.active { color: var(--carbon); }
     .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); transform-origin: left; }
 
-    /* BOTONES DESTACADOS TENUES Y ELEGANTES */
     .btn-menu-brand {
       display: flex;
       align-items: center;
@@ -105,9 +108,8 @@
       transition: var(--transition);
     }
     .btn-menu-brand:hover { background-color: var(--dorado); border-color: var(--dorado); }
-    .btn-menu-brand svg { width: 13px; height: 13px; fill: currentColor; }
+    .btn-menu-brand svg { width: 13px; height: 13px; fill: currentColor; transition: transform 0.3s ease; }
 
-    /* EFECTO LATIDO CARRITO */
     @keyframes pulse-soft {
       0% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0.3); }
       70% { box-shadow: 0 0 0 8px rgba(203, 170, 99, 0); }
@@ -118,126 +120,305 @@
     .counter-badge { font-weight: 600; }
 
     /* =========================================
-       BOTÓN VOLVER ATRÁS
+       ENCABEZADO DE LA GALERÍA
        ========================================= */
-    .btn-back {
-      position: absolute;
-      top: 110px;
-      left: 5vw;
-      font-size: 0.55rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--gris-suave);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: var(--transition);
-      z-index: 10;
+    .gallery-header {
+      text-align: center;
+      padding: 80px 20px 40px;
+      border-bottom: 1px solid var(--linea-fina);
     }
-    .btn-back:hover { color: var(--carbon); transform: translateX(-5px); }
-    .btn-back svg { width: 12px; height: 12px; fill: currentColor; }
+
+    .gallery-kicker { font-family: 'Cinzel', serif; font-style: italic; font-size: 0.9rem; color: var(--gris-suave); letter-spacing: 5px; text-transform: uppercase; margin-bottom: 15px; }
+    .gallery-title { font-family: 'Cinzel', serif; font-size: clamp(2.2rem, 5vw, 3.5rem); letter-spacing: 0.15em; text-transform: uppercase; color: var(--carbon); margin-bottom: 20px; }
+    .gallery-desc { font-size: 0.9rem; line-height: 2; color: var(--gris-suave); max-width: 650px; margin: 0 auto; font-weight: 300; }
 
     /* =========================================
-       ESTADO DE FORJA (COMING SOON)
+       GRID DE PRODUCTOS
        ========================================= */
-    .forging-container {
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 80px 40px;
+      padding: 80px 5vw;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .product-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--blanco-puro);
+      border: 1px solid var(--linea-fina);
+      transition: var(--transition);
+      margin: 0 auto;
+      width: 100%;
+      max-width: 450px;
+    }
+    .product-card:hover { border-color: var(--plata); box-shadow: 0 15px 40px rgba(0,0,0,0.04); transform: translateY(-5px); }
+
+    .carousel-wrapper {
+      position: relative;
+      background-color: white;
+      aspect-ratio: 4/5; 
+      overflow: hidden;
+      border-bottom: 1px solid var(--linea-fina);
+    }
+
+    .carousel-track {
+      display: flex;
+      width: 100%; 
+      height: 100%;
+      transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      cursor: grab;
+    }
+    .carousel-track:active { cursor: grabbing; }
+
+    .product-media {
+      flex: 0 0 100%;
+      width: 100%; 
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none; 
+    }
+
+    /* CONTENEDOR ESPECÍFICO PARA EL VIDEO */
+    .video-container {
+      flex: 0 0 100%;
+      width: 100%; 
+      height: 100%;
+      position: relative;
+      pointer-events: auto; /* Permitir clics en los botones dentro */
+    }
+
+    .video-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none; /* Que el swipe siga funcionando sobre el video */
+    }
+
+    /* BOTÓN DE SONIDO MÁGICO */
+    .sound-toggle-btn {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      background: rgba(28, 28, 28, 0.6);
+      backdrop-filter: blur(8px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--blanco-puro);
+      z-index: 15;
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .sound-toggle-btn:hover {
+      transform: scale(1.1);
+      background: var(--carbon);
+    }
+
+    .sound-toggle-btn.active {
+      background: var(--dorado);
+      color: var(--carbon);
+      border-color: var(--dorado);
+      box-shadow: 0 0 15px rgba(203, 170, 99, 0.5);
+    }
+
+    .sound-toggle-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(250, 249, 246, 0.85);
+      color: var(--carbon);
+      border: 1px solid var(--linea-fina);
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      opacity: 0; 
+      transition: var(--transition);
+      backdrop-filter: blur(4px);
+    }
+    .carousel-wrapper:hover .carousel-arrow { opacity: 1; }
+    .carousel-arrow:hover { background: var(--carbon); color: var(--dorado); border-color: var(--carbon); }
+    .carousel-arrow.prev { left: 10px; }
+    .carousel-arrow.next { right: 10px; }
+
+    /* BOTÓN FAVORITOS */
+    .btn-fav { position: absolute; top: 15px; right: 15px; width: 35px; height: 35px; background-color: rgba(255,255,255,0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05); z-index: 10; transition: var(--transition); color: var(--carbon); }
+    .btn-fav:hover { transform: scale(1.1); }
+    .btn-fav svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; transition: var(--transition); }
+    .btn-fav.active svg { fill: var(--rosa-palo); stroke: var(--rosa-palo); }
+
+    /* INDICADOR DE VIDEO */
+    .video-badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: rgba(0,0,0,0.6);
+      color: white;
+      padding: 4px 10px;
+      font-size: 0.5rem;
+      letter-spacing: 2px;
+      border-radius: 20px;
+      backdrop-filter: blur(5px);
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* INFO DEL PRODUCTO */
+    .product-info {
+      padding: 30px 25px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
       flex-grow: 1;
+    }
+
+    .product-code { font-size: 0.55rem; letter-spacing: 2px; color: var(--gris-suave); margin-bottom: 8px; }
+    .product-name { font-family: 'Cinzel', serif; font-size: 1.4rem; letter-spacing: 0.1em; color: var(--carbon); margin-bottom: 10px; text-transform: uppercase; font-weight: 600; }
+    .product-lema { font-size: 0.8rem; line-height: 1.6; color: var(--gris-suave); margin-bottom: 20px; font-weight: 300; font-style: italic; }
+    .product-lema strong { color: var(--carbon); font-weight: 500; }
+    
+    /* BLOQUE DE ETIQUETAS Y TALLAS */
+    .specs-block {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 100px 5vw;
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding: 20px 15px;
+      background: var(--marfil);
+      border: 1px solid var(--linea-fina);
     }
 
-    .forging-icon {
-      margin-bottom: 30px;
-      animation: float 4s ease-in-out infinite;
-    }
-    .forging-icon svg {
-      width: 40px;
-      height: 40px;
-      fill: var(--dorado);
-    }
-
-    @keyframes float {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-      100% { transform: translateY(0); }
-    }
-
-    .forging-kicker {
-      font-family: 'Cinzel', serif;
-      font-style: italic;
-      font-size: 0.9rem;
-      color: var(--rosa-palo);
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      margin-bottom: 15px;
-    }
-
-    .forging-title {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--carbon);
-      margin-bottom: 25px;
-    }
-
-    .forging-desc {
-      font-size: 0.85rem;
-      line-height: 2.2;
-      color: var(--gris-suave);
-      margin-bottom: 50px;
-      font-weight: 300;
-    }
-
-    .forging-desc strong {
-      color: var(--carbon);
-      font-weight: 500;
-    }
-
-    .btn-explore {
-      display: inline-flex;
+    .size-selector-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
       align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 16px 35px;
-      background-color: var(--carbon);
-      color: var(--blanco-puro);
-      font-size: 0.65rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      font-weight: 600;
-      border: 1px solid var(--carbon);
-      transition: var(--transition);
+      width: 100%;
+      margin-bottom: 5px;
     }
-    .btn-explore:hover { background-color: var(--dorado); border-color: var(--dorado); color: var(--carbon); }
-    .btn-explore svg { width: 14px !important; height: 14px !important; }
+    .size-label { font-size: 0.5rem; letter-spacing: 2px; color: var(--gris-suave); text-transform: uppercase; }
+    .size-select {
+      appearance: none;
+      background: transparent;
+      border: 1px solid var(--carbon);
+      padding: 8px 30px 8px 15px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      color: var(--carbon);
+      font-weight: 600;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-align: center;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231C1C1C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      background-size: 12px;
+      width: 100%;
+      max-width: 150px;
+      outline: none;
+    }
+    
+    .spec-material {
+      display: inline-block;
+      padding: 6px 15px;
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 700;
+      border-radius: 2px;
+      background-color: var(--plata);
+      color: var(--carbon);
+    }
+    .spec-desc { font-size: 0.65rem; color: var(--carbon); text-transform: uppercase; font-weight: 500; letter-spacing: 1px; }
+    .spec-highlight { color: var(--celeste); font-weight: 700; }
+
+    .product-price { font-size: 1.4rem; letter-spacing: 2px; color: var(--carbon); font-weight: 700; margin-top: auto; margin-bottom: 5px; }
+    
+    .limit-notice { font-size: 0.5rem; letter-spacing: 2px; color: #b30000; text-transform: uppercase; font-weight: 600; margin-bottom: 20px; }
+
+    .purchase-action { display: flex; margin-top: auto; border: 1px solid var(--carbon); border-radius: 0; overflow: hidden; height: 45px; }
+    .qty-selector { display: flex; align-items: center; justify-content: space-between; width: 90px; background: var(--blanco-puro); border-right: 1px solid var(--linea-fina); }
+    .qty-selector button { width: 30px; height: 100%; font-size: 1.2rem; color: var(--carbon); display: flex; align-items: center; justify-content: center; }
+    .qty-selector button:hover { background: rgba(0,0,0,0.05); }
+    .qty-selector span { font-size: 0.85rem; font-weight: 600; color: var(--carbon); flex-grow: 1; }
+    
+    .btn-cart { flex-grow: 1; background-color: var(--carbon); border: none; color: var(--blanco-puro); font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; transition: var(--transition); font-weight: 700; }
+    .btn-cart:hover { background-color: var(--dorado); color: var(--carbon); }
 
     /* =========================================
-       BOTONES FLOTANTES COMPACTOS VIP
+       BOTONES FLOTANTES COMPACTOS
        ========================================= */
-    .floating-stack { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; align-items: flex-end; gap: 8px; z-index: 999; }
-    .pill-btn { display: flex; align-items: center; gap: 8px; height: 32px; padding: 0 14px; border-radius: 20px; background: var(--carbon); color: var(--blanco-puro); font-size: 0.45rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 1px solid transparent; white-space: nowrap; transition: var(--transition); }
+    .floating-stack { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; z-index: 999; }
+    .pill-btn { display: flex; align-items: center; gap: 10px; height: 38px; padding: 0 16px; border-radius: 20px; background: var(--carbon); color: var(--blanco-puro); font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; box-shadow: 0 5px 15px rgba(0,0,0,0.15); transition: var(--transition); }
     .pill-btn.light { background: var(--marfil); color: var(--carbon); border: 1px solid var(--linea-fina); }
-    .pill-btn:hover { transform: translateX(-5px); background: var(--dorado); color: var(--carbon); border-color: var(--dorado); }
-    .pill-btn svg { width: 12px; height: 12px; fill: currentColor; }
+    .pill-btn.support { background: var(--dorado); color: var(--carbon); border: 1px solid var(--dorado); font-weight: 700; }
+    .pill-btn:hover { transform: translateX(-5px); background: var(--carbon); color: var(--dorado); border-color: var(--carbon); }
 
-    /* FOOTER */
-    .footer { padding: 50px 5vw; text-align: center; border-top: 1px solid var(--gris-linea); font-size: 0.5rem; letter-spacing: 0.25em; color: var(--gris-suave); text-transform: uppercase; background: #FFF; opacity: 0.5; font-weight: 300;}
+    /* NOTIFICACIÓN TOAST */
+    .toast-notification { position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%) translateY(100px); background-color: var(--carbon); color: var(--dorado); padding: 14px 28px; font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; box-shadow: 0 10px 40px rgba(0,0,0,0.3); z-index: 10000; opacity: 0; transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); display: flex; align-items: center; gap: 12px; pointer-events: none; }
+    .toast-notification.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+    /* LIGHTBOX */
+    .lightbox { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(250, 249, 246, 0.98); backdrop-filter: blur(10px); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
+    .lightbox.active { opacity: 1; pointer-events: auto; }
+    .lightbox img { max-width: 90%; max-height: 90%; object-fit: contain; transform: scale(0.95); transition: transform 0.4s ease; box-shadow: 0 20px 50px rgba(0,0,0,0.15);}
+    .lightbox.active img { transform: scale(1); }
+    .lightbox-close { position: absolute; top: 30px; right: 40px; font-size: 3rem; color: var(--carbon); cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 200; line-height: 1; transition: var(--transition); }
+    .lightbox-close:hover { color: var(--rosa-palo); transform: scale(1.1); }
+
+    /* BANNER LEGAL Y FOOTER */
+    .legal-banner { border-top: 1px solid var(--linea-fina); padding: 60px 5vw 40px; text-align: center; margin-top: auto; }
+    .trust-badges-container { display: flex; justify-content: center; gap: 30px; margin-bottom: 40px; padding: 0 5vw; flex-wrap: wrap; }
+    .trust-badge-item { display: flex; align-items: center; gap: 10px; color: var(--dorado); border: 1px solid var(--dorado); padding: 8px 15px; font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
+    .trust-badge-item svg { width: 14px; height: 14px; fill: currentColor; }
+    .legal-text { font-size: 0.6rem; line-height: 2.2; letter-spacing: 1.5px; color: var(--gris-suave); max-width: 900px; margin: 0 auto; text-transform: uppercase; }
+    .legal-text strong { color: var(--carbon); }
+    .founder-credit { margin-top: 40px; font-size: 0.5rem; letter-spacing: 0.25em; color: var(--gris-suave); opacity: 0.5; text-transform: uppercase; font-weight: 300; }
 
     /* RESPONSIVE */
     @media (max-width: 768px) {
       .navbar { flex-wrap: wrap; justify-content: center; gap: 20px; padding: 25px; }
       .nav-group { justify-content: center; flex-wrap: wrap; width: 100%; flex: none; gap: 15px;}
       .brand-nav { order: -1; width: 100%; margin-bottom: 10px; }
-      .btn-back { top: 160px; }
-      .forging-container { padding: 80px 20px; }
-      .btn-explore { padding: 14px 25px; font-size: 0.55rem; }
+      
+      .product-grid { padding: 40px 15px; }
+      .product-card { max-width: 100%; }
+      .product-name { font-size: 1.2rem; }
+      .product-lema { font-size: 0.7rem; margin-bottom: 15px; }
+      
+      .specs-block { padding: 15px; gap: 10px; margin-bottom: 15px; }
+      .spec-material { font-size: 0.55rem; padding: 4px 10px; }
+      .spec-desc { font-size: 0.55rem; }
+      .product-price { font-size: 1.2rem; margin-bottom: 10px; }
+
+      .floating-stack { bottom: 15px; right: 15px; }
+      .pill-btn { height: 32px; padding: 0 12px; font-size: 0.5rem; }
+      .toast-notification { width: 90%; justify-content: center; bottom: 20px; font-size: 0.55rem; }
     }
   </style>
 </head>
@@ -246,6 +427,7 @@
   <nav class="navbar">
     <div class="nav-group">
       <a href="index.html" class="nav-link">INICIO</a>
+      <a href="catalogo.html" class="nav-link">CATÁLOGO</a>
     </div>
     
     <div class="brand-nav">È N I G M E</div>
@@ -253,83 +435,320 @@
     <div class="nav-group right">
       <a href="favoritos.html" class="btn-menu-brand">
         <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-        FAVS (<span id="fav-count" class="counter-badge">0</span>)
+        FAVS (<span id="fav-count">0</span>)
       </a>
-
       <a href="carrito.html" class="btn-menu-brand btn-cart-nav">
         <svg viewBox="0 0 24 24"><path d="M16 6V4a4 4 0 0 0-8 0v2H3v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6h-5zm-6-2a2 2 0 0 1 4 0v2h-4V4zm8 16H6V8h2v2a1 1 0 0 0 2 0V8h4v2a1 1 0 0 0 2 0V8h2v12z"/></svg>
-        BOLSA (<span id="cart-count" class="counter-badge">0</span>)
+        BOLSA (<span id="cart-count">0</span>)
       </a>
     </div>
   </nav>
 
-  <a href="#" onclick="window.history.back(); return false;" class="btn-back">
-    <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
-    Volver atrás
-  </a>
+  <div class="floating-stack">
+    <a href="joyeria.html" class="pill-btn light">Alta Joyería</a>
+    <a href="boutique.html" class="pill-btn light">Bolsos Boutique</a>
+    <a href="liquidacion.html" class="pill-btn light">El Archivo</a>
+    <a href="https://wa.me/34602149162?text=Hola,%20deseo%20asesor%C3%ADa%20sobre%20la%20Colección%20Plata%20de%20Ley." class="pill-btn support" target="_blank">Atención VIP</a>
+  </div>
 
-  <main class="forging-container">
-    
-    <div class="forging-icon">
-      <svg viewBox="0 0 24 24">
-        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-      </svg>
-    </div>
+  <header class="gallery-header">
+    <p class="gallery-kicker">Capítulo III</p>
+    <h1 class="gallery-title">Plata de Ley</h1>
+    <p class="gallery-desc">La eternidad forjada en metal noble. Piezas diseñadas para sellar promesas inquebrantables.</p>
+  </header>
 
-    <p class="forging-kicker">Capítulo III</p>
-    <h1 class="forging-title">La Forja en Proceso</h1>
-    
-    <p class="forging-desc">
-      El arte requiere precisión, paciencia y dedicación absoluta. Nuestros maestros orfebres se encuentran dando vida a la <strong>Colección Plata de Ley</strong>.<br><br>
-      Cada pieza está siendo meticulosamente forjada bajo los más altos estándares europeos. Pronto revelaremos estas nuevas obras maestras en la Casa ÈNIGME.
-    </p>
+  <main class="product-grid">
 
-    <a href="catalogo.html" class="btn-explore">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      Explorar el Catálogo
-    </a>
+    <article class="product-card">
+      <div class="carousel-wrapper">
+        <div class="video-badge">▶ GALERÍA V.I.P.</div>
+        
+        <button class="btn-fav" data-ref="P925-001" onclick="toggleFav('P925-001', 'Anillo Amor Eterno', 'L 1499', 'pl1.jpg', this)">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        </button>
+        <button class="carousel-arrow prev" onclick="moveSlide(this, -1)">&#10094;</button>
+        
+        <div class="carousel-track" data-index="0">
+          <img src="pl1.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=FOTO+1'">
+          <img src="pl2.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=FOTO+2'">
+          <div class="video-container">
+            <video id="video-anillo" src="vpl1.mp4" autoplay loop muted playsinline></video>
+            <button class="sound-toggle-btn" onclick="toggleSound('video-anillo', this)" aria-label="Activar Sonido">
+              <svg class="icon-muted" viewBox="0 0 24 24">
+                <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+              </svg>
+              <svg class="icon-unmuted" viewBox="0 0 24 24" style="display:none;">
+                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+        
+        <button class="carousel-arrow next" onclick="moveSlide(this, 1)">&#10095;</button>
+      </div>
+      
+      <div class="product-info">
+        <span class="product-code">REF: P925-001</span>
+        <h2 class="product-name">Anillo Amor Eterno</h2>
+        <p class="product-lema">"Una promesa sellada en el firmamento. El anillo definitivo para un <strong style="color:var(--carbon);">sí</strong> eterno."</p>
+        
+        <div class="specs-block">
+          <div class="size-selector-wrapper">
+            <span class="size-label">Seleccione Talla</span>
+            <select id="size-P925-001" class="size-select">
+              <option value="7">Talla 7</option>
+              <option value="8">Talla 8</option>
+            </select>
+          </div>
+          <span class="spec-material">Plata de Ley 925</span>
+          <span class="spec-desc">Perlas de <span class="spec-highlight">Circonita Celeste Cielo</span></span>
+        </div>
+
+        <div class="product-price">L 1499</div>
+        <div class="limit-notice">MÁX. 2 UNIDADES POR CLIENTE</div>
+
+        <div class="purchase-action">
+          <div class="qty-selector">
+            <button onclick="changeCardQtyLimit('qty-P925-001', -1, 2)">-</button>
+            <span id="qty-P925-001">1</span>
+            <button onclick="changeCardQtyLimit('qty-P925-001', 1, 2)">+</button>
+          </div>
+          <button class="btn-cart" onclick="addToCart('P925-001', 'Anillo Amor Eterno', 'L 1499', 'pl1.jpg', this, 'qty-P925-001', 'size-P925-001')">Añadir Promesa</button>
+        </div>
+      </div>
+    </article>
 
   </main>
 
-  <div class="floating-stack">
-    <a href="joyeria.html" class="pill-btn light">
-      <svg viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></svg>
-      Alta Joyería
-    </a>
-    <a href="boutique.html" class="pill-btn light">
-      <svg viewBox="0 0 512 512"><path d="M160 160V128C160 57.3 217.3 0 288 0c70.7 0 128 57.3 128 128v32h64c17.7 0 32 14.3 32 32v256c0 35.3-28.7 64-64 64H128c-35.3 0-64-28.7-64-64V192c0-17.7 14.3-32 32-32h64zM224 160h128v-32c0-35.3-28.7-64-64-64s-64 28.7-64 64v32z"/></svg>
-      Bolsos Boutique
-    </a>
-    <a href="liquidacion.html" class="pill-btn light">
-      <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><path d="M6 3h12l4 6-10 13L2 9l4-6zm-1.5 6.5h15M12 22l4-12.5H8L12 22z"/></svg>
-      El Archivo
-    </a>
-    <a href="https://wa.me/34602149162?text=Hola,%20deseo%20comunicarme%20con%20soporte%20en%20línea%20de%20ÈNIGME." class="pill-btn" target="_blank">
-      <svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
-      Soporte en línea
-    </a>
-  </div>
+  <footer class="legal-banner">
+    <div class="trust-badges-container">
+      <div class="trust-badge-item">
+        <svg viewBox="0 0 512 512"><path d="M256 0c11 0 20 9 20 20v196h196c11 0 20 9 20 20s-9 20-20 20H276v196c0 11-9 20-20 20s-20-9-20-20V256H40c-11 0-20-9-20-20s9-20 20-20h196V20c0-11 9-20 20-20z"/></svg>
+        Plata 925 Auténtica
+      </div>
+      <div class="trust-badge-item">
+        <svg viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+        Distribución Exclusiva HN
+      </div>
+    </div>
 
-  <footer class="footer">
-    © 2026 ÈNIGME HONDURAS POR CARLOS ARMAS MARTÍNEZ. TODOS LOS DERECHOS RESERVADOS.
+    <p class="legal-text">
+      <strong>Política de Compra y Envíos:</strong> Operamos bajo la máxima seguridad transaccional cifrada. Debido a la curaduría y altos estándares de importación, las piezas se entregan <strong>25 días hábiles</strong> posteriores a la confirmación de pago. <strong>Cada pieza ÈNIGME es real y auténtica, entregada con su respectiva tarjeta de marca.</strong><br><br>
+      Distribución logística exclusiva en <strong>Choluteca y Valle</strong>, <strong>CON ENVÍO INCLUIDO</strong> hasta punto de encuentro seguro en la ciudad.
+    </p>
+    
+    <p class="founder-credit">
+      © 2026 ÈNIGME HONDURAS POR CARLOS ARMAS MARTÍNEZ. TODOS LOS DERECHOS RESERVADOS.
+    </p>
   </footer>
 
+  <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+    <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+    <img id="lightbox-img" src="" alt="Anillo ÈNIGME" onclick="event.stopPropagation()">
+  </div>
+
+  <div id="toast-notification" class="toast-notification">
+    <svg viewBox="0 0 24 24"><path d="M16 6V4a4 4 0 0 0-8 0v2H3v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6h-5zm-6-2a2 2 0 0 1 4 0v2h-4V4zm8 16H6V8h2v2a1 1 0 0 0 2 0V8h4v2a1 1 0 0 0 2 0V8h2v12z"/></svg>
+    Promesa agregada con éxito
+  </div>
+
   <script>
+    /* =========================================
+       MOTOR DEL CARRUSEL (IMÁGENES + VIDEO)
+       ========================================= */
+    function moveSlide(btn, direction) {
+      if(event) event.stopPropagation();
+      let track = btn.parentElement.querySelector('.carousel-track');
+      let mediaItems = track.children;
+      let totalItems = mediaItems.length;
+      if (totalItems <= 1) return;
+      
+      let currentIndex = parseInt(track.getAttribute('data-index') || 0);
+      currentIndex += direction;
+      
+      if (currentIndex < 0) currentIndex = totalItems - 1;
+      if (currentIndex >= totalItems) currentIndex = 0;
+      
+      track.setAttribute('data-index', currentIndex);
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    // Lógica para Swipe/Drag en el carrusel
+    document.querySelectorAll('.carousel-track').forEach(track => {
+      let isDown = false;
+      let startX;
+      let isDragged = false;
+
+      track.addEventListener('mousedown', (e) => {
+        isDown = true;
+        isDragged = false;
+        startX = e.pageX;
+      });
+      track.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        if (Math.abs(e.pageX - startX) > 10) isDragged = true;
+      });
+      track.addEventListener('mouseup', (e) => {
+        isDown = false;
+        if (isDragged) {
+          if (startX > e.pageX) moveSlide({parentElement: track.parentElement}, 1);
+          else moveSlide({parentElement: track.parentElement}, -1);
+        }
+      });
+      track.addEventListener('mouseleave', () => { isDown = false; });
+      track.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        isDragged = false;
+      }, {passive: true});
+      track.addEventListener('touchmove', (e) => {
+        if (Math.abs(e.touches[0].clientX - startX) > 10) isDragged = true;
+      }, {passive: true});
+      track.addEventListener('touchend', (e) => {
+        if (isDragged) {
+          let endX = e.changedTouches[0].clientX;
+          if (startX > endX) moveSlide({parentElement: track.parentElement}, 1);
+          else moveSlide({parentElement: track.parentElement}, -1);
+        }
+      });
+
+      // Solo abrir Lightbox si se hace click en una imagen (no en video)
+      track.addEventListener('click', (e) => {
+        if (!isDragged) {
+          let idx = parseInt(track.getAttribute('data-index') || 0);
+          let media = track.children[idx];
+          if (media.tagName.toLowerCase() === 'img') {
+            openLightbox(media.src); 
+          }
+        }
+      });
+    });
+
+    /* =========================================
+       CONTROLADOR DE SONIDO MÁGICO
+       ========================================= */
+    function toggleSound(videoId, btn) {
+      if(event) event.stopPropagation(); // Evita que se mueva el carrusel al tocar el botón
+      
+      const video = document.getElementById(videoId);
+      const iconMuted = btn.querySelector('.icon-muted');
+      const iconUnmuted = btn.querySelector('.icon-unmuted');
+
+      if (video.muted) {
+        // Enciende el sonido
+        video.muted = false;
+        iconMuted.style.display = 'none';
+        iconUnmuted.style.display = 'block';
+        btn.classList.add('active'); // Se vuelve dorado
+      } else {
+        // Apaga el sonido
+        video.muted = true;
+        iconMuted.style.display = 'block';
+        iconUnmuted.style.display = 'none';
+        btn.classList.remove('active'); // Vuelve a negro translúcido
+      }
+    }
+
+    /* =========================================
+       MOTOR DEL CARRITO Y FAVORITOS (CON TALLA Y LÍMITE)
+       ========================================= */
+    function changeCardQtyLimit(id, delta, max) {
+      let el = document.getElementById(id);
+      let current = parseInt(el.innerText);
+      if (current + delta > 0 && current + delta <= max) {
+        el.innerText = current + delta;
+      }
+    }
+
+    function toggleFav(ref, name, price, img, btn) {
+      let favs = JSON.parse(localStorage.getItem('enigme_favs')) || [];
+      const index = favs.findIndex(i => i.ref === ref);
+      if(index > -1) {
+        favs.splice(index, 1);
+        btn.classList.remove('active');
+      } else {
+        favs.push({ref, name, price, img});
+        btn.classList.add('active');
+      }
+      localStorage.setItem('enigme_favs', JSON.stringify(favs));
+      updateCounts();
+    }
+
+    function showToast() {
+      const toast = document.getElementById('toast-notification');
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+
+    function addToCart(ref, name, price, img, btn, qtyId, sizeId) {
+      if (btn.classList.contains('added')) return; 
+      
+      const qtyToAdd = parseInt(document.getElementById(qtyId).innerText) || 1;
+      let sizeValue = document.getElementById(sizeId) ? document.getElementById(sizeId).value : 'ÚNICA';
+      
+      const uniqueRef = ref + '-T' + sizeValue;
+      const fullName = name + ' (Talla ' + sizeValue + ')';
+
+      let cart = JSON.parse(localStorage.getItem('enigme_cart')) || [];
+      let existing = cart.find(i => i.ref === uniqueRef);
+      
+      if(existing) {
+        if (existing.qty + qtyToAdd > 2) {
+          alert("Por exclusividad, solo se permiten 2 unidades por cliente.");
+          return;
+        }
+        existing.qty += qtyToAdd;
+      } else {
+        cart.push({ref: uniqueRef, name: fullName, price, img, qty: qtyToAdd});
+      }
+      
+      localStorage.setItem('enigme_cart', JSON.stringify(cart));
+      
+      const originalText = btn.innerText;
+      btn.classList.add('added');
+      btn.innerText = "SELECCIONADO ✓";
+      document.getElementById(qtyId).innerText = "1"; 
+      
+      showToast();
+
+      setTimeout(() => {
+        btn.classList.remove('added');
+        btn.innerText = originalText;
+      }, 1500);
+      updateCounts();
+    }
+
     function updateCounts() {
       const cart = JSON.parse(localStorage.getItem('enigme_cart')) || [];
       const favs = JSON.parse(localStorage.getItem('enigme_favs')) || [];
-      
       let totalItems = 0;
       cart.forEach(item => totalItems += (item.qty || 1));
       
-      if(document.getElementById('cart-count')) {
-        document.getElementById('cart-count').innerText = totalItems;
-      }
-      if(document.getElementById('fav-count')) {
-        document.getElementById('fav-count').innerText = favs.length;
-      }
+      if(document.getElementById('cart-count')) document.getElementById('cart-count').innerText = totalItems;
+      if(document.getElementById('fav-count')) document.getElementById('fav-count').innerText = favs.length;
+
+      document.querySelectorAll('.btn-fav').forEach(btn => {
+        const ref = btn.getAttribute('data-ref');
+        if(favs.find(i => i.ref === ref)) btn.classList.add('active');
+      });
     }
-    
+
+    /* LIGHTBOX */
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    function openLightbox(src) {
+      lightboxImg.src = src;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden'; 
+    }
+
+    function closeLightbox(e) {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = 'auto'; 
+    }
+
     window.onload = updateCounts;
   </script>
 
