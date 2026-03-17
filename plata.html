@@ -125,12 +125,55 @@
     .gallery-header {
       text-align: center;
       padding: 80px 20px 40px;
-      border-bottom: 1px solid var(--linea-fina);
     }
 
     .gallery-kicker { font-family: 'Cinzel', serif; font-style: italic; font-size: 0.9rem; color: var(--gris-suave); letter-spacing: 5px; text-transform: uppercase; margin-bottom: 15px; }
     .gallery-title { font-family: 'Cinzel', serif; font-size: clamp(2.2rem, 5vw, 3.5rem); letter-spacing: 0.15em; text-transform: uppercase; color: var(--carbon); margin-bottom: 20px; }
     .gallery-desc { font-size: 0.9rem; line-height: 2; color: var(--gris-suave); max-width: 650px; margin: 0 auto; font-weight: 300; }
+
+    /* GUÍA DE CURADURÍA */
+    .curator-guide {
+      max-width: 600px;
+      margin: 0 auto 20px;
+      padding: 15px 25px;
+      border: 1px solid rgba(203, 170, 99, 0.4);
+      background-color: var(--blanco-puro);
+      font-size: 0.6rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--carbon);
+      font-weight: 500;
+      text-align: center;
+    }
+    .curator-guide strong { color: var(--dorado); }
+
+    /* EXPERIENCIA DE EMPAQUE */
+    .premium-packaging {
+      max-width: 800px;
+      margin: 0 auto 50px;
+      padding: 25px;
+      background-color: var(--carbon);
+      color: var(--marfil);
+      text-align: center;
+      border: 1px solid var(--dorado);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+    .premium-packaging h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.2rem;
+      letter-spacing: 4px;
+      color: var(--dorado);
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+    .premium-packaging p {
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      line-height: 2;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    .premium-packaging p strong { color: var(--dorado); }
 
     /* =========================================
        GRID DE PRODUCTOS
@@ -139,7 +182,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 80px 40px;
-      padding: 80px 5vw;
+      padding: 0 5vw 80px;
       max-width: 1400px;
       margin: 0 auto;
       width: 100%;
@@ -164,14 +207,16 @@
       aspect-ratio: 4/5; 
       overflow: hidden;
       border-bottom: 1px solid var(--linea-fina);
+      touch-action: pan-y; 
     }
 
     .carousel-track {
       display: flex;
       width: 100%; 
       height: 100%;
-      transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       cursor: grab;
+      will-change: transform;
     }
     .carousel-track:active { cursor: grabbing; }
 
@@ -183,20 +228,19 @@
       pointer-events: none; 
     }
 
-    /* CONTENEDOR ESPECÍFICO PARA EL VIDEO */
     .video-container {
       flex: 0 0 100%;
       width: 100%; 
       height: 100%;
       position: relative;
-      pointer-events: auto; /* Permitir clics en los botones dentro */
+      pointer-events: auto; 
     }
 
     .video-container video {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      pointer-events: none; /* Que el swipe siga funcionando sobre el video */
+      pointer-events: none; 
     }
 
     /* BOTÓN DE SONIDO MÁGICO */
@@ -204,8 +248,8 @@
       position: absolute;
       bottom: 20px;
       right: 20px;
-      width: 40px;
-      height: 40px;
+      width: 45px;
+      height: 45px;
       background: rgba(28, 28, 28, 0.6);
       backdrop-filter: blur(8px);
       border-radius: 50%;
@@ -219,23 +263,9 @@
       cursor: pointer;
     }
 
-    .sound-toggle-btn:hover {
-      transform: scale(1.1);
-      background: var(--carbon);
-    }
-
-    .sound-toggle-btn.active {
-      background: var(--dorado);
-      color: var(--carbon);
-      border-color: var(--dorado);
-      box-shadow: 0 0 15px rgba(203, 170, 99, 0.5);
-    }
-
-    .sound-toggle-btn svg {
-      width: 18px;
-      height: 18px;
-      fill: currentColor;
-    }
+    .sound-toggle-btn:hover { transform: scale(1.1); background: var(--carbon); }
+    .sound-toggle-btn.active { background: var(--dorado); color: var(--carbon); border-color: var(--dorado); box-shadow: 0 0 15px rgba(203, 170, 99, 0.5); }
+    .sound-toggle-btn svg { width: 20px; height: 20px; fill: currentColor; }
 
     .carousel-arrow {
       position: absolute;
@@ -244,8 +274,8 @@
       background: rgba(250, 249, 246, 0.85);
       color: var(--carbon);
       border: 1px solid var(--linea-fina);
-      width: 35px;
-      height: 35px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       cursor: pointer;
       z-index: 5;
@@ -259,24 +289,22 @@
     }
     .carousel-wrapper:hover .carousel-arrow { opacity: 1; }
     .carousel-arrow:hover { background: var(--carbon); color: var(--dorado); border-color: var(--carbon); }
-    .carousel-arrow.prev { left: 10px; }
-    .carousel-arrow.next { right: 10px; }
+    .carousel-arrow.prev { left: 15px; }
+    .carousel-arrow.next { right: 15px; }
 
-    /* BOTÓN FAVORITOS */
-    .btn-fav { position: absolute; top: 15px; right: 15px; width: 35px; height: 35px; background-color: rgba(255,255,255,0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05); z-index: 10; transition: var(--transition); color: var(--carbon); }
+    .btn-fav { position: absolute; top: 15px; right: 15px; width: 40px; height: 40px; background-color: rgba(255,255,255,0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); z-index: 10; transition: var(--transition); color: var(--carbon); }
     .btn-fav:hover { transform: scale(1.1); }
-    .btn-fav svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; transition: var(--transition); }
+    .btn-fav svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; transition: var(--transition); }
     .btn-fav.active svg { fill: var(--rosa-palo); stroke: var(--rosa-palo); }
 
-    /* INDICADOR DE VIDEO */
     .video-badge {
       position: absolute;
       top: 15px;
       left: 15px;
       background: rgba(0,0,0,0.6);
       color: white;
-      padding: 4px 10px;
-      font-size: 0.5rem;
+      padding: 6px 12px;
+      font-size: 0.55rem;
       letter-spacing: 2px;
       border-radius: 20px;
       backdrop-filter: blur(5px);
@@ -285,10 +313,25 @@
       align-items: center;
       gap: 5px;
     }
+    
+    .photo-badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: rgba(203, 170, 99, 0.8);
+      color: var(--carbon);
+      padding: 6px 12px;
+      font-size: 0.55rem;
+      letter-spacing: 2px;
+      border-radius: 20px;
+      backdrop-filter: blur(5px);
+      z-index: 10;
+      font-weight: 700;
+    }
 
     /* INFO DEL PRODUCTO */
     .product-info {
-      padding: 30px 25px;
+      padding: 35px 25px;
       text-align: center;
       display: flex;
       flex-direction: column;
@@ -296,8 +339,8 @@
     }
 
     .product-code { font-size: 0.55rem; letter-spacing: 2px; color: var(--gris-suave); margin-bottom: 8px; }
-    .product-name { font-family: 'Cinzel', serif; font-size: 1.4rem; letter-spacing: 0.1em; color: var(--carbon); margin-bottom: 10px; text-transform: uppercase; font-weight: 600; }
-    .product-lema { font-size: 0.8rem; line-height: 1.6; color: var(--gris-suave); margin-bottom: 20px; font-weight: 300; font-style: italic; }
+    .product-name { font-family: 'Cinzel', serif; font-size: 1.5rem; letter-spacing: 0.1em; color: var(--carbon); margin-bottom: 12px; text-transform: uppercase; font-weight: 600; }
+    .product-lema { font-size: 0.85rem; line-height: 1.6; color: var(--gris-suave); margin-bottom: 25px; font-weight: 300; font-style: italic; }
     .product-lema strong { color: var(--carbon); font-weight: 500; }
     
     /* BLOQUE DE ETIQUETAS Y TALLAS */
@@ -315,80 +358,68 @@
     .size-selector-wrapper {
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      gap: 8px;
       align-items: center;
       width: 100%;
-      margin-bottom: 5px;
+      margin-bottom: 8px;
     }
-    .size-label { font-size: 0.5rem; letter-spacing: 2px; color: var(--gris-suave); text-transform: uppercase; }
+    .size-label { font-size: 0.55rem; letter-spacing: 2px; color: var(--gris-suave); text-transform: uppercase; font-weight: 600;}
     .size-select {
-      appearance: none;
-      background: transparent;
-      border: 1px solid var(--carbon);
-      padding: 8px 30px 8px 15px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.7rem;
-      letter-spacing: 2px;
-      color: var(--carbon);
-      font-weight: 600;
-      text-transform: uppercase;
-      cursor: pointer;
-      text-align: center;
-      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231C1C1C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-      background-repeat: no-repeat;
-      background-position: right 10px center;
-      background-size: 12px;
-      width: 100%;
-      max-width: 150px;
-      outline: none;
+      appearance: none; background: transparent; border: 1px solid var(--carbon); padding: 10px 35px 10px 15px; font-family: 'Montserrat', sans-serif; font-size: 0.75rem; letter-spacing: 2px; color: var(--carbon); font-weight: 600; text-transform: uppercase; cursor: pointer; text-align: center; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231C1C1C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 10px center; background-size: 14px; width: 100%; max-width: 160px; outline: none; transition: var(--transition);
     }
+    .size-select:hover { border-color: var(--dorado); }
     
-    .spec-material {
-      display: inline-block;
-      padding: 6px 15px;
-      font-size: 0.65rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-weight: 700;
-      border-radius: 2px;
-      background-color: var(--plata);
-      color: var(--carbon);
-    }
-    .spec-desc { font-size: 0.65rem; color: var(--carbon); text-transform: uppercase; font-weight: 500; letter-spacing: 1px; }
+    .spec-material { display: inline-block; padding: 6px 15px; font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; border-radius: 2px; background-color: var(--plata); color: var(--carbon); }
+    .spec-desc { font-size: 0.7rem; color: var(--carbon); text-transform: uppercase; font-weight: 500; letter-spacing: 1px; }
     .spec-highlight { color: var(--celeste); font-weight: 700; }
 
-    .product-price { font-size: 1.4rem; letter-spacing: 2px; color: var(--carbon); font-weight: 700; margin-top: auto; margin-bottom: 5px; }
+    /* PRECIO CON DESCUENTO */
+    .product-price-wrapper {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 15px;
+      margin-top: auto;
+      margin-bottom: 10px;
+    }
+    .price-old { font-size: 1rem; color: var(--gris-suave); text-decoration: line-through; font-weight: 400; }
+    .product-price { font-size: 1.5rem; letter-spacing: 2px; color: var(--carbon); font-weight: 700; }
     
-    .limit-notice { font-size: 0.5rem; letter-spacing: 2px; color: #b30000; text-transform: uppercase; font-weight: 600; margin-bottom: 20px; }
+    .limit-notice { font-size: 0.55rem; letter-spacing: 2px; color: #b30000; text-transform: uppercase; font-weight: 600; margin-bottom: 25px; }
 
-    .purchase-action { display: flex; margin-top: auto; border: 1px solid var(--carbon); border-radius: 0; overflow: hidden; height: 45px; }
-    .qty-selector { display: flex; align-items: center; justify-content: space-between; width: 90px; background: var(--blanco-puro); border-right: 1px solid var(--linea-fina); }
-    .qty-selector button { width: 30px; height: 100%; font-size: 1.2rem; color: var(--carbon); display: flex; align-items: center; justify-content: center; }
+    .purchase-action { display: flex; margin-top: auto; border: 1px solid var(--carbon); border-radius: 0; overflow: hidden; height: 50px; }
+    .qty-selector { display: flex; align-items: center; justify-content: space-between; width: 100px; background: var(--blanco-puro); border-right: 1px solid var(--linea-fina); }
+    .qty-selector button { width: 35px; height: 100%; font-size: 1.4rem; color: var(--carbon); display: flex; align-items: center; justify-content: center; }
     .qty-selector button:hover { background: rgba(0,0,0,0.05); }
-    .qty-selector span { font-size: 0.85rem; font-weight: 600; color: var(--carbon); flex-grow: 1; }
+    .qty-selector span { font-size: 0.9rem; font-weight: 600; color: var(--carbon); flex-grow: 1; }
     
-    .btn-cart { flex-grow: 1; background-color: var(--carbon); border: none; color: var(--blanco-puro); font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; transition: var(--transition); font-weight: 700; }
+    .btn-cart { flex-grow: 1; background-color: var(--carbon); border: none; color: var(--blanco-puro); font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; transition: var(--transition); font-weight: 700; }
     .btn-cart:hover { background-color: var(--dorado); color: var(--carbon); }
 
     /* =========================================
        BOTONES FLOTANTES COMPACTOS
        ========================================= */
     .floating-stack { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; z-index: 999; }
-    .pill-btn { display: flex; align-items: center; gap: 10px; height: 38px; padding: 0 16px; border-radius: 20px; background: var(--carbon); color: var(--blanco-puro); font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; box-shadow: 0 5px 15px rgba(0,0,0,0.15); transition: var(--transition); }
+    .pill-btn { display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 18px; border-radius: 20px; background: var(--carbon); color: var(--blanco-puro); font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; box-shadow: 0 5px 15px rgba(0,0,0,0.15); border: 1px solid transparent; white-space: nowrap; transition: var(--transition); }
     .pill-btn.light { background: var(--marfil); color: var(--carbon); border: 1px solid var(--linea-fina); }
     .pill-btn.support { background: var(--dorado); color: var(--carbon); border: 1px solid var(--dorado); font-weight: 700; }
     .pill-btn:hover { transform: translateX(-5px); background: var(--carbon); color: var(--dorado); border-color: var(--carbon); }
+    .pill-btn svg { width: 16px; height: 16px; fill: currentColor; }
 
-    /* NOTIFICACIÓN TOAST */
-    .toast-notification { position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%) translateY(100px); background-color: var(--carbon); color: var(--dorado); padding: 14px 28px; font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; box-shadow: 0 10px 40px rgba(0,0,0,0.3); z-index: 10000; opacity: 0; transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); display: flex; align-items: center; gap: 12px; pointer-events: none; }
+    /* =========================================
+       NOTIFICACIÓN TOAST
+       ========================================= */
+    .toast-notification { position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%) translateY(100px); background-color: var(--carbon); color: var(--dorado); padding: 16px 30px; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; box-shadow: 0 10px 40px rgba(0,0,0,0.3); z-index: 10000; opacity: 0; transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); display: flex; align-items: center; gap: 12px; pointer-events: none; }
     .toast-notification.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
-    /* LIGHTBOX */
+    /* =========================================
+       LIGHTBOX (VISUALIZACIÓN DE IMAGEN)
+       ========================================= */
     .lightbox { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(250, 249, 246, 0.98); backdrop-filter: blur(10px); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
     .lightbox.active { opacity: 1; pointer-events: auto; }
-    .lightbox img { max-width: 90%; max-height: 90%; object-fit: contain; transform: scale(0.95); transition: transform 0.4s ease; box-shadow: 0 20px 50px rgba(0,0,0,0.15);}
+    .lightbox img { max-width: 95%; max-height: 95%; object-fit: contain; transform: scale(0.95); transition: transform 0.4s ease; box-shadow: 0 20px 50px rgba(0,0,0,0.15);}
     .lightbox.active img { transform: scale(1); }
-    .lightbox-close { position: absolute; top: 30px; right: 40px; font-size: 3rem; color: var(--carbon); cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 200; line-height: 1; transition: var(--transition); }
+    .lightbox-close { position: absolute; top: 30px; right: 40px; font-size: 3.5rem; color: var(--carbon); cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 200; line-height: 1; transition: var(--transition); }
     .lightbox-close:hover { color: var(--rosa-palo); transform: scale(1.1); }
 
     /* BANNER LEGAL Y FOOTER */
@@ -400,29 +431,46 @@
     .legal-text strong { color: var(--carbon); }
     .founder-credit { margin-top: 40px; font-size: 0.5rem; letter-spacing: 0.25em; color: var(--gris-suave); opacity: 0.5; text-transform: uppercase; font-weight: 300; }
 
-    /* RESPONSIVE */
+    /* =========================================
+       RESPONSIVE MOBILE
+       ========================================= */
     @media (max-width: 768px) {
       .navbar { flex-wrap: wrap; justify-content: center; gap: 20px; padding: 25px; }
       .nav-group { justify-content: center; flex-wrap: wrap; width: 100%; flex: none; gap: 15px;}
       .brand-nav { order: -1; width: 100%; margin-bottom: 10px; }
       
-      .product-grid { padding: 40px 15px; }
-      .product-card { max-width: 100%; }
-      .product-name { font-size: 1.2rem; }
-      .product-lema { font-size: 0.7rem; margin-bottom: 15px; }
+      .curator-guide { margin: 0 15px 20px; font-size: 0.55rem; }
+      .premium-packaging { margin: 0 15px 40px; padding: 20px; }
+      .premium-packaging h3 { font-size: 0.9rem; }
+      .premium-packaging p { font-size: 0.55rem; }
+
+      .product-grid { padding: 0 15px 60px; gap: 40px; max-width: 100%; }
+      .product-card { max-width: 100%; border-left: none; border-right: none; }
       
-      .specs-block { padding: 15px; gap: 10px; margin-bottom: 15px; }
-      .spec-material { font-size: 0.55rem; padding: 4px 10px; }
-      .spec-desc { font-size: 0.55rem; }
-      .product-price { font-size: 1.2rem; margin-bottom: 10px; }
+      .carousel-wrapper { aspect-ratio: 1/1; border-radius: 4px; margin: 10px; border: 1px solid var(--linea-fina); }
+      .carousel-arrow { opacity: 1; width: 35px; height: 35px; } 
+
+      .product-info { padding: 25px 20px; }
+      .product-name { font-size: 1.4rem; }
+      .product-lema { font-size: 0.75rem; margin-bottom: 15px; }
+      
+      .specs-block { padding: 15px; gap: 10px; margin-bottom: 20px; }
+      .spec-material { font-size: 0.6rem; padding: 5px 12px; }
+      .spec-desc { font-size: 0.6rem; }
+      
+      .product-price-wrapper { gap: 12px; margin-bottom: 10px; }
+      .price-old { font-size: 0.9rem; }
+      .product-price { font-size: 1.4rem; }
 
       .floating-stack { bottom: 15px; right: 15px; }
-      .pill-btn { height: 32px; padding: 0 12px; font-size: 0.5rem; }
+      .pill-btn { height: 35px; padding: 0 14px; font-size: 0.5rem; }
       .toast-notification { width: 90%; justify-content: center; bottom: 20px; font-size: 0.55rem; }
     }
   </style>
 </head>
 <body>
+
+  <audio id="audio-boda" src="boda.mp3" loop preload="auto"></audio>
 
   <nav class="navbar">
     <div class="nav-group">
@@ -448,7 +496,7 @@
     <a href="joyeria.html" class="pill-btn light">Alta Joyería</a>
     <a href="boutique.html" class="pill-btn light">Bolsos Boutique</a>
     <a href="liquidacion.html" class="pill-btn light">El Archivo</a>
-    <a href="https://wa.me/34602149162?text=Hola,%20deseo%20asesor%C3%ADa%20sobre%20la%20Colección%20Plata%20de%20Ley." class="pill-btn support" target="_blank">Atención VIP</a>
+    <a href="https://wa.me/34602149162?text=Hola,%20deseo%20asesor%C3%ADa%20VIP%20sobre%20la%20Colección%20Plata%20de%20Ley." class="pill-btn support" target="_blank">Atención VIP</a>
   </div>
 
   <header class="gallery-header">
@@ -457,45 +505,45 @@
     <p class="gallery-desc">La eternidad forjada en metal noble. Piezas diseñadas para sellar promesas inquebrantables.</p>
   </header>
 
+  <div class="curator-guide">
+    <strong>Curaduría V.I.P:</strong> Deslice sobre la imagen para explorar nuestra galería visual. Active la experiencia sonora en el interior de la pieza.
+  </div>
+
+  <div class="premium-packaging">
+    <h3>La Experiencia Ènigme</h3>
+    <p>Toda adquisición en la Colección de Plata incluye un estuche de lujo con <strong>luz LED interior</strong> para admirar el destello de su joya, una <strong>alfombrilla especial de limpieza</strong> y su respectiva <strong>tarjeta de autenticidad</strong>.</p>
+  </div>
+
   <main class="product-grid">
 
     <article class="product-card">
       <div class="carousel-wrapper">
         <div class="video-badge">▶ GALERÍA V.I.P.</div>
-        
-        <button class="btn-fav" data-ref="P925-001" onclick="toggleFav('P925-001', 'Anillo Amor Eterno', 'L 1499', 'pl1.jpg', this)">
+        <button class="btn-fav" data-ref="000898" onclick="toggleFav('000898', 'Anillo Aura Céleste', 'L 1499', 'pl1.jpg', this)">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <button class="carousel-arrow prev" onclick="moveSlide(this, -1)">&#10094;</button>
-        
         <div class="carousel-track" data-index="0">
-          <img src="pl1.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=FOTO+1'">
-          <img src="pl2.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=FOTO+2'">
           <div class="video-container">
-            <video id="video-anillo" src="vpl1.mp4" autoplay loop muted playsinline></video>
-            <button class="sound-toggle-btn" onclick="toggleSound('video-anillo', this)" aria-label="Activar Sonido">
-              <svg class="icon-muted" viewBox="0 0 24 24">
-                <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
-              </svg>
-              <svg class="icon-unmuted" viewBox="0 0 24 24" style="display:none;">
-                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
-              </svg>
+            <video class="product-video" id="vid-anillo-1" src="vpl1.mp4" autoplay muted playsinline></video>
+            <button class="sound-toggle-btn" onclick="toggleSound('vid-anillo-1', this)" aria-label="Activar Sonido">
+              <svg class="icon-muted" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+              <svg class="icon-unmuted" viewBox="0 0 24 24" style="display:none;"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
             </button>
           </div>
+          <img src="pl1.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=FOTO+1'">
+          <img src="pl2.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=FOTO+2'">
         </div>
-        
         <button class="carousel-arrow next" onclick="moveSlide(this, 1)">&#10095;</button>
       </div>
-      
       <div class="product-info">
-        <span class="product-code">REF: P925-001</span>
-        <h2 class="product-name">Anillo Amor Eterno</h2>
-        <p class="product-lema">"Una promesa sellada en el firmamento. El anillo definitivo para un <strong style="color:var(--carbon);">sí</strong> eterno."</p>
-        
+        <span class="product-code">REF: 000898</span>
+        <h2 class="product-name">Anillo Aura Céleste</h2>
+        <p class="product-lema">"Un fragmento de cielo capturado en plata. El inicio de un misterio eterno."</p>
         <div class="specs-block">
           <div class="size-selector-wrapper">
             <span class="size-label">Seleccione Talla</span>
-            <select id="size-P925-001" class="size-select">
+            <select id="size-000898" class="size-select">
               <option value="7">Talla 7</option>
               <option value="8">Talla 8</option>
             </select>
@@ -503,17 +551,214 @@
           <span class="spec-material">Plata de Ley 925</span>
           <span class="spec-desc">Perlas de <span class="spec-highlight">Circonita Celeste Cielo</span></span>
         </div>
-
-        <div class="product-price">L 1499</div>
+        <div class="product-price-wrapper">
+          <span class="price-old">L 1999</span>
+          <h3 class="product-price">L 1499</h3>
+        </div>
         <div class="limit-notice">MÁX. 2 UNIDADES POR CLIENTE</div>
-
         <div class="purchase-action">
           <div class="qty-selector">
-            <button onclick="changeCardQtyLimit('qty-P925-001', -1, 2)">-</button>
-            <span id="qty-P925-001">1</span>
-            <button onclick="changeCardQtyLimit('qty-P925-001', 1, 2)">+</button>
+            <button onclick="changeCardQtyLimit('qty-000898', -1, 2)">-</button>
+            <span id="qty-000898">1</span>
+            <button onclick="changeCardQtyLimit('qty-000898', 1, 2)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('P925-001', 'Anillo Amor Eterno', 'L 1499', 'pl1.jpg', this, 'qty-P925-001', 'size-P925-001')">Añadir Promesa</button>
+          <button class="btn-cart" onclick="addToCart('000898', 'Anillo Aura Céleste', 'L 1499', 'pl1.jpg', this, 'qty-000898', 'size-000898')">Añadir Promesa</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="product-card">
+      <div class="carousel-wrapper">
+        <div class="video-badge">▶ GALERÍA V.I.P.</div>
+        <button class="btn-fav" data-ref="003012" onclick="toggleFav('003012', 'Anillo Éclat de Lune', 'L 1899', 'pl3.jpg', this)">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        </button>
+        <button class="carousel-arrow prev" onclick="moveSlide(this, -1)">&#10094;</button>
+        <div class="carousel-track" data-index="0">
+          <div class="video-container">
+            <video class="product-video" id="vid-anillo-2" src="vpl2.mp4" autoplay muted playsinline></video>
+            <button class="sound-toggle-btn" onclick="toggleSound('vid-anillo-2', this)" aria-label="Activar Sonido">
+              <svg class="icon-muted" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+              <svg class="icon-unmuted" viewBox="0 0 24 24" style="display:none;"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+            </button>
+          </div>
+          <img src="pl3.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=FOTO+3'">
+          <img src="pl4.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=FOTO+4'">
+        </div>
+        <button class="carousel-arrow next" onclick="moveSlide(this, 1)">&#10095;</button>
+      </div>
+      <div class="product-info">
+        <span class="product-code">REF: 003012</span>
+        <h2 class="product-name">Anillo Éclat de Lune</h2>
+        <p class="product-lema">"Luz forjada en la penumbra. Una pieza que hipnotiza y envuelve tu esencia."</p>
+        <div class="specs-block">
+          <div class="size-selector-wrapper">
+            <span class="size-label">Seleccione Talla</span>
+            <select id="size-003012" class="size-select">
+              <option value="7">Talla 7</option>
+              <option value="8">Talla 8</option>
+            </select>
+          </div>
+          <span class="spec-material">Plata de Ley 925</span>
+          <span class="spec-desc">Corte Diamante <span class="spec-highlight" style="color: var(--carbon);">Brillo Extremo</span></span>
+        </div>
+        <div class="product-price-wrapper">
+          <span class="price-old">L 2299</span>
+          <h3 class="product-price">L 1899</h3>
+        </div>
+        <div class="limit-notice">MÁX. 2 UNIDADES POR CLIENTE</div>
+        <div class="purchase-action">
+          <div class="qty-selector">
+            <button onclick="changeCardQtyLimit('qty-003012', -1, 2)">-</button>
+            <span id="qty-003012">1</span>
+            <button onclick="changeCardQtyLimit('qty-003012', 1, 2)">+</button>
+          </div>
+          <button class="btn-cart" onclick="addToCart('003012', 'Anillo Éclat de Lune', 'L 1899', 'pl3.jpg', this, 'qty-003012', 'size-003012')">Añadir Promesa</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="product-card">
+      <div class="carousel-wrapper">
+        <div class="video-badge">▶ GALERÍA V.I.P.</div>
+        <button class="btn-fav" data-ref="001403" onclick="toggleFav('001403', 'Anillo Sortilège', 'L 1399', 'pl5.jpg', this)">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        </button>
+        <button class="carousel-arrow prev" onclick="moveSlide(this, -1)">&#10094;</button>
+        <div class="carousel-track" data-index="0">
+          <div class="video-container">
+            <video class="product-video" id="vid-anillo-3" src="vpl3.mp4" autoplay muted playsinline></video>
+            <button class="sound-toggle-btn" onclick="toggleSound('vid-anillo-3', this)" aria-label="Activar Sonido">
+              <svg class="icon-muted" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+              <svg class="icon-unmuted" viewBox="0 0 24 24" style="display:none;"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+            </button>
+          </div>
+          <img src="pl5.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=FOTO+5'">
+          <img src="pl6.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=FOTO+6'">
+        </div>
+        <button class="carousel-arrow next" onclick="moveSlide(this, 1)">&#10095;</button>
+      </div>
+      <div class="product-info">
+        <span class="product-code">REF: 001403</span>
+        <h2 class="product-name">Anillo Sortilège</h2>
+        <p class="product-lema">"La elegancia de un hechizo silencioso. Magia pura esculpida con maestría."</p>
+        <div class="specs-block">
+          <div class="size-selector-wrapper">
+            <span class="size-label">Seleccione Talla</span>
+            <select id="size-001403" class="size-select">
+              <option value="7">Talla 7</option>
+              <option value="8">Talla 8</option>
+            </select>
+          </div>
+          <span class="spec-material">Plata de Ley 925</span>
+          <span class="spec-desc">Diseño Imperial <span class="spec-highlight" style="color: var(--carbon);">Corte Princesa</span></span>
+        </div>
+        <div class="product-price-wrapper">
+          <span class="price-old">L 1899</span>
+          <h3 class="product-price">L 1399</h3>
+        </div>
+        <div class="limit-notice">MÁX. 2 UNIDADES POR CLIENTE</div>
+        <div class="purchase-action">
+          <div class="qty-selector">
+            <button onclick="changeCardQtyLimit('qty-001403', -1, 2)">-</button>
+            <span id="qty-001403">1</span>
+            <button onclick="changeCardQtyLimit('qty-001403', 1, 2)">+</button>
+          </div>
+          <button class="btn-cart" onclick="addToCart('001403', 'Anillo Sortilège', 'L 1399', 'pl5.jpg', this, 'qty-001403', 'size-001403')">Añadir Promesa</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="product-card">
+      <div class="carousel-wrapper">
+        <div class="video-badge">▶ GALERÍA V.I.P.</div>
+        <button class="btn-fav" data-ref="001003" onclick="toggleFav('001003', 'Anillo Majesté', 'L 1599', 'pl7.jpg', this)">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        </button>
+        <button class="carousel-arrow prev" onclick="moveSlide(this, -1)">&#10094;</button>
+        <div class="carousel-track" data-index="0">
+          <div class="video-container">
+            <video class="product-video" id="vid-anillo-4" src="vpl4.mp4" autoplay muted playsinline></video>
+            <button class="sound-toggle-btn" onclick="toggleSound('vid-anillo-4', this)" aria-label="Activar Sonido">
+              <svg class="icon-muted" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+              <svg class="icon-unmuted" viewBox="0 0 24 24" style="display:none;"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+            </button>
+          </div>
+          <img src="pl7.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=FOTO+7'">
+          <img src="pl8.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=FOTO+8'">
+        </div>
+        <button class="carousel-arrow next" onclick="moveSlide(this, 1)">&#10095;</button>
+      </div>
+      <div class="product-info">
+        <span class="product-code">REF: 001003</span>
+        <h2 class="product-name">Anillo Majesté</h2>
+        <p class="product-lema">"El reinado del misterio. Una corona diseñada para quienes dominan su destino."</p>
+        <div class="specs-block">
+          <div class="size-selector-wrapper">
+            <span class="size-label">Seleccione Talla</span>
+            <select id="size-001003" class="size-select">
+              <option value="7">Talla 7</option>
+              <option value="8">Talla 8</option>
+            </select>
+          </div>
+          <span class="spec-material">Plata de Ley 925</span>
+          <span class="spec-desc">Banda Pavé <span class="spec-highlight" style="color: var(--carbon);">Diseño Corona</span></span>
+        </div>
+        <div class="product-price-wrapper">
+          <span class="price-old">L 2099</span>
+          <h3 class="product-price">L 1599</h3>
+        </div>
+        <div class="limit-notice">MÁX. 2 UNIDADES POR CLIENTE</div>
+        <div class="purchase-action">
+          <div class="qty-selector">
+            <button onclick="changeCardQtyLimit('qty-001003', -1, 2)">-</button>
+            <span id="qty-001003">1</span>
+            <button onclick="changeCardQtyLimit('qty-001003', 1, 2)">+</button>
+          </div>
+          <button class="btn-cart" onclick="addToCart('001003', 'Anillo Majesté', 'L 1599', 'pl7.jpg', this, 'qty-001003', 'size-001003')">Añadir Promesa</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="product-card">
+      <div class="carousel-wrapper">
+        <span class="photo-badge">★ EDICIÓN LIMITADA</span>
+        <button class="btn-fav" data-ref="002810" onclick="toggleFav('002810', 'Pulsera L\'Éternité Bleu', 'L 1299', 'pl10.jpg', this)">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        </button>
+        <button class="carousel-arrow prev" onclick="moveSlide(this, -1)">&#10094;</button>
+        <div class="carousel-track" data-index="0">
+          <img src="pl10.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=FOTO+10'">
+          <img src="pl9.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=FOTO+9'">
+        </div>
+        <button class="carousel-arrow next" onclick="moveSlide(this, 1)">&#10095;</button>
+      </div>
+      <div class="product-info">
+        <span class="product-code">REF: 002810</span>
+        <h2 class="product-name">Pulsera Éternité Bleu</h2>
+        <p class="product-lema">"El ciclo interminable de un aura cautivadora. Un secreto custodiado en azul etéreo."</p>
+        <div class="specs-block">
+          <div class="size-selector-wrapper">
+            <span class="size-label">Ajuste Unisex</span>
+            <select id="size-002810" class="size-select">
+              <option value="ESTÁNDAR">ESTÁNDAR</option>
+            </select>
+          </div>
+          <span class="spec-material">Plata de Ley 925</span>
+          <span class="spec-desc">Dije Infinito y Corazón <span class="spec-highlight" style="color: var(--carbon);">Azul Claro</span></span>
+        </div>
+        <div class="product-price-wrapper">
+          <span class="price-old">L 1699</span>
+          <h3 class="product-price">L 1299</h3>
+        </div>
+        <div class="limit-notice">MÁX. 2 UNIDADES POR CLIENTE</div>
+        <div class="purchase-action">
+          <div class="qty-selector">
+            <button onclick="changeCardQtyLimit('qty-002810', -1, 2)">-</button>
+            <span id="qty-002810">1</span>
+            <button onclick="changeCardQtyLimit('qty-002810', 1, 2)">+</button>
+          </div>
+          <button class="btn-cart" onclick="addToCart('002810', 'Pulsera L\'Éternité Bleu', 'L 1299', 'pl10.jpg', this, 'qty-002810', 'size-002810')">Añadir Vínculo</button>
         </div>
       </div>
     </article>
@@ -531,30 +776,43 @@
         Distribución Exclusiva HN
       </div>
     </div>
-
     <p class="legal-text">
       <strong>Política de Compra y Envíos:</strong> Operamos bajo la máxima seguridad transaccional cifrada. Debido a la curaduría y altos estándares de importación, las piezas se entregan <strong>25 días hábiles</strong> posteriores a la confirmación de pago. <strong>Cada pieza ÈNIGME es real y auténtica, entregada con su respectiva tarjeta de marca.</strong><br><br>
       Distribución logística exclusiva en <strong>Choluteca y Valle</strong>, <strong>CON ENVÍO INCLUIDO</strong> hasta punto de encuentro seguro en la ciudad.
     </p>
-    
-    <p class="founder-credit">
-      © 2026 ÈNIGME HONDURAS POR CARLOS ARMAS MARTÍNEZ. TODOS LOS DERECHOS RESERVADOS.
-    </p>
+    <p class="founder-credit">© 2026 ÈNIGME HONDURAS POR CARLOS ARMAS MARTÍNEZ. TODOS LOS DERECHOS RESERVADOS.</p>
   </footer>
 
   <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
     <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
-    <img id="lightbox-img" src="" alt="Anillo ÈNIGME" onclick="event.stopPropagation()">
+    <img id="lightbox-img" src="" onclick="event.stopPropagation()">
   </div>
 
   <div id="toast-notification" class="toast-notification">
     <svg viewBox="0 0 24 24"><path d="M16 6V4a4 4 0 0 0-8 0v2H3v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6h-5zm-6-2a2 2 0 0 1 4 0v2h-4V4zm8 16H6V8h2v2a1 1 0 0 0 2 0V8h4v2a1 1 0 0 0 2 0V8h2v12z"/></svg>
-    Promesa agregada con éxito
+    Agregado con éxito
   </div>
 
   <script>
     /* =========================================
-       MOTOR DEL CARRUSEL (IMÁGENES + VIDEO)
+       NAVEGACIÓN POR TECLADO (PC)
+       ========================================= */
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+        const wrappers = document.querySelectorAll('.carousel-wrapper');
+        wrappers.forEach(wrapper => {
+          const rect = wrapper.getBoundingClientRect();
+          const inViewport = (rect.top < window.innerHeight && rect.bottom > 0);
+          if (inViewport) {
+            const btn = e.key === 'ArrowLeft' ? wrapper.querySelector('.prev') : wrapper.querySelector('.next');
+            if (btn) btn.click();
+          }
+        });
+      }
+    });
+
+    /* =========================================
+       MOTOR DEL CARRUSEL
        ========================================= */
     function moveSlide(btn, direction) {
       if(event) event.stopPropagation();
@@ -573,36 +831,18 @@
       track.style.transform = `translateX(-${currentIndex * 100}%)`;
     }
 
-    // Lógica para Swipe/Drag en el carrusel
+    /* Swipe Gestures */
     document.querySelectorAll('.carousel-track').forEach(track => {
       let isDown = false;
       let startX;
       let isDragged = false;
 
-      track.addEventListener('mousedown', (e) => {
-        isDown = true;
-        isDragged = false;
-        startX = e.pageX;
-      });
-      track.addEventListener('mousemove', (e) => {
-        if (!isDown) return;
-        if (Math.abs(e.pageX - startX) > 10) isDragged = true;
-      });
-      track.addEventListener('mouseup', (e) => {
-        isDown = false;
-        if (isDragged) {
-          if (startX > e.pageX) moveSlide({parentElement: track.parentElement}, 1);
-          else moveSlide({parentElement: track.parentElement}, -1);
-        }
-      });
+      track.addEventListener('mousedown', (e) => { isDown = true; isDragged = false; startX = e.pageX; });
+      track.addEventListener('mousemove', (e) => { if (!isDown) return; if (Math.abs(e.pageX - startX) > 10) isDragged = true; });
+      track.addEventListener('mouseup', (e) => { isDown = false; if (isDragged) { if (startX > e.pageX) moveSlide({parentElement: track.parentElement}, 1); else moveSlide({parentElement: track.parentElement}, -1); } });
       track.addEventListener('mouseleave', () => { isDown = false; });
-      track.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
-        isDragged = false;
-      }, {passive: true});
-      track.addEventListener('touchmove', (e) => {
-        if (Math.abs(e.touches[0].clientX - startX) > 10) isDragged = true;
-      }, {passive: true});
+      track.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; isDragged = false; }, {passive: true});
+      track.addEventListener('touchmove', (e) => { if (Math.abs(e.touches[0].clientX - startX) > 10) isDragged = true; }, {passive: true});
       track.addEventListener('touchend', (e) => {
         if (isDragged) {
           let endX = e.changedTouches[0].clientX;
@@ -610,15 +850,11 @@
           else moveSlide({parentElement: track.parentElement}, -1);
         }
       });
-
-      // Solo abrir Lightbox si se hace click en una imagen (no en video)
       track.addEventListener('click', (e) => {
         if (!isDragged) {
           let idx = parseInt(track.getAttribute('data-index') || 0);
           let media = track.children[idx];
-          if (media.tagName.toLowerCase() === 'img') {
-            openLightbox(media.src); 
-          }
+          if (media.tagName.toLowerCase() === 'img') { openLightbox(media.src); }
         }
       });
     });
@@ -626,30 +862,44 @@
     /* =========================================
        CONTROLADOR DE SONIDO MÁGICO
        ========================================= */
+    document.addEventListener("DOMContentLoaded", function() {
+      const videos = document.querySelectorAll('.product-video');
+      videos.forEach(vid => {
+        vid.addEventListener('ended', function() {
+          const audioBoda = document.getElementById('audio-boda');
+          if(audioBoda) {
+            audioBoda.currentTime = 0; 
+            audioBoda.play();
+          }
+        });
+      });
+    });
+
     function toggleSound(videoId, btn) {
-      if(event) event.stopPropagation(); // Evita que se mueva el carrusel al tocar el botón
-      
-      const video = document.getElementById(videoId);
+      if(event) event.stopPropagation();
+      const audioBoda = document.getElementById('audio-boda');
       const iconMuted = btn.querySelector('.icon-muted');
       const iconUnmuted = btn.querySelector('.icon-unmuted');
 
-      if (video.muted) {
-        // Enciende el sonido
-        video.muted = false;
+      if (iconMuted.style.display !== 'none') {
         iconMuted.style.display = 'none';
         iconUnmuted.style.display = 'block';
-        btn.classList.add('active'); // Se vuelve dorado
+        btn.classList.add('active');
+        if(audioBoda) {
+            audioBoda.play().catch(e => console.log("Se requiere interacción para reproducir audio."));
+        }
       } else {
-        // Apaga el sonido
-        video.muted = true;
         iconMuted.style.display = 'block';
         iconUnmuted.style.display = 'none';
-        btn.classList.remove('active'); // Vuelve a negro translúcido
+        btn.classList.remove('active');
+        if(audioBoda) {
+            audioBoda.pause();
+        }
       }
     }
 
     /* =========================================
-       MOTOR DEL CARRITO Y FAVORITOS (CON TALLA Y LÍMITE)
+       MOTOR DE UI (CARRITO, FAVS)
        ========================================= */
     function changeCardQtyLimit(id, delta, max) {
       let el = document.getElementById(id);
@@ -676,81 +926,46 @@
     function showToast() {
       const toast = document.getElementById('toast-notification');
       toast.classList.add('show');
-      setTimeout(() => {
-        toast.classList.remove('show');
-      }, 3000);
+      setTimeout(() => { toast.classList.remove('show'); }, 3000);
     }
 
     function addToCart(ref, name, price, img, btn, qtyId, sizeId) {
       if (btn.classList.contains('added')) return; 
-      
       const qtyToAdd = parseInt(document.getElementById(qtyId).innerText) || 1;
       let sizeValue = document.getElementById(sizeId) ? document.getElementById(sizeId).value : 'ÚNICA';
-      
       const uniqueRef = ref + '-T' + sizeValue;
-      const fullName = name + ' (Talla ' + sizeValue + ')';
-
+      const fullName = name + ' (' + sizeValue + ')';
       let cart = JSON.parse(localStorage.getItem('enigme_cart')) || [];
       let existing = cart.find(i => i.ref === uniqueRef);
       
       if(existing) {
-        if (existing.qty + qtyToAdd > 2) {
-          alert("Por exclusividad, solo se permiten 2 unidades por cliente.");
-          return;
-        }
+        if (existing.qty + qtyToAdd > 2) { alert("Máximo 2 unidades por cliente."); return; }
         existing.qty += qtyToAdd;
-      } else {
-        cart.push({ref: uniqueRef, name: fullName, price, img, qty: qtyToAdd});
-      }
-      
+      } else { cart.push({ref: uniqueRef, name: fullName, price, img, qty: qtyToAdd}); }
       localStorage.setItem('enigme_cart', JSON.stringify(cart));
-      
       const originalText = btn.innerText;
       btn.classList.add('added');
       btn.innerText = "SELECCIONADO ✓";
       document.getElementById(qtyId).innerText = "1"; 
-      
       showToast();
-
-      setTimeout(() => {
-        btn.classList.remove('added');
-        btn.innerText = originalText;
-      }, 1500);
+      setTimeout(() => { btn.classList.remove('added'); btn.innerText = originalText; }, 1500);
       updateCounts();
     }
 
     function updateCounts() {
       const cart = JSON.parse(localStorage.getItem('enigme_cart')) || [];
       const favs = JSON.parse(localStorage.getItem('enigme_favs')) || [];
-      let totalItems = 0;
-      cart.forEach(item => totalItems += (item.qty || 1));
-      
+      let totalItems = 0; cart.forEach(item => totalItems += (item.qty || 1));
       if(document.getElementById('cart-count')) document.getElementById('cart-count').innerText = totalItems;
       if(document.getElementById('fav-count')) document.getElementById('fav-count').innerText = favs.length;
-
-      document.querySelectorAll('.btn-fav').forEach(btn => {
-        const ref = btn.getAttribute('data-ref');
-        if(favs.find(i => i.ref === ref)) btn.classList.add('active');
-      });
+      document.querySelectorAll('.btn-fav').forEach(btn => { if(favs.find(i => i.ref === btn.getAttribute('data-ref'))) btn.classList.add('active'); });
     }
 
-    /* LIGHTBOX */
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
-
-    function openLightbox(src) {
-      lightboxImg.src = src;
-      lightbox.classList.add('active');
-      document.body.style.overflow = 'hidden'; 
-    }
-
-    function closeLightbox(e) {
-      lightbox.classList.remove('active');
-      document.body.style.overflow = 'auto'; 
-    }
-
+    function openLightbox(src) { lightboxImg.src = src; lightbox.classList.add('active'); document.body.style.overflow = 'hidden'; }
+    function closeLightbox(e) { lightbox.classList.remove('active'); document.body.style.overflow = 'auto'; }
     window.onload = updateCounts;
   </script>
-
 </body>
 </html>
