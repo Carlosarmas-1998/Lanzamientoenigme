@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alta Joyería | El Imperio ÈNIGME</title>
+  <title>Alta Joyería | Cap II: Adquisición Real | ÈNIGME</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -35,18 +35,10 @@
     }
 
     a { text-decoration: none; color: inherit; transition: var(--transition); }
+    button { background: none; border: none; font-family: inherit; cursor: pointer; outline: none; }
 
     /* =========================================
-       ANIMACIÓN DE AURA MÁGICA
-       ========================================= */
-    @keyframes aura-expansion {
-      0% { background: radial-gradient(circle at 50% 50%, rgba(203, 170, 99, 0.05) 0%, transparent 50%); }
-      50% { background: radial-gradient(circle at 50% 50%, rgba(203, 170, 99, 0.12) 0%, transparent 70%); }
-      100% { background: radial-gradient(circle at 50% 50%, rgba(203, 170, 99, 0.05) 0%, transparent 50%); }
-    }
-
-    /* =========================================
-       NAVBAR PURISTA ÈNIGME
+       NAVBAR PURISTA ÈNIGME (IGUAL A BOUTIQUE)
        ========================================= */
     .navbar {
       width: 100%;
@@ -56,6 +48,7 @@
       justify-content: space-between;
       border-bottom: 1px solid var(--linea-fina);
       background: rgba(250, 249, 246, 0.98);
+      backdrop-filter: blur(10px);
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -67,6 +60,7 @@
       letter-spacing: 0.35em;
       color: var(--carbon);
       text-align: center;
+      font-weight: 500;
     }
 
     .nav-group { display: flex; gap: 30px; align-items: center; flex: 1; }
@@ -78,22 +72,8 @@
       text-transform: uppercase;
       color: var(--gris-suave);
       font-weight: 600;
-      position: relative;
-      padding-bottom: 4px;
     }
-
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      width: 100%; height: 1px; bottom: 0; left: 0;
-      background-color: var(--dorado);
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform 0.4s ease;
-    }
-
     .nav-link:hover { color: var(--carbon); }
-    .nav-link:hover::after { transform: scaleX(1); transform-origin: left; }
 
     .btn-menu-brand {
       display: flex;
@@ -107,109 +87,182 @@
       letter-spacing: 2px;
       text-transform: uppercase;
     }
-    .btn-menu-brand:hover { background-color: var(--dorado); border-color: var(--dorado); }
+    .btn-menu-brand:hover { background-color: var(--dorado); border-color: var(--dorado); color: var(--carbon)!important;}
 
     /* =========================================
-       SECCIÓN DE FORJA (EL IMPERIO)
+       ENCABEZADO DE LA GALERÍA
        ========================================= */
-    .empire-section {
-      flex: 1;
+    .gallery-header {
+      text-align: center;
+      padding: 80px 20px 40px;
+      border-bottom: 1px solid var(--linea-fina);
+    }
+
+    .gallery-kicker { font-family: 'Cinzel', serif; font-style: italic; font-size: 0.9rem; color: var(--dorado); letter-spacing: 5px; text-transform: uppercase; margin-bottom: 15px; }
+    .gallery-title { font-family: 'Cinzel', serif; font-size: clamp(2.2rem, 5vw, 3.5rem); letter-spacing: 0.15em; text-transform: uppercase; color: var(--carbon); margin-bottom: 20px; }
+    .gallery-desc { font-size: 0.9rem; line-height: 2; color: var(--gris-suave); max-width: 650px; margin: 0 auto; font-weight: 300; }
+
+    /* =========================================
+       GRID DE PRODUCTOS Y CARRUSEL INFINITO
+       ========================================= */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 80px 40px;
+      padding: 80px 5vw;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .product-card {
       display: flex;
       flex-direction: column;
+      background: var(--blanco-puro);
+      border: 1px solid var(--linea-fina);
+      transition: var(--transition);
+    }
+    .product-card:hover { border-color: var(--dorado); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+
+    .carousel-wrapper {
+      position: relative;
+      aspect-ratio: 1/1; /* Joyería en formato cuadrado resalta más */
+      overflow: hidden;
+      background: #F4F4F4; /* Fondo gris muy tenue para la foto */
+    }
+
+    .carousel-track {
+      display: flex;
+      width: 100%; /* Una sola imagen por set */
+      height: 100%;
+      transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      cursor: pointer;
+    }
+
+    /* Botón Favoritos (Arriba Derecha) */
+    .btn-fav {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 35px;
+      height: 35px;
+      background: rgba(255,255,255,0.8);
+      border-radius: 50%;
+      display: flex;
       align-items: center;
       justify-content: center;
-      padding: 100px 5vw;
+      z-index: 10;
+      color: var(--carbon);
+      transition: var(--transition);
+    }
+    .btn-fav:hover { transform: scale(1.1); background: #fff; }
+    .btn-fav svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; }
+    .btn-fav.active svg { fill: var(--rosa-palo); stroke: var(--rosa-palo); }
+
+    /* Flechas del Carrusel (Estilo Ruleta) */
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--carbon);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      border: 1px solid var(--linea-fina);
+      transition: var(--transition);
+      opacity: 0; /* Ocultas por defecto */
+    }
+    .carousel-wrapper:hover .carousel-arrow { opacity: 1; }
+    .carousel-arrow:hover { background: var(--dorado); color: white; border-color: var(--dorado); }
+    .carousel-arrow.prev { left: 10px; }
+    .carousel-arrow.next { right: 10px; }
+
+    /* INFO DEL PRODUCTO */
+    .product-info {
+      padding: 30px;
       text-align: center;
-      position: relative;
-      animation: aura-expansion 10s infinite ease-in-out;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
     }
 
-    .empire-content {
-      max-width: 850px;
-      z-index: 2;
-    }
+    .product-code { font-size: 0.6rem; letter-spacing: 2px; color: var(--gris-suave); margin-bottom: 10px; text-transform: uppercase; }
+    .product-name { font-family: 'Cinzel', serif; font-size: 1.2rem; letter-spacing: 0.1em; color: var(--carbon); margin-bottom: 10px; text-transform: uppercase; font-weight: 500; }
+    .product-lema { font-size: 0.8rem; line-height: 1.8; color: var(--carbon); font-weight: 300; margin-bottom: 15px; font-style: italic; }
+    .product-lema strong { color: var(--dorado); font-weight: 500; }
+    
+    .product-specs { font-size: 0.65rem; letter-spacing: 1px; color: var(--gris-suave); text-transform: uppercase; margin-bottom: 20px; line-height: 1.6;}
+    .product-price { font-size: 1.1rem; letter-spacing: 2px; color: var(--carbon); font-weight: 600; margin-bottom: 25px; margin-top: auto;}
 
-    .kicker {
-      font-family: 'Cinzel', serif;
-      font-size: 0.9rem;
-      letter-spacing: 6px;
-      text-transform: uppercase;
-      color: var(--dorado);
-      margin-bottom: 30px;
-      font-style: italic;
-    }
-
-    .main-title {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      line-height: 1.1;
-      color: var(--carbon);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 40px;
-    }
-
-    .manifesto-text {
-      font-size: 1.1rem;
-      line-height: 2.2;
-      color: var(--carbon);
-      font-weight: 300;
-      margin-bottom: 50px;
-    }
-
-    .highlight-gold {
-      font-weight: 600;
-      color: var(--dorado);
-      border-bottom: 1px solid var(--dorado);
-    }
-
-    /* Línea decorativa infinita */
-    .divider-gold {
-      width: 60px;
-      height: 1px;
-      background-color: var(--dorado);
-      margin: 40px auto;
-    }
+    /* CONTROL DE CANTIDAD + AÑADIR */
+    .purchase-action { display: flex; border: 1px solid var(--linea-fina); height: 45px; overflow: hidden; }
+    .qty-selector { display: flex; align-items: center; justify-content: space-between; width: 100px; background: var(--marfil); border-right: 1px solid var(--linea-fina); }
+    .qty-selector button { width: 35px; height: 100%; font-size: 1.2rem; color: var(--gris-suave); display: flex; align-items: center; justify-content: center; }
+    .qty-selector button:hover { color: var(--carbon); background: rgba(0,0,0,0.03); }
+    .qty-selector span { font-size: 0.8rem; font-weight: 500; color: var(--carbon); }
+    
+    .btn-cart { flex-grow: 1; background: var(--blanco-puro); font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 700; color: var(--carbon); transition: var(--transition); }
+    .btn-cart:hover { background: var(--dorado); color: white; }
+    .btn-cart.added { background: var(--carbon); color: var(--dorado); }
 
     /* =========================================
        BOTONES FLOTANTES COMPACTOS VIP
        ========================================= */
     .floating-stack { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; z-index: 999; }
-    
-    .pill-btn { 
-      display: flex; 
-      align-items: center; 
-      gap: 10px; 
-      height: 40px; 
-      padding: 0 18px; 
-      border-radius: 25px; 
-      background: var(--carbon); 
-      color: #fff; 
-      font-size: 0.55rem; 
-      letter-spacing: 2px; 
-      text-transform: uppercase; 
-      font-weight: 600; 
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15); 
-      border: 1px solid transparent; 
-      white-space: nowrap; 
-      transition: var(--transition); 
-    }
-    
+    .pill-btn { display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 18px; border-radius: 25px; background: var(--carbon); color: var(--marfil); font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; box-shadow: 0 8px 20px rgba(0,0,0,0.15); border: 1px solid transparent; white-space: nowrap; transition: var(--transition); }
     .pill-btn.light { background: var(--marfil); color: var(--carbon); border: 1px solid var(--dorado); }
-    .pill-btn.support { background: var(--dorado); color: var(--carbon); font-weight: 700; }
     .pill-btn:hover { transform: translateX(-5px); }
     .pill-btn svg { width: 16px; height: 16px; fill: currentColor; }
+    
+    /* Botón WhatsApp Destacado */
+    .pill-btn.support { background: var(--dorado); color: var(--carbon); font-weight: 700; border-color: var(--dorado); }
+    .pill-btn.support:hover { background: var(--carbon); color: var(--dorado); border-color: var(--carbon); }
 
-    /* FOOTER */
-    .footer { padding: 50px 5vw; text-align: center; border-top: 1px solid var(--gris-linea); font-size: 0.5rem; letter-spacing: 3px; color: var(--gris-suave); text-transform: uppercase; background: #FFF; margin-top: auto;}
+    /* =========================================
+       FOOTER Y NOTIFICACIÓN
+       ========================================= */
+    .footer { padding: 60px 5vw; text-align: center; border-top: 1px solid var(--linea-fina); font-size: 0.5rem; letter-spacing: 3px; color: var(--gris-suave); text-transform: uppercase; background: #FFF; margin-top: auto;}
 
+    .toast-notification { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--carbon); color: var(--dorado); padding: 15px 30px; font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; box-shadow: 0 10px 40px rgba(0,0,0,0.3); z-index: 10000; opacity: 0; transition: var(--transition); display: flex; align-items: center; gap: 10px; pointer-events: none; }
+    .toast-notification.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+    .toast-notification svg { width: 16px; height: 16px; fill: currentColor; }
+
+    /* RESPONSIVE */
     @media (max-width: 768px) {
       .navbar { padding: 20px; flex-wrap: wrap; justify-content: center; gap: 15px; }
       .brand-nav { width: 100%; order: -1; margin-bottom: 5px; }
-      .nav-group { justify-content: center; width: 100%; }
-      .main-title { font-size: 2rem; }
-      .manifesto-text { font-size: 0.95rem; text-align: justify; }
-      .pill-btn { height: 35px; font-size: 0.5rem; }
+      .nav-group { justify-content: center; gap: 15px; width: 100%; }
+      .nav-link { font-size: 0.55rem; letter-spacing: 2px; }
+      .btn-menu-brand { padding: 8px 12px; }
+      
+      .gallery-header { padding: 40px 15px; }
+      .gallery-title { font-size: 1.8rem; }
+      
+      .product-grid { grid-template-columns: 1fr 1fr; gap: 30px 15px; padding: 40px 15px; }
+      .product-info { padding: 15px; }
+      .product-name { font-size: 0.9rem; }
+      .product-lema { font-size: 0.7rem; }
+      .product-price { font-size: 1rem; }
+      .purchase-action { height: 38px; }
+      .qty-selector { width: 70px; }
+      .qty-selector button { width: 25px; }
+      .btn-cart { font-size: 0.5rem; letter-spacing: 2px; }
+
+      .floating-stack { bottom: 15px; right: 15px; }
+      .pill-btn { height: 35px; padding: 0 12px; font-size: 0.5rem; }
     }
   </style>
 </head>
@@ -218,49 +271,270 @@
   <nav class="navbar">
     <div class="nav-group">
       <a href="index.html" class="nav-link">INICIO</a>
+      <a href="catalogo.html" class="nav-link">CATÁLOGO</a>
     </div>
     
     <div class="brand-nav">È N I G M E</div>
     
     <div class="nav-group right">
-      <a href="favoritos.html" class="btn-menu-brand">FAVS</a>
-      <a href="carrito.html" class="btn-menu-brand">BOLSA</a>
+      <a href="favoritos.html" class="btn-menu-brand">
+        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        FAV <span id="fav-count">0</span>
+      </a>
+      <a href="carrito.html" class="btn-menu-brand">
+        <svg viewBox="0 0 24 24"><path d="M16 6V4a4 4 0 0 0-8 0v2H3v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6h-5zm-6-2a2 2 0 0 1 4 0v2h-4V4zm8 16H6V8h2v2a1 1 0 0 0 2 0V8h4v2a1 1 0 0 0 2 0V8h2v12z"/></svg>
+        BOLSA<span id="cart-count">0</span>
+      </a>
     </div>
   </nav>
 
-  <main class="empire-section">
-    <div class="empire-content">
-      <p class="kicker">Capítulo I: El Origen</p>
-      <h1 class="main-title">Forjando el Imperio de tu <span style="font-style: italic;">Aura</span></h1>
-      
-      <div class="divider-gold"></div>
-      
-      <p class="manifesto-text">
-        El lujo no se apresura; se esculpe. En este momento, nuestros maestros artesanos están seleccionando una <span class="highlight-gold">variedad sin precedentes</span> de piezas donde la magia del diseño europeo se funde con el espíritu de la mujer hondureña. 
-      </p>
-      
-      <p class="manifesto-text">
-        Estamos creando un imperio de exclusividad diseñado para ti. Muy pronto, el misterio será revelado y podrás poseer el brillo que tu presencia merece. 
-      </p>
-      
-      <div class="divider-gold"></div>
-      
-      <p style="font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; color: var(--gris-suave);">
-        Próximamente · Alta Joyería ÈNIGME
-      </p>
-    </div>
-  </main>
-
   <div class="floating-stack">
     <a href="boutique.html" class="pill-btn light">Bolsos Boutique</a>
-    <a href="plata.html" class="pill-btn light">Plata de Ley</a>
-    <a href="liquidacion.html" class="pill-btn light">El Archivo</a>
-    <a href="https://wa.me/34602149162" class="pill-btn support" target="_blank">Soporte en línea</a>
+    <a href="plata.html" class="pill-btn light">Colección Plata</a>
+    <a href="liquidacion.html" class="pill-btn light">Liquidación</a>
+    <a href="https://wa.me/34602149162?text=Hola,%20estoy%20en%20la%20secci%C3%B3n%20de%20Alta%20Joyer%C3%ADa%20y%20deseo%20asesor%C3%ADa%20VIP." class="pill-btn support" target="_blank">
+      <svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+      Atención VIP
+    </a>
   </div>
 
+  <header class="gallery-header">
+    <p class="gallery-kicker">Capítulo II</p>
+    <h1 class="gallery-title">Adquisición Real</h1>
+    <p class="gallery-desc">Piezas de orfebrería fina diseñadas para capturar la luz y definir el estándar del alto lujo. Posee el brillo que tu aura merece.</p>
+  </header>
+
+  <main class="product-grid">
+
+    <article class="product-card">
+      <div class="carousel-wrapper">
+        <button class="btn-fav" data-ref="J89001" onclick="toggleFav('J89001', 'Set Énigme', 'L 869', 'a1.jpg', this)">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        </button>
+        <button class="carousel-arrow prev">&#10094;</button>
+        <div class="carousel-track">
+          <img src="a1.jpg" class="product-image" alt="Set Énigme" onerror="this.src='https://via.placeholder.com/400x400?text=ÈNIGME+JOYAS'">
+        </div>
+        <button class="carousel-arrow next">&#10095;</button>
+      </div>
+      <div class="product-info">
+        <span class="product-code">REF: J89001</span>
+        <h2 class="product-name">Set Énigme</h2>
+        <p class="product-lema">La pureza del amor eterno capturada en <strong>perlas y oro</strong>.</p>
+        <span class="product-specs">Collar + Pulsera<br>Acero Inoxidable 316L | Baño Oro 14K | Perlas Corazón</span>
+        <div class="product-price">L 869</div>
+        <div class="purchase-action">
+          <div class="qty-selector">
+            <button onclick="changeCardQty('qty-J89001', -1)">-</button>
+            <span id="qty-J89001">1</span>
+            <button onclick="changeCardQty('qty-J89001', 1)">+</button>
+          </div>
+          <button class="btn-cart" onclick="addToCart('J89001', 'Set Énigme', 'L 869', 'a1.jpg', this, 'qty-J89001')">Añadir</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="product-card">
+      <div class="carousel-wrapper">
+        <button class="btn-fav" data-ref="J89002" onclick="toggleFav('J89002', 'Set Lovryl', 'L 649', 'a2.jpg', this)">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        </button>
+        <button class="carousel-arrow prev">&#10094;</button>
+        <div class="carousel-track">
+          <img src="a2.jpg" class="product-image" alt="Set Lovryl" onerror="this.src='https://via.placeholder.com/400x400?text=ÈNIGME+JOYAS'">
+        </div>
+        <button class="carousel-arrow next">&#10095;</button>
+      </div>
+      <div class="product-info">
+        <span class="product-code">REF: J89002</span>
+        <h2 class="product-name">Set Lovryl</h2>
+        <p class="product-lema">Un romance plateado. El brillo magnético de <strong>Abril</strong>.</p>
+        <span class="product-specs">Collar + Aretes<br>Acero 316 | Baño Oro 14K | Perlas Corazón Plata</span>
+        <div class="product-price">L 649</div>
+        <div class="purchase-action">
+          <div class="qty-selector">
+            <button onclick="changeCardQty('qty-J89002', -1)">-</button>
+            <span id="qty-J89002">1</span>
+            <button onclick="changeCardQty('qty-J89002', 1)">+</button>
+          </div>
+          <button class="btn-cart" onclick="addToCart('J89002', 'Set Lovryl', 'L 649', 'a2.jpg', this, 'qty-J89002')">Añadir</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="product-card">
+      <div class="carousel-wrapper">
+        <button class="btn-fav" data-ref="J89003" onclick="toggleFav('J89003', 'Set Spring', 'L 499', 'a3.jpg', this)">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        </button>
+        <button class="carousel-arrow prev">&#10094;</button>
+        <div class="carousel-track">
+          <img src="a3.jpg" class="product-image" alt="Set Spring" onerror="this.src='https://via.placeholder.com/400x400?text=ÈNIGME+JOYAS'">
+        </div>
+        <button class="carousel-arrow next">&#10095;</button>
+      </div>
+      <div class="product-info">
+        <span class="product-code">REF: J89003</span>
+        <h2 class="product-name">Set Spring</h2>
+        <p class="product-lema">La frescura de la primavera eterna en <strong>oro y margaritas</strong>.</p>
+        <span class="product-specs">Collar + Aretes<br>Acero 316L | Baño Oro 14K | Diseño Margaritas</span>
+        <div class="product-price">L 499</div>
+        <div class="purchase-action">
+          <div class="qty-selector">
+            <button onclick="changeCardQty('qty-J89003', -1)">-</button>
+            <span id="qty-J89003">1</span>
+            <button onclick="changeCardQty('qty-J89003', 1)">+</button>
+          </div>
+          <button class="btn-cart" onclick="addToCart('J89003', 'Set Spring', 'L 499', 'a3.jpg', this, 'qty-J89003')">Añadir</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="product-card">
+      <div class="carousel-wrapper">
+        <button class="btn-fav" data-ref="J89004" onclick="toggleFav('J89004', 'Set Inside', 'L 539', 'a4.jpg', this)">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        </button>
+        <button class="carousel-arrow prev">&#10094;</button>
+        <div class="carousel-track">
+          <img src="a4.jpg" class="product-image" alt="Set Inside" onerror="this.src='https://via.placeholder.com/400x400?text=ÈNIGME+JOYAS'">
+        </div>
+        <button class="carousel-arrow next">&#10095;</button>
+      </div>
+      <div class="product-info">
+        <span class="product-code">REF: J89004</span>
+        <h2 class="product-name">Set Inside</h2>
+        <p class="product-lema">La transformación de tu aura. Pureza en <strong>acero y mariposas</strong>.</p>
+        <span class="product-specs">Collar + Aretes<br>Acero Inoxidable 316 | Diseño Diez Mariposas</span>
+        <div class="product-price">L 539</div>
+        <div class="purchase-action">
+          <div class="qty-selector">
+            <button onclick="changeCardQty('qty-J89004', -1)">-</button>
+            <span id="qty-J89004">1</span>
+            <button onclick="changeCardQty('qty-J89004', 1)">+</button>
+          </div>
+          <button class="btn-cart" onclick="addToCart('J89004', 'Set Inside', 'L 539', 'a4.jpg', this, 'qty-J89004')">Añadir</button>
+        </div>
+      </div>
+    </article>
+
+  </main>
+
   <footer class="footer">
-    © 2026 ÈNIGME HONDURAS · POR CARLOS ARMAS MARTÍNEZ
+    © 2026 ÈNIGME HONDURAS POR CARLOS ARMAS MARTÍNEZ. TODOS LOS DERECHOS RESERVADOS.
   </footer>
+
+  <div id="toast-notification" class="toast-notification">
+    <svg viewBox="0 0 24 24"><path d="M16 6V4a4 4 0 0 0-8 0v2H3v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6h-5zm-6-2a2 2 0 0 1 4 0v2h-4V4zm8 16H6V8h2v2a1 1 0 0 0 2 0V8h4v2a1 1 0 0 0 2 0V8h2v12z"/></svg>
+    Se agregó a tu bolsa con éxito
+  </div>
+
+  <script>
+    /* =========================================
+       MOTOR DEL CARRUSEL INFINITO (RULETA)
+       Optimizado para detectar una sola imagen
+       ========================================= */
+    function moveSlide(btn, direction) {
+      if(event) event.stopPropagation(); 
+      let wrapper = btn.parentElement;
+      let track = wrapper.querySelector('.carousel-track');
+      let imgs = track.querySelectorAll('img');
+      
+      // Si solo hay una imagen, no hacemos nada
+      if (imgs.length <= 1) return;
+
+      let currentIndex = parseInt(track.getAttribute('data-index') || 0);
+      
+      currentIndex += direction;
+      
+      // Lógica Infinita
+      if (currentIndex < 0) {
+        currentIndex = imgs.length - 1; // Ir a la última
+      } else if (currentIndex >= imgs.length) {
+        currentIndex = 0; // Volver a la primera
+      }
+      
+      track.setAttribute('data-index', currentIndex);
+      // Asumimos que cada imagen ocupa el 100% del track
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    /* =========================================
+       MOTOR DEL CARRITO Y FAVORITOS
+       ========================================= */
+    function changeCardQty(id, delta) {
+      let el = document.getElementById(id);
+      let current = parseInt(el.innerText);
+      if (current + delta > 0) {
+        el.innerText = current + delta;
+      }
+    }
+
+    function toggleFav(ref, name, price, img, btn) {
+      let favs = JSON.parse(localStorage.getItem('enigme_favs')) || [];
+      const index = favs.findIndex(i => i.ref === ref);
+      if(index > -1) {
+        favs.splice(index, 1);
+        btn.classList.remove('active');
+      } else {
+        favs.push({ref, name, price, img});
+        btn.classList.add('active');
+      }
+      localStorage.setItem('enigme_favs', JSON.stringify(favs));
+      updateCounts();
+    }
+
+    function showToast() {
+      const toast = document.getElementById('toast-notification');
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+
+    function addToCart(ref, name, price, img, btn, qtyId) {
+      if (btn.classList.contains('added')) return; 
+      const qtyToAdd = parseInt(document.getElementById(qtyId).innerText) || 1;
+      let cart = JSON.parse(localStorage.getItem('enigme_cart')) || [];
+      let existing = cart.find(i => i.ref === ref);
+      if(existing) {
+        existing.qty += qtyToAdd;
+      } else {
+        cart.push({ref, name, price, img, qty: qtyToAdd});
+      }
+      localStorage.setItem('enigme_cart', JSON.stringify(cart));
+      
+      const originalText = btn.innerText;
+      btn.classList.add('added');
+      btn.innerText = "AÑADIDO ✓";
+      document.getElementById(qtyId).innerText = "1";
+      
+      showToast();
+
+      setTimeout(() => {
+        btn.classList.remove('added');
+        btn.innerText = originalText;
+      }, 1500);
+      updateCounts();
+    }
+
+    function updateCounts() {
+      const cart = JSON.parse(localStorage.getItem('enigme_cart')) || [];
+      const favs = JSON.parse(localStorage.getItem('enigme_favs')) || [];
+      let totalItems = 0;
+      cart.forEach(item => totalItems += (item.qty || 1));
+      
+      if(document.getElementById('cart-count')) document.getElementById('cart-count').innerText = totalItems;
+      if(document.getElementById('fav-count')) document.getElementById('fav-count').innerText = favs.length;
+
+      document.querySelectorAll('.btn-fav').forEach(btn => {
+        const ref = btn.getAttribute('data-ref');
+        if(favs.find(i => i.ref === ref)) btn.classList.add('active');
+      });
+    }
+
+    window.onload = updateCounts;
+  </script>
 
 </body>
 </html>
