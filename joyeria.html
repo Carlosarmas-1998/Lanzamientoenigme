@@ -16,6 +16,7 @@
       --carbon: #1C1C1C;
       --gris-suave: #888888;
       --dorado: #CBAA63;
+      --rosa-palo: #D8C3BC;
       --linea-fina: rgba(216, 195, 188, 0.4);
       --transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
     }
@@ -38,7 +39,7 @@
     button { background: none; border: none; font-family: inherit; cursor: pointer; outline: none; }
 
     /* =========================================
-       NAVBAR PURISTA ÈNIGME (IGUAL A BOUTIQUE)
+       NAVBAR PURISTA ÈNIGME
        ========================================= */
     .navbar {
       width: 100%;
@@ -72,13 +73,29 @@
       text-transform: uppercase;
       color: var(--gris-suave);
       font-weight: 600;
+      position: relative;
+      padding-bottom: 4px;
     }
-    .nav-link:hover { color: var(--carbon); }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 100%; height: 1.5px; bottom: 0; left: 0;
+      background-color: var(--dorado);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.4s ease;
+    }
+
+    .nav-link:hover, .nav-link.active { color: var(--carbon); }
+    .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); transform-origin: left; }
 
     .btn-menu-brand {
       display: flex;
       align-items: center;
       gap: 8px;
+      background-color: transparent;
+      color: var(--carbon) !important;
       padding: 8px 16px;
       border: 1px solid rgba(203, 170, 99, 0.5);
       border-radius: 2px;
@@ -86,8 +103,19 @@
       font-weight: 500;
       letter-spacing: 2px;
       text-transform: uppercase;
+      transition: var(--transition);
     }
-    .btn-menu-brand:hover { background-color: var(--dorado); border-color: var(--dorado); color: var(--carbon)!important;}
+    .btn-menu-brand:hover { background-color: var(--dorado); border-color: var(--dorado); }
+    .btn-menu-brand svg { width: 13px; height: 13px; fill: currentColor; transition: transform 0.3s ease; }
+
+    @keyframes pulse-soft {
+      0% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0.3); }
+      70% { box-shadow: 0 0 0 8px rgba(203, 170, 99, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0); }
+    }
+    .btn-cart-nav { animation: pulse-soft 2.5s infinite; }
+    .btn-cart-nav:hover svg { transform: scale(1.15) rotate(-5deg); }
+    .counter-badge { font-weight: 600; }
 
     /* =========================================
        ENCABEZADO DE LA GALERÍA
@@ -103,7 +131,7 @@
     .gallery-desc { font-size: 0.9rem; line-height: 2; color: var(--gris-suave); max-width: 650px; margin: 0 auto; font-weight: 300; }
 
     /* =========================================
-       GRID DE PRODUCTOS Y CARRUSEL INFINITO
+       GRID DE PRODUCTOS
        ========================================= */
     .product-grid {
       display: grid;
@@ -122,147 +150,184 @@
       border: 1px solid var(--linea-fina);
       transition: var(--transition);
     }
-    .product-card:hover { border-color: var(--dorado); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+    .product-card:hover { border-color: var(--dorado); box-shadow: 0 15px 40px rgba(0,0,0,0.04); transform: translateY(-5px); }
 
     .carousel-wrapper {
       position: relative;
-      aspect-ratio: 1/1; /* Joyería en formato cuadrado resalta más */
+      background-color: white;
+      aspect-ratio: 1/1; 
       overflow: hidden;
-      background: #F4F4F4; /* Fondo gris muy tenue para la foto */
+      border-bottom: 1px solid var(--linea-fina);
     }
 
     .carousel-track {
       display: flex;
-      width: 100%; /* Una sola imagen por set */
+      width: 100%; 
       height: 100%;
       transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      cursor: grab;
     }
+    .carousel-track:active { cursor: grabbing; }
 
     .product-image {
-      width: 100%;
+      width: 100%; 
       height: 100%;
       object-fit: cover;
-      cursor: pointer;
+      pointer-events: none; 
     }
 
-    /* Botón Favoritos (Arriba Derecha) */
-    .btn-fav {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      width: 35px;
-      height: 35px;
-      background: rgba(255,255,255,0.8);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 10;
-      color: var(--carbon);
-      transition: var(--transition);
-    }
-    .btn-fav:hover { transform: scale(1.1); background: #fff; }
-    .btn-fav svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; }
-    .btn-fav.active svg { fill: var(--rosa-palo); stroke: var(--rosa-palo); }
-
-    /* Flechas del Carrusel (Estilo Ruleta) */
+    /* Flechas ocultas para cuando hay una sola foto, pero listas si agregas más */
     .carousel-arrow {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(250, 249, 246, 0.85);
       color: var(--carbon);
-      width: 40px;
-      height: 40px;
+      border: 1px solid var(--linea-fina);
+      width: 35px;
+      height: 35px;
       border-radius: 50%;
       cursor: pointer;
-      z-index: 10;
+      z-index: 5;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1rem;
-      border: 1px solid var(--linea-fina);
+      font-size: 0.9rem;
+      opacity: 0; 
       transition: var(--transition);
-      opacity: 0; /* Ocultas por defecto */
+      backdrop-filter: blur(4px);
     }
     .carousel-wrapper:hover .carousel-arrow { opacity: 1; }
-    .carousel-arrow:hover { background: var(--dorado); color: white; border-color: var(--dorado); }
+    .carousel-arrow:hover { background: var(--carbon); color: var(--dorado); }
     .carousel-arrow.prev { left: 10px; }
     .carousel-arrow.next { right: 10px; }
 
+    /* BOTÓN FAVORITOS */
+    .btn-fav { position: absolute; top: 15px; right: 15px; width: 35px; height: 35px; background-color: var(--marfil); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05); z-index: 10; transition: var(--transition); color: var(--carbon); }
+    .btn-fav:hover { transform: scale(1.1); }
+    .btn-fav svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; transition: var(--transition); }
+    .btn-fav.active svg { fill: var(--rosa-palo); stroke: var(--rosa-palo); }
+
     /* INFO DEL PRODUCTO */
     .product-info {
-      padding: 30px;
+      padding: 30px 25px;
       text-align: center;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
     }
 
-    .product-code { font-size: 0.6rem; letter-spacing: 2px; color: var(--gris-suave); margin-bottom: 10px; text-transform: uppercase; }
-    .product-name { font-family: 'Cinzel', serif; font-size: 1.2rem; letter-spacing: 0.1em; color: var(--carbon); margin-bottom: 10px; text-transform: uppercase; font-weight: 500; }
-    .product-lema { font-size: 0.8rem; line-height: 1.8; color: var(--carbon); font-weight: 300; margin-bottom: 15px; font-style: italic; }
-    .product-lema strong { color: var(--dorado); font-weight: 500; }
+    .product-code { font-size: 0.55rem; letter-spacing: 2px; color: var(--gris-suave); margin-bottom: 8px; }
+    .product-name { font-family: 'Cinzel', serif; font-size: 1.3rem; letter-spacing: 0.1em; color: var(--carbon); margin-bottom: 10px; text-transform: uppercase; font-weight: 600; }
+    .product-lema { font-size: 0.8rem; line-height: 1.6; color: var(--gris-suave); margin-bottom: 20px; font-weight: 300; font-style: italic; }
+    .product-lema strong { color: var(--carbon); font-weight: 500; }
     
-    .product-specs { font-size: 0.65rem; letter-spacing: 1px; color: var(--gris-suave); text-transform: uppercase; margin-bottom: 20px; line-height: 1.6;}
-    .product-price { font-size: 1.1rem; letter-spacing: 2px; color: var(--carbon); font-weight: 600; margin-bottom: 25px; margin-top: auto;}
+    /* BLOQUE DE ETIQUETAS (MATERIAL Y TALLA) */
+    .specs-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 25px;
+      padding: 15px;
+      background: var(--marfil);
+      border: 1px dashed rgba(203, 170, 99, 0.4);
+    }
+
+    .spec-size { font-size: 0.6rem; letter-spacing: 3px; color: var(--carbon); text-transform: uppercase; font-weight: 600; }
+    
+    /* Etiqueta de Material Resaltada */
+    .spec-material {
+      display: inline-block;
+      padding: 6px 15px;
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 700;
+      border-radius: 2px;
+    }
+
+    .mat-gold { background-color: var(--carbon); color: var(--dorado); }
+    .mat-steel { background-color: var(--dorado); color: var(--carbon); }
+
+    .spec-desc { font-size: 0.7rem; color: var(--carbon); text-transform: uppercase; font-weight: 500; letter-spacing: 1px; }
+
+    .product-price { font-size: 1.3rem; letter-spacing: 2px; color: var(--carbon); font-weight: 700; margin-top: auto; margin-bottom: 25px; }
 
     /* CONTROL DE CANTIDAD + AÑADIR */
-    .purchase-action { display: flex; border: 1px solid var(--linea-fina); height: 45px; overflow: hidden; }
-    .qty-selector { display: flex; align-items: center; justify-content: space-between; width: 100px; background: var(--marfil); border-right: 1px solid var(--linea-fina); }
-    .qty-selector button { width: 35px; height: 100%; font-size: 1.2rem; color: var(--gris-suave); display: flex; align-items: center; justify-content: center; }
+    .purchase-action { display: flex; margin-top: auto; border: 1px solid var(--linea-fina); border-radius: 0; overflow: hidden; height: 45px; }
+    .qty-selector { display: flex; align-items: center; justify-content: space-between; width: 90px; background: var(--marfil); border-right: 1px solid var(--linea-fina); }
+    .qty-selector button { width: 30px; height: 100%; font-size: 1.2rem; color: var(--gris-suave); display: flex; align-items: center; justify-content: center; }
     .qty-selector button:hover { color: var(--carbon); background: rgba(0,0,0,0.03); }
-    .qty-selector span { font-size: 0.8rem; font-weight: 500; color: var(--carbon); }
+    .qty-selector span { font-size: 0.85rem; font-weight: 600; color: var(--carbon); flex-grow: 1; }
     
-    .btn-cart { flex-grow: 1; background: var(--blanco-puro); font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 700; color: var(--carbon); transition: var(--transition); }
-    .btn-cart:hover { background: var(--dorado); color: white; }
+    .btn-cart { flex-grow: 1; background-color: transparent; border: none; color: var(--carbon); font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; transition: var(--transition); font-weight: 700; }
+    .btn-cart:hover { background-color: var(--dorado); color: var(--carbon); }
     .btn-cart.added { background: var(--carbon); color: var(--dorado); }
 
     /* =========================================
-       BOTONES FLOTANTES COMPACTOS VIP
+       BOTONES FLOTANTES COMPACTOS
        ========================================= */
     .floating-stack { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; z-index: 999; }
-    .pill-btn { display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 18px; border-radius: 25px; background: var(--carbon); color: var(--marfil); font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; box-shadow: 0 8px 20px rgba(0,0,0,0.15); border: 1px solid transparent; white-space: nowrap; transition: var(--transition); }
-    .pill-btn.light { background: var(--marfil); color: var(--carbon); border: 1px solid var(--dorado); }
-    .pill-btn:hover { transform: translateX(-5px); }
-    .pill-btn svg { width: 16px; height: 16px; fill: currentColor; }
-    
-    /* Botón WhatsApp Destacado */
-    .pill-btn.support { background: var(--dorado); color: var(--carbon); font-weight: 700; border-color: var(--dorado); }
-    .pill-btn.support:hover { background: var(--carbon); color: var(--dorado); border-color: var(--carbon); }
+    .pill-btn { display: flex; align-items: center; gap: 10px; height: 38px; padding: 0 16px; border-radius: 20px; background: var(--carbon); color: var(--blanco-puro); font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; box-shadow: 0 5px 15px rgba(0,0,0,0.15); border: 1px solid transparent; white-space: nowrap; transition: var(--transition); }
+    .pill-btn.light { background: var(--marfil); color: var(--carbon); border: 1px solid var(--linea-fina); }
+    .pill-btn.support { background: var(--dorado); color: var(--carbon); border: 1px solid var(--dorado); font-weight: 700; }
+    .pill-btn:hover { transform: translateX(-5px); background: var(--carbon); color: var(--dorado); border-color: var(--carbon); }
+    .pill-btn svg { width: 14px; height: 14px; fill: currentColor; }
 
     /* =========================================
-       FOOTER Y NOTIFICACIÓN
+       NOTIFICACIÓN TOAST
        ========================================= */
-    .footer { padding: 60px 5vw; text-align: center; border-top: 1px solid var(--linea-fina); font-size: 0.5rem; letter-spacing: 3px; color: var(--gris-suave); text-transform: uppercase; background: #FFF; margin-top: auto;}
-
-    .toast-notification { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--carbon); color: var(--dorado); padding: 15px 30px; font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; box-shadow: 0 10px 40px rgba(0,0,0,0.3); z-index: 10000; opacity: 0; transition: var(--transition); display: flex; align-items: center; gap: 10px; pointer-events: none; }
+    .toast-notification { position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%) translateY(100px); background-color: var(--carbon); color: var(--dorado); padding: 14px 28px; font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; box-shadow: 0 10px 40px rgba(0,0,0,0.3); z-index: 10000; opacity: 0; transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); display: flex; align-items: center; gap: 12px; pointer-events: none; }
     .toast-notification.show { transform: translateX(-50%) translateY(0); opacity: 1; }
     .toast-notification svg { width: 16px; height: 16px; fill: currentColor; }
 
+    /* =========================================
+       LIGHTBOX (VISUALIZACIÓN DE IMAGEN)
+       ========================================= */
+    .lightbox { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(250, 249, 246, 0.98); backdrop-filter: blur(10px); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
+    .lightbox.active { opacity: 1; pointer-events: auto; }
+    .lightbox img { max-width: 90%; max-height: 90%; object-fit: contain; transform: scale(0.95); transition: transform 0.4s ease; box-shadow: 0 20px 50px rgba(0,0,0,0.15);}
+    .lightbox.active img { transform: scale(1); }
+    .lightbox-close { position: absolute; top: 30px; right: 40px; font-size: 3rem; color: var(--carbon); cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 200; line-height: 1; transition: var(--transition); }
+    .lightbox-close:hover { color: var(--rosa-palo); transform: scale(1.1); }
+
+    /* BANNER LEGAL Y FOOTER */
+    .legal-banner { border-top: 1px solid var(--linea-fina); padding: 60px 5vw 40px; text-align: center; margin-top: auto; }
+    .trust-badges-container { display: flex; justify-content: center; gap: 30px; margin-bottom: 40px; padding: 0 5vw; flex-wrap: wrap; }
+    .trust-badge-item { display: flex; align-items: center; gap: 10px; color: var(--dorado); border: 1px solid var(--dorado); padding: 8px 15px; font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
+    .trust-badge-item svg { width: 14px; height: 14px; fill: currentColor; }
+    .legal-text { font-size: 0.6rem; line-height: 2.2; letter-spacing: 1.5px; color: var(--gris-suave); max-width: 900px; margin: 0 auto; text-transform: uppercase; }
+    .legal-text strong { color: var(--carbon); }
+    .founder-credit { margin-top: 40px; font-size: 0.5rem; letter-spacing: 0.25em; color: var(--gris-suave); opacity: 0.5; text-transform: uppercase; font-weight: 300; }
+
     /* RESPONSIVE */
     @media (max-width: 768px) {
-      .navbar { padding: 20px; flex-wrap: wrap; justify-content: center; gap: 15px; }
-      .brand-nav { width: 100%; order: -1; margin-bottom: 5px; }
-      .nav-group { justify-content: center; gap: 15px; width: 100%; }
+      .navbar { flex-wrap: wrap; justify-content: center; gap: 20px; padding: 25px; }
+      .nav-group { justify-content: center; flex-wrap: wrap; width: 100%; flex: none; gap: 15px;}
+      .brand-nav { order: -1; width: 100%; margin-bottom: 10px; }
       .nav-link { font-size: 0.55rem; letter-spacing: 2px; }
-      .btn-menu-brand { padding: 8px 12px; }
+      .btn-menu-brand { padding: 8px 14px; font-size: 0.55rem; }
       
-      .gallery-header { padding: 40px 15px; }
-      .gallery-title { font-size: 1.8rem; }
+      .product-grid { grid-template-columns: 1fr 1fr; gap: 40px 15px; padding: 40px 15px; }
+      .product-info { padding: 15px 10px; }
+      .product-name { font-size: 0.95rem; }
+      .product-lema { font-size: 0.65rem; margin-bottom: 15px; }
       
-      .product-grid { grid-template-columns: 1fr 1fr; gap: 30px 15px; padding: 40px 15px; }
-      .product-info { padding: 15px; }
-      .product-name { font-size: 0.9rem; }
-      .product-lema { font-size: 0.7rem; }
-      .product-price { font-size: 1rem; }
+      .specs-block { padding: 10px; gap: 8px; margin-bottom: 15px; }
+      .spec-material { font-size: 0.5rem; padding: 4px 8px; }
+      .spec-desc { font-size: 0.55rem; }
+      .product-price { font-size: 1.1rem; margin-bottom: 15px; }
+
       .purchase-action { height: 38px; }
-      .qty-selector { width: 70px; }
-      .qty-selector button { width: 25px; }
-      .btn-cart { font-size: 0.5rem; letter-spacing: 2px; }
+      .qty-selector { width: 65px; }
+      .btn-cart { font-size: 0.5rem; letter-spacing: 1.5px; }
 
       .floating-stack { bottom: 15px; right: 15px; }
-      .pill-btn { height: 35px; padding: 0 12px; font-size: 0.5rem; }
+      .pill-btn { height: 32px; padding: 0 12px; font-size: 0.5rem; }
+      .toast-notification { width: 90%; justify-content: center; bottom: 20px; font-size: 0.55rem; }
+      .trust-badges-container { gap: 15px; }
+      .trust-badge-item { padding: 6px 12px; font-size: 0.5rem; }
     }
   </style>
 </head>
@@ -279,11 +344,12 @@
     <div class="nav-group right">
       <a href="favoritos.html" class="btn-menu-brand">
         <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-        FAV <span id="fav-count">0</span>
+        FAVS (<span id="fav-count">0</span>)
       </a>
-      <a href="carrito.html" class="btn-menu-brand">
+
+      <a href="carrito.html" class="btn-menu-brand btn-cart-nav">
         <svg viewBox="0 0 24 24"><path d="M16 6V4a4 4 0 0 0-8 0v2H3v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6h-5zm-6-2a2 2 0 0 1 4 0v2h-4V4zm8 16H6V8h2v2a1 1 0 0 0 2 0V8h4v2a1 1 0 0 0 2 0V8h2v12z"/></svg>
-        BOLSA<span id="cart-count">0</span>
+        BOLSA (<span id="cart-count">0</span>)
       </a>
     </div>
   </nav>
@@ -291,137 +357,188 @@
   <div class="floating-stack">
     <a href="boutique.html" class="pill-btn light">Bolsos Boutique</a>
     <a href="plata.html" class="pill-btn light">Colección Plata</a>
-    <a href="liquidacion.html" class="pill-btn light">Liquidación</a>
-    <a href="https://wa.me/34602149162?text=Hola,%20estoy%20en%20la%20secci%C3%B3n%20de%20Alta%20Joyer%C3%ADa%20y%20deseo%20asesor%C3%ADa%20VIP." class="pill-btn support" target="_blank">
+    <a href="liquidacion.html" class="pill-btn light">El Archivo</a>
+    <a href="https://wa.me/34602149162?text=Hola,%20estoy%20en%20la%20Boutique%20de%20Alta%20Joyer%C3%ADa%20y%20deseo%20asesor%C3%ADa%20VIP." class="pill-btn support" target="_blank">
       <svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
       Atención VIP
     </a>
   </div>
 
+  <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+    <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+    <img id="lightbox-img" src="" alt="Pieza ÈNIGME" onclick="event.stopPropagation()">
+  </div>
+
   <header class="gallery-header">
     <p class="gallery-kicker">Capítulo II</p>
     <h1 class="gallery-title">Adquisición Real</h1>
-    <p class="gallery-desc">Piezas de orfebrería fina diseñadas para capturar la luz y definir el estándar del alto lujo. Posee el brillo que tu aura merece.</p>
+    <p class="gallery-desc">Piezas de orfebrería fina diseñadas para capturar la luz y definir el estándar del alto lujo.</p>
   </header>
 
   <main class="product-grid">
 
     <article class="product-card">
       <div class="carousel-wrapper">
-        <button class="btn-fav" data-ref="J89001" onclick="toggleFav('J89001', 'Set Énigme', 'L 869', 'a1.jpg', this)">
+        <button class="btn-fav" data-ref="J89001" onclick="toggleFav('J89001', 'Set Énigme', 'L 799', 'a1.jpg', this)">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
-        <button class="carousel-arrow prev">&#10094;</button>
-        <div class="carousel-track">
-          <img src="a1.jpg" class="product-image" alt="Set Énigme" onerror="this.src='https://via.placeholder.com/400x400?text=ÈNIGME+JOYAS'">
+        <button class="carousel-arrow prev" onclick="moveSlide(this, -1)">&#10094;</button>
+        <div class="carousel-track" data-index="0">
+          <img src="a1.jpg" class="product-image" onerror="this.src='https://via.placeholder.com/600x600?text=ÈNIGME'">
         </div>
-        <button class="carousel-arrow next">&#10095;</button>
+        <button class="carousel-arrow next" onclick="moveSlide(this, 1)">&#10095;</button>
       </div>
       <div class="product-info">
         <span class="product-code">REF: J89001</span>
         <h2 class="product-name">Set Énigme</h2>
-        <p class="product-lema">La pureza del amor eterno capturada en <strong>perlas y oro</strong>.</p>
-        <span class="product-specs">Collar + Pulsera<br>Acero Inoxidable 316L | Baño Oro 14K | Perlas Corazón</span>
-        <div class="product-price">L 869</div>
+        <p class="product-lema">"L'éclat de l'amour: Perlas que guardan tu historia."</p>
+        
+        <div class="specs-block">
+          <span class="spec-size">TALLA ÚNICA</span>
+          <span class="spec-material mat-gold">Acero Inox 316L + Oro 14K</span>
+          <span class="spec-desc">Collar y Pulsera | Perlas Blancas Corazón</span>
+        </div>
+
+        <div class="product-price">L 799</div>
         <div class="purchase-action">
           <div class="qty-selector">
-            <button onclick="changeCardQty('qty-J89001', -1)">-</button>
-            <span id="qty-J89001">1</span>
-            <button onclick="changeCardQty('qty-J89001', 1)">+</button>
+            <button onclick="changeCardQty('qty-1', -1)">-</button>
+            <span id="qty-1">1</span>
+            <button onclick="changeCardQty('qty-1', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('J89001', 'Set Énigme', 'L 869', 'a1.jpg', this, 'qty-J89001')">Añadir</button>
+          <button class="btn-cart" onclick="addToCart('J89001', 'Set Énigme', 'L 799', 'a1.jpg', this, 'qty-1')">Añadir</button>
         </div>
       </div>
     </article>
 
     <article class="product-card">
       <div class="carousel-wrapper">
-        <button class="btn-fav" data-ref="J89002" onclick="toggleFav('J89002', 'Set Lovryl', 'L 649', 'a2.jpg', this)">
+        <button class="btn-fav" data-ref="J89002" onclick="toggleFav('J89002', 'Set Lovryl', 'L 799', 'a2.jpg', this)">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
-        <button class="carousel-arrow prev">&#10094;</button>
-        <div class="carousel-track">
-          <img src="a2.jpg" class="product-image" alt="Set Lovryl" onerror="this.src='https://via.placeholder.com/400x400?text=ÈNIGME+JOYAS'">
+        <button class="carousel-arrow prev" onclick="moveSlide(this, -1)">&#10094;</button>
+        <div class="carousel-track" data-index="0">
+          <img src="a2.jpg" class="product-image" onerror="this.src='https://via.placeholder.com/600x600?text=ÈNIGME'">
         </div>
-        <button class="carousel-arrow next">&#10095;</button>
+        <button class="carousel-arrow next" onclick="moveSlide(this, 1)">&#10095;</button>
       </div>
       <div class="product-info">
         <span class="product-code">REF: J89002</span>
         <h2 class="product-name">Set Lovryl</h2>
-        <p class="product-lema">Un romance plateado. El brillo magnético de <strong>Abril</strong>.</p>
-        <span class="product-specs">Collar + Aretes<br>Acero 316 | Baño Oro 14K | Perlas Corazón Plata</span>
-        <div class="product-price">L 649</div>
+        <p class="product-lema">"Amor de Abril: El magnetismo de lo excepcional."</p>
+        
+        <div class="specs-block">
+          <span class="spec-size">TALLA ÚNICA</span>
+          <span class="spec-material mat-gold">Acero Inox 316L + Oro 14K</span>
+          <span class="spec-desc">Collar y Aretes | Perlas Corazón Plata</span>
+        </div>
+
+        <div class="product-price">L 799</div>
         <div class="purchase-action">
           <div class="qty-selector">
-            <button onclick="changeCardQty('qty-J89002', -1)">-</button>
-            <span id="qty-J89002">1</span>
-            <button onclick="changeCardQty('qty-J89002', 1)">+</button>
+            <button onclick="changeCardQty('qty-2', -1)">-</button>
+            <span id="qty-2">1</span>
+            <button onclick="changeCardQty('qty-2', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('J89002', 'Set Lovryl', 'L 649', 'a2.jpg', this, 'qty-J89002')">Añadir</button>
+          <button class="btn-cart" onclick="addToCart('J89002', 'Set Lovryl', 'L 799', 'a2.jpg', this, 'qty-2')">Añadir</button>
         </div>
       </div>
     </article>
 
     <article class="product-card">
       <div class="carousel-wrapper">
-        <button class="btn-fav" data-ref="J89003" onclick="toggleFav('J89003', 'Set Spring', 'L 499', 'a3.jpg', this)">
+        <button class="btn-fav" data-ref="J89003" onclick="toggleFav('J89003', 'Set Spring', 'L 519', 'a3.jpg', this)">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
-        <button class="carousel-arrow prev">&#10094;</button>
-        <div class="carousel-track">
-          <img src="a3.jpg" class="product-image" alt="Set Spring" onerror="this.src='https://via.placeholder.com/400x400?text=ÈNIGME+JOYAS'">
+        <button class="carousel-arrow prev" onclick="moveSlide(this, -1)">&#10094;</button>
+        <div class="carousel-track" data-index="0">
+          <img src="a3.jpg" class="product-image" onerror="this.src='https://via.placeholder.com/600x600?text=ÈNIGME'">
         </div>
-        <button class="carousel-arrow next">&#10095;</button>
+        <button class="carousel-arrow next" onclick="moveSlide(this, 1)">&#10095;</button>
       </div>
       <div class="product-info">
         <span class="product-code">REF: J89003</span>
         <h2 class="product-name">Set Spring</h2>
-        <p class="product-lema">La frescura de la primavera eterna en <strong>oro y margaritas</strong>.</p>
-        <span class="product-specs">Collar + Aretes<br>Acero 316L | Baño Oro 14K | Diseño Margaritas</span>
-        <div class="product-price">L 499</div>
+        <p class="product-lema">"Belleza sin artificios: La fuerza del acero puro."</p>
+        
+        <div class="specs-block">
+          <span class="spec-size">TALLA ÚNICA</span>
+          <span class="spec-material mat-steel">Acero Inoxidable 316L Puro</span>
+          <span class="spec-desc">Collar y Aretes | Diseño de Margaritas</span>
+        </div>
+
+        <div class="product-price">L 519</div>
         <div class="purchase-action">
           <div class="qty-selector">
-            <button onclick="changeCardQty('qty-J89003', -1)">-</button>
-            <span id="qty-J89003">1</span>
-            <button onclick="changeCardQty('qty-J89003', 1)">+</button>
+            <button onclick="changeCardQty('qty-3', -1)">-</button>
+            <span id="qty-3">1</span>
+            <button onclick="changeCardQty('qty-3', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('J89003', 'Set Spring', 'L 499', 'a3.jpg', this, 'qty-J89003')">Añadir</button>
+          <button class="btn-cart" onclick="addToCart('J89003', 'Set Spring', 'L 519', 'a3.jpg', this, 'qty-3')">Añadir</button>
         </div>
       </div>
     </article>
 
     <article class="product-card">
       <div class="carousel-wrapper">
-        <button class="btn-fav" data-ref="J89004" onclick="toggleFav('J89004', 'Set Inside', 'L 539', 'a4.jpg', this)">
+        <button class="btn-fav" data-ref="J89004" onclick="toggleFav('J89004', 'Set Inside', 'L 519', 'a4.jpg', this)">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
-        <button class="carousel-arrow prev">&#10094;</button>
-        <div class="carousel-track">
-          <img src="a4.jpg" class="product-image" alt="Set Inside" onerror="this.src='https://via.placeholder.com/400x400?text=ÈNIGME+JOYAS'">
+        <button class="carousel-arrow prev" onclick="moveSlide(this, -1)">&#10094;</button>
+        <div class="carousel-track" data-index="0">
+          <img src="a4.jpg" class="product-image" onerror="this.src='https://via.placeholder.com/600x600?text=ÈNIGME'">
         </div>
-        <button class="carousel-arrow next">&#10095;</button>
+        <button class="carousel-arrow next" onclick="moveSlide(this, 1)">&#10095;</button>
       </div>
       <div class="product-info">
         <span class="product-code">REF: J89004</span>
         <h2 class="product-name">Set Inside</h2>
-        <p class="product-lema">La transformación de tu aura. Pureza en <strong>acero y mariposas</strong>.</p>
-        <span class="product-specs">Collar + Aretes<br>Acero Inoxidable 316 | Diseño Diez Mariposas</span>
-        <div class="product-price">L 539</div>
+        <p class="product-lema">"Metamorfosis del aura: El vuelo de cinco mariposas."</p>
+        
+        <div class="specs-block">
+          <span class="spec-size">TALLA ÚNICA</span>
+          <span class="spec-material mat-steel">Acero Inoxidable 316L Puro</span>
+          <span class="spec-desc">Collar y Aretes | Diseño de Mariposas</span>
+        </div>
+
+        <div class="product-price">L 519</div>
         <div class="purchase-action">
           <div class="qty-selector">
-            <button onclick="changeCardQty('qty-J89004', -1)">-</button>
-            <span id="qty-J89004">1</span>
-            <button onclick="changeCardQty('qty-J89004', 1)">+</button>
+            <button onclick="changeCardQty('qty-4', -1)">-</button>
+            <span id="qty-4">1</span>
+            <button onclick="changeCardQty('qty-4', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('J89004', 'Set Inside', 'L 539', 'a4.jpg', this, 'qty-J89004')">Añadir</button>
+          <button class="btn-cart" onclick="addToCart('J89004', 'Set Inside', 'L 519', 'a4.jpg', this, 'qty-4')">Añadir</button>
         </div>
       </div>
     </article>
 
   </main>
 
-  <footer class="footer">
-    © 2026 ÈNIGME HONDURAS POR CARLOS ARMAS MARTÍNEZ. TODOS LOS DERECHOS RESERVADOS.
+  <footer class="legal-banner">
+    <div class="trust-badges-container">
+      <div class="trust-badge-item">
+        <svg viewBox="0 0 448 512"><path d="M400 224h-24v-72C376 68.2 307.8 0 224 0S72 68.2 72 152v72H48c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V272c0-26.5-21.5-48-48-48zm-224-72c0-26.5 21.5-48 48-48s48 21.5 48 48v72H176v-72zm112 300c-13.3 0-24-10.7-24-24s10.7-24 24-24 24 10.7 24 24-10.7 24-24 24z"/></svg>
+        Pago Cifrado Seguro
+      </div>
+      <div class="trust-badge-item">
+        <svg viewBox="0 0 512 512"><path d="M256 0c11 0 20 9 20 20v196h196c11 0 20 9 20 20s-9 20-20 20H276v196c0 11-9 20-20 20s-20-9-20-20V256H40c-11 0-20-9-20-20s9-20 20-20h196V20c0-11 9-20 20-20z"/></svg>
+        Autenticidad Real Garantizada
+      </div>
+      <div class="trust-badge-item">
+        <svg viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+        Distribución Exclusiva HN
+      </div>
+    </div>
+
+    <p class="legal-text">
+      <strong>Política de Compra y Envíos:</strong> Operamos bajo la máxima seguridad transaccional cifrada. Debido a la curaduría y altos estándares de importación, las piezas se entregan <strong>25 días hábiles</strong> posteriores a la confirmación de pago. <strong>Cada set ÈNIGME es real y auténtico, entregado con su respectiva tarjeta de marca.</strong><br><br>
+      Distribución logística exclusiva en <strong>Choluteca y Valle</strong>, <strong>CON ENVÍO INCLUIDO</strong> hasta punto de encuentro seguro en la ciudad.
+    </p>
+    
+    <p class="founder-credit">
+      © 2026 ÈNIGME HONDURAS POR CARLOS ARMAS MARTÍNEZ. TODOS LOS DERECHOS RESERVADOS.
+    </p>
   </footer>
 
   <div id="toast-notification" class="toast-notification">
@@ -431,33 +548,79 @@
 
   <script>
     /* =========================================
-       MOTOR DEL CARRUSEL INFINITO (RULETA)
-       Optimizado para detectar una sola imagen
+       MOTOR DEL CARRUSEL (DRAG & SWIPE)
        ========================================= */
     function moveSlide(btn, direction) {
-      if(event) event.stopPropagation(); 
-      let wrapper = btn.parentElement;
-      let track = wrapper.querySelector('.carousel-track');
+      if(event) event.stopPropagation();
+      let track = btn.parentElement.querySelector('.carousel-track');
       let imgs = track.querySelectorAll('img');
-      
-      // Si solo hay una imagen, no hacemos nada
       if (imgs.length <= 1) return;
-
-      let currentIndex = parseInt(track.getAttribute('data-index') || 0);
       
+      let currentIndex = parseInt(track.getAttribute('data-index') || 0);
       currentIndex += direction;
       
-      // Lógica Infinita
-      if (currentIndex < 0) {
-        currentIndex = imgs.length - 1; // Ir a la última
-      } else if (currentIndex >= imgs.length) {
-        currentIndex = 0; // Volver a la primera
-      }
+      if (currentIndex < 0) currentIndex = imgs.length - 1;
+      if (currentIndex >= imgs.length) currentIndex = 0;
       
       track.setAttribute('data-index', currentIndex);
-      // Asumimos que cada imagen ocupa el 100% del track
       track.style.transform = `translateX(-${currentIndex * 100}%)`;
     }
+
+    document.querySelectorAll('.carousel-track').forEach(track => {
+      let isDown = false;
+      let startX;
+      let isDragged = false;
+
+      track.addEventListener('mousedown', (e) => {
+        isDown = true;
+        isDragged = false;
+        startX = e.pageX;
+      });
+
+      track.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        if (Math.abs(e.pageX - startX) > 10) {
+          isDragged = true;
+        }
+      });
+
+      track.addEventListener('mouseup', (e) => {
+        isDown = false;
+        if (isDragged) {
+          if (startX > e.pageX) moveSlide({parentElement: track.parentElement}, 1);
+          else moveSlide({parentElement: track.parentElement}, -1);
+        }
+      });
+
+      track.addEventListener('mouseleave', () => { isDown = false; });
+
+      track.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        isDragged = false;
+      }, {passive: true});
+
+      track.addEventListener('touchmove', (e) => {
+        if (Math.abs(e.touches[0].clientX - startX) > 10) {
+          isDragged = true;
+        }
+      }, {passive: true});
+
+      track.addEventListener('touchend', (e) => {
+        if (isDragged) {
+          let endX = e.changedTouches[0].clientX;
+          if (startX > endX) moveSlide({parentElement: track.parentElement}, 1);
+          else moveSlide({parentElement: track.parentElement}, -1);
+        }
+      });
+
+      track.addEventListener('click', (e) => {
+        if (!isDragged) {
+          let idx = parseInt(track.getAttribute('data-index') || 0);
+          let imgs = track.querySelectorAll('img');
+          openLightbox(imgs[idx].src); 
+        }
+      });
+    });
 
     /* =========================================
        MOTOR DEL CARRITO Y FAVORITOS
@@ -531,6 +694,21 @@
         const ref = btn.getAttribute('data-ref');
         if(favs.find(i => i.ref === ref)) btn.classList.add('active');
       });
+    }
+
+    /* LIGHTBOX PARA VER LAS FOTOS EN GRANDE */
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    function openLightbox(src) {
+      lightboxImg.src = src;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden'; 
+    }
+
+    function closeLightbox(e) {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = 'auto'; 
     }
 
     window.onload = updateCounts;
