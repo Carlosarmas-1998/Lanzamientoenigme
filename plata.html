@@ -11,6 +11,7 @@
 
   <style>
     :root {
+      /* PALETA DE MARCA ÈNIGME */
       --marfil: #FAF9F6;
       --blanco-puro: #FFFFFF;
       --carbon: #1C1C1C;
@@ -20,7 +21,7 @@
       --celeste: #8CBED6;
       --rosa-palo: #D8C3BC;
       --linea-fina: rgba(216, 195, 188, 0.4);
-      --transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* Transición ágil y limpia */
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -51,7 +52,7 @@
     .brand-nav { font-family: 'Cinzel', serif; font-size: clamp(1.2rem, 2.5vw, 1.5rem); letter-spacing: 0.35em; color: var(--carbon); text-align: center; font-weight: 500; }
     .nav-group { display: flex; gap: 30px; align-items: center; flex: 1; }
     .nav-group.right { justify-content: flex-end; }
-    .nav-link { font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gris-suave); font-weight: 600; position: relative; padding-bottom: 4px; }
+    .nav-link { font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gris-suave); font-weight: 600; position: relative; padding-bottom: 4px; transition: var(--transition); }
     .nav-link::after { content: ''; position: absolute; width: 100%; height: 1.5px; bottom: 0; left: 0; background-color: var(--dorado); transform: scaleX(0); transform-origin: right; transition: transform 0.4s ease; }
     .nav-link:hover, .nav-link.active { color: var(--carbon); }
     .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); transform-origin: left; }
@@ -90,24 +91,17 @@
     /* =========================================
        GRID DE PRODUCTOS (MAIN)
        ========================================= */
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 60px 40px;
-      padding: 0 5vw 80px;
-      max-width: 1400px;
-      margin: 0 auto;
-      width: 100%;
-      justify-content: center;
-    }
-
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 60px 40px; padding: 0 5vw 80px; max-width: 1400px; margin: 0 auto; width: 100%; justify-content: center; }
     .product-card { display: flex; flex-direction: column; background: var(--blanco-puro); border: 1px solid var(--linea-fina); transition: var(--transition); margin: 0 auto; width: 100%; max-width: 450px; }
     .product-card:hover { border-color: var(--plata); box-shadow: 0 15px 40px rgba(0,0,0,0.04); transform: translateY(-5px); }
 
-    /* CARRUSEL DE IMÁGENES: RECTANGULAR 3:4 */
+    /* =========================================
+       CARRUSEL SLIDER: MAGNÉTICO Y PERFECTO
+       ========================================= */
     .carousel-wrapper { position: relative; background-color: #fdfdfd; aspect-ratio: 3/4; overflow: hidden; border-bottom: 1px solid var(--linea-fina); touch-action: pan-y; }
-    .carousel-track { display: flex; width: 100%; height: 100%; transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); cursor: grab; will-change: transform; }
+    .carousel-track { display: flex; width: 100%; height: 100%; transition: var(--transition); cursor: grab; }
     .carousel-track:active { cursor: grabbing; }
+
     .product-media { flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
 
     .carousel-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(250, 249, 246, 0.85); color: var(--carbon); border: 1px solid var(--linea-fina); width: 35px; height: 35px; border-radius: 50%; cursor: pointer; z-index: 5; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; opacity: 0; transition: var(--transition); backdrop-filter: blur(4px); }
@@ -118,7 +112,7 @@
 
     .btn-fav { position: absolute; top: 10px; right: 10px; width: 35px; height: 35px; background-color: rgba(255,255,255,0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); z-index: 10; transition: var(--transition); color: var(--carbon); }
     .btn-fav:hover { transform: scale(1.1); }
-    .btn-fav svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; }
+    .btn-fav svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; transition: var(--transition); }
     .btn-fav.active svg { fill: var(--rosa-palo); stroke: var(--rosa-palo); }
 
     /* INFO DEL PRODUCTO */
@@ -135,6 +129,7 @@
     
     .spec-material { display: inline-block; padding: 5px 12px; font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; border-radius: 2px; background-color: var(--plata); color: var(--carbon); }
     .spec-desc { font-size: 0.65rem; color: var(--carbon); text-transform: uppercase; font-weight: 500; letter-spacing: 1px; }
+    .spec-highlight { color: var(--celeste); font-weight: 700; }
 
     .product-price-wrapper { display: flex; align-items: baseline; justify-content: center; gap: 10px; margin-top: auto; margin-bottom: 5px; }
     .price-old { font-size: 0.9rem; color: var(--gris-suave); text-decoration: line-through; font-weight: 400; }
@@ -144,6 +139,7 @@
     .purchase-action { display: flex; margin-top: auto; border: 1px solid var(--carbon); overflow: hidden; height: 45px; }
     .qty-selector { display: flex; align-items: center; justify-content: space-between; width: 80px; background: var(--blanco-puro); border-right: 1px solid var(--linea-fina); }
     .qty-selector button { width: 25px; height: 100%; font-size: 1.2rem; color: var(--carbon); display: flex; align-items: center; justify-content: center; }
+    .qty-selector button:hover { background: rgba(0,0,0,0.05); }
     .qty-selector span { font-size: 0.8rem; font-weight: 600; color: var(--carbon); flex-grow: 1; text-align: center;}
     .btn-cart { flex-grow: 1; background-color: var(--carbon); color: var(--blanco-puro); font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; transition: var(--transition); font-weight: 700; }
     .btn-cart:hover { background-color: var(--dorado); color: var(--carbon); }
@@ -165,12 +161,8 @@
     .vitrina-close { font-size: 2.5rem; color: var(--marfil); cursor: pointer; line-height: 1; transition: var(--transition); }
     .vitrina-close:hover { color: var(--dorado); transform: rotate(90deg); }
 
-    .vitrina-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 50px 30px; padding: 50px 5vw; max-width: 1400px; margin: 0 auto;
-    }
-    .vitrina-card {
-      background: #2a2a2a; border: 1px solid rgba(203, 170, 99, 0.3); border-radius: 4px; overflow: hidden; display: flex; flex-direction: column;
-    }
+    .vitrina-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 50px 30px; padding: 50px 5vw; max-width: 1400px; margin: 0 auto; }
+    .vitrina-card { background: #2a2a2a; border: 1px solid rgba(203, 170, 99, 0.3); border-radius: 4px; overflow: hidden; display: flex; flex-direction: column; }
     .vitrina-video-wrapper { position: relative; aspect-ratio: 3/4; background: #000; }
     .vitrina-video-wrapper video { width: 100%; height: 100%; object-fit: cover; }
     
@@ -216,6 +208,7 @@
     /* =========================================
        RESPONSIVE MOBILE (2 COLUMNAS EN GRID)
        ========================================= */
+    @media (max-width: 900px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 768px) {
       .navbar { flex-wrap: wrap; justify-content: center; gap: 20px; padding: 25px; }
       .nav-group { justify-content: center; flex-wrap: wrap; width: 100%; flex: none; gap: 15px;}
@@ -489,7 +482,7 @@
 
     <article class="product-card">
       <div class="carousel-wrapper">
-        <button class="btn-fav" data-ref="002810" onclick="toggleFav('002810', 'Pulsera L\'Infini Mystique', 'L 1299', 'pl9.jpg', this)">
+        <button class="btn-fav" data-ref="002810" onclick="toggleFav('002810', 'Pulsera L\'Éternité Bleu', 'L 1299', 'pl10.jpg', this)">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <button class="carousel-arrow prev" onclick="moveSlide(this, -1)">&#10094;</button>
@@ -511,7 +504,7 @@
             </select>
           </div>
           <span class="spec-material">Plata de Ley 925</span>
-          <span class="spec-desc">Dije Infinito <span class="spec-highlight" style="color: var(--carbon);">Azul Claro</span></span>
+          <span class="spec-desc">Dije Infinito y Corazón <span class="spec-highlight" style="color: var(--carbon);">Azul Claro</span></span>
         </div>
         <div class="product-price-wrapper">
           <span class="price-old">L 1699</span>
@@ -781,8 +774,21 @@
     });
 
     /* =========================================
-       CONTROLADOR DE SONIDO MÁGICO (EN MODAL)
+       CONTROLADOR DE SONIDO MÁGICO
        ========================================= */
+    document.addEventListener("DOMContentLoaded", function() {
+      const videos = document.querySelectorAll('.product-video');
+      videos.forEach(vid => {
+        vid.addEventListener('ended', function() {
+          const audioBoda = document.getElementById('audio-boda');
+          if(audioBoda) {
+            audioBoda.currentTime = 0; 
+            audioBoda.play();
+          }
+        });
+      });
+    });
+
     function toggleSound(videoId, btn) {
       if(event) event.stopPropagation();
       const audioBoda = document.getElementById('audio-boda');
