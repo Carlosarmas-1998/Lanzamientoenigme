@@ -39,7 +39,7 @@
     button { background: none; border: none; font-family: inherit; cursor: pointer; outline: none; }
 
     /* =========================================
-       NAVBAR MINIMALISTA ÈNIGME (SOLO CATÁLOGO, FAVS, BOLSA)
+       NAVBAR MINIMALISTA ÈNIGME
        ========================================= */
     .navbar {
       width: 100%;
@@ -91,7 +91,6 @@
     .nav-link:hover, .nav-link.active { color: var(--carbon); }
     .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); transform-origin: left; }
 
-    /* BOTONES DESTACADOS TENUES Y ELEGANTES */
     .btn-menu-brand {
       display: flex;
       align-items: center;
@@ -120,7 +119,6 @@
       transition: transform 0.3s ease;
     }
 
-    /* EFECTO LATIDO CARRITO */
     @keyframes pulse-soft {
       0% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0.3); }
       70% { box-shadow: 0 0 0 8px rgba(203, 170, 99, 0); }
@@ -255,7 +253,11 @@
     .product-specs { font-size: 0.6rem; letter-spacing: 1px; color: var(--dorado); text-transform: uppercase; margin-bottom: 8px; font-weight: 600; }
     .product-slogan { font-size: 0.75rem; line-height: 1.6; color: var(--gris-suave); margin-bottom: 15px; font-weight: 300; }
     .product-slogan strong { color: var(--carbon); font-weight: 600; }
-    .product-price { font-size: 0.9rem; letter-spacing: 2px; color: var(--carbon); font-weight: 500; margin-bottom: 25px; }
+    
+    /* BLOQUE DE PRECIOS */
+    .price-block { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 25px; }
+    .product-price { font-size: 1rem; letter-spacing: 2px; color: var(--carbon); font-weight: 600; }
+    .old-price { font-size: 0.7rem; color: var(--gris-suave); text-decoration: line-through; letter-spacing: 1px; }
 
     /* CONTROL DE CANTIDAD + AÑADIR */
     .purchase-action { display: flex; margin-top: auto; border: 1px solid var(--linea-fina); border-radius: 0; overflow: hidden; height: 42px; }
@@ -268,7 +270,7 @@
     .btn-cart.added { background: var(--carbon); color: var(--dorado); }
 
     /* =========================================
-       BOTONES FLOTANTES COMPACTOS (ACTUALIZADOS)
+       BOTONES FLOTANTES COMPACTOS
        ========================================= */
     .floating-stack { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; z-index: 999; }
     
@@ -280,7 +282,7 @@
       padding: 0 16px; 
       border-radius: 20px; 
       background: var(--carbon); 
-      color: var(--blanco-dior); 
+      color: var(--blanco-puro); 
       font-size: 0.55rem; 
       letter-spacing: 2px; 
       text-transform: uppercase; 
@@ -293,19 +295,14 @@
     
     .pill-btn.light { background: var(--marfil); color: var(--carbon); border: 1px solid var(--linea-fina); }
     
-    /* BOTÓN SOPORTE VIP (DESTACADO) */
-    .pill-btn.support {
-      background: var(--dorado);
-      color: var(--carbon);
-      border: 1px solid var(--dorado);
-      font-weight: 700;
-    }
+    /* BOTÓN SOPORTE VIP */
+    .pill-btn.support { background: var(--dorado); color: var(--carbon); border: 1px solid var(--dorado); font-weight: 700; }
     
     .pill-btn:hover { transform: translateX(-5px); background: var(--carbon); color: var(--dorado); border-color: var(--carbon); }
     .pill-btn svg { width: 14px; height: 14px; fill: currentColor; }
 
     /* =========================================
-       NOTIFICACIÓN TOAST (AGREGADO AL CARRITO)
+       NOTIFICACIÓN TOAST
        ========================================= */
     .toast-notification {
       position: fixed;
@@ -341,7 +338,6 @@
     .legal-text { font-size: 0.6rem; line-height: 2.2; letter-spacing: 1.5px; color: var(--gris-suave); max-width: 900px; margin: 0 auto; text-transform: uppercase; }
     .legal-text strong { color: var(--carbon); }
     
-    /* CRÉDITOS DEL FUNDADOR - TENUE */
     .founder-credit { margin-top: 40px; font-size: 0.5rem; letter-spacing: 0.25em; color: var(--gris-suave); opacity: 0.5; text-transform: uppercase; font-weight: 300; }
 
     /* =========================================
@@ -449,7 +445,7 @@
 
     <article class="product-card">
       <div class="carousel-wrapper">
-        <button class="btn-fav" data-ref="895623" onclick="toggleFav('895623', 'Bolso Enigma', 'L 999', 'b11.jpg', this)">
+        <button class="btn-fav" data-ref="895623" onclick="toggleFav('895623', 'Bolso Enigma', 'L 1199', 'b11.jpg', this)">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <button class="carousel-arrow prev" onclick="moveSlide(this, -1)">&#10094;</button>
@@ -464,21 +460,24 @@
         <h2 class="product-name">Bolso Enigma</h2>
         <span class="product-specs">Medida: 27 x 15 CM</span>
         <p class="product-slogan">Un espectáculo de arquitectura pura en <strong>gris metalizado</strong>.</p>
-        <div class="product-price">L 999</div>
+        <div class="price-block">
+          <span class="old-price">L 1358</span>
+          <span class="product-price">L 1199</span>
+        </div>
         <div class="purchase-action">
           <div class="qty-selector">
             <button onclick="changeCardQty('qty-895623', -1)">-</button>
             <span id="qty-895623">1</span>
             <button onclick="changeCardQty('qty-895623', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('895623', 'Bolso Enigma', 'L 999', 'b11.jpg', this, 'qty-895623')">Añadir</button>
+          <button class="btn-cart" onclick="addToCart('895623', 'Bolso Enigma', 'L 1199', 'b11.jpg', this, 'qty-895623')">Añadir</button>
         </div>
       </div>
     </article>
 
     <article class="product-card">
       <div class="carousel-wrapper">
-        <button class="btn-fav" data-ref="895500" onclick="toggleFav('895500', 'Bolso Electric', 'L 999', 'b22.jpg', this)">
+        <button class="btn-fav" data-ref="895500" onclick="toggleFav('895500', 'Bolso Electric', 'L 1199', 'b22.jpg', this)">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <button class="carousel-arrow prev" onclick="moveSlide(this, -1)">&#10094;</button>
@@ -493,21 +492,24 @@
         <h2 class="product-name">Bolso Electric</h2>
         <span class="product-specs">Medida: 27 x 15 CM</span>
         <p class="product-slogan">El magnetismo del lujo. Estructura vibrante en tono <strong>dorado</strong>.</p>
-        <div class="product-price">L 999</div>
+        <div class="price-block">
+          <span class="old-price">L 1358</span>
+          <span class="product-price">L 1199</span>
+        </div>
         <div class="purchase-action">
           <div class="qty-selector">
             <button onclick="changeCardQty('qty-895500', -1)">-</button>
             <span id="qty-895500">1</span>
             <button onclick="changeCardQty('qty-895500', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('895500', 'Bolso Electric', 'L 999', 'b22.jpg', this, 'qty-895500')">Añadir</button>
+          <button class="btn-cart" onclick="addToCart('895500', 'Bolso Electric', 'L 1199', 'b22.jpg', this, 'qty-895500')">Añadir</button>
         </div>
       </div>
     </article>
 
     <article class="product-card">
       <div class="carousel-wrapper">
-        <button class="btn-fav" data-ref="894477" onclick="toggleFav('894477', 'Bolso Elegance', 'L 1399', 'b33.jpg', this)">
+        <button class="btn-fav" data-ref="894477" onclick="toggleFav('894477', 'Bolso Elegance', 'L 1599', 'b33.jpg', this)">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <button class="carousel-arrow prev" onclick="moveSlide(this, -1)">&#10094;</button>
@@ -522,21 +524,24 @@
         <h2 class="product-name">Bolso Elegance</h2>
         <span class="product-specs">UNITALLA</span>
         <p class="product-slogan">Líneas pulcras y sofisticación atemporal. <strong>Clásico y elegante</strong>.</p>
-        <div class="product-price">L 1399</div>
+        <div class="price-block">
+          <span class="old-price">L 1758</span>
+          <span class="product-price">L 1599</span>
+        </div>
         <div class="purchase-action">
           <div class="qty-selector">
             <button onclick="changeCardQty('qty-894477', -1)">-</button>
             <span id="qty-894477">1</span>
             <button onclick="changeCardQty('qty-894477', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('894477', 'Bolso Elegance', 'L 1399', 'b33.jpg', this, 'qty-894477')">Añadir</button>
+          <button class="btn-cart" onclick="addToCart('894477', 'Bolso Elegance', 'L 1599', 'b33.jpg', this, 'qty-894477')">Añadir</button>
         </div>
       </div>
     </article>
 
     <article class="product-card">
       <div class="carousel-wrapper">
-        <button class="btn-fav" data-ref="894488" onclick="toggleFav('894488', 'Bolso Aura', 'L 1199', 'b44.jpg', this)">
+        <button class="btn-fav" data-ref="894488" onclick="toggleFav('894488', 'Bolso Aura', 'L 1399', 'b44.jpg', this)">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <button class="carousel-arrow prev" onclick="moveSlide(this, -1)">&#10094;</button>
@@ -551,21 +556,24 @@
         <h2 class="product-name">Bolso Aura</h2>
         <span class="product-specs">UNITALLA</span>
         <p class="product-slogan">Silueta imponente que define el estándar del <strong>alto lujo</strong>.</p>
-        <div class="product-price">L 1199</div>
+        <div class="price-block">
+          <span class="old-price">L 1558</span>
+          <span class="product-price">L 1399</span>
+        </div>
         <div class="purchase-action">
           <div class="qty-selector">
             <button onclick="changeCardQty('qty-894488', -1)">-</button>
             <span id="qty-894488">1</span>
             <button onclick="changeCardQty('qty-894488', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('894488', 'Bolso Aura', 'L 1199', 'b44.jpg', this, 'qty-894488')">Añadir</button>
+          <button class="btn-cart" onclick="addToCart('894488', 'Bolso Aura', 'L 1399', 'b44.jpg', this, 'qty-894488')">Añadir</button>
         </div>
       </div>
     </article>
 
     <article class="product-card">
       <div class="carousel-wrapper">
-        <button class="btn-fav" data-ref="894499" onclick="toggleFav('894499', 'Bolso Misterio', 'L 1299', 'b55.jpg', this)">
+        <button class="btn-fav" data-ref="894499" onclick="toggleFav('894499', 'Bolso Misterio', 'L 1499', 'b55.jpg', this)">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <button class="carousel-arrow prev" onclick="moveSlide(this, -1)">&#10094;</button>
@@ -580,21 +588,24 @@
         <h2 class="product-name">Bolso Misterio</h2>
         <span class="product-specs">Medida: 33 x 60 CM (MAXI)</span>
         <p class="product-slogan">Un formato maxi estructurado que guarda los secretos de la mujer <strong>ÈNIGME</strong>.</p>
-        <div class="product-price">L 1299</div>
+        <div class="price-block">
+          <span class="old-price">L 1658</span>
+          <span class="product-price">L 1499</span>
+        </div>
         <div class="purchase-action">
           <div class="qty-selector">
             <button onclick="changeCardQty('qty-894499', -1)">-</button>
             <span id="qty-894499">1</span>
             <button onclick="changeCardQty('qty-894499', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('894499', 'Bolso Misterio', 'L 1299', 'b55.jpg', this, 'qty-894499')">Añadir</button>
+          <button class="btn-cart" onclick="addToCart('894499', 'Bolso Misterio', 'L 1499', 'b55.jpg', this, 'qty-894499')">Añadir</button>
         </div>
       </div>
     </article>
 
     <article class="product-card">
       <div class="carousel-wrapper">
-        <button class="btn-fav" data-ref="890371" onclick="toggleFav('890371', 'Bolso BurdeúX', 'L 899', 'b66.jpg', this)">
+        <button class="btn-fav" data-ref="890371" onclick="toggleFav('890371', 'Bolso BurdeúX', 'L 1099', 'b66.jpg', this)">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <button class="carousel-arrow prev" onclick="moveSlide(this, -1)">&#10094;</button>
@@ -609,43 +620,17 @@
         <h2 class="product-name">Bolso BurdeúX</h2>
         <span class="product-specs">Medida: 28 x 12 CM</span>
         <p class="product-slogan">El tono del poder. Una silueta en <strong>burdeos</strong> que eleva cualquier estilismo.</p>
-        <div class="product-price">L 899</div>
+        <div class="price-block">
+          <span class="old-price">L 1258</span>
+          <span class="product-price">L 1099</span>
+        </div>
         <div class="purchase-action">
           <div class="qty-selector">
             <button onclick="changeCardQty('qty-890371', -1)">-</button>
             <span id="qty-890371">1</span>
             <button onclick="changeCardQty('qty-890371', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('890371', 'Bolso BurdeúX', 'L 899', 'b66.jpg', this, 'qty-890371')">Añadir</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="product-card">
-      <div class="carousel-wrapper">
-        <button class="btn-fav" data-ref="899927" onclick="toggleFav('899927', 'Bolso Red Soul', 'L 819', 'b77.jpg', this)">
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-        </button>
-        <button class="carousel-arrow prev" onclick="moveSlide(this, -1)">&#10094;</button>
-        <div class="carousel-track" data-index="0">
-          <img src="b77.jpg" class="product-image" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
-          <img src="b7.png" class="product-image" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
-        </div>
-        <button class="carousel-arrow next" onclick="moveSlide(this, 1)">&#10095;</button>
-      </div>
-      <div class="product-info">
-        <span class="product-code">REF: 899927</span>
-        <h2 class="product-name">Bolso Red Soul</h2>
-        <span class="product-specs">Medida: 24 x 15.5 CM</span>
-        <p class="product-slogan">El alma de la alta costura. Un impacto visual en <strong>rojo profundo</strong>.</p>
-        <div class="product-price">L 819</div>
-        <div class="purchase-action">
-          <div class="qty-selector">
-            <button onclick="changeCardQty('qty-899927', -1)">-</button>
-            <span id="qty-899927">1</span>
-            <button onclick="changeCardQty('qty-899927', 1)">+</button>
-          </div>
-          <button class="btn-cart" onclick="addToCart('899927', 'Bolso Red Soul', 'L 819', 'b77.jpg', this, 'qty-899927')">Añadir</button>
+          <button class="btn-cart" onclick="addToCart('890371', 'Bolso BurdeúX', 'L 1099', 'b66.jpg', this, 'qty-890371')">Añadir</button>
         </div>
       </div>
     </article>
