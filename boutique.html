@@ -173,42 +173,55 @@
     .trust-text svg { width: 12px; height: 12px; fill: var(--rosa-palo); }
 
     /* =========================================
-       GRID DE PRODUCTOS
+       GRID DE PRODUCTOS Y CARRUSEL INFINITO
        ========================================= */
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 70px 40px;
       padding: 80px 5vw;
       max-width: 1400px;
       margin: 0 auto;
       width: 100%;
+      justify-content: center;
     }
 
-    .product-card { display: flex; flex-direction: column; }
+    .product-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--blanco-puro);
+      border: 1px solid var(--linea-fina);
+      transition: var(--transition);
+      margin: 0 auto;
+      width: 100%;
+      max-width: 450px;
+    }
+    .product-card:hover { border-color: var(--dorado); box-shadow: 0 15px 40px rgba(0,0,0,0.04); transform: translateY(-5px); }
 
-    /* CARRUSEL SLIDER TÁCTIL (SWIPE) */
+    /* CARRUSEL SLIDER TÁCTIL (SWIPE) REFINADO */
     .carousel-wrapper {
       position: relative;
       background-color: white;
       aspect-ratio: 3/4;
       overflow: hidden;
-      margin-bottom: 25px;
-      border: 1px solid var(--linea-fina);
+      border-bottom: 1px solid var(--linea-fina);
+      touch-action: pan-y;
     }
 
     .carousel-track {
       display: flex;
-      width: 200%; 
+      width: 100%; 
       height: 100%;
-      transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       cursor: grab;
+      will-change: transform;
     }
 
     .carousel-track:active { cursor: grabbing; }
 
     .product-image {
-      width: 50%; 
+      flex: 0 0 100%;
+      width: 100%; 
       height: 100%;
       object-fit: cover;
       pointer-events: none; 
@@ -221,8 +234,8 @@
       background: rgba(250, 249, 246, 0.85);
       color: var(--carbon);
       border: 1px solid var(--linea-fina);
-      width: 35px;
-      height: 35px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       cursor: pointer;
       z-index: 5;
@@ -236,36 +249,36 @@
     }
 
     .carousel-wrapper:hover .carousel-arrow { opacity: 1; }
-    .carousel-arrow:hover { background: var(--carbon); color: var(--dorado); }
-    .carousel-arrow.prev { left: 10px; }
-    .carousel-arrow.next { right: 10px; }
+    .carousel-arrow:hover { background: var(--carbon); color: var(--dorado); border-color: var(--carbon); }
+    .carousel-arrow.prev { left: 15px; }
+    .carousel-arrow.next { right: 15px; }
 
     /* BOTÓN FAVORITOS */
-    .btn-fav { position: absolute; top: 15px; right: 15px; width: 35px; height: 35px; background-color: var(--marfil); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05); z-index: 10; transition: var(--transition); color: var(--carbon); }
+    .btn-fav { position: absolute; top: 15px; right: 15px; width: 40px; height: 40px; background-color: rgba(255,255,255,0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); z-index: 10; transition: var(--transition); color: var(--carbon); }
     .btn-fav:hover { transform: scale(1.1); }
-    .btn-fav svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; transition: var(--transition); }
+    .btn-fav svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; transition: var(--transition); }
     .btn-fav.active svg { fill: var(--rosa-palo); stroke: var(--rosa-palo); }
 
     /* INFO DEL PRODUCTO */
-    .product-info { text-align: center; display: flex; flex-direction: column; flex-grow: 1; }
+    .product-info { padding: 30px 25px; text-align: center; display: flex; flex-direction: column; flex-grow: 1; }
     .product-code { font-size: 0.55rem; letter-spacing: 2px; color: var(--gris-suave); margin-bottom: 8px; }
-    .product-name { font-family: 'Cinzel', serif; font-size: 1.1rem; letter-spacing: 0.1em; color: var(--carbon); margin-bottom: 8px; text-transform: uppercase; }
-    .product-specs { font-size: 0.6rem; letter-spacing: 1px; color: var(--dorado); text-transform: uppercase; margin-bottom: 8px; font-weight: 600; }
-    .product-slogan { font-size: 0.75rem; line-height: 1.6; color: var(--gris-suave); margin-bottom: 15px; font-weight: 300; }
-    .product-slogan strong { color: var(--carbon); font-weight: 600; }
+    .product-name { font-family: 'Cinzel', serif; font-size: 1.3rem; letter-spacing: 0.1em; color: var(--carbon); margin-bottom: 8px; text-transform: uppercase; font-weight: 600; }
+    .product-specs { font-size: 0.6rem; letter-spacing: 1px; color: var(--dorado); text-transform: uppercase; margin-bottom: 12px; font-weight: 600; }
+    .product-slogan { font-size: 0.8rem; line-height: 1.6; color: var(--gris-suave); margin-bottom: 20px; font-weight: 300; }
+    .product-slogan strong { color: var(--carbon); font-weight: 500; }
     
     /* BLOQUE DE PRECIOS */
-    .price-block { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 25px; }
-    .product-price { font-size: 1rem; letter-spacing: 2px; color: var(--carbon); font-weight: 600; }
-    .old-price { font-size: 0.7rem; color: var(--gris-suave); text-decoration: line-through; letter-spacing: 1px; }
+    .price-block { display: flex; align-items: baseline; justify-content: center; gap: 12px; margin-top: auto; margin-bottom: 25px; }
+    .old-price { font-size: 0.9rem; color: var(--gris-suave); text-decoration: line-through; letter-spacing: 1px; font-weight: 400; }
+    .product-price { font-size: 1.4rem; letter-spacing: 2px; color: var(--carbon); font-weight: 700; }
 
     /* CONTROL DE CANTIDAD + AÑADIR */
-    .purchase-action { display: flex; margin-top: auto; border: 1px solid var(--linea-fina); border-radius: 0; overflow: hidden; height: 42px; }
+    .purchase-action { display: flex; border: 1px solid var(--linea-fina); border-radius: 0; overflow: hidden; height: 45px; }
     .qty-selector { display: flex; align-items: center; justify-content: space-between; width: 90px; background: var(--marfil); border-right: 1px solid var(--linea-fina); }
-    .qty-selector button { width: 30px; height: 100%; font-size: 1.1rem; color: var(--gris-suave); display: flex; align-items: center; justify-content: center; }
+    .qty-selector button { width: 30px; height: 100%; font-size: 1.2rem; color: var(--gris-suave); display: flex; align-items: center; justify-content: center; }
     .qty-selector button:hover { color: var(--carbon); background: rgba(0,0,0,0.03); }
-    .qty-selector span { font-size: 0.75rem; font-weight: 500; color: var(--carbon); flex-grow: 1; }
-    .btn-cart { flex-grow: 1; background-color: transparent; border: none; color: var(--carbon); font-size: 0.55rem; letter-spacing: 3px; text-transform: uppercase; transition: var(--transition); font-weight: 600; }
+    .qty-selector span { font-size: 0.85rem; font-weight: 600; color: var(--carbon); flex-grow: 1; }
+    .btn-cart { flex-grow: 1; background-color: transparent; border: none; color: var(--carbon); font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; transition: var(--transition); font-weight: 700; }
     .btn-cart:hover { background-color: var(--dorado); color: var(--carbon); }
     .btn-cart.added { background: var(--carbon); color: var(--dorado); }
 
@@ -274,32 +287,11 @@
        ========================================= */
     .floating-stack { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; z-index: 999; }
     
-    .pill-btn { 
-      display: flex; 
-      align-items: center; 
-      gap: 10px; 
-      height: 38px; 
-      padding: 0 16px; 
-      border-radius: 20px; 
-      background: var(--carbon); 
-      color: var(--blanco-puro); 
-      font-size: 0.55rem; 
-      letter-spacing: 2px; 
-      text-transform: uppercase; 
-      font-weight: 600; 
-      box-shadow: 0 5px 15px rgba(0,0,0,0.15); 
-      border: 1px solid transparent; 
-      white-space: nowrap; 
-      transition: var(--transition); 
-    }
-    
+    .pill-btn { display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 18px; border-radius: 20px; background: var(--carbon); color: var(--blanco-puro); font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; box-shadow: 0 5px 15px rgba(0,0,0,0.15); border: 1px solid transparent; white-space: nowrap; transition: var(--transition); }
     .pill-btn.light { background: var(--marfil); color: var(--carbon); border: 1px solid var(--linea-fina); }
-    
-    /* BOTÓN SOPORTE VIP */
     .pill-btn.support { background: var(--dorado); color: var(--carbon); border: 1px solid var(--dorado); font-weight: 700; }
-    
     .pill-btn:hover { transform: translateX(-5px); background: var(--carbon); color: var(--dorado); border-color: var(--carbon); }
-    .pill-btn svg { width: 14px; height: 14px; fill: currentColor; }
+    .pill-btn svg { width: 16px; height: 16px; fill: currentColor; }
 
     /* =========================================
        NOTIFICACIÓN TOAST
@@ -311,11 +303,11 @@
       transform: translateX(-50%) translateY(100px);
       background-color: var(--carbon);
       color: var(--dorado);
-      padding: 14px 28px;
-      font-size: 0.65rem;
+      padding: 16px 30px;
+      font-size: 0.7rem;
       letter-spacing: 2px;
       text-transform: uppercase;
-      font-weight: 500;
+      font-weight: 600;
       box-shadow: 0 10px 40px rgba(0,0,0,0.3);
       z-index: 10000;
       opacity: 0;
@@ -337,41 +329,45 @@
     .trust-badge-item svg { width: 14px; height: 14px; fill: currentColor; }
     .legal-text { font-size: 0.6rem; line-height: 2.2; letter-spacing: 1.5px; color: var(--gris-suave); max-width: 900px; margin: 0 auto; text-transform: uppercase; }
     .legal-text strong { color: var(--carbon); }
-    
     .founder-credit { margin-top: 40px; font-size: 0.5rem; letter-spacing: 0.25em; color: var(--gris-suave); opacity: 0.5; text-transform: uppercase; font-weight: 300; }
 
     /* =========================================
-       LIGHTBOX (VISUALIZACIÓN DE IMAGEN)
+       LIGHTBOX
        ========================================= */
     .lightbox { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(250, 249, 246, 0.98); backdrop-filter: blur(10px); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
     .lightbox.active { opacity: 1; pointer-events: auto; }
-    .lightbox img { max-width: 90%; max-height: 90%; object-fit: contain; transform: scale(0.95); transition: transform 0.4s ease; box-shadow: 0 20px 50px rgba(0,0,0,0.15);}
+    .lightbox img { max-width: 95%; max-height: 95%; object-fit: contain; transform: scale(0.95); transition: transform 0.4s ease; box-shadow: 0 20px 50px rgba(0,0,0,0.15);}
     .lightbox.active img { transform: scale(1); }
-    .lightbox-close { position: absolute; top: 30px; right: 40px; font-size: 3rem; color: var(--carbon); cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 200; line-height: 1; transition: var(--transition); }
+    .lightbox-close { position: absolute; top: 30px; right: 40px; font-size: 3.5rem; color: var(--carbon); cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 200; line-height: 1; transition: var(--transition); }
     .lightbox-close:hover { color: var(--rosa-palo); transform: scale(1.1); }
 
-    /* RESPONSIVE */
-    @media (max-width: 900px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
+    /* RESPONSIVE MOBILE */
     @media (max-width: 768px) {
       .navbar { flex-wrap: wrap; justify-content: center; gap: 20px; padding: 25px; }
       .nav-group { justify-content: center; flex-wrap: wrap; width: 100%; flex: none; gap: 15px;}
       .brand { order: -1; width: 100%; margin-bottom: 10px; }
-      .nav-link { font-size: 0.55rem; letter-spacing: 2px; }
-      .btn-menu-brand { padding: 8px 14px; font-size: 0.55rem; }
-      .product-grid { grid-template-columns: 1fr 1fr; gap: 40px 15px; padding: 40px 15px; }
-      .gallery-title { font-size: 1.8rem; }
-      .product-name { font-size: 0.85rem; }
-      .product-slogan { font-size: 0.65rem; }
       
+      .product-grid { padding: 40px 15px; gap: 40px; max-width: 100%; }
+      .product-card { max-width: 100%; border-left: none; border-right: none; }
+      
+      /* Ruleta Inmersiva en Móvil */
+      .carousel-wrapper { aspect-ratio: 1/1; border-radius: 4px; margin: 10px; border: 1px solid var(--linea-fina); }
+      .carousel-arrow { opacity: 1; width: 35px; height: 35px; }
+
+      .product-info { padding: 25px 20px; }
+      .product-name { font-size: 1.3rem; }
+      .product-lema { font-size: 0.75rem; margin-bottom: 15px; }
+      
+      .price-block { margin-bottom: 15px; gap: 10px; }
+      .old-price { font-size: 0.85rem; }
+      .product-price { font-size: 1.3rem; }
+
+      .purchase-action { height: 42px; }
+      .qty-selector { width: 80px; }
+      .btn-cart { font-size: 0.55rem; letter-spacing: 2px; }
+
       .floating-stack { bottom: 15px; right: 15px; }
-      .pill-btn { height: 32px; padding: 0 12px; font-size: 0.5rem; }
-      
-      .cert-seal-img { max-width: 80px; } 
-      .trust-badges-container { gap: 15px; }
-      .trust-badge-item { padding: 6px 12px; font-size: 0.5rem; }
-      .qty-selector { width: 70px; }
-      .btn-cart { font-size: 0.5rem; letter-spacing: 2px; }
-      .carousel-arrow { opacity: 1; width: 25px; height: 25px; font-size: 0.7rem; }
+      .pill-btn { height: 35px; padding: 0 14px; font-size: 0.5rem; }
       .toast-notification { width: 90%; justify-content: center; bottom: 20px; font-size: 0.55rem; }
       .btn-back { top: 160px; }
     }
@@ -400,33 +396,16 @@
   </nav>
 
   <div class="floating-stack">
-    <a href="joyeria.html" class="pill-btn light">
-      <svg viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></svg>
-      Alta Joyería
-    </a>
-    <a href="plata.html" class="pill-btn light">
-      <svg viewBox="0 0 576 512"><path d="M312 24l210.3 226.7c18.5 19.9 18.5 50.7 0 70.6L312 488c-13.3 14.3-34.7 14.3-48 0L53.7 321.3c-18.5-19.9-18.5-50.7 0-70.6L264 24c13.3-14.3 34.7-14.3 48 0zM170.8 288l117.2 126.3L405.2 288H170.8z"/></svg>
-      Colección Plata
-    </a>
-    <a href="liquidacion.html" class="pill-btn light">
-      <svg viewBox="0 0 512 512"><path d="M256 0c11 0 20 9 20 20v196h196c11 0 20 9 20 20s-9 20-20 20H276v196c0 11-9 20-20 20s-20-9-20-20V256H40c-11 0-20-9-20-20s9-20 20-20h196V20c0-11 9-20 20-20z"/></svg>
-      Liquidación
-    </a>
-    <a href="https://wa.me/34602149162?text=Hola,%20estoy%20en%20la%20Boutique%20de%20Bolsos%20y%20deseo%20asesor%C3%ADa%20VIP." class="pill-btn support" target="_blank">
-      <svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
-      Soporte en línea
-    </a>
+    <a href="joyeria.html" class="pill-btn light">Alta Joyería</a>
+    <a href="plata.html" class="pill-btn light">Colección Plata</a>
+    <a href="liquidacion.html" class="pill-btn light">El Archivo</a>
+    <a href="https://wa.me/34602149162?text=Hola,%20estoy%20en%20la%20Boutique%20de%20Bolsos%20y%20deseo%20asesor%C3%ADa%20VIP." class="pill-btn support" target="_blank">Atención VIP</a>
   </div>
 
   <a href="#" onclick="window.history.back(); return false;" class="btn-back">
     <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
     Volver atrás
   </a>
-
-  <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
-    <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
-    <img id="lightbox-img" src="" alt="Bolso ÈNIGME" onclick="event.stopPropagation()">
-  </div>
 
   <header class="gallery-header">
     <p class="gallery-kicker">Capítulo II</p>
@@ -450,8 +429,8 @@
         </button>
         <button class="carousel-arrow prev" onclick="moveSlide(this, -1)">&#10094;</button>
         <div class="carousel-track" data-index="0">
-          <img src="b11.jpg" class="product-image" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
-          <img src="b1.png" class="product-image" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
+          <img src="b11.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=ÈNIGME'">
+          <img src="b1.png" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=ÈNIGME'">
         </div>
         <button class="carousel-arrow next" onclick="moveSlide(this, 1)">&#10095;</button>
       </div>
@@ -462,7 +441,7 @@
         <p class="product-slogan">Un espectáculo de arquitectura pura en <strong>gris metalizado</strong>.</p>
         <div class="price-block">
           <span class="old-price">L 1358</span>
-          <span class="product-price">L 1199</span>
+          <h3 class="product-price">L 1199</h3>
         </div>
         <div class="purchase-action">
           <div class="qty-selector">
@@ -482,8 +461,8 @@
         </button>
         <button class="carousel-arrow prev" onclick="moveSlide(this, -1)">&#10094;</button>
         <div class="carousel-track" data-index="0">
-          <img src="b22.jpg" class="product-image" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
-          <img src="b2.png" class="product-image" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
+          <img src="b22.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=ÈNIGME'">
+          <img src="b2.png" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=ÈNIGME'">
         </div>
         <button class="carousel-arrow next" onclick="moveSlide(this, 1)">&#10095;</button>
       </div>
@@ -494,7 +473,7 @@
         <p class="product-slogan">El magnetismo del lujo. Estructura vibrante en tono <strong>dorado</strong>.</p>
         <div class="price-block">
           <span class="old-price">L 1358</span>
-          <span class="product-price">L 1199</span>
+          <h3 class="product-price">L 1199</h3>
         </div>
         <div class="purchase-action">
           <div class="qty-selector">
@@ -514,8 +493,8 @@
         </button>
         <button class="carousel-arrow prev" onclick="moveSlide(this, -1)">&#10094;</button>
         <div class="carousel-track" data-index="0">
-          <img src="b33.jpg" class="product-image" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
-          <img src="b3.png" class="product-image" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
+          <img src="b33.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=ÈNIGME'">
+          <img src="b3.png" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=ÈNIGME'">
         </div>
         <button class="carousel-arrow next" onclick="moveSlide(this, 1)">&#10095;</button>
       </div>
@@ -526,7 +505,7 @@
         <p class="product-slogan">Líneas pulcras y sofisticación atemporal. <strong>Clásico y elegante</strong>.</p>
         <div class="price-block">
           <span class="old-price">L 1758</span>
-          <span class="product-price">L 1599</span>
+          <h3 class="product-price">L 1599</h3>
         </div>
         <div class="purchase-action">
           <div class="qty-selector">
@@ -546,8 +525,8 @@
         </button>
         <button class="carousel-arrow prev" onclick="moveSlide(this, -1)">&#10094;</button>
         <div class="carousel-track" data-index="0">
-          <img src="b44.jpg" class="product-image" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
-          <img src="b4.png" class="product-image" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
+          <img src="b44.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=ÈNIGME'">
+          <img src="b4.png" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=ÈNIGME'">
         </div>
         <button class="carousel-arrow next" onclick="moveSlide(this, 1)">&#10095;</button>
       </div>
@@ -558,7 +537,7 @@
         <p class="product-slogan">Silueta imponente que define el estándar del <strong>alto lujo</strong>.</p>
         <div class="price-block">
           <span class="old-price">L 1558</span>
-          <span class="product-price">L 1399</span>
+          <h3 class="product-price">L 1399</h3>
         </div>
         <div class="purchase-action">
           <div class="qty-selector">
@@ -578,8 +557,8 @@
         </button>
         <button class="carousel-arrow prev" onclick="moveSlide(this, -1)">&#10094;</button>
         <div class="carousel-track" data-index="0">
-          <img src="b55.jpg" class="product-image" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
-          <img src="b5.png" class="product-image" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
+          <img src="b55.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=ÈNIGME'">
+          <img src="b5.png" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=ÈNIGME'">
         </div>
         <button class="carousel-arrow next" onclick="moveSlide(this, 1)">&#10095;</button>
       </div>
@@ -590,7 +569,7 @@
         <p class="product-slogan">Un formato maxi estructurado que guarda los secretos de la mujer <strong>ÈNIGME</strong>.</p>
         <div class="price-block">
           <span class="old-price">L 1658</span>
-          <span class="product-price">L 1499</span>
+          <h3 class="product-price">L 1499</h3>
         </div>
         <div class="purchase-action">
           <div class="qty-selector">
@@ -610,8 +589,8 @@
         </button>
         <button class="carousel-arrow prev" onclick="moveSlide(this, -1)">&#10094;</button>
         <div class="carousel-track" data-index="0">
-          <img src="b66.jpg" class="product-image" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
-          <img src="b6.png" class="product-image" onerror="this.src='https://via.placeholder.com/400x600?text=ÈNIGME'">
+          <img src="b66.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=ÈNIGME'">
+          <img src="b6.png" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=ÈNIGME'">
         </div>
         <button class="carousel-arrow next" onclick="moveSlide(this, 1)">&#10095;</button>
       </div>
@@ -622,7 +601,7 @@
         <p class="product-slogan">El tono del poder. Una silueta en <strong>burdeos</strong> que eleva cualquier estilismo.</p>
         <div class="price-block">
           <span class="old-price">L 1258</span>
-          <span class="product-price">L 1099</span>
+          <h3 class="product-price">L 1099</h3>
         </div>
         <div class="purchase-action">
           <div class="qty-selector">
@@ -670,20 +649,40 @@
 
   <script>
     /* =========================================
+       NAVEGACIÓN POR TECLADO (PC)
+       ========================================= */
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+        const wrappers = document.querySelectorAll('.carousel-wrapper');
+        wrappers.forEach(wrapper => {
+          const rect = wrapper.getBoundingClientRect();
+          const inViewport = (rect.top < window.innerHeight && rect.bottom > 0);
+          if (inViewport) {
+            const btn = e.key === 'ArrowLeft' ? wrapper.querySelector('.prev') : wrapper.querySelector('.next');
+            if (btn) btn.click();
+          }
+        });
+      }
+    });
+
+    /* =========================================
        MOTOR DEL CARRUSEL (DRAG & SWIPE)
        ========================================= */
     function moveSlide(btn, direction) {
       if(event) event.stopPropagation(); // Evita que se abra el lightbox
       let track = btn.parentElement.querySelector('.carousel-track');
-      let currentIndex = parseInt(track.getAttribute('data-index') || 0);
+      let mediaItems = track.children;
+      let totalItems = mediaItems.length;
+      if (totalItems <= 1) return;
       
+      let currentIndex = parseInt(track.getAttribute('data-index') || 0);
       currentIndex += direction;
       
-      if (currentIndex < 0) currentIndex = 0;
-      if (currentIndex > 1) currentIndex = 1;
+      if (currentIndex < 0) currentIndex = totalItems - 1;
+      if (currentIndex >= totalItems) currentIndex = 0;
       
       track.setAttribute('data-index', currentIndex);
-      track.style.transform = `translateX(-${currentIndex * 50}%)`;
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
     }
 
     document.querySelectorAll('.carousel-track').forEach(track => {
@@ -736,8 +735,10 @@
       track.addEventListener('click', (e) => {
         if (!isDragged) {
           let idx = parseInt(track.getAttribute('data-index') || 0);
-          let imgs = track.querySelectorAll('img');
-          openLightbox(imgs[idx].src); 
+          let media = track.children[idx];
+          if (media.tagName.toLowerCase() === 'img') {
+            openLightbox(media.src); 
+          }
         }
       });
     });
