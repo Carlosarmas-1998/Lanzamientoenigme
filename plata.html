@@ -44,144 +44,56 @@
        NAVBAR PURISTA ÈNIGME
        ========================================= */
     .navbar {
-      width: 100%;
-      padding: 30px 4vw;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid var(--linea-fina);
-      background: rgba(250, 249, 246, 0.98);
-      backdrop-filter: blur(10px);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      width: 100%; padding: 30px 4vw; display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid var(--linea-fina); background: rgba(250, 249, 246, 0.98);
+      backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000;
     }
-
-    .brand-nav {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(1.2rem, 2.5vw, 1.5rem);
-      letter-spacing: 0.35em;
-      color: var(--carbon);
-      text-align: center;
-      font-weight: 500;
-    }
-
+    .brand-nav { font-family: 'Cinzel', serif; font-size: clamp(1.2rem, 2.5vw, 1.5rem); letter-spacing: 0.35em; color: var(--carbon); text-align: center; font-weight: 500; }
     .nav-group { display: flex; gap: 30px; align-items: center; flex: 1; }
     .nav-group.right { justify-content: flex-end; }
-    
-    .nav-link {
-      font-size: 0.6rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--gris-suave);
-      font-weight: 600;
-      position: relative;
-      padding-bottom: 4px;
-    }
-
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      width: 100%; height: 1.5px; bottom: 0; left: 0;
-      background-color: var(--dorado);
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform 0.4s ease;
-    }
-
+    .nav-link { font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gris-suave); font-weight: 600; position: relative; padding-bottom: 4px; }
+    .nav-link::after { content: ''; position: absolute; width: 100%; height: 1.5px; bottom: 0; left: 0; background-color: var(--dorado); transform: scaleX(0); transform-origin: right; transition: transform 0.4s ease; }
     .nav-link:hover, .nav-link.active { color: var(--carbon); }
     .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); transform-origin: left; }
 
-    .btn-menu-brand {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background-color: transparent;
-      color: var(--carbon) !important;
-      padding: 8px 16px;
-      border: 1px solid rgba(203, 170, 99, 0.5);
-      border-radius: 2px;
-      font-size: 0.6rem;
-      font-weight: 500;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      transition: var(--transition);
-    }
+    .btn-menu-brand { display: flex; align-items: center; gap: 8px; background-color: transparent; color: var(--carbon) !important; padding: 8px 16px; border: 1px solid rgba(203, 170, 99, 0.5); border-radius: 2px; font-size: 0.6rem; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; transition: var(--transition); }
     .btn-menu-brand:hover { background-color: var(--dorado); border-color: var(--dorado); }
     .btn-menu-brand svg { width: 13px; height: 13px; fill: currentColor; transition: transform 0.3s ease; }
 
-    @keyframes pulse-soft {
-      0% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0.3); }
-      70% { box-shadow: 0 0 0 8px rgba(203, 170, 99, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0); }
-    }
+    @keyframes pulse-soft { 0% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0.3); } 70% { box-shadow: 0 0 0 8px rgba(203, 170, 99, 0); } 100% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0); } }
     .btn-cart-nav { animation: pulse-soft 2.5s infinite; }
     .btn-cart-nav:hover svg { transform: scale(1.15) rotate(-5deg); }
-    .counter-badge { font-weight: 600; }
 
     /* =========================================
        ENCABEZADO DE LA GALERÍA
        ========================================= */
-    .gallery-header {
-      text-align: center;
-      padding: 80px 20px 40px;
-    }
-
+    .gallery-header { text-align: center; padding: 60px 20px 30px; }
     .gallery-kicker { font-family: 'Cinzel', serif; font-style: italic; font-size: 0.9rem; color: var(--gris-suave); letter-spacing: 5px; text-transform: uppercase; margin-bottom: 15px; }
     .gallery-title { font-family: 'Cinzel', serif; font-size: clamp(2.2rem, 5vw, 3.5rem); letter-spacing: 0.15em; text-transform: uppercase; color: var(--carbon); margin-bottom: 20px; }
     .gallery-desc { font-size: 0.9rem; line-height: 2; color: var(--gris-suave); max-width: 650px; margin: 0 auto; font-weight: 300; }
 
-    /* GUÍA DE CURADURÍA */
-    .curator-guide {
-      max-width: 600px;
-      margin: 0 auto 20px;
-      padding: 15px 25px;
-      border: 1px solid rgba(203, 170, 99, 0.4);
-      background-color: var(--blanco-puro);
-      font-size: 0.6rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--carbon);
-      font-weight: 500;
-      text-align: center;
+    /* BOTÓN VITRINA MÁGICA */
+    .vitrina-btn-container { text-align: center; margin-bottom: 40px; }
+    .btn-vitrina {
+      display: inline-block; padding: 15px 40px; background: var(--carbon); color: var(--dorado);
+      font-family: 'Cinzel', serif; font-size: 1.1rem; letter-spacing: 3px; border: 1px solid var(--dorado);
+      cursor: pointer; transition: var(--transition); box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     }
-    .curator-guide strong { color: var(--dorado); }
+    .btn-vitrina:hover { background: var(--dorado); color: var(--carbon); transform: scale(1.05); }
 
     /* EXPERIENCIA DE EMPAQUE */
-    .premium-packaging {
-      max-width: 800px;
-      margin: 0 auto 50px;
-      padding: 25px;
-      background-color: var(--carbon);
-      color: var(--marfil);
-      text-align: center;
-      border: 1px solid var(--dorado);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    }
-    .premium-packaging h3 {
-      font-family: 'Cinzel', serif;
-      font-size: 1.2rem;
-      letter-spacing: 4px;
-      color: var(--dorado);
-      text-transform: uppercase;
-      margin-bottom: 15px;
-    }
-    .premium-packaging p {
-      font-size: 0.65rem;
-      letter-spacing: 2px;
-      line-height: 2;
-      text-transform: uppercase;
-      font-weight: 500;
-    }
+    .premium-packaging { max-width: 800px; margin: 0 auto 50px; padding: 20px; background-color: transparent; border-top: 1px solid var(--linea-fina); border-bottom: 1px solid var(--linea-fina); text-align: center; }
+    .premium-packaging h3 { font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 4px; color: var(--carbon); text-transform: uppercase; margin-bottom: 10px; }
+    .premium-packaging p { font-size: 0.65rem; letter-spacing: 2px; line-height: 2; text-transform: uppercase; font-weight: 500; color: var(--gris-suave); }
     .premium-packaging p strong { color: var(--dorado); }
 
     /* =========================================
-       GRID DE PRODUCTOS
+       GRID DE PRODUCTOS (MAIN)
        ========================================= */
     .product-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 80px 40px;
+      gap: 60px 40px;
       padding: 0 5vw 80px;
       max-width: 1400px;
       margin: 0 auto;
@@ -189,282 +101,168 @@
       justify-content: center;
     }
 
-    .product-card {
-      display: flex;
-      flex-direction: column;
-      background: var(--blanco-puro);
-      border: 1px solid var(--linea-fina);
-      transition: var(--transition);
-      margin: 0 auto;
-      width: 100%;
-      max-width: 450px;
-    }
+    .product-card { display: flex; flex-direction: column; background: var(--blanco-puro); border: 1px solid var(--linea-fina); transition: var(--transition); margin: 0 auto; width: 100%; max-width: 450px; }
     .product-card:hover { border-color: var(--plata); box-shadow: 0 15px 40px rgba(0,0,0,0.04); transform: translateY(-5px); }
 
-    .carousel-wrapper {
-      position: relative;
-      background-color: white;
-      aspect-ratio: 4/5; 
-      overflow: hidden;
-      border-bottom: 1px solid var(--linea-fina);
-      touch-action: pan-y; 
-    }
-
-    .carousel-track {
-      display: flex;
-      width: 100%; 
-      height: 100%;
-      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      cursor: grab;
-      will-change: transform;
-    }
+    /* CARRUSEL DE IMÁGENES: RECTANGULAR 3:4 */
+    .carousel-wrapper { position: relative; background-color: #fdfdfd; aspect-ratio: 3/4; overflow: hidden; border-bottom: 1px solid var(--linea-fina); touch-action: pan-y; }
+    .carousel-track { display: flex; width: 100%; height: 100%; transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); cursor: grab; will-change: transform; }
     .carousel-track:active { cursor: grabbing; }
+    .product-media { flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
 
-    .product-media {
-      flex: 0 0 100%;
-      width: 100%; 
-      height: 100%;
-      object-fit: cover;
-      pointer-events: none; 
-    }
-
-    .video-container {
-      flex: 0 0 100%;
-      width: 100%; 
-      height: 100%;
-      position: relative;
-      pointer-events: auto; 
-    }
-
-    .video-container video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      pointer-events: none; 
-    }
-
-    /* BOTÓN DE SONIDO MÁGICO */
-    .sound-toggle-btn {
-      position: absolute;
-      bottom: 20px;
-      right: 20px;
-      width: 45px;
-      height: 45px;
-      background: rgba(28, 28, 28, 0.6);
-      backdrop-filter: blur(8px);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--blanco-puro);
-      z-index: 15;
-      border: 1px solid rgba(255,255,255,0.2);
-      transition: var(--transition);
-      cursor: pointer;
-    }
-
-    .sound-toggle-btn:hover { transform: scale(1.1); background: var(--carbon); }
-    .sound-toggle-btn.active { background: var(--dorado); color: var(--carbon); border-color: var(--dorado); box-shadow: 0 0 15px rgba(203, 170, 99, 0.5); }
-    .sound-toggle-btn svg { width: 20px; height: 20px; fill: currentColor; }
-
-    .carousel-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(250, 249, 246, 0.85);
-      color: var(--carbon);
-      border: 1px solid var(--linea-fina);
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      cursor: pointer;
-      z-index: 5;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.9rem;
-      opacity: 0; 
-      transition: var(--transition);
-      backdrop-filter: blur(4px);
-    }
+    .carousel-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(250, 249, 246, 0.85); color: var(--carbon); border: 1px solid var(--linea-fina); width: 35px; height: 35px; border-radius: 50%; cursor: pointer; z-index: 5; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; opacity: 0; transition: var(--transition); backdrop-filter: blur(4px); }
     .carousel-wrapper:hover .carousel-arrow { opacity: 1; }
     .carousel-arrow:hover { background: var(--carbon); color: var(--dorado); border-color: var(--carbon); }
-    .carousel-arrow.prev { left: 15px; }
-    .carousel-arrow.next { right: 15px; }
+    .carousel-arrow.prev { left: 10px; }
+    .carousel-arrow.next { right: 10px; }
 
-    .btn-fav { position: absolute; top: 15px; right: 15px; width: 40px; height: 40px; background-color: rgba(255,255,255,0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); z-index: 10; transition: var(--transition); color: var(--carbon); }
+    .btn-fav { position: absolute; top: 10px; right: 10px; width: 35px; height: 35px; background-color: rgba(255,255,255,0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); z-index: 10; transition: var(--transition); color: var(--carbon); }
     .btn-fav:hover { transform: scale(1.1); }
-    .btn-fav svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; transition: var(--transition); }
+    .btn-fav svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; }
     .btn-fav.active svg { fill: var(--rosa-palo); stroke: var(--rosa-palo); }
 
-    .video-badge {
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      background: rgba(0,0,0,0.6);
-      color: white;
-      padding: 6px 12px;
-      font-size: 0.55rem;
-      letter-spacing: 2px;
-      border-radius: 20px;
-      backdrop-filter: blur(5px);
-      z-index: 10;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-    
-    .photo-badge {
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      background: rgba(203, 170, 99, 0.8);
-      color: var(--carbon);
-      padding: 6px 12px;
-      font-size: 0.55rem;
-      letter-spacing: 2px;
-      border-radius: 20px;
-      backdrop-filter: blur(5px);
-      z-index: 10;
-      font-weight: 700;
-    }
-
     /* INFO DEL PRODUCTO */
-    .product-info {
-      padding: 35px 25px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
-
-    .product-code { font-size: 0.55rem; letter-spacing: 2px; color: var(--gris-suave); margin-bottom: 8px; }
-    .product-name { font-family: 'Cinzel', serif; font-size: 1.5rem; letter-spacing: 0.1em; color: var(--carbon); margin-bottom: 12px; text-transform: uppercase; font-weight: 600; }
-    .product-lema { font-size: 0.85rem; line-height: 1.6; color: var(--gris-suave); margin-bottom: 25px; font-weight: 300; font-style: italic; }
+    .product-info { padding: 25px 20px; text-align: center; display: flex; flex-direction: column; flex-grow: 1; }
+    .product-code { font-size: 0.5rem; letter-spacing: 2px; color: var(--gris-suave); margin-bottom: 8px; }
+    .product-name { font-family: 'Cinzel', serif; font-size: 1.3rem; letter-spacing: 0.1em; color: var(--carbon); margin-bottom: 8px; text-transform: uppercase; font-weight: 600; }
+    .product-lema { font-size: 0.75rem; line-height: 1.5; color: var(--gris-suave); margin-bottom: 20px; font-weight: 300; font-style: italic; }
     .product-lema strong { color: var(--carbon); font-weight: 500; }
     
-    /* BLOQUE DE ETIQUETAS Y TALLAS */
-    .specs-block {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 20px;
-      padding: 20px 15px;
-      background: var(--marfil);
-      border: 1px solid var(--linea-fina);
-    }
-
-    .size-selector-wrapper {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      align-items: center;
-      width: 100%;
-      margin-bottom: 8px;
-    }
-    .size-label { font-size: 0.55rem; letter-spacing: 2px; color: var(--gris-suave); text-transform: uppercase; font-weight: 600;}
-    .size-select {
-      appearance: none; background: transparent; border: 1px solid var(--carbon); padding: 10px 35px 10px 15px; font-family: 'Montserrat', sans-serif; font-size: 0.75rem; letter-spacing: 2px; color: var(--carbon); font-weight: 600; text-transform: uppercase; cursor: pointer; text-align: center; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231C1C1C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 10px center; background-size: 14px; width: 100%; max-width: 160px; outline: none; transition: var(--transition);
-    }
-    .size-select:hover { border-color: var(--dorado); }
+    .specs-block { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-bottom: 15px; padding: 15px 10px; background: var(--marfil); border: 1px solid var(--linea-fina); }
+    .size-selector-wrapper { display: flex; flex-direction: column; gap: 5px; align-items: center; width: 100%; margin-bottom: 5px; }
+    .size-label { font-size: 0.5rem; letter-spacing: 2px; color: var(--gris-suave); text-transform: uppercase; font-weight: 600;}
+    .size-select { appearance: none; background: transparent; border: 1px solid var(--carbon); padding: 8px 25px 8px 10px; font-family: 'Montserrat', sans-serif; font-size: 0.7rem; letter-spacing: 2px; color: var(--carbon); font-weight: 600; text-transform: uppercase; cursor: pointer; text-align: center; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231C1C1C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 10px center; background-size: 12px; width: 100%; max-width: 140px; outline: none; transition: var(--transition); }
     
-    .spec-material { display: inline-block; padding: 6px 15px; font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; border-radius: 2px; background-color: var(--plata); color: var(--carbon); }
-    .spec-desc { font-size: 0.7rem; color: var(--carbon); text-transform: uppercase; font-weight: 500; letter-spacing: 1px; }
-    .spec-highlight { color: var(--celeste); font-weight: 700; }
+    .spec-material { display: inline-block; padding: 5px 12px; font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; border-radius: 2px; background-color: var(--plata); color: var(--carbon); }
+    .spec-desc { font-size: 0.65rem; color: var(--carbon); text-transform: uppercase; font-weight: 500; letter-spacing: 1px; }
 
-    /* PRECIO CON DESCUENTO */
-    .product-price-wrapper {
-      display: flex;
-      align-items: baseline;
-      justify-content: center;
-      gap: 15px;
-      margin-top: auto;
-      margin-bottom: 10px;
-    }
-    .price-old { font-size: 1rem; color: var(--gris-suave); text-decoration: line-through; font-weight: 400; }
-    .product-price { font-size: 1.5rem; letter-spacing: 2px; color: var(--carbon); font-weight: 700; }
-    
-    .limit-notice { font-size: 0.55rem; letter-spacing: 2px; color: #b30000; text-transform: uppercase; font-weight: 600; margin-bottom: 25px; }
+    .product-price-wrapper { display: flex; align-items: baseline; justify-content: center; gap: 10px; margin-top: auto; margin-bottom: 5px; }
+    .price-old { font-size: 0.9rem; color: var(--gris-suave); text-decoration: line-through; font-weight: 400; }
+    .product-price { font-size: 1.4rem; letter-spacing: 2px; color: var(--carbon); font-weight: 700; }
+    .limit-notice { font-size: 0.5rem; letter-spacing: 2px; color: #b30000; text-transform: uppercase; font-weight: 600; margin-bottom: 20px; }
 
-    .purchase-action { display: flex; margin-top: auto; border: 1px solid var(--carbon); border-radius: 0; overflow: hidden; height: 50px; }
-    .qty-selector { display: flex; align-items: center; justify-content: space-between; width: 100px; background: var(--blanco-puro); border-right: 1px solid var(--linea-fina); }
-    .qty-selector button { width: 35px; height: 100%; font-size: 1.4rem; color: var(--carbon); display: flex; align-items: center; justify-content: center; }
-    .qty-selector button:hover { background: rgba(0,0,0,0.05); }
-    .qty-selector span { font-size: 0.9rem; font-weight: 600; color: var(--carbon); flex-grow: 1; }
-    
-    .btn-cart { flex-grow: 1; background-color: var(--carbon); border: none; color: var(--blanco-puro); font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; transition: var(--transition); font-weight: 700; }
+    .purchase-action { display: flex; margin-top: auto; border: 1px solid var(--carbon); overflow: hidden; height: 45px; }
+    .qty-selector { display: flex; align-items: center; justify-content: space-between; width: 80px; background: var(--blanco-puro); border-right: 1px solid var(--linea-fina); }
+    .qty-selector button { width: 25px; height: 100%; font-size: 1.2rem; color: var(--carbon); display: flex; align-items: center; justify-content: center; }
+    .qty-selector span { font-size: 0.8rem; font-weight: 600; color: var(--carbon); flex-grow: 1; text-align: center;}
+    .btn-cart { flex-grow: 1; background-color: var(--carbon); color: var(--blanco-puro); font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; transition: var(--transition); font-weight: 700; }
     .btn-cart:hover { background-color: var(--dorado); color: var(--carbon); }
 
     /* =========================================
-       BOTONES FLOTANTES COMPACTOS
+       MODAL VITRINA MÁGICA (VIDEOS)
        ========================================= */
+    .vitrina-modal {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(28, 28, 28, 0.98); backdrop-filter: blur(15px);
+      z-index: 99999; overflow-y: auto; color: var(--marfil);
+      transform: translateY(100%); transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      padding-bottom: 100px;
+    }
+    .vitrina-modal.active { transform: translateY(0); }
+    
+    .vitrina-header { display: flex; justify-content: space-between; align-items: center; padding: 20px 5vw; border-bottom: 1px solid rgba(203, 170, 99, 0.3); position: sticky; top: 0; background: rgba(28, 28, 28, 0.95); z-index: 10; }
+    .vitrina-title { font-family: 'Cinzel', serif; font-size: 1.2rem; color: var(--dorado); letter-spacing: 3px; text-transform: uppercase; }
+    .vitrina-close { font-size: 2.5rem; color: var(--marfil); cursor: pointer; line-height: 1; transition: var(--transition); }
+    .vitrina-close:hover { color: var(--dorado); transform: rotate(90deg); }
+
+    .vitrina-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 50px 30px; padding: 50px 5vw; max-width: 1400px; margin: 0 auto;
+    }
+    .vitrina-card {
+      background: #2a2a2a; border: 1px solid rgba(203, 170, 99, 0.3); border-radius: 4px; overflow: hidden; display: flex; flex-direction: column;
+    }
+    .vitrina-video-wrapper { position: relative; aspect-ratio: 3/4; background: #000; }
+    .vitrina-video-wrapper video { width: 100%; height: 100%; object-fit: cover; }
+    
+    .vitrina-card .product-info { padding: 20px; color: var(--marfil); }
+    .vitrina-card .product-name { color: var(--dorado); font-size: 1.2rem; }
+    .vitrina-card .product-lema { color: #ccc; font-size: 0.7rem; margin-bottom: 15px;}
+    .vitrina-card .specs-block { background: rgba(0,0,0,0.2); border-color: rgba(255,255,255,0.1); }
+    .vitrina-card .size-label, .vitrina-card .spec-desc { color: #ccc; }
+    .vitrina-card .size-select { color: var(--marfil); border-color: var(--marfil); background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FAF9F6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); }
+    .vitrina-card .size-select option { color: var(--carbon); }
+    .vitrina-card .price-old { color: #888; }
+    .vitrina-card .product-price { color: var(--marfil); }
+    
+    .vitrina-card .purchase-action { border-color: var(--dorado); }
+    .vitrina-card .qty-selector { background: #1c1c1c; border-right-color: var(--dorado); }
+    .vitrina-card .qty-selector button, .vitrina-card .qty-selector span { color: var(--dorado); }
+    .vitrina-card .btn-cart { background: var(--dorado); color: var(--carbon); }
+    .vitrina-card .btn-cart:hover { background: var(--marfil); }
+
+    /* BOTONES FLOTANTES Y TOAST */
     .floating-stack { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; z-index: 999; }
-    .pill-btn { display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 18px; border-radius: 20px; background: var(--carbon); color: var(--blanco-puro); font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; box-shadow: 0 5px 15px rgba(0,0,0,0.15); border: 1px solid transparent; white-space: nowrap; transition: var(--transition); }
+    .pill-btn { display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 18px; border-radius: 20px; background: var(--carbon); color: var(--blanco-puro); font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; box-shadow: 0 5px 15px rgba(0,0,0,0.15); transition: var(--transition); }
     .pill-btn.light { background: var(--marfil); color: var(--carbon); border: 1px solid var(--linea-fina); }
     .pill-btn.support { background: var(--dorado); color: var(--carbon); border: 1px solid var(--dorado); font-weight: 700; }
     .pill-btn:hover { transform: translateX(-5px); background: var(--carbon); color: var(--dorado); border-color: var(--carbon); }
-    .pill-btn svg { width: 16px; height: 16px; fill: currentColor; }
-
-    /* =========================================
-       NOTIFICACIÓN TOAST
-       ========================================= */
-    .toast-notification { position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%) translateY(100px); background-color: var(--carbon); color: var(--dorado); padding: 16px 30px; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; box-shadow: 0 10px 40px rgba(0,0,0,0.3); z-index: 10000; opacity: 0; transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); display: flex; align-items: center; gap: 12px; pointer-events: none; }
+    
+    .toast-notification { position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%) translateY(100px); background-color: var(--carbon); color: var(--dorado); padding: 16px 30px; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; box-shadow: 0 10px 40px rgba(0,0,0,0.3); z-index: 100000; opacity: 0; transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); display: flex; align-items: center; gap: 12px; pointer-events: none; }
     .toast-notification.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
-    /* =========================================
-       LIGHTBOX (VISUALIZACIÓN DE IMAGEN)
-       ========================================= */
-    .lightbox { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(250, 249, 246, 0.98); backdrop-filter: blur(10px); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
+    .lightbox { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(250, 249, 246, 0.98); backdrop-filter: blur(10px); z-index: 999999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
     .lightbox.active { opacity: 1; pointer-events: auto; }
     .lightbox img { max-width: 95%; max-height: 95%; object-fit: contain; transform: scale(0.95); transition: transform 0.4s ease; box-shadow: 0 20px 50px rgba(0,0,0,0.15);}
     .lightbox.active img { transform: scale(1); }
     .lightbox-close { position: absolute; top: 30px; right: 40px; font-size: 3.5rem; color: var(--carbon); cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 200; line-height: 1; transition: var(--transition); }
-    .lightbox-close:hover { color: var(--rosa-palo); transform: scale(1.1); }
 
-    /* BANNER LEGAL Y FOOTER */
     .legal-banner { border-top: 1px solid var(--linea-fina); padding: 60px 5vw 40px; text-align: center; margin-top: auto; }
     .trust-badges-container { display: flex; justify-content: center; gap: 30px; margin-bottom: 40px; padding: 0 5vw; flex-wrap: wrap; }
     .trust-badge-item { display: flex; align-items: center; gap: 10px; color: var(--dorado); border: 1px solid var(--dorado); padding: 8px 15px; font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
     .trust-badge-item svg { width: 14px; height: 14px; fill: currentColor; }
     .legal-text { font-size: 0.6rem; line-height: 2.2; letter-spacing: 1.5px; color: var(--gris-suave); max-width: 900px; margin: 0 auto; text-transform: uppercase; }
-    .legal-text strong { color: var(--carbon); }
     .founder-credit { margin-top: 40px; font-size: 0.5rem; letter-spacing: 0.25em; color: var(--gris-suave); opacity: 0.5; text-transform: uppercase; font-weight: 300; }
 
     /* =========================================
-       RESPONSIVE MOBILE
+       RESPONSIVE MOBILE (2 COLUMNAS EN GRID)
        ========================================= */
     @media (max-width: 768px) {
       .navbar { flex-wrap: wrap; justify-content: center; gap: 20px; padding: 25px; }
       .nav-group { justify-content: center; flex-wrap: wrap; width: 100%; flex: none; gap: 15px;}
       .brand-nav { order: -1; width: 100%; margin-bottom: 10px; }
       
-      .curator-guide { margin: 0 15px 20px; font-size: 0.55rem; }
-      .premium-packaging { margin: 0 15px 40px; padding: 20px; }
-      .premium-packaging h3 { font-size: 0.9rem; }
-      .premium-packaging p { font-size: 0.55rem; }
+      .btn-vitrina { padding: 12px 20px; font-size: 0.9rem; width: 90%; }
+      .premium-packaging { margin: 0 15px 30px; padding: 15px; }
+      .premium-packaging h3 { font-size: 0.8rem; }
+      .premium-packaging p { font-size: 0.5rem; }
 
-      .product-grid { padding: 0 15px 60px; gap: 40px; max-width: 100%; }
-      .product-card { max-width: 100%; border-left: none; border-right: none; }
+      /* DOS COLUMNAS EN MÓVIL */
+      .product-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 0 10px 100px; }
       
-      .carousel-wrapper { aspect-ratio: 1/1; border-radius: 4px; margin: 10px; border: 1px solid var(--linea-fina); }
-      .carousel-arrow { opacity: 1; width: 35px; height: 35px; } 
+      .carousel-wrapper { aspect-ratio: 3/4; border-radius: 0; border: none; border-bottom: 1px solid var(--linea-fina); }
+      .carousel-arrow { opacity: 1; width: 25px; height: 25px; font-size: 0.6rem; } 
+      .carousel-arrow.prev { left: 4px; }
+      .carousel-arrow.next { right: 4px; }
+      .btn-fav { width: 25px; height: 25px; top: 8px; right: 8px; }
+      .btn-fav svg { width: 12px; height: 12px; }
 
-      .product-info { padding: 25px 20px; }
-      .product-name { font-size: 1.4rem; }
-      .product-lema { font-size: 0.75rem; margin-bottom: 15px; }
+      .product-info { padding: 12px 8px; }
+      .product-code { font-size: 0.45rem; }
+      .product-name { font-size: 0.85rem; margin-bottom: 8px; }
+      .product-lema { display: none; } /* Ocultar en móvil para ganar espacio */
       
-      .specs-block { padding: 15px; gap: 10px; margin-bottom: 20px; }
-      .spec-material { font-size: 0.6rem; padding: 5px 12px; }
-      .spec-desc { font-size: 0.6rem; }
+      .specs-block { padding: 8px; gap: 6px; margin-bottom: 10px; }
+      .size-label { font-size: 0.45rem; }
+      .size-select { font-size: 0.55rem; padding: 6px 20px 6px 8px; max-width: 100%; background-size: 10px; }
+      .spec-material { font-size: 0.45rem; padding: 4px 8px; }
+      .spec-desc { font-size: 0.45rem; }
       
-      .product-price-wrapper { gap: 12px; margin-bottom: 10px; }
-      .price-old { font-size: 0.9rem; }
-      .product-price { font-size: 1.4rem; }
+      .product-price-wrapper { gap: 8px; margin-bottom: 8px; flex-direction: column; align-items: center;}
+      .price-old { font-size: 0.7rem; }
+      .product-price { font-size: 1rem; }
+      .limit-notice { font-size: 0.45rem; margin-bottom: 10px; }
+
+      .purchase-action { height: 35px; }
+      .qty-selector { width: 50%; }
+      .qty-selector button { width: 20px; font-size: 1rem; }
+      .qty-selector span { font-size: 0.7rem; }
+      .btn-cart { font-size: 0.45rem; letter-spacing: 1px; }
 
       .floating-stack { bottom: 15px; right: 15px; }
-      .pill-btn { height: 35px; padding: 0 14px; font-size: 0.5rem; }
-      .toast-notification { width: 90%; justify-content: center; bottom: 20px; font-size: 0.55rem; }
+      .pill-btn { height: 32px; padding: 0 12px; font-size: 0.45rem; }
+      
+      /* Vitrina modal mobile */
+      .vitrina-grid { grid-template-columns: 1fr; padding: 20px 15px; gap: 30px;}
     }
   </style>
 </head>
@@ -477,9 +275,7 @@
       <a href="index.html" class="nav-link">INICIO</a>
       <a href="catalogo.html" class="nav-link">CATÁLOGO</a>
     </div>
-    
     <div class="brand-nav">È N I G M E</div>
-    
     <div class="nav-group right">
       <a href="favoritos.html" class="btn-menu-brand">
         <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
@@ -505,8 +301,11 @@
     <p class="gallery-desc">La eternidad forjada en metal noble. Piezas diseñadas para sellar promesas inquebrantables.</p>
   </header>
 
-  <div class="curator-guide">
-    <strong>Curaduría V.I.P:</strong> Deslice sobre la imagen para explorar nuestra galería visual. Active la experiencia sonora en el interior de la pieza.
+  <div class="vitrina-btn-container">
+    <button class="btn-vitrina" onclick="document.getElementById('vitrinaModal').classList.add('active')">
+      ✦ VITRINA MÁGICA ✦<br>
+      <span style="font-size:0.6rem; font-weight:300; letter-spacing: 2px;">Experiencia Audiovisual VIP</span>
+    </button>
   </div>
 
   <div class="premium-packaging">
@@ -518,19 +317,11 @@
 
     <article class="product-card">
       <div class="carousel-wrapper">
-        <div class="video-badge">▶ GALERÍA V.I.P.</div>
         <button class="btn-fav" data-ref="000898" onclick="toggleFav('000898', 'Anillo Aura Céleste', 'L 1499', 'pl1.jpg', this)">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <button class="carousel-arrow prev" onclick="moveSlide(this, -1)">&#10094;</button>
         <div class="carousel-track" data-index="0">
-          <div class="video-container">
-            <video class="product-video" id="vid-anillo-1" src="vpl1.mp4" autoplay muted playsinline></video>
-            <button class="sound-toggle-btn" onclick="toggleSound('vid-anillo-1', this)" aria-label="Activar Sonido">
-              <svg class="icon-muted" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
-              <svg class="icon-unmuted" viewBox="0 0 24 24" style="display:none;"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-            </button>
-          </div>
           <img src="pl1.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=FOTO+1'">
           <img src="pl2.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=FOTO+2'">
         </div>
@@ -549,39 +340,31 @@
             </select>
           </div>
           <span class="spec-material">Plata de Ley 925</span>
-          <span class="spec-desc">Perlas de <span class="spec-highlight">Circonita Celeste Cielo</span></span>
+          <span class="spec-desc">Perlas de <span class="spec-highlight">Circonita Celeste</span></span>
         </div>
         <div class="product-price-wrapper">
           <span class="price-old">L 1999</span>
           <h3 class="product-price">L 1499</h3>
         </div>
-        <div class="limit-notice">MÁX. 2 UNIDADES POR CLIENTE</div>
+        <div class="limit-notice">MÁX. 2 UNIDADES</div>
         <div class="purchase-action">
           <div class="qty-selector">
             <button onclick="changeCardQtyLimit('qty-000898', -1, 2)">-</button>
             <span id="qty-000898">1</span>
             <button onclick="changeCardQtyLimit('qty-000898', 1, 2)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('000898', 'Anillo Aura Céleste', 'L 1499', 'pl1.jpg', this, 'qty-000898', 'size-000898')">Añadir Promesa</button>
+          <button class="btn-cart" onclick="addToCart('000898', 'Anillo Aura Céleste', 'L 1499', 'pl1.jpg', this, 'qty-000898', 'size-000898')">Añadir</button>
         </div>
       </div>
     </article>
 
     <article class="product-card">
       <div class="carousel-wrapper">
-        <div class="video-badge">▶ GALERÍA V.I.P.</div>
         <button class="btn-fav" data-ref="003012" onclick="toggleFav('003012', 'Anillo Éclat de Lune', 'L 1899', 'pl3.jpg', this)">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <button class="carousel-arrow prev" onclick="moveSlide(this, -1)">&#10094;</button>
         <div class="carousel-track" data-index="0">
-          <div class="video-container">
-            <video class="product-video" id="vid-anillo-2" src="vpl2.mp4" autoplay muted playsinline></video>
-            <button class="sound-toggle-btn" onclick="toggleSound('vid-anillo-2', this)" aria-label="Activar Sonido">
-              <svg class="icon-muted" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
-              <svg class="icon-unmuted" viewBox="0 0 24 24" style="display:none;"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-            </button>
-          </div>
           <img src="pl3.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=FOTO+3'">
           <img src="pl4.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=FOTO+4'">
         </div>
@@ -590,7 +373,7 @@
       <div class="product-info">
         <span class="product-code">REF: 003012</span>
         <h2 class="product-name">Anillo Éclat de Lune</h2>
-        <p class="product-lema">"Luz forjada en la penumbra. Una pieza que hipnotiza y envuelve tu esencia."</p>
+        <p class="product-lema">"Luz forjada en la penumbra. Una pieza que hipnotiza."</p>
         <div class="specs-block">
           <div class="size-selector-wrapper">
             <span class="size-label">Seleccione Talla</span>
@@ -606,33 +389,25 @@
           <span class="price-old">L 2299</span>
           <h3 class="product-price">L 1899</h3>
         </div>
-        <div class="limit-notice">MÁX. 2 UNIDADES POR CLIENTE</div>
+        <div class="limit-notice">MÁX. 2 UNIDADES</div>
         <div class="purchase-action">
           <div class="qty-selector">
             <button onclick="changeCardQtyLimit('qty-003012', -1, 2)">-</button>
             <span id="qty-003012">1</span>
             <button onclick="changeCardQtyLimit('qty-003012', 1, 2)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('003012', 'Anillo Éclat de Lune', 'L 1899', 'pl3.jpg', this, 'qty-003012', 'size-003012')">Añadir Promesa</button>
+          <button class="btn-cart" onclick="addToCart('003012', 'Anillo Éclat de Lune', 'L 1899', 'pl3.jpg', this, 'qty-003012', 'size-003012')">Añadir</button>
         </div>
       </div>
     </article>
 
     <article class="product-card">
       <div class="carousel-wrapper">
-        <div class="video-badge">▶ GALERÍA V.I.P.</div>
         <button class="btn-fav" data-ref="001403" onclick="toggleFav('001403', 'Anillo Sortilège', 'L 1399', 'pl5.jpg', this)">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <button class="carousel-arrow prev" onclick="moveSlide(this, -1)">&#10094;</button>
         <div class="carousel-track" data-index="0">
-          <div class="video-container">
-            <video class="product-video" id="vid-anillo-3" src="vpl3.mp4" autoplay muted playsinline></video>
-            <button class="sound-toggle-btn" onclick="toggleSound('vid-anillo-3', this)" aria-label="Activar Sonido">
-              <svg class="icon-muted" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
-              <svg class="icon-unmuted" viewBox="0 0 24 24" style="display:none;"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-            </button>
-          </div>
           <img src="pl5.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=FOTO+5'">
           <img src="pl6.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=FOTO+6'">
         </div>
@@ -641,7 +416,7 @@
       <div class="product-info">
         <span class="product-code">REF: 001403</span>
         <h2 class="product-name">Anillo Sortilège</h2>
-        <p class="product-lema">"La elegancia de un hechizo silencioso. Magia pura esculpida con maestría."</p>
+        <p class="product-lema">"La elegancia de un hechizo silencioso. Magia pura."</p>
         <div class="specs-block">
           <div class="size-selector-wrapper">
             <span class="size-label">Seleccione Talla</span>
@@ -657,33 +432,25 @@
           <span class="price-old">L 1899</span>
           <h3 class="product-price">L 1399</h3>
         </div>
-        <div class="limit-notice">MÁX. 2 UNIDADES POR CLIENTE</div>
+        <div class="limit-notice">MÁX. 2 UNIDADES</div>
         <div class="purchase-action">
           <div class="qty-selector">
             <button onclick="changeCardQtyLimit('qty-001403', -1, 2)">-</button>
             <span id="qty-001403">1</span>
             <button onclick="changeCardQtyLimit('qty-001403', 1, 2)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('001403', 'Anillo Sortilège', 'L 1399', 'pl5.jpg', this, 'qty-001403', 'size-001403')">Añadir Promesa</button>
+          <button class="btn-cart" onclick="addToCart('001403', 'Anillo Sortilège', 'L 1399', 'pl5.jpg', this, 'qty-001403', 'size-001403')">Añadir</button>
         </div>
       </div>
     </article>
 
     <article class="product-card">
       <div class="carousel-wrapper">
-        <div class="video-badge">▶ GALERÍA V.I.P.</div>
         <button class="btn-fav" data-ref="001003" onclick="toggleFav('001003', 'Anillo Majesté', 'L 1599', 'pl7.jpg', this)">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <button class="carousel-arrow prev" onclick="moveSlide(this, -1)">&#10094;</button>
         <div class="carousel-track" data-index="0">
-          <div class="video-container">
-            <video class="product-video" id="vid-anillo-4" src="vpl4.mp4" autoplay muted playsinline></video>
-            <button class="sound-toggle-btn" onclick="toggleSound('vid-anillo-4', this)" aria-label="Activar Sonido">
-              <svg class="icon-muted" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
-              <svg class="icon-unmuted" viewBox="0 0 24 24" style="display:none;"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-            </button>
-          </div>
           <img src="pl7.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=FOTO+7'">
           <img src="pl8.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=FOTO+8'">
         </div>
@@ -692,7 +459,7 @@
       <div class="product-info">
         <span class="product-code">REF: 001003</span>
         <h2 class="product-name">Anillo Majesté</h2>
-        <p class="product-lema">"El reinado del misterio. Una corona diseñada para quienes dominan su destino."</p>
+        <p class="product-lema">"El reinado del misterio. Una corona diseñada para dominar."</p>
         <div class="specs-block">
           <div class="size-selector-wrapper">
             <span class="size-label">Seleccione Talla</span>
@@ -708,22 +475,21 @@
           <span class="price-old">L 2099</span>
           <h3 class="product-price">L 1599</h3>
         </div>
-        <div class="limit-notice">MÁX. 2 UNIDADES POR CLIENTE</div>
+        <div class="limit-notice">MÁX. 2 UNIDADES</div>
         <div class="purchase-action">
           <div class="qty-selector">
             <button onclick="changeCardQtyLimit('qty-001003', -1, 2)">-</button>
             <span id="qty-001003">1</span>
             <button onclick="changeCardQtyLimit('qty-001003', 1, 2)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('001003', 'Anillo Majesté', 'L 1599', 'pl7.jpg', this, 'qty-001003', 'size-001003')">Añadir Promesa</button>
+          <button class="btn-cart" onclick="addToCart('001003', 'Anillo Majesté', 'L 1599', 'pl7.jpg', this, 'qty-001003', 'size-001003')">Añadir</button>
         </div>
       </div>
     </article>
 
     <article class="product-card">
       <div class="carousel-wrapper">
-        <span class="photo-badge">★ EDICIÓN LIMITADA</span>
-        <button class="btn-fav" data-ref="002810" onclick="toggleFav('002810', 'Pulsera L\'Éternité Bleu', 'L 1299', 'pl10.jpg', this)">
+        <button class="btn-fav" data-ref="002810" onclick="toggleFav('002810', 'Pulsera L\'Infini Mystique', 'L 1299', 'pl9.jpg', this)">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <button class="carousel-arrow prev" onclick="moveSlide(this, -1)">&#10094;</button>
@@ -736,7 +502,7 @@
       <div class="product-info">
         <span class="product-code">REF: 002810</span>
         <h2 class="product-name">Pulsera Éternité Bleu</h2>
-        <p class="product-lema">"El ciclo interminable de un aura cautivadora. Un secreto custodiado en azul etéreo."</p>
+        <p class="product-lema">"El ciclo interminable de un aura cautivadora en azul etéreo."</p>
         <div class="specs-block">
           <div class="size-selector-wrapper">
             <span class="size-label">Ajuste Unisex</span>
@@ -745,20 +511,20 @@
             </select>
           </div>
           <span class="spec-material">Plata de Ley 925</span>
-          <span class="spec-desc">Dije Infinito y Corazón <span class="spec-highlight" style="color: var(--carbon);">Azul Claro</span></span>
+          <span class="spec-desc">Dije Infinito <span class="spec-highlight" style="color: var(--carbon);">Azul Claro</span></span>
         </div>
         <div class="product-price-wrapper">
           <span class="price-old">L 1699</span>
           <h3 class="product-price">L 1299</h3>
         </div>
-        <div class="limit-notice">MÁX. 2 UNIDADES POR CLIENTE</div>
+        <div class="limit-notice">MÁX. 2 UNIDADES</div>
         <div class="purchase-action">
           <div class="qty-selector">
             <button onclick="changeCardQtyLimit('qty-002810', -1, 2)">-</button>
             <span id="qty-002810">1</span>
             <button onclick="changeCardQtyLimit('qty-002810', 1, 2)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('002810', 'Pulsera L\'Éternité Bleu', 'L 1299', 'pl10.jpg', this, 'qty-002810', 'size-002810')">Añadir Vínculo</button>
+          <button class="btn-cart" onclick="addToCart('002810', 'Pulsera L\'Éternité Bleu', 'L 1299', 'pl10.jpg', this, 'qty-002810', 'size-002810')">Añadir</button>
         </div>
       </div>
     </article>
@@ -790,7 +556,162 @@
 
   <div id="toast-notification" class="toast-notification">
     <svg viewBox="0 0 24 24"><path d="M16 6V4a4 4 0 0 0-8 0v2H3v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6h-5zm-6-2a2 2 0 0 1 4 0v2h-4V4zm8 16H6V8h2v2a1 1 0 0 0 2 0V8h4v2a1 1 0 0 0 2 0V8h2v12z"/></svg>
-    Agregado con éxito
+    Agregado a tu bolsa
+  </div>
+
+  <div id="vitrinaModal" class="vitrina-modal">
+    <div class="vitrina-header">
+      <div class="vitrina-title">Vitrina Mágica</div>
+      <div class="vitrina-close" onclick="document.getElementById('vitrinaModal').classList.remove('active')">&times;</div>
+    </div>
+    <div class="vitrina-grid">
+      
+      <article class="vitrina-card">
+        <div class="vitrina-video-wrapper">
+          <video class="product-video" id="vid-modal-1" src="vpl1.mp4" autoplay muted playsinline loop></video>
+          <button class="sound-toggle-btn" onclick="toggleSound('vid-modal-1', this)" aria-label="Activar Sonido">
+            <svg class="icon-muted" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+            <svg class="icon-unmuted" viewBox="0 0 24 24" style="display:none;"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+          </button>
+        </div>
+        <div class="product-info">
+          <h2 class="product-name">Anillo Aura Céleste</h2>
+          <div class="specs-block">
+            <span class="size-label">Seleccione Talla</span>
+            <select id="size-modal-000898" class="size-select"><option value="7">Talla 7</option><option value="8">Talla 8</option></select>
+          </div>
+          <div class="product-price-wrapper">
+            <span class="price-old">L 1999</span>
+            <h3 class="product-price">L 1499</h3>
+          </div>
+          <div class="purchase-action">
+            <div class="qty-selector">
+              <button onclick="changeCardQtyLimit('qty-modal-000898', -1, 2)">-</button>
+              <span id="qty-modal-000898">1</span>
+              <button onclick="changeCardQtyLimit('qty-modal-000898', 1, 2)">+</button>
+            </div>
+            <button class="btn-cart" onclick="addToCart('000898', 'Anillo Aura Céleste', 'L 1499', 'pl1.jpg', this, 'qty-modal-000898', 'size-modal-000898')">Añadir</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="vitrina-card">
+        <div class="vitrina-video-wrapper">
+          <video class="product-video" id="vid-modal-2" src="vpl2.mp4" autoplay muted playsinline loop></video>
+          <button class="sound-toggle-btn" onclick="toggleSound('vid-modal-2', this)" aria-label="Activar Sonido">
+            <svg class="icon-muted" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+            <svg class="icon-unmuted" viewBox="0 0 24 24" style="display:none;"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+          </button>
+        </div>
+        <div class="product-info">
+          <h2 class="product-name">Anillo Éclat de Lune</h2>
+          <div class="specs-block">
+            <span class="size-label">Seleccione Talla</span>
+            <select id="size-modal-003012" class="size-select"><option value="7">Talla 7</option><option value="8">Talla 8</option></select>
+          </div>
+          <div class="product-price-wrapper">
+            <span class="price-old">L 2299</span>
+            <h3 class="product-price">L 1899</h3>
+          </div>
+          <div class="purchase-action">
+            <div class="qty-selector">
+              <button onclick="changeCardQtyLimit('qty-modal-003012', -1, 2)">-</button>
+              <span id="qty-modal-003012">1</span>
+              <button onclick="changeCardQtyLimit('qty-modal-003012', 1, 2)">+</button>
+            </div>
+            <button class="btn-cart" onclick="addToCart('003012', 'Anillo Éclat de Lune', 'L 1899', 'pl3.jpg', this, 'qty-modal-003012', 'size-modal-003012')">Añadir</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="vitrina-card">
+        <div class="vitrina-video-wrapper">
+          <video class="product-video" id="vid-modal-3" src="vpl3.mp4" autoplay muted playsinline loop></video>
+          <button class="sound-toggle-btn" onclick="toggleSound('vid-modal-3', this)" aria-label="Activar Sonido">
+            <svg class="icon-muted" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+            <svg class="icon-unmuted" viewBox="0 0 24 24" style="display:none;"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+          </button>
+        </div>
+        <div class="product-info">
+          <h2 class="product-name">Anillo Sortilège</h2>
+          <div class="specs-block">
+            <span class="size-label">Seleccione Talla</span>
+            <select id="size-modal-001403" class="size-select"><option value="7">Talla 7</option><option value="8">Talla 8</option></select>
+          </div>
+          <div class="product-price-wrapper">
+            <span class="price-old">L 1899</span>
+            <h3 class="product-price">L 1399</h3>
+          </div>
+          <div class="purchase-action">
+            <div class="qty-selector">
+              <button onclick="changeCardQtyLimit('qty-modal-001403', -1, 2)">-</button>
+              <span id="qty-modal-001403">1</span>
+              <button onclick="changeCardQtyLimit('qty-modal-001403', 1, 2)">+</button>
+            </div>
+            <button class="btn-cart" onclick="addToCart('001403', 'Anillo Sortilège', 'L 1399', 'pl5.jpg', this, 'qty-modal-001403', 'size-modal-001403')">Añadir</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="vitrina-card">
+        <div class="vitrina-video-wrapper">
+          <video class="product-video" id="vid-modal-4" src="vpl4.mp4" autoplay muted playsinline loop></video>
+          <button class="sound-toggle-btn" onclick="toggleSound('vid-modal-4', this)" aria-label="Activar Sonido">
+            <svg class="icon-muted" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+            <svg class="icon-unmuted" viewBox="0 0 24 24" style="display:none;"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+          </button>
+        </div>
+        <div class="product-info">
+          <h2 class="product-name">Anillo Majesté</h2>
+          <div class="specs-block">
+            <span class="size-label">Seleccione Talla</span>
+            <select id="size-modal-001003" class="size-select"><option value="7">Talla 7</option><option value="8">Talla 8</option></select>
+          </div>
+          <div class="product-price-wrapper">
+            <span class="price-old">L 2099</span>
+            <h3 class="product-price">L 1599</h3>
+          </div>
+          <div class="purchase-action">
+            <div class="qty-selector">
+              <button onclick="changeCardQtyLimit('qty-modal-001003', -1, 2)">-</button>
+              <span id="qty-modal-001003">1</span>
+              <button onclick="changeCardQtyLimit('qty-modal-001003', 1, 2)">+</button>
+            </div>
+            <button class="btn-cart" onclick="addToCart('001003', 'Anillo Majesté', 'L 1599', 'pl7.jpg', this, 'qty-modal-001003', 'size-modal-001003')">Añadir</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="vitrina-card">
+        <div class="vitrina-video-wrapper">
+          <video class="product-video" id="vid-modal-5" src="vpl5.mp4" autoplay muted playsinline loop></video>
+          <button class="sound-toggle-btn" onclick="toggleSound('vid-modal-5', this)" aria-label="Activar Sonido">
+            <svg class="icon-muted" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+            <svg class="icon-unmuted" viewBox="0 0 24 24" style="display:none;"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+          </button>
+        </div>
+        <div class="product-info">
+          <h2 class="product-name">Pulsera Éternité Bleu</h2>
+          <div class="specs-block">
+            <span class="size-label">Ajuste Unisex</span>
+            <select id="size-modal-002810" class="size-select"><option value="ESTÁNDAR">ESTÁNDAR</option></select>
+          </div>
+          <div class="product-price-wrapper">
+            <span class="price-old">L 1699</span>
+            <h3 class="product-price">L 1299</h3>
+          </div>
+          <div class="purchase-action">
+            <div class="qty-selector">
+              <button onclick="changeCardQtyLimit('qty-modal-002810', -1, 2)">-</button>
+              <span id="qty-modal-002810">1</span>
+              <button onclick="changeCardQtyLimit('qty-modal-002810', 1, 2)">+</button>
+            </div>
+            <button class="btn-cart" onclick="addToCart('002810', 'Pulsera Éternité Bleu', 'L 1299', 'pl9.jpg', this, 'qty-modal-002810', 'size-modal-002810')">Añadir</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
   </div>
 
   <script>
@@ -860,21 +781,8 @@
     });
 
     /* =========================================
-       CONTROLADOR DE SONIDO MÁGICO
+       CONTROLADOR DE SONIDO MÁGICO (EN MODAL)
        ========================================= */
-    document.addEventListener("DOMContentLoaded", function() {
-      const videos = document.querySelectorAll('.product-video');
-      videos.forEach(vid => {
-        vid.addEventListener('ended', function() {
-          const audioBoda = document.getElementById('audio-boda');
-          if(audioBoda) {
-            audioBoda.currentTime = 0; 
-            audioBoda.play();
-          }
-        });
-      });
-    });
-
     function toggleSound(videoId, btn) {
       if(event) event.stopPropagation();
       const audioBoda = document.getElementById('audio-boda');
