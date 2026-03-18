@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="es-HN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Garantía y Política de Ventas | La Casa ÈNIGME</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      /* PALETA PARISINA LUMINOSA */
+      --blanco-dior: #FFFFFF;
+      --marfil: #FAF9F6;
+      --carbon: #1C1C1C;
+      --gris-suave: #888888;
+      --rosa-palo: #D8C3BC;
+      --dorado: #CBAA63;
+      --fondo-galeria: #FAFAFA;
+      --linea-fina: rgba(216, 195, 188, 0.4);
+      --transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    
+    body {
+      background-color: var(--blanco-dior);
+      color: var(--carbon);
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a { text-decoration: none; color: inherit; transition: var(--transition); }
+
+    /* =========================================
+       NAVBAR MINIMALISTA ÈNIGME
+       ========================================= */
+    .navbar {
+      width: 100%;
+      padding: 30px 4vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--linea-fina);
+      background: rgba(250, 249, 246, 0.95);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .brand {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+      letter-spacing: 0.35em;
+      color: var(--carbon);
+      text-align: center;
+    }
+
+    .nav-group { display: flex; gap: 30px; align-items: center; flex: 1; }
+    .nav-group.right { justify-content: flex-end; }
+    
+    .nav-link {
+      font-size: 0.6rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gris-suave);
+      font-weight: 300;
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 100%; height: 1px; bottom: 0; left: 0;
+      background-color: var(--rosa-palo);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.4s ease;
+    }
+
+    .nav-link:hover, .nav-link.active { color: var(--carbon); }
+    .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); transform-origin: left; }
+
+    .btn-menu-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background-color: transparent;
+      color: var(--carbon) !important;
+      padding: 8px 16px;
+      border: 1px solid rgba(203, 170, 99, 0.5);
+      border-radius: 2px;
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: var(--transition);
+    }
+
+    .btn-menu-brand:hover {
+      background-color: var(--dorado);
+      border-color: var(--dorado);
+    }
+
+    .btn-menu-brand svg {
+      width: 13px;
+      height: 13px;
+      fill: currentColor;
+      transition: transform 0.3s ease;
+    }
+
+    @keyframes pulse-soft {
+      0% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0.3); }
+      70% { box-shadow: 0 0 0 8px rgba(203, 170, 99, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0); }
+    }
+
+    .btn-cart-nav { animation: pulse-soft 2.5s infinite; }
+    .btn-cart-nav:hover svg { transform: scale(1.15) rotate(-5deg); }
+    .counter-badge { font-weight: 600; }
+
+    /* =========================================
+       CONTENIDO LEGAL (ESTILO BOUTIQUE)
+       ========================================= */
+    .legal-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 60px 20px 100px;
+      flex-grow: 1;
+    }
+
+    .legal-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .legal-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--carbon);
+      margin-bottom: 15px;
+      border-bottom: 1px solid var(--linea-fina);
+      padding-bottom: 20px;
+    }
+
+    .legal-subtitle {
+      font-size: 0.7rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gris-suave);
+    }
+
+    .quality-box {
+      background-color: var(--marfil);
+      border: 1px solid var(--dorado);
+      padding: 30px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .quality-box strong {
+      font-family: 'Cinzel', serif;
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      color: var(--carbon);
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .legal-section {
+      margin-bottom: 40px;
+    }
+
+    .legal-section h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      color: var(--carbon);
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .legal-section p {
+      margin-bottom: 15px;
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: #444;
+      text-align: justify;
+    }
+
+    .legal-section ul {
+      margin-bottom: 20px;
+      padding-left: 20px;
+    }
+
+    .legal-section li {
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #444;
+    }
+
+    /* =========================================
+       FORMULARIO DE GARANTÍA
+       ========================================= */
+    .form-box {
+      background-color: var(--fondo-galeria);
+      border: 1px solid var(--linea-fina);
+      padding: 40px;
+      margin-top: 50px;
+    }
+
+    .form-box h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .form-box p.form-desc {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--gris-suave);
+      margin-bottom: 30px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      color: var(--carbon);
+      font-weight: 500;
+    }
+
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--linea-fina);
+      background-color: var(--blanco-dior);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      color: var(--carbon);
+      transition: var(--transition);
+    }
+
+    .form-group input:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: var(--dorado);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background-color: var(--carbon);
+      color: var(--blanco-dior);
+      border: none;
+      padding: 15px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-top: 10px;
+    }
+
+    .btn-submit:hover {
+      background-color: var(--dorado);
+      color: var(--carbon);
+    }
+
+    .email-instruction {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--linea-fina);
+      font-size: 0.8rem;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .email-instruction strong {
+      color: var(--dorado);
+    }
+
+    /* =========================================
+       BOTÓN FLOTANTE WHATSAPP
+       ========================================= */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 45px;
+      height: 45px;
+      background-color: var(--carbon);
+      color: var(--blanco-dior);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      z-index: 900;
+      transition: var(--transition);
+    }
+    .whatsapp-float:hover {
+      transform: translateY(-5px);
+      background-color: var(--dorado);
+      color: var(--carbon);
+    }
+    .whatsapp-float svg { width: 22px; height: 22px; fill: currentColor; }
+
+    /* =========================================
+       BANNER LEGAL Y FOOTER
+       ========================================= */
+    .legal-banner {
+      background-color: var(--fondo-galeria);
+      border-top: 1px solid var(--linea-fina);
+      padding: 50px 5vw;
+      text-align: center;
+      margin-top: auto;
+    }
+
+    .legal-text {
+      font-size: 0.6rem;
+      line-height: 2;
+      letter-spacing: 1.5px;
+      color: var(--gris-suave);
+      max-width: 900px;
+      margin: 0 auto;
+      text-transform: uppercase;
+    }
+
+    .legal-text strong { color: var(--carbon); font-weight: 500; }
+    
+    .founder-credit { 
+      margin-top: 40px; 
+      font-size: 0.5rem; 
+      letter-spacing: 0.25em; 
+      color: var(--gris-suave); 
+      opacity: 0.5; 
+      text-transform: uppercase; 
+      font-weight: 300; 
+    }
+
+    /* =========================================
+       RESPONSIVE MÓVIL
+       ========================================= */
+    @media (max-width: 768px) {
+      .navbar { flex-wrap: wrap; justify-content: center; gap: 20px; padding: 25px; }
+      .nav-group { justify-content: center; flex-wrap: wrap; width: 100%; flex: none; gap: 15px;}
+      .brand { order: -1; width: 100%; margin-bottom: 10px; }
+      .nav-link { font-size: 0.55rem; letter-spacing: 2px; }
+      .btn-menu-brand { padding: 8px 14px; font-size: 0.55rem; }
+      
+      .legal-container { padding: 40px 15px 60px; }
+      .legal-title { font-size: 1.5rem; }
+      .legal-section h2 { font-size: 1rem; }
+      .form-box { padding: 25px 15px; }
+
+      .legal-banner { padding: 40px 20px; }
+      .legal-text { font-size: 0.5rem; line-height: 1.8; }
+      .whatsapp-float { bottom: 20px; right: 20px; width: 40px; height: 40px; }
+      .whatsapp-float svg { width: 20px; height: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-group">
+      <a href="index.html" class="nav-link">INICIO</a>
+      <a href="enigme.html" class="nav-link">ÈNIGME</a>
+      <a href="certificado.html" class="btn-menu-brand">
+        <svg viewBox="0 0 24 24"><path d="M17 10h-2V6c0-1.1-.9-2-2-2H5a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2v-4h2c1.1 0 2-.9 2-2V12a2 2 0 0 0-2-2zM5 6h8v4H5V6zm8 12H5V12h8v6zm6-6h-2V12h2v2z"/></svg>
+        CERTIFICADO
+      </a>
+    </div>
+    
+    <div class="brand">È N I G M E</div>
+    
+    <div class="nav-group right">
+      <a href="soporte.html" class="nav-link">SOPORTE</a>
+      
+      <a href="favoritos.html" class="btn-menu-brand">
+        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        FAVS (<span id="fav-count" class="counter-badge">0</span>)
+      </a>
+
+      <a href="carrito.html" class="btn-menu-brand btn-cart-nav">
+        <svg viewBox="0 0 24 24"><path d="M16 6V4a4 4 0 0 0-8 0v2H3v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6h-5zm-6-2a2 2 0 0 1 4 0v2h-4V4zm8 16H6V8h2v2a1 1 0 0 0 2 0V8h4v2a1 1 0 0 0 2 0V8h2v12z"/></svg>
+        BOLSA (<span id="cart-count" class="counter-badge">0</span>)
+      </a>
+    </div>
+  </nav>
+
+  <a href="https://wa.me/34602149162?text=Hola,%20necesito%20asistencia%20sobre%20la%20política%20de%20garantías." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+      <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+    </svg>
+  </a>
+
+  <main class="legal-container">
+    <div class="legal-header">
+      <h1 class="legal-title">Garantía y Política de Ventas</h1>
+      <p class="legal-subtitle">Compromiso con la Excelencia</p>
+    </div>
+
+    <div class="quality-box">
+      <strong>La Promesa ÈNIGME</strong>
+      Cada joya y bolso que enviamos representa nuestro compromiso con el lujo y la excelencia. Antes de ser despachado, cada artículo pasa por un exhaustivo y riguroso control de calidad para asegurar que recibes una pieza impecable.
+    </div>
+
+    <section class="legal-section">
+      <h2>1. Garantía de Higiene y Exclusividad</h2>
+      <p>En ÈNIGME, valoramos profundamente tu seguridad y la naturaleza personal de nuestros productos. Para garantizar que cada cliente reciba una pieza 100% virgen, prístina y nunca antes utilizada, <strong>no aceptamos cambios ni devoluciones por insatisfacción, error de talla o cambio de opinión.</strong></p>
+      <p>Por estrictas normativas de higiene y uso personal, todas las ventas de los siguientes artículos son definitivas:</p>
+      <ul>
+        <li>Pendientes (aretes).</li>
+        <li>Anillos.</li>
+        <li>Bolsos de mujer.</li>
+      </ul>
+    </section>
+
+    <section class="legal-section">
+      <h2>2. Garantía por Defecto de Fábrica</h2>
+      <p>Nuestro estricto control de calidad minimiza cualquier incidencia. Sin embargo, en el caso extraordinario de que un artículo presente un defecto de fábrica comprobable, aplicamos la siguiente cobertura:</p>
+      <ul>
+        <li><strong>Plazo de reporte:</strong> El defecto debe ser reportado a nuestro equipo en un plazo máximo e improrrogable de <strong>24 horas</strong> tras la recepción del paquete.</li>
+        <li><strong>Evidencia:</strong> Deberás proporcionar material fotográfico y en video claro mostrando el desperfecto sin que el producto haya sido usado o retirado de su embalaje protector original, a través de los canales indicados en el formulario inferior.</li>
+      </ul>
+    </section>
+
+    <section class="legal-section">
+      <h2>3. Costos de Envío y Evaluación</h2>
+      <p>Para proceder con la revisión técnica de una pieza reportada por defecto de fábrica, el artículo deberá ser retornado a nuestros centros de distribución. Te indicaremos la dirección correspondiente a tu departamento al procesar tu solicitud.</p>
+      <p><strong>Importante:</strong> Todos los costos logísticos, de envío y transporte asociados a la evaluación y/o reemplazo de un artículo, corren única y exclusivamente por cuenta del cliente. Si la reclamación procede tras la evaluación de nuestros especialistas, se emitirá el reemplazo por el mismo artículo o se generará un crédito en tienda valorado en Lempiras (HNL).</p>
+    </section>
+
+    <div class="form-box">
+      <h3>Solicitud de Evaluación de Garantía</h3>
+      <p class="form-desc">Completa este formulario si tu producto presenta un defecto de fábrica al momento de recibirlo. Un agente te contactará a la brevedad.</p>
+      
+      <form action="#" method="POST" id="garantia-form">
+        <div class="form-group">
+          <label for="nombre">Nombre Completo</label>
+          <input type="text" id="nombre" name="nombre" required placeholder="Ingresa tu nombre">
+        </div>
+        
+        <div class="form-group">
+          <label for="correo">Correo Electrónico</label>
+          <input type="email" id="correo" name="correo" required placeholder="tu@correo.com">
+        </div>
+
+        <div class="form-group">
+          <label for="telefono">Teléfono (con código de país)</label>
+          <input type="tel" id="telefono" name="telefono" required placeholder="+504 0000-0000">
+        </div>
+
+        <div class="form-group">
+          <label for="direccion">Dirección Completa (Departamento y Municipio)</label>
+          <input type="text" id="direccion" name="direccion" required placeholder="Ej: Choluteca, Choluteca. Barrio...">
+        </div>
+
+        <div class="form-group">
+          <label for="pedido">Número de Pedido</label>
+          <input type="text" id="pedido" name="pedido" required placeholder="Ej: ENIG-12345">
+        </div>
+
+        <div class="form-group">
+          <label for="detalles">Descripción del Defecto</label>
+          <textarea id="detalles" name="detalles" required placeholder="Describe detalladamente el problema encontrado en la pieza..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Enviar Solicitud</button>
+
+        <div class="email-instruction">
+          <strong>Paso Final e Indispensable:</strong><br>
+          Una vez enviado este formulario, es obligatorio enviar las pruebas fotográficas y de video del defecto al correo:<br>
+          <a href="mailto:info@enigmeofficial.com"><strong>info@enigmeofficial.com</strong></a><br>
+          <em>(Asegúrate de incluir tu Número de Pedido en el asunto del correo).</em>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer class="legal-banner">
+    <p class="legal-text">
+      <strong>Política de Compra Segura:</strong> Operamos bajo la máxima seguridad transaccional. Todos los pagos se procesan de forma cifrada mediante tarjeta de crédito/débito.<br><br>
+      Debido a nuestros rigurosos estándares de importación europea, las piezas son entregadas <strong>25 días hábiles</strong> posteriores a la confirmación del pago. Envíos logísticos exclusivos a los departamentos de <strong>Choluteca, Valle, Francisco Morazán y Cortés</strong>.
+    </p>
+  </footer>
+
+  <script>
+    // Script para actualizar contadores de carrito y favoritos
+    function updateCounts() {
+      const cart = JSON.parse(localStorage.getItem('enigme_cart')) || [];
+      const favs = JSON.parse(localStorage.getItem('enigme_favs')) || [];
+      
+      let totalItems = 0;
+      cart.forEach(item => totalItems += (item.qty || 1));
+      
+      if(document.getElementById('cart-count')) {
+        document.getElementById('cart-count').innerText = totalItems;
+      }
+      if(document.getElementById('fav-count')) {
+        document.getElementById('fav-count').innerText = favs.length;
+      }
+    }
+    window.onload = updateCounts;
+
+    // Prevención básica de envío del formulario para demostración
+    document.getElementById('garantia-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Solicitud enviada. Recuerde enviar las fotografías a info@enigmeofficial.com con su número de pedido.');
+      this.reset();
+    });
+  </script>
+
+</body>
+</html>
