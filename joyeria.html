@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alta Joyería | Cap I: Adquisición Real | ÈNIGME</title>
+  <title>Alta Joyería | Capítulo I | La Casa ÈNIGME</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,21 +11,24 @@
 
   <style>
     :root {
+      /* PALETA DE ALTA GAMA ÈNIGME */
+      --blanco-dior: #FFFFFF;
       --marfil: #FAF9F6;
-      --blanco-puro: #FFFFFF;
       --carbon: #1C1C1C;
       --gris-suave: #888888;
       --dorado: #CBAA63;
-      --rosa-palo: #D8C3BC;
+      --plata: #C0C0C0;
+      --celeste: #8CBED6;
+      --fondo-galeria: #FAFAFA;
       --linea-fina: rgba(216, 195, 188, 0.4);
-      --transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      --transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     
     body {
-      background-color: var(--marfil);
+      background-color: var(--blanco-dior);
       color: var(--carbon);
       font-family: 'Montserrat', sans-serif;
       overflow-x: hidden;
@@ -33,341 +36,346 @@
       display: flex;
       flex-direction: column;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     a { text-decoration: none; color: inherit; transition: var(--transition); }
     button { background: none; border: none; font-family: inherit; cursor: pointer; outline: none; }
 
     /* =========================================
-       NAVBAR PURISTA ÈNIGME
+       NAVBAR MINIMALISTA Y CREDIBILIDAD
        ========================================= */
     .navbar {
-      width: 100%;
-      padding: 30px 4vw;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid var(--linea-fina);
-      background: rgba(250, 249, 246, 0.98);
-      backdrop-filter: blur(10px);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      width: 100%; padding: 25px 5vw; display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid var(--linea-fina); background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000;
     }
 
-    .brand-nav {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(1.2rem, 2.5vw, 1.5rem);
-      letter-spacing: 0.35em;
-      color: var(--carbon);
-      text-align: center;
-      font-weight: 500;
+    .brand {
+      font-family: 'Cinzel', serif; font-size: clamp(1.4rem, 2.5vw, 1.8rem); letter-spacing: 0.35em;
+      color: var(--carbon); text-align: center; position: absolute; left: 50%; transform: translateX(-50%);
     }
 
-    .nav-group { display: flex; gap: 30px; align-items: center; flex: 1; }
-    .nav-group.right { justify-content: flex-end; }
+    .nav-group { display: flex; gap: 20px; align-items: center; }
     
-    .nav-link {
-      font-size: 0.6rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--gris-suave);
-      font-weight: 600;
-      position: relative;
-      padding-bottom: 4px;
-    }
-
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      width: 100%; height: 1.5px; bottom: 0; left: 0;
-      background-color: var(--dorado);
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform 0.4s ease;
-    }
-
-    .nav-link:hover, .nav-link.active { color: var(--carbon); }
-    .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); transform-origin: left; }
-
-    /* MENÚ DESPLEGABLE "ATENCIÓN" EN NAVBAR */
+    /* MENÚ DESPLEGABLE */
     .dropdown { position: relative; display: inline-block; }
-    .dropbtn { display: flex; align-items: center; gap: 5px; padding: 0; }
-    .dropbtn svg { transition: transform 0.3s; }
+    .dropbtn {
+      font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; color: var(--carbon);
+      font-weight: 500; display: flex; align-items: center; gap: 5px; padding: 10px 0;
+    }
+    .dropbtn svg { width: 10px; height: 10px; transition: transform 0.3s; }
     .dropdown:hover .dropbtn svg { transform: rotate(180deg); }
+
     .dropdown-content {
-      position: absolute; top: 100%; left: 0; background-color: var(--blanco-puro); min-width: 180px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid var(--linea-fina); opacity: 0;
-      visibility: hidden; transform: translateY(10px); transition: var(--transition); display: flex; flex-direction: column;
+      position: absolute; top: 100%; left: 0; background-color: var(--blanco-dior); min-width: 220px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15); border: 1px solid var(--linea-fina); border-top: 2px solid var(--dorado);
+      opacity: 0; visibility: hidden; transform: translateY(15px); transition: var(--transition); display: flex; flex-direction: column; z-index: 9999;
     }
+    .dropdown-content::before { content: ''; position: absolute; top: -15px; left: 0; width: 100%; height: 15px; background: transparent; }
     .dropdown:hover .dropdown-content { opacity: 1; visibility: visible; transform: translateY(0); }
+    
     .dropdown-content a {
-      color: var(--gris-suave); padding: 15px 20px; font-size: 0.6rem; letter-spacing: 2px;
-      text-transform: uppercase; border-bottom: 1px solid var(--marfil); transition: var(--transition);
+      color: var(--carbon) !important; font-weight: 600; padding: 16px 24px; font-size: 0.65rem; letter-spacing: 2px;
+      text-transform: uppercase; border-bottom: 1px solid var(--fondo-galeria); transition: var(--transition);
     }
-    .dropdown-content a:hover { background-color: var(--marfil); color: var(--carbon); padding-left: 25px; }
+    .dropdown-content a:last-child { border-bottom: none; }
+    .dropdown-content a:hover { background-color: var(--fondo-galeria); color: var(--dorado) !important; padding-left: 32px; }
+    .dropdown.right .dropdown-content { left: auto; right: 0; }
 
+    /* BOTONES DE VENTA EN NAVBAR */
     .btn-menu-brand {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background-color: transparent;
-      color: var(--carbon) !important;
-      padding: 8px 16px;
-      border: 1px solid rgba(203, 170, 99, 0.5);
-      border-radius: 2px;
-      font-size: 0.6rem;
-      font-weight: 500;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      transition: var(--transition);
+      display: flex; align-items: center; gap: 8px; color: var(--carbon) !important; padding: 8px 16px;
+      border: 1px solid rgba(203, 170, 99, 0.4); font-size: 0.6rem; font-weight: 500; letter-spacing: 2px;
+      text-transform: uppercase; transition: var(--transition);
     }
-    .btn-menu-brand:hover { background-color: var(--dorado); border-color: var(--dorado); }
-    .btn-menu-brand svg { width: 13px; height: 13px; fill: currentColor; transition: transform 0.3s ease; }
+    .btn-menu-brand:hover { background-color: var(--dorado); border-color: var(--dorado); color: var(--blanco-dior) !important; }
+    .btn-menu-brand svg { width: 13px; height: 13px; fill: currentColor; }
 
-    @keyframes pulse-soft {
-      0% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0.3); }
-      70% { box-shadow: 0 0 0 8px rgba(203, 170, 99, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0); }
-    }
-    .btn-cart-nav { animation: pulse-soft 2.5s infinite; }
-    .btn-cart-nav:hover svg { transform: scale(1.15) rotate(-5deg); }
+    @keyframes pulse-soft { 0% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0.2); } 70% { box-shadow: 0 0 0 6px rgba(203, 170, 99, 0); } 100% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0); } }
+    .btn-cart-nav { animation: pulse-soft 2.5s infinite; background-color: var(--marfil); }
+    .btn-cart-nav:hover { animation: none; }
     .counter-badge { font-weight: 600; }
 
     /* =========================================
-       ENCABEZADO DE LA GALERÍA
+       ENCABEZADO EDITORIAL
        ========================================= */
-    .gallery-header {
-      text-align: center;
-      padding: 80px 20px 40px;
-      border-bottom: 1px solid var(--linea-fina);
-    }
-
+    .gallery-header { text-align: center; padding: 80px 20px 40px; border-bottom: 1px solid var(--linea-fina); background-color: var(--fondo-galeria); }
     .gallery-kicker { font-family: 'Cinzel', serif; font-style: italic; font-size: 0.9rem; color: var(--dorado); letter-spacing: 5px; text-transform: uppercase; margin-bottom: 15px; }
     .gallery-title { font-family: 'Cinzel', serif; font-size: clamp(2.2rem, 5vw, 3.5rem); letter-spacing: 0.15em; text-transform: uppercase; color: var(--carbon); margin-bottom: 20px; }
-    .gallery-desc { font-size: 0.9rem; line-height: 2; color: var(--gris-suave); max-width: 650px; margin: 0 auto; font-weight: 300; }
+    .gallery-desc { font-size: 0.8rem; line-height: 2; color: var(--gris-suave); max-width: 650px; margin: 0 auto; font-weight: 300; letter-spacing: 1px; }
 
     /* =========================================
-       GRID DE PRODUCTOS
+       GRID DE PRODUCTOS (PEQUEÑOS Y UNIFORMES)
        ========================================= */
     .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 80px 40px;
-      padding: 80px 5vw;
-      max-width: 1400px;
-      margin: 0 auto;
-      width: 100%;
+      display: grid; 
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); 
+      gap: 60px 30px; 
+      padding: 60px 5vw 120px; 
+      max-width: 1000px; 
+      margin: 0 auto; width: 100%;
     }
 
-    .product-card {
-      display: flex;
-      flex-direction: column;
-      background: var(--blanco-puro);
-      border: 1px solid var(--linea-fina);
-      transition: var(--transition);
+    .product-card { 
+      display: flex; flex-direction: column; background: var(--blanco-dior); 
+      transition: var(--transition); border: none; 
     }
-    .product-card:hover { border-color: var(--dorado); box-shadow: 0 15px 40px rgba(0,0,0,0.04); transform: translateY(-5px); }
+    .product-card:hover { transform: translateY(-5px); }
 
-    .carousel-wrapper {
-      position: relative;
-      background-color: white;
-      aspect-ratio: 1/1; 
-      overflow: hidden;
-      border-bottom: 1px solid var(--linea-fina);
+    /* CONTENEDOR FOTOGRÁFICO: BLOQUEADO A 1:1 EN TODAS LAS PANTALLAS */
+    .carousel-wrapper { 
+      position: relative; background-color: var(--fondo-galeria); width: 100%;
+      aspect-ratio: 1/1; /* ESTA ES LA MAGIA: Obliga a todas las tarjetas a medir lo mismo en PC y Móvil */
+      overflow: hidden; display: flex; align-items: center; justify-content: center;
+      touch-action: pan-y;
     }
-
-    .carousel-track {
-      display: flex;
-      width: 100%; 
-      height: 100%;
-      transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-      cursor: grab;
-    }
+    .carousel-track { display: flex; width: 100%; transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); cursor: pointer; align-items: center; }
     .carousel-track:active { cursor: grabbing; }
-
-    .product-image {
-      width: 100%; 
-      height: 100%;
-      object-fit: cover;
-      pointer-events: none; 
+    
+    .product-media { 
+      flex: 0 0 100%; width: 100%; height: auto; object-fit: contain; pointer-events: none; display: block;
     }
 
-    /* BOTÓN FAVORITOS */
-    .btn-fav { position: absolute; top: 15px; right: 15px; width: 35px; height: 35px; background-color: var(--marfil); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05); z-index: 10; transition: var(--transition); color: var(--carbon); }
-    .btn-fav:hover { transform: scale(1.1); }
-    .btn-fav svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; transition: var(--transition); }
-    .btn-fav.active svg { fill: var(--rosa-palo); stroke: var(--rosa-palo); }
+    /* CORAZÓN DE FAVORITOS (SUTIL) */
+    .btn-fav { 
+      position: absolute; top: 10px; right: 10px; width: 28px; height: 28px; 
+      background-color: rgba(255, 255, 255, 0.8); border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05); z-index: 10; transition: var(--transition); color: var(--gris-suave); border: 1px solid transparent;
+    }
+    .btn-fav:hover { transform: scale(1.1); color: var(--carbon); border-color: var(--linea-fina); background-color: var(--blanco-dior); }
+    .btn-fav svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2; transition: var(--transition); }
+    .btn-fav.active { background-color: var(--carbon); border-color: var(--carbon); }
+    .btn-fav.active svg { fill: var(--dorado); stroke: var(--dorado); }
 
     /* INFO DEL PRODUCTO */
-    .product-info {
-      padding: 30px 25px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
-
-    .product-code { font-size: 0.55rem; letter-spacing: 2px; color: var(--gris-suave); margin-bottom: 8px; }
-    .product-name { font-family: 'Cinzel', serif; font-size: 1.3rem; letter-spacing: 0.1em; color: var(--carbon); margin-bottom: 10px; text-transform: uppercase; font-weight: 600; }
-    .product-lema { font-size: 0.8rem; line-height: 1.6; color: var(--gris-suave); margin-bottom: 20px; font-weight: 300; font-style: italic; }
-    .product-lema strong { color: var(--carbon); font-weight: 500; }
+    .product-info { padding: 20px 10px 10px; text-align: center; display: flex; flex-direction: column; flex-grow: 1; }
+    .product-code { font-size: 0.45rem; letter-spacing: 3px; color: var(--gris-suave); margin-bottom: 8px; }
+    .product-name { font-family: 'Cinzel', serif; font-size: 1.1rem; letter-spacing: 0.15em; color: var(--carbon); margin-bottom: 6px; text-transform: uppercase; font-weight: 500; }
+    .product-lema { font-size: 0.65rem; color: var(--gris-suave); margin-bottom: 20px; font-weight: 300; font-style: italic; }
     
-    /* BLOQUE DE ETIQUETAS (MATERIAL Y TALLA) */
-    .specs-block {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 25px;
-      padding: 15px;
-      background: var(--marfil);
-      border: 1px dashed rgba(203, 170, 99, 0.4);
+    /* ETIQUETAS Y TALLA */
+    .specs-block { display: flex; flex-direction: column; align-items: center; gap: 6px; margin-bottom: 20px; }
+    .size-select {
+      appearance: none; background: transparent; border: none; border-bottom: 1px solid var(--carbon);
+      font-family: 'Montserrat', sans-serif; font-size: 0.55rem; letter-spacing: 2px; color: var(--carbon);
+      font-weight: 600; text-transform: uppercase; padding: 4px 15px 4px 5px; cursor: pointer; outline: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231C1C1C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat; background-position: right center; background-size: 10px;
+      margin-bottom: 5px; text-align: center;
     }
+    .spec-material { font-size: 0.5rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; color: var(--gris-suave); }
 
-    .spec-size { font-size: 0.6rem; letter-spacing: 3px; color: var(--carbon); text-transform: uppercase; font-weight: 600; }
+    /* PRECIO Y BOTÓN DE AÑADIR */
+    .product-price { font-size: 1.1rem; letter-spacing: 2px; color: var(--carbon); font-weight: 600; margin-bottom: 15px; margin-top: auto; }
+    .price-old { font-size: 0.7rem; color: var(--gris-suave); text-decoration: line-through; letter-spacing: 1px; display: block; margin-bottom: 5px;}
     
-    /* Etiqueta de Material Resaltada */
-    .spec-material {
-      display: inline-block;
-      padding: 6px 15px;
-      font-size: 0.65rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-weight: 700;
-      border-radius: 2px;
-    }
-
-    .mat-gold { background-color: var(--carbon); color: var(--dorado); }
-    .mat-steel { background-color: var(--dorado); color: var(--carbon); }
-
-    .spec-desc { font-size: 0.7rem; color: var(--carbon); text-transform: uppercase; font-weight: 500; letter-spacing: 1px; }
-
-    .product-price { font-size: 1.3rem; letter-spacing: 2px; color: var(--carbon); font-weight: 700; margin-top: auto; margin-bottom: 25px; }
-
-    /* CONTROL DE CANTIDAD + AÑADIR */
-    .purchase-action { display: flex; margin-top: auto; border: 1px solid var(--linea-fina); border-radius: 0; overflow: hidden; height: 45px; }
-    .qty-selector { display: flex; align-items: center; justify-content: space-between; width: 90px; background: var(--marfil); border-right: 1px solid var(--linea-fina); }
-    .qty-selector button { width: 30px; height: 100%; font-size: 1.2rem; color: var(--gris-suave); display: flex; align-items: center; justify-content: center; }
-    .qty-selector button:hover { color: var(--carbon); background: rgba(0,0,0,0.03); }
-    .qty-selector span { font-size: 0.85rem; font-weight: 600; color: var(--carbon); flex-grow: 1; }
+    .purchase-action { display: flex; border: 1px solid var(--carbon); height: 35px; transition: var(--transition); }
+    .purchase-action:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.08); }
+    .qty-selector { display: flex; align-items: center; justify-content: space-between; width: 60px; background: var(--blanco-dior); border-right: 1px solid var(--linea-fina); }
+    .qty-selector button { width: 20px; height: 100%; font-size: 0.9rem; color: var(--gris-suave); display: flex; align-items: center; justify-content: center; }
+    .qty-selector button:hover { color: var(--carbon); }
+    .qty-selector span { font-size: 0.65rem; font-weight: 600; color: var(--carbon); }
     
-    .btn-cart { flex-grow: 1; background-color: transparent; border: none; color: var(--carbon); font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; transition: var(--transition); font-weight: 700; }
-    .btn-cart:hover { background-color: var(--dorado); color: var(--carbon); }
-    .btn-cart.added { background: var(--carbon); color: var(--dorado); }
+    .btn-cart { flex-grow: 1; background-color: var(--carbon); color: var(--blanco-dior); font-size: 0.5rem; letter-spacing: 2px; text-transform: uppercase; transition: var(--transition); font-weight: 500; cursor: pointer; }
+    .btn-cart:hover { background-color: var(--carbon); color: var(--blanco-dior); }
+    .btn-cart.added { background: var(--dorado); color: var(--carbon); border-color: var(--dorado); font-weight: 600; }
 
     /* =========================================
-       BOTÓN FLOTANTE WHATSAPP (DESPLEGABLE)
+       BOTÓN FLOTANTE DESPLEGABLE (SÓLO 2 OPCIONES)
        ========================================= */
-    .fab-container { position: fixed; bottom: 20px; right: 20px; z-index: 9999; display: flex; flex-direction: column-reverse; align-items: flex-end; gap: 10px; }
+    .fab-container { position: fixed; bottom: 30px; right: 30px; z-index: 9999; display: flex; flex-direction: column-reverse; align-items: flex-end; gap: 10px; }
+    
     .fab-main { 
-      width: 50px; height: 50px; background-color: var(--carbon); color: var(--blanco-puro); border-radius: 50%; 
-      display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.15); 
-      cursor: pointer; transition: var(--transition); z-index: 2;
+      width: 50px; height: 50px; background-color: var(--carbon); color: var(--blanco-dior); 
+      border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2); cursor: pointer; transition: var(--transition); z-index: 2;
     }
+    .fab-main svg { width: 24px; height: 24px; fill: currentColor; transition: transform 0.4s ease; }
     .fab-container:hover .fab-main, .fab-container.active .fab-main { background-color: var(--dorado); color: var(--carbon); }
+    
     .fab-menu {
       display: flex; flex-direction: column; align-items: flex-end; gap: 10px; 
-      opacity: 0; visibility: hidden; transform: translateY(20px); transition: var(--transition); margin-bottom: 5px;
+      opacity: 0; visibility: hidden; transform: translateY(20px); transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); margin-bottom: 10px;
     }
     .fab-container:hover .fab-menu, .fab-container.active .fab-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+    
     .fab-item { 
-      background: var(--carbon); color: var(--blanco-puro); padding: 10px 18px; border-radius: 20px; 
-      font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; 
-      border: 1px solid transparent; box-shadow: 0 4px 10px rgba(0,0,0,0.05); white-space: nowrap; transition: var(--transition);
+      background: var(--marfil); color: var(--carbon); padding: 10px 18px; border-radius: 20px; 
+      font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; 
+      border: 1px solid var(--linea-fina); box-shadow: 0 4px 10px rgba(0,0,0,0.05); white-space: nowrap; transition: var(--transition);
     }
-    .fab-item:hover { transform: translateX(-5px); background: var(--dorado); color: var(--carbon); }
+    .fab-item.vip { background: var(--dorado); color: var(--carbon); border-color: var(--dorado); font-weight: 600; }
+    .fab-item:hover { transform: translateX(-5px); background: var(--carbon); color: var(--blanco-dior); border-color: var(--carbon); }
+
+    /* =========================================
+       LIGHTBOX INMERSIVO (GALERÍA COMPLETA Y VIDEO)
+       ========================================= */
+    .lightbox { 
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
+      background-color: rgba(18, 18, 18, 0.98); 
+      backdrop-filter: blur(15px); z-index: 99999; opacity: 0; pointer-events: none; 
+      transition: opacity 0.4s ease; overflow: hidden; display: flex; align-items: center; 
+    }
+    .lightbox.active { opacity: 1; pointer-events: auto; }
+    
+    .lightbox-close { 
+      position: absolute; top: 20px; right: 30px; font-size: 3rem; color: var(--blanco-dior); 
+      cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 200; line-height: 1; 
+      z-index: 10; transition: var(--transition); 
+    }
+    .lightbox-close:hover { color: var(--dorado); transform: scale(1.1); }
+
+    .lightbox-track {
+      display: flex; width: 100%; height: 100%; transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      cursor: grab; align-items: center; touch-action: none;
+    }
+    .lightbox-track:active { cursor: grabbing; }
+
+    .lightbox-item {
+      flex: 0 0 100vw; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; position: relative;
+    }
+    
+    .lightbox-media {
+      max-width: 100%; max-height: 90vh; width: auto; height: auto; object-fit: contain; pointer-events: none;
+    }
+
+    /* Controles de Sonido en Lightbox */
+    .lb-sound-btn {
+      position: absolute; bottom: 60px; left: 50%; transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.4);
+      color: var(--blanco-dior); border-radius: 50%; width: 50px; height: 50px;
+      display: flex; align-items: center; justify-content: center; cursor: pointer;
+      backdrop-filter: blur(5px); transition: var(--transition); z-index: 10;
+    }
+    .lb-sound-btn:hover { background: var(--dorado); border-color: var(--dorado); color: var(--carbon); }
+    .lb-sound-btn svg { width: 20px; height: 20px; fill: currentColor; }
+
+    /* Indicador de Fotos en Lightbox */
+    .lb-indicator {
+      position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 8px; z-index: 10;
+    }
+    .lb-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); transition: var(--transition); }
+    .lb-dot.active { background: var(--dorado); transform: scale(1.3); }
 
     /* =========================================
        NOTIFICACIÓN TOAST
        ========================================= */
-    .toast-notification { position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%) translateY(100px); background-color: var(--carbon); color: var(--dorado); padding: 14px 28px; font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; box-shadow: 0 10px 40px rgba(0,0,0,0.3); z-index: 10000; opacity: 0; transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); display: flex; align-items: center; gap: 12px; pointer-events: none; }
+    .toast-notification { position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%) translateY(100px); background-color: var(--marfil); color: var(--carbon); border: 1px solid var(--dorado); padding: 15px 30px; font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; box-shadow: 0 10px 40px rgba(0,0,0,0.1); z-index: 10000; opacity: 0; transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); display: flex; align-items: center; gap: 12px; pointer-events: none; }
+    .toast-notification svg { fill: var(--dorado); width: 16px; height: 16px; }
     .toast-notification.show { transform: translateX(-50%) translateY(0); opacity: 1; }
-    .toast-notification svg { width: 16px; height: 16px; fill: currentColor; }
 
     /* =========================================
-       LIGHTBOX (VISUALIZACIÓN DE IMAGEN)
+       BANNER LEGAL DE CONFIANZA
        ========================================= */
-    .lightbox { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(250, 249, 246, 0.98); backdrop-filter: blur(10px); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
-    .lightbox.active { opacity: 1; pointer-events: auto; }
-    .lightbox img { max-width: 90%; max-height: 90%; object-fit: contain; transform: scale(0.95); transition: transform 0.4s ease; box-shadow: 0 20px 50px rgba(0,0,0,0.15);}
-    .lightbox.active img { transform: scale(1); }
-    .lightbox-close { position: absolute; top: 30px; right: 40px; font-size: 3rem; color: var(--carbon); cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 200; line-height: 1; transition: var(--transition); }
-    .lightbox-close:hover { color: var(--rosa-palo); transform: scale(1.1); }
-
-    /* BANNER LEGAL Y FOOTER */
-    .legal-banner { border-top: 1px solid var(--linea-fina); padding: 60px 5vw 40px; text-align: center; margin-top: auto; }
-    .trust-badges-container { display: flex; justify-content: center; gap: 30px; margin-bottom: 40px; padding: 0 5vw; flex-wrap: wrap; }
-    .trust-badge-item { display: flex; align-items: center; gap: 10px; color: var(--dorado); border: 1px solid var(--dorado); padding: 8px 15px; font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
-    .trust-badge-item svg { width: 14px; height: 14px; fill: currentColor; }
+    .legal-banner { border-top: 1px solid var(--linea-fina); padding: 60px 5vw 40px; text-align: center; margin-top: auto; background-color: var(--fondo-galeria); }
+    .trust-badges-container { display: flex; justify-content: center; gap: 40px; margin-bottom: 40px; padding: 0 5vw; flex-wrap: wrap; }
+    .trust-badge-item { display: flex; flex-direction: column; align-items: center; gap: 10px; color: var(--carbon); font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; }
+    .trust-badge-item svg { width: 24px; height: 24px; fill: var(--dorado); }
     .legal-text { font-size: 0.6rem; line-height: 2.2; letter-spacing: 1.5px; color: var(--gris-suave); max-width: 900px; margin: 0 auto; text-transform: uppercase; }
     .legal-text strong { color: var(--carbon); }
+    .btn-policy { display: inline-block; margin-top: 25px; padding: 10px 20px; border: 1px solid var(--carbon); color: var(--carbon); font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; transition: var(--transition); background: transparent; }
+    .btn-policy:hover { background-color: var(--carbon); color: var(--blanco-dior); }
     .founder-credit { margin-top: 40px; font-size: 0.5rem; letter-spacing: 0.25em; color: var(--gris-suave); opacity: 0.5; text-transform: uppercase; font-weight: 300; }
-    .btn-policy:hover { background-color: var(--carbon); color: var(--blanco-puro) !important; }
 
-    /* RESPONSIVE */
+    /* =========================================
+       RESPONSIVE MOBILE (MENÚ REORDENADO Y 2 COLUMNAS)
+       ========================================= */
     @media (max-width: 768px) {
-      .navbar { flex-wrap: wrap; justify-content: center; gap: 20px; padding: 25px; }
-      .nav-group { justify-content: center; flex-wrap: wrap; width: 100%; flex: none; gap: 15px;}
-      .brand-nav { order: -1; width: 100%; margin-bottom: 10px; }
-      .nav-link { font-size: 0.55rem; letter-spacing: 2px; }
-      .btn-menu-brand { padding: 8px 14px; font-size: 0.55rem; }
+      .navbar { padding: 20px; flex-wrap: wrap; justify-content: space-between; }
+      .brand { position: relative; left: 0; transform: none; width: 100%; margin-bottom: 15px; order: -1; }
       
-      .product-grid { grid-template-columns: 1fr 1fr; gap: 40px 15px; padding: 40px 15px; }
-      .product-info { padding: 15px 10px; }
-      .product-name { font-size: 0.95rem; }
-      .product-lema { font-size: 0.65rem; margin-bottom: 15px; } 
+      /* REORDENACIÓN DEL MENÚ MÓVIL */
+      .nav-group.right { flex-direction: column; width: 100%; gap: 10px; align-items: stretch; }
+      .nav-group.right .dropdown { order: 1; display: flex; justify-content: center; width: 100%; }
+      .nav-group.right .dropdown .dropbtn { width: 100%; justify-content: center; padding: 8px 0; }
+      .nav-group.right .btn-cart-nav { order: 2; width: 100%; justify-content: center; }
+      .nav-group.right a[href="favoritos.html"] { order: 3; width: 100%; justify-content: center; margin-left: 0 !important; }
       
-      .specs-block { padding: 10px; gap: 8px; margin-bottom: 15px; }
-      .spec-material { font-size: 0.5rem; padding: 4px 8px; }
-      .spec-desc { font-size: 0.55rem; }
+      .btn-menu-brand { padding: 8px 12px; font-size: 0.55rem; letter-spacing: 1px; }
+      .dropbtn { font-size: 0.6rem; letter-spacing: 1px; }
       
-      .price-block { margin-bottom: 15px; gap: 8px; flex-direction: column; }
-      .old-price { font-size: 0.75rem; }
-      .product-price { font-size: 1.2rem; }
+      .gallery-header { padding: 50px 15px 30px; }
+      .gallery-title { font-size: 1.8rem; }
+      
+      /* PRODUCTOS EN 2 COLUMNAS COMPACTAS */
+      .product-grid { 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 15px; 
+        padding: 30px 10px 100px; 
+      }
+      
+      .product-info { padding: 15px 8px 8px; }
+      .product-name { font-size: 0.85rem; margin-bottom: 5px; }
+      .product-lema { display: none; }
+      
+      .specs-block { padding: 5px; gap: 4px; margin-bottom: 10px; }
+      .size-select { font-size: 0.5rem; padding: 4px 15px 4px 5px; background-size: 8px; margin-bottom: 3px; }
+      .spec-material { font-size: 0.45rem; padding: 3px 6px; }
 
-      .purchase-action { height: 38px; }
-      .qty-selector { width: 65px; }
-      .btn-cart { font-size: 0.5rem; letter-spacing: 1.5px; }
+      .product-price { font-size: 1rem; margin-bottom: 10px; }
+      .price-old { font-size: 0.65rem; }
+      
+      .purchase-action { height: 32px; flex-direction: row; }
+      .qty-selector { width: 50px; }
+      .qty-selector button { width: 15px; font-size: 0.9rem; }
+      .qty-selector span { font-size: 0.6rem; }
+      .btn-cart { font-size: 0.45rem; letter-spacing: 1px; padding: 0; display: flex; align-items: center; justify-content: center; }
 
-      .fab-container { bottom: 15px; right: 15px; }
-      .toast-notification { width: 90%; justify-content: center; bottom: 20px; font-size: 0.55rem; }
-      .trust-badges-container { gap: 15px; }
-      .trust-badge-item { padding: 6px 12px; font-size: 0.5rem; }
+      .btn-fav { width: 22px; height: 22px; top: 6px; right: 6px; }
+      .btn-fav svg { width: 10px; height: 10px; }
+      
+      .fab-container { bottom: 20px; right: 20px; }
+      .fab-main { width: 45px; height: 45px; }
+      .fab-main svg { width: 20px; height: 20px; }
+      
+      .toast-notification { width: 90%; justify-content: center; bottom: 20px; font-size: 0.5rem; padding: 12px; }
+      .lightbox-close { top: 15px; right: 15px; font-size: 2.5rem; }
     }
   </style>
 </head>
 <body>
 
+  <audio id="audio-boda" src="boda.mp3" loop preload="auto"></audio>
+
   <nav class="navbar">
     <div class="nav-group">
-      <a href="index.html" class="nav-link">INICIO</a>
       <div class="dropdown">
-        <button class="nav-link dropbtn" style="background:none; border:none; font-family:inherit; cursor:pointer;">
-          ATENCIÓN <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z" fill="currentColor"/></svg>
+        <button class="nav-link dropbtn">
+          ATENCIÓN <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
         </button>
         <div class="dropdown-content">
-          <a href="soporte.html">Soporte</a>
-          <a href="contactos.html">Contacto</a>
-          <a href="certificado.html">Certificado</a>
+          <a href="soporte.html">Soporte al Cliente</a>
+          <a href="fundador.html">El Fundador</a>
+          <a href="certificado.html">Certificados</a>
+          <a href="contactos.html">Contactos</a>
+        </div>
+      </div>
+    </div>
+    
+    <a href="index.html" class="brand">È N I G M E</a>
+    
+    <div class="nav-group right">
+      <div class="dropdown right">
+        <button class="nav-link dropbtn">
+          CATÁLOGO <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+        </button>
+        <div class="dropdown-content">
+          <a href="catalogo.html">Catálogo Completo</a>
+          <a href="joyeria.html">Alta Joyería</a>
           <a href="boutique.html">Bolsos Boutique</a>
           <a href="plata.html">Colección Plata</a>
           <a href="liquidacion.html">El Archivo</a>
         </div>
       </div>
-    </div>
-    
-    <div class="brand-nav">È N I G M E</div>
-    
-    <div class="nav-group right">
-      <a href="favoritos.html" class="btn-menu-brand">
-        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-        FAVS (<span id="fav-count">0</span>)
-      </a>
-
       <a href="carrito.html" class="btn-menu-brand btn-cart-nav">
         <svg viewBox="0 0 24 24"><path d="M16 6V4a4 4 0 0 0-8 0v2H3v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6h-5zm-6-2a2 2 0 0 1 4 0v2h-4V4zm8 16H6V8h2v2a1 1 0 0 0 2 0V8h4v2a1 1 0 0 0 2 0V8h2v12z"/></svg>
-        BOLSA (<span id="cart-count">0</span>)
+        BOLSA (<span id="cart-count" class="counter-badge">0</span>)
+      </a>
+      <a href="favoritos.html" class="btn-menu-brand" style="margin-left: 10px;">
+        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        <span id="fav-count" class="counter-badge">0</span>
       </a>
     </div>
   </nav>
@@ -375,18 +383,13 @@
   <div class="fab-container" id="fab-container">
     <div class="fab-menu">
       <a href="catalogo.html" class="fab-item">Catálogo</a>
-      <a href="https://wa.me/34602149162?text=Hola,%20estoy%20en%20Alta%20Joyería%20y%20deseo%20asesoría%20VIP." class="fab-item" target="_blank">Atención VIP</a>
+      <a href="https://wa.me/34602149162?text=Hola,%20estoy%20en%20Alta%20Joyería%20y%20deseo%20asesoría%20VIP." class="fab-item vip" target="_blank" rel="noopener noreferrer">Atención VIP</a>
     </div>
     <div class="fab-main" onclick="toggleFabMobile()">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="width:24px; height:24px; fill:currentColor;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
         <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
       </svg>
     </div>
-  </div>
-
-  <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
-    <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
-    <img id="lightbox-img" src="" alt="Pieza ÈNIGME" onclick="event.stopPropagation()">
   </div>
 
   <header class="gallery-header">
@@ -398,12 +401,13 @@
   <main class="product-grid">
 
     <article class="product-card">
-      <div class="carousel-wrapper">
-        <button class="btn-fav" data-ref="J89001" onclick="toggleFav('J89001', 'Set Énigme', 'L 799', 'a1.jpg', this)">
+      <div class="carousel-wrapper" onclick="openLightbox(this)">
+        <button class="btn-fav" data-ref="J89001" onclick="toggleFav('J89001', 'Set Énigme', 'L 799', 'a1.jpg', this); event.stopPropagation();">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track" data-index="0">
-          <img src="a1.jpg" class="product-image" onerror="this.src='https://via.placeholder.com/600x600?text=ÈNIGME'">
+          <img src="a1.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ÈNIGME'">
+          <video src="vj1.mp4" class="product-media" preload="metadata" muted playsinline loop></video>
         </div>
       </div>
       <div class="product-info">
@@ -412,34 +416,34 @@
         <p class="product-lema">"L'éclat de l'amour: Perlas que guardan tu historia."</p>
         
         <div class="specs-block">
-          <span class="spec-size">TALLA ÚNICA</span>
-          <span class="spec-material mat-gold">Acero Inox 316L + Oro 14K</span>
-          <span class="spec-desc">Collar y Pulsera | Perlas Blancas Corazón</span>
+          <select id="size-000898" class="size-select">
+            <option value="UNICA">Talla Única</option>
+          </select>
+          <span class="spec-material">Acero 316L + Oro 14K</span>
         </div>
 
-        <div class="price-block">
-          <span class="old-price">L 988</span>
-          <h3 class="product-price">L 799</h3>
-        </div>
-
+        <span class="price-old">L 988</span>
+        <div class="product-price">L 799</div>
+        
         <div class="purchase-action">
           <div class="qty-selector">
             <button onclick="changeCardQty('qty-1', -1)">-</button>
             <span id="qty-1">1</span>
             <button onclick="changeCardQty('qty-1', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('J89001', 'Set Énigme', 'L 799', 'a1.jpg', this, 'qty-1')">Añadir</button>
+          <button class="btn-cart" onclick="addToCart('J89001', 'Set Énigme', 'L 799', 'a1.jpg', this, 'qty-1', 'size-000898')">Añadir a la Bolsa</button>
         </div>
       </div>
     </article>
 
     <article class="product-card">
-      <div class="carousel-wrapper">
-        <button class="btn-fav" data-ref="J89002" onclick="toggleFav('J89002', 'Set Lovryl', 'L 799', 'a2.jpg', this)">
+      <div class="carousel-wrapper" onclick="openLightbox(this)">
+        <button class="btn-fav" data-ref="J89002" onclick="toggleFav('J89002', 'Set Lovryl', 'L 799', 'a2.jpg', this); event.stopPropagation();">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track" data-index="0">
-          <img src="a2.jpg" class="product-image" onerror="this.src='https://via.placeholder.com/600x600?text=ÈNIGME'">
+          <img src="a2.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ÈNIGME'">
+          <video src="vj2.mp4" class="product-media" preload="metadata" muted playsinline loop></video>
         </div>
       </div>
       <div class="product-info">
@@ -448,34 +452,34 @@
         <p class="product-lema">"Amor de Abril: El magnetismo de lo excepcional."</p>
         
         <div class="specs-block">
-          <span class="spec-size">TALLA ÚNICA</span>
-          <span class="spec-material mat-gold">Acero Inox 316L + Oro 14K</span>
-          <span class="spec-desc">Collar y Aretes | Perlas Corazón Plata</span>
+          <select id="size-003012" class="size-select">
+            <option value="UNICA">Talla Única</option>
+          </select>
+          <span class="spec-material">Acero 316L + Oro 14K</span>
         </div>
 
-        <div class="price-block">
-          <span class="old-price">L 988</span>
-          <h3 class="product-price">L 799</h3>
-        </div>
-
+        <span class="price-old">L 988</span>
+        <div class="product-price">L 799</div>
+        
         <div class="purchase-action">
           <div class="qty-selector">
             <button onclick="changeCardQty('qty-2', -1)">-</button>
             <span id="qty-2">1</span>
             <button onclick="changeCardQty('qty-2', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('J89002', 'Set Lovryl', 'L 799', 'a2.jpg', this, 'qty-2')">Añadir</button>
+          <button class="btn-cart" onclick="addToCart('J89002', 'Set Lovryl', 'L 799', 'a2.jpg', this, 'qty-2', 'size-003012')">Añadir a la Bolsa</button>
         </div>
       </div>
     </article>
 
     <article class="product-card">
-      <div class="carousel-wrapper">
-        <button class="btn-fav" data-ref="J89003" onclick="toggleFav('J89003', 'Set Spring', 'L 519', 'a3.jpg', this)">
+      <div class="carousel-wrapper" onclick="openLightbox(this)">
+        <button class="btn-fav" data-ref="J89003" onclick="toggleFav('J89003', 'Set Spring', 'L 519', 'a3.jpg', this); event.stopPropagation();">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track" data-index="0">
-          <img src="a3.jpg" class="product-image" onerror="this.src='https://via.placeholder.com/600x600?text=ÈNIGME'">
+          <img src="a3.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ÈNIGME'">
+          <video src="vj3.mp4" class="product-media" preload="metadata" muted playsinline loop></video>
         </div>
       </div>
       <div class="product-info">
@@ -484,34 +488,34 @@
         <p class="product-lema">"Belleza sin artificios: La fuerza del acero puro."</p>
         
         <div class="specs-block">
-          <span class="spec-size">TALLA ÚNICA</span>
-          <span class="spec-material mat-steel">Acero Inoxidable 316L Puro</span>
-          <span class="spec-desc">Collar y Aretes | Diseño de Margaritas</span>
+          <select id="size-001403" class="size-select">
+            <option value="UNICA">Talla Única</option>
+          </select>
+          <span class="spec-material">Acero Inoxidable 316L</span>
         </div>
 
-        <div class="price-block">
-          <span class="old-price">L 708</span>
-          <h3 class="product-price">L 519</h3>
-        </div>
-
+        <span class="price-old">L 708</span>
+        <div class="product-price">L 519</div>
+        
         <div class="purchase-action">
           <div class="qty-selector">
             <button onclick="changeCardQty('qty-3', -1)">-</button>
             <span id="qty-3">1</span>
             <button onclick="changeCardQty('qty-3', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('J89003', 'Set Spring', 'L 519', 'a3.jpg', this, 'qty-3')">Añadir</button>
+          <button class="btn-cart" onclick="addToCart('J89003', 'Set Spring', 'L 519', 'a3.jpg', this, 'qty-3', 'size-001403')">Añadir a la Bolsa</button>
         </div>
       </div>
     </article>
 
     <article class="product-card">
-      <div class="carousel-wrapper">
-        <button class="btn-fav" data-ref="J89004" onclick="toggleFav('J89004', 'Set Inside', 'L 519', 'a4.jpg', this)">
+      <div class="carousel-wrapper" onclick="openLightbox(this)">
+        <button class="btn-fav" data-ref="J89004" onclick="toggleFav('J89004', 'Set Inside', 'L 519', 'a4.jpg', this); event.stopPropagation();">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track" data-index="0">
-          <img src="a4.jpg" class="product-image" onerror="this.src='https://via.placeholder.com/600x600?text=ÈNIGME'">
+          <img src="a4.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ÈNIGME'">
+          <video src="vj4.mp4" class="product-media" preload="metadata" muted playsinline loop></video>
         </div>
       </div>
       <div class="product-info">
@@ -520,23 +524,22 @@
         <p class="product-lema">"Metamorfosis del aura: El vuelo de cinco mariposas."</p>
         
         <div class="specs-block">
-          <span class="spec-size">TALLA ÚNICA</span>
-          <span class="spec-material mat-steel">Acero Inoxidable 316L Puro</span>
-          <span class="spec-desc">Collar y Aretes | Diseño de Mariposas</span>
+          <select id="size-001003" class="size-select">
+            <option value="UNICA">Talla Única</option>
+          </select>
+          <span class="spec-material">Acero Inoxidable 316L</span>
         </div>
 
-        <div class="price-block">
-          <span class="old-price">L 708</span>
-          <h3 class="product-price">L 519</h3>
-        </div>
-
+        <span class="price-old">L 708</span>
+        <div class="product-price">L 519</div>
+        
         <div class="purchase-action">
           <div class="qty-selector">
             <button onclick="changeCardQty('qty-4', -1)">-</button>
             <span id="qty-4">1</span>
             <button onclick="changeCardQty('qty-4', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('J89004', 'Set Inside', 'L 519', 'a4.jpg', this, 'qty-4')">Añadir</button>
+          <button class="btn-cart" onclick="addToCart('J89004', 'Set Inside', 'L 519', 'a4.jpg', this, 'qty-4', 'size-001003')">Añadir a la Bolsa</button>
         </div>
       </div>
     </article>
@@ -558,25 +561,34 @@
         Distribución Exclusiva HN
       </div>
     </div>
-
     <p class="legal-text">
       <strong>Política de Compra y Envíos:</strong> Operamos bajo la máxima seguridad transaccional cifrada. Debido a la curaduría y altos estándares de importación, las piezas se entregan <strong>25 días hábiles</strong> posteriores a la confirmación de pago. <strong>Cada set ÈNIGME es real y auténtico, entregado con su respectiva tarjeta de marca.</strong><br><br>
       Distribución logística exclusiva en <strong>Choluteca y Valle</strong>, <strong>CON ENVÍO INCLUIDO</strong> hasta punto de encuentro seguro en la ciudad.
     </p>
-
-    <a href="ley.html" class="btn-policy" style="display:inline-block; margin-top:20px; font-size:0.6rem; letter-spacing:2px; text-transform:uppercase; color:var(--carbon); border:1px solid var(--carbon); padding:10px 20px; text-decoration:none;">Políticas de Garantía y Devoluciones</a>
     
-    <p class="founder-credit">
-      © 2026 ÈNIGME HONDURAS POR CARLOS ARMAS MARTÍNEZ. TODOS LOS DERECHOS RESERVADOS.
-    </p>
+    <a href="ley.html" class="btn-policy">Políticas de Garantía y Devoluciones</a>
+
+    <p class="founder-credit">© 2026 ÈNIGME HONDURAS POR CARLOS ARMAS MARTÍNEZ. TODOS LOS DERECHOS RESERVADOS.</p>
   </footer>
+
+  <div id="lightbox" class="lightbox">
+    <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+    <div class="lightbox-track" id="lightbox-track">
+      </div>
+    <div class="lb-indicator" id="lb-indicator"></div>
+  </div>
 
   <div id="toast-notification" class="toast-notification">
     <svg viewBox="0 0 24 24"><path d="M16 6V4a4 4 0 0 0-8 0v2H3v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6h-5zm-6-2a2 2 0 0 1 4 0v2h-4V4zm8 16H6V8h2v2a1 1 0 0 0 2 0V8h4v2a1 1 0 0 0 2 0V8h2v12z"/></svg>
-    Se agregó a tu bolsa con éxito
+    <span id="toast-msg">Añadido a la bolsa</span>
   </div>
 
   <script>
+    /* =========================================
+       AUDIO GLOBAL (BODA.MP3)
+       ========================================= */
+    let globalMuted = true;
+
     /* =========================================
        BOTÓN FLOTANTE MÓVIL
        ========================================= */
@@ -587,79 +599,43 @@
     }
 
     /* =========================================
-       MOTOR DEL CARRUSEL (DRAG & SWIPE)
+       CARRUSEL TÁCTIL EN TARJETAS (SWIPE/DRAG)
        ========================================= */
-    function moveSlide(btn, direction) {
-      if(event) event.stopPropagation();
-      let track = btn.parentElement.querySelector('.carousel-track');
-      let imgs = track.querySelectorAll('img');
-      if (imgs.length <= 1) return;
-      
-      let currentIndex = parseInt(track.getAttribute('data-index') || 0);
-      currentIndex += direction;
-      
-      if (currentIndex < 0) currentIndex = imgs.length - 1;
-      if (currentIndex >= imgs.length) currentIndex = 0;
-      
-      track.setAttribute('data-index', currentIndex);
-      track.style.transform = `translateX(-${currentIndex * 100}%)`;
-    }
-
     document.querySelectorAll('.carousel-track').forEach(track => {
-      let isDown = false;
-      let startX;
-      let isDragged = false;
+      let isDown = false; let startX; let isDragged = false;
 
-      track.addEventListener('mousedown', (e) => {
-        isDown = true;
-        isDragged = false;
-        startX = e.pageX;
-      });
-
-      track.addEventListener('mousemove', (e) => {
-        if (!isDown) return;
-        if (Math.abs(e.pageX - startX) > 10) {
-          isDragged = true;
-        }
-      });
-
+      track.addEventListener('mousedown', (e) => { isDown = true; isDragged = false; startX = e.pageX; });
+      track.addEventListener('mousemove', (e) => { if (!isDown) return; if (Math.abs(e.pageX - startX) > 20) isDragged = true; });
       track.addEventListener('mouseup', (e) => {
         isDown = false;
         if (isDragged) {
-          if (startX > e.pageX) moveSlide({parentElement: track.parentElement}, 1);
-          else moveSlide({parentElement: track.parentElement}, -1);
+          if (startX > e.pageX) moveSlideSwipeCard(track, 1);
+          else moveSlideSwipeCard(track, -1);
         }
       });
-
       track.addEventListener('mouseleave', () => { isDown = false; });
-
-      track.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
-        isDragged = false;
-      }, {passive: true});
-
-      track.addEventListener('touchmove', (e) => {
-        if (Math.abs(e.touches[0].clientX - startX) > 10) {
-          isDragged = true;
-        }
-      }, {passive: true});
-
+      
+      track.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; isDragged = false; }, {passive: true});
+      track.addEventListener('touchmove', (e) => { if (Math.abs(e.touches[0].clientX - startX) > 20) isDragged = true; }, {passive: true});
       track.addEventListener('touchend', (e) => {
         if (isDragged) {
           let endX = e.changedTouches[0].clientX;
-          if (startX > endX) moveSlide({parentElement: track.parentElement}, 1);
-          else moveSlide({parentElement: track.parentElement}, -1);
-        }
-      });
-
-      track.addEventListener('click', (e) => {
-        if (!isDragged) {
-          let idx = parseInt(track.getAttribute('data-index') || 0);
-          let imgs = track.querySelectorAll('img');
-          openLightbox(imgs[idx].src); 
+          if (startX > endX) moveSlideSwipeCard(track, 1);
+          else moveSlideSwipeCard(track, -1);
         }
       });
     });
+
+    function moveSlideSwipeCard(track, direction) {
+      let mediaItems = track.children;
+      if (mediaItems.length <= 1) return;
+      let currentIndex = parseInt(track.getAttribute('data-index') || 0);
+      currentIndex += direction;
+      if (currentIndex < 0) currentIndex = mediaItems.length - 1;
+      if (currentIndex >= mediaItems.length) currentIndex = 0;
+      track.setAttribute('data-index', currentIndex);
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
 
     /* =========================================
        MOTOR DEL CARRITO Y FAVORITOS
@@ -667,9 +643,7 @@
     function changeCardQty(id, delta) {
       let el = document.getElementById(id);
       let current = parseInt(el.innerText);
-      if (current + delta > 0) {
-        el.innerText = current + delta;
-      }
+      if (current + delta > 0) { el.innerText = current + delta; }
     }
 
     function toggleFav(ref, name, price, img, btn) {
@@ -686,69 +660,218 @@
       updateCounts();
     }
 
-    function showToast() {
+    function showToast(msg = "Añadido a la bolsa", isError = false) {
       const toast = document.getElementById('toast-notification');
+      document.getElementById('toast-msg').innerText = msg;
+      if(isError) {
+        toast.style.backgroundColor = "#550000"; toast.style.borderColor = "#550000";
+      } else {
+        toast.style.backgroundColor = "var(--marfil)"; toast.style.borderColor = "var(--dorado)";
+      }
       toast.classList.add('show');
-      setTimeout(() => {
-        toast.classList.remove('show');
-      }, 3000);
+      setTimeout(() => { toast.classList.remove('show'); }, 3000);
     }
 
-    function addToCart(ref, name, price, img, btn, qtyId) {
+    function addToCart(ref, name, price, img, btn, qtyId, sizeId) {
       if (btn.classList.contains('added')) return; 
+      
       const qtyToAdd = parseInt(document.getElementById(qtyId).innerText) || 1;
+      let sizeValue = document.getElementById(sizeId) ? document.getElementById(sizeId).value : 'ÚNICA';
+      const uniqueRef = ref + '-T' + sizeValue;
+      const fullName = name + ' (' + sizeValue + ')';
+      
       let cart = JSON.parse(localStorage.getItem('enigme_cart')) || [];
-      let existing = cart.find(i => i.ref === ref);
+      let existing = cart.find(i => i.ref === uniqueRef);
+      
       if(existing) {
         existing.qty += qtyToAdd;
-      } else {
-        cart.push({ref, name, price, img, qty: qtyToAdd});
+      } else { 
+        cart.push({ref: uniqueRef, name: fullName, price, img, qty: qtyToAdd}); 
       }
+      
       localStorage.setItem('enigme_cart', JSON.stringify(cart));
       
       const originalText = btn.innerText;
       btn.classList.add('added');
-      btn.innerText = "AÑADIDO ✓";
+      btn.innerText = "SELECCIONADO ✓";
       document.getElementById(qtyId).innerText = "1";
-      
-      showToast();
-
-      setTimeout(() => {
-        btn.classList.remove('added');
-        btn.innerText = originalText;
-      }, 1500);
+      showToast("Añadido a la bolsa", false);
+      setTimeout(() => { btn.classList.remove('added'); btn.innerText = originalText; }, 1500);
       updateCounts();
     }
 
     function updateCounts() {
       const cart = JSON.parse(localStorage.getItem('enigme_cart')) || [];
       const favs = JSON.parse(localStorage.getItem('enigme_favs')) || [];
-      let totalItems = 0;
-      cart.forEach(item => totalItems += (item.qty || 1));
-      
+      let totalItems = 0; cart.forEach(item => totalItems += (item.qty || 1));
       if(document.getElementById('cart-count')) document.getElementById('cart-count').innerText = totalItems;
       if(document.getElementById('fav-count')) document.getElementById('fav-count').innerText = favs.length;
-
       document.querySelectorAll('.btn-fav').forEach(btn => {
-        const ref = btn.getAttribute('data-ref');
-        if(favs.find(i => i.ref === ref)) btn.classList.add('active');
+        if(favs.find(i => i.ref === btn.getAttribute('data-ref'))) btn.classList.add('active');
       });
     }
 
-    /* LIGHTBOX PARA VER LAS FOTOS EN GRANDE */
+    /* =========================================
+       LIGHTBOX INMERSIVO (PANTALLA COMPLETA)
+       ========================================= */
     const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
+    const lbTrack = document.getElementById('lightbox-track');
+    const lbIndicator = document.getElementById('lb-indicator');
+    let lbCurrentIndex = 0;
+    let lbItemsCount = 0;
 
-    function openLightbox(src) {
-      lightboxImg.src = src;
-      lightbox.classList.add('active');
-      document.body.style.overflow = 'hidden'; 
+    function getSoundIcon(isMuted) {
+      if (isMuted) {
+        return '<svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>';
+      } else {
+        return '<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>';
+      }
     }
 
-    function closeLightbox(e) {
+    function openLightbox(wrapperElement) {
+      lbTrack.innerHTML = '';
+      lbIndicator.innerHTML = '';
+      let sourceTrack = wrapperElement.querySelector('.carousel-track');
+      let items = sourceTrack.children;
+      lbItemsCount = items.length;
+      
+      lbCurrentIndex = parseInt(sourceTrack.getAttribute('data-index') || 0);
+
+      for(let i=0; i<items.length; i++) {
+        let lbItem = document.createElement('div');
+        lbItem.className = 'lightbox-item';
+        
+        let clone = items[i].cloneNode(true);
+        clone.className = 'lightbox-media';
+        
+        if(clone.tagName.toLowerCase() === 'video') {
+          clone.loop = true;
+          clone.muted = true; 
+          clone.setAttribute('playsinline', '');
+          
+          let soundBtn = document.createElement('button');
+          soundBtn.className = 'lb-sound-btn';
+          soundBtn.innerHTML = getSoundIcon(globalMuted); 
+          
+          soundBtn.onclick = (e) => {
+            e.stopPropagation();
+            globalMuted = !globalMuted;
+            const audio = document.getElementById('audio-boda');
+            
+            document.querySelectorAll('.lb-sound-btn').forEach(btn => {
+              btn.innerHTML = getSoundIcon(globalMuted);
+            });
+
+            if(!globalMuted) {
+              audio.play().catch(err => console.log("Interactúa con la página para activar el audio."));
+            } else {
+              audio.pause();
+            }
+          };
+
+          lbItem.appendChild(clone);
+          lbItem.appendChild(soundBtn);
+        } else {
+          lbItem.appendChild(clone);
+        }
+        lbTrack.appendChild(lbItem);
+
+        let dot = document.createElement('div');
+        dot.className = 'lb-dot';
+        lbIndicator.appendChild(dot);
+      }
+
+      updateLightboxPosition();
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function updateLightboxPosition() {
+      lbTrack.style.transform = `translateX(-${lbCurrentIndex * 100}vw)`;
+      
+      let dots = lbIndicator.children;
+      for(let i=0; i<dots.length; i++) {
+        if(i === lbCurrentIndex) dots[i].classList.add('active');
+        else dots[i].classList.remove('active');
+      }
+
+      let wrappers = lbTrack.children;
+      let audio = document.getElementById('audio-boda');
+      
+      for(let i=0; i<wrappers.length; i++) {
+        let vid = wrappers[i].querySelector('video');
+        if (vid) {
+          if (i === lbCurrentIndex) {
+            vid.currentTime = 0;
+            vid.play().catch(e => console.log("Auto-play prevenido por el navegador."));
+            if(!globalMuted) {
+              audio.play().catch(e => {
+                globalMuted = true; 
+                document.querySelectorAll('.lb-sound-btn').forEach(btn => btn.innerHTML = getSoundIcon(globalMuted));
+              });
+            }
+          } else {
+            vid.pause();
+          }
+        }
+      }
+
+      let currentItem = wrappers[lbCurrentIndex];
+      if(!currentItem.querySelector('video')) {
+         audio.pause();
+      }
+    }
+
+    function closeLightbox() {
       lightbox.classList.remove('active');
       document.body.style.overflow = 'auto'; 
+      let vids = lbTrack.querySelectorAll('video');
+      vids.forEach(v => v.pause());
+      document.getElementById('audio-boda').pause();
     }
+
+    /* Swipe Logic para el Lightbox */
+    let lbIsDown = false; let lbStartX; let lbIsDragged = false;
+
+    lbTrack.addEventListener('mousedown', (e) => { lbIsDown = true; lbIsDragged = false; lbStartX = e.pageX; });
+    lbTrack.addEventListener('mousemove', (e) => { if (!lbIsDown) return; if (Math.abs(e.pageX - lbStartX) > 20) lbIsDragged = true; });
+    lbTrack.addEventListener('mouseup', (e) => {
+      lbIsDown = false;
+      if (lbIsDragged) {
+        if (lbStartX > e.pageX) { lbCurrentIndex++; if(lbCurrentIndex >= lbItemsCount) lbCurrentIndex = 0; }
+        else { lbCurrentIndex--; if(lbCurrentIndex < 0) lbCurrentIndex = lbItemsCount - 1; }
+        updateLightboxPosition();
+      }
+    });
+    lbTrack.addEventListener('mouseleave', () => { lbIsDown = false; });
+
+    lbTrack.addEventListener('touchstart', (e) => { lbStartX = e.touches[0].clientX; lbIsDragged = false; }, {passive: true});
+    lbTrack.addEventListener('touchmove', (e) => { if (Math.abs(e.touches[0].clientX - lbStartX) > 20) lbIsDragged = true; }, {passive: true});
+    lbTrack.addEventListener('touchend', (e) => {
+      if (lbIsDragged) {
+        let endX = e.changedTouches[0].clientX;
+        if (lbStartX > endX) { lbCurrentIndex++; if(lbCurrentIndex >= lbItemsCount) lbCurrentIndex = 0; }
+        else { lbCurrentIndex--; if(lbCurrentIndex < 0) lbCurrentIndex = lbItemsCount - 1; }
+        updateLightboxPosition();
+      }
+    });
+
+    /* Navegación por Teclado en Lightbox */
+    document.addEventListener('keydown', (e) => {
+      if (lightbox.classList.contains('active')) {
+        if (e.key === 'ArrowLeft') {
+          lbCurrentIndex--;
+          if(lbCurrentIndex < 0) lbCurrentIndex = lbItemsCount - 1;
+          updateLightboxPosition();
+        } else if (e.key === 'ArrowRight') {
+          lbCurrentIndex++;
+          if(lbCurrentIndex >= lbItemsCount) lbCurrentIndex = 0;
+          updateLightboxPosition();
+        } else if (e.key === 'Escape') {
+          closeLightbox();
+        }
+      }
+    });
 
     window.onload = updateCounts;
   </script>
