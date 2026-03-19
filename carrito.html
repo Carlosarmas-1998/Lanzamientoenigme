@@ -107,7 +107,7 @@
     /* =========================================
        HEADER DEL CARRITO
        ========================================= */
-    .page-header { text-align: center; padding: 60px 5vw 40px; border-bottom: 1px solid var(--linea-fina); margin-top: 20px; }
+    .page-header { text-align: center; padding: 60px 5vw 40px; border-bottom: 1px solid var(--gris-linea); margin-top: 20px; }
     .page-title { font-family: 'Cinzel', serif; font-size: clamp(2rem, 4vw, 3rem); letter-spacing: 0.15em; text-transform: uppercase; color: var(--carbon); margin-bottom: 10px; }
     .page-subtitle { font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; color: var(--dorado); font-weight: 600; }
 
@@ -132,6 +132,7 @@
     .item-ref { font-size: 0.55rem; letter-spacing: 2px; color: var(--gris-suave); }
     .item-name { font-family: 'Cinzel', serif; font-size: 1.1rem; color: var(--carbon); text-transform: uppercase; }
     .item-price { font-size: 0.85rem; font-weight: 500; color: var(--carbon); }
+    .item-promo-tag { font-size: 0.55rem; color: #a33; letter-spacing: 1px; text-transform: uppercase; font-weight: 600;}
 
     /* CONTROLES DE CANTIDAD Y ELIMINAR */
     .item-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 20px; }
@@ -146,7 +147,7 @@
     /* =========================================
        ESTADO VACÍO / ÉXITO
        ========================================= */
-    .empty-state-wrapper { text-align: center; padding: 80px 20px; background: var(--blanco-puro); border: 1px solid var(--linea-fina); width: 100%; max-width: 700px; margin: 0 auto; box-shadow: 0 15px 40px rgba(0,0,0,0.03); }
+    .empty-state-wrapper { text-align: center; padding: 80px 20px; background: #FFFFFF; border: 1px solid var(--gris-linea); width: 100%; max-width: 700px; margin: 0 auto; box-shadow: 0 15px 40px rgba(0,0,0,0.03); }
     .empty-state-title { font-family: 'Cinzel', serif; font-size: clamp(1.5rem, 3vw, 2.2rem); letter-spacing: 0.1em; color: var(--carbon); text-transform: uppercase; margin-bottom: 15px; }
     .empty-state-desc { font-size: 0.85rem; line-height: 2; color: var(--gris-suave); margin-bottom: 40px; }
     
@@ -156,15 +157,23 @@
     /* =========================================
        FORMULARIO V.I.P (CONCIERGE) Y PAGOS
        ========================================= */
-    .checkout-panel { background: var(--blanco-puro); padding: 40px 35px; border: 1px solid var(--dorado); position: sticky; top: 120px; box-shadow: 0 20px 50px rgba(0,0,0,0.04); }
-    .summary-title { font-family: 'Cinzel', serif; font-size: 1.2rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 25px; border-bottom: 1px solid var(--linea-fina); padding-bottom: 15px; text-align: center; color: var(--carbon); }
+    .checkout-panel { background: #FFFFFF; padding: 40px 35px; border: 1px solid var(--dorado); position: sticky; top: 120px; box-shadow: 0 20px 50px rgba(0,0,0,0.04); }
+    .summary-title { font-family: 'Cinzel', serif; font-size: 1.2rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 25px; border-bottom: 1px solid var(--gris-linea); padding-bottom: 15px; text-align: center; color: var(--carbon); }
     
     .client-form { display: flex; flex-direction: column; gap: 25px; margin-bottom: 30px; }
     .form-group { display: flex; flex-direction: column; gap: 5px; }
     .form-group label { font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; color: var(--carbon); font-weight: 600; }
-    .form-input, .form-select { width: 100%; padding: 12px 0; border: none; border-bottom: 1px solid var(--linea-fina); background: transparent; font-family: 'Montserrat', sans-serif; font-size: 0.85rem; color: var(--carbon); transition: var(--transition); outline: none; border-radius: 0; }
+    .form-input, .form-select { width: 100%; padding: 12px 0; border: none; border-bottom: 1px solid var(--gris-linea); background: transparent; font-family: 'Montserrat', sans-serif; font-size: 0.85rem; color: var(--carbon); transition: var(--transition); outline: none; border-radius: 0; }
     .form-input:focus, .form-select:focus { border-bottom-color: var(--dorado); }
     .form-select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23121212' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right center; background-size: 15px; }
+
+    /* BANNER DE REGLA DE COMPRA */
+    .promo-banner {
+      background-color: var(--carbon); color: var(--dorado); border-radius: 2px;
+      text-align: center; padding: 12px; margin-bottom: 25px; display: none;
+    }
+    .promo-banner p { font-size: 0.55rem; letter-spacing: 2px; line-height: 1.6; text-transform: uppercase; font-weight: 500; margin: 0; }
+    .promo-banner strong { color: var(--blanco-dior); font-weight: 700; }
 
     /* TÉRMINOS Y CONDICIONES */
     .service-terms { background-color: var(--fondo-galeria); border: 1px solid var(--dorado); padding: 25px 20px; margin-bottom: 30px; }
@@ -229,7 +238,7 @@
     @media (max-width: 900px) { .cart-container { grid-template-columns: 1fr; gap: 40px; padding: 40px 5vw; } .checkout-panel { position: static; padding: 30px 20px; } }
     @media (max-width: 768px) {
       .navbar { padding: 20px; flex-wrap: wrap; justify-content: space-between; }
-      .brand-nav { position: relative; left: 0; transform: none; width: 100%; margin-bottom: 15px; order: -1; font-size: 1.6rem;}
+      .brand-nav { position: relative; left: 0; transform: none; width: 100%; margin-bottom: 15px; order: -1; font-size: 1.6rem; }
       
       .nav-group.right { flex-direction: column; width: 100%; gap: 10px; align-items: stretch; }
       .nav-group.right .dropdown { order: 1; display: flex; justify-content: center; width: 100%; }
@@ -237,8 +246,8 @@
       .nav-group.right .btn-cart-nav { order: 2; width: 100%; justify-content: center; margin-left: 0 !important; }
       .nav-group.right a[href="favoritos.html"] { order: 3; width: 100%; justify-content: center; margin-left: 0 !important; }
 
-      .nav-link { font-size: 0.6rem; letter-spacing: 2px; }
-      .btn-menu-brand { padding: 8px 12px; font-size: 0.55rem; letter-spacing: 1px;}
+      .nav-link { font-size: 0.55rem; letter-spacing: 2px; }
+      .btn-menu-brand { padding: 8px 12px; font-size: 0.55rem; letter-spacing: 1px; }
       .dropdown-content { min-width: 160px; }
       .dropdown-content a { font-size: 0.6rem; padding: 15px; }
 
@@ -301,7 +310,12 @@
 
   <main class="cart-container" id="main-cart-container">
     
-    <div class="cart-items" id="cart-items-container"></div>
+    <div class="cart-items">
+      <div id="promo-banner" class="promo-banner">
+        <p><strong>BENEFICIO ACTIVADO:</strong> Se han aplicado valores de Private Sales a su selección de El Archivo.</p>
+      </div>
+      <div id="cart-items-container"></div>
+    </div>
 
     <div class="checkout-panel" id="checkout-panel">
       <h2 class="summary-title">Gestión V.I.P</h2>
@@ -397,7 +411,7 @@
   <script>
     let cart = [];
     let justOrdered = false; 
-    let currentTotalGlobal = 0; // Guardar el total para Stripe
+    let currentTotalGlobal = 0;
 
     function loadCart() {
       const rawCart = JSON.parse(localStorage.getItem('enigme_cart')) || [];
@@ -408,21 +422,59 @@
         else { item.qty = item.qty || 1; cart.push(item); }
       });
       localStorage.setItem('enigme_cart', JSON.stringify(cart));
+      calculateCartRules();
       renderCart();
       renderHistory();
       updateCounts();
+    }
+
+    // =========================================
+    // REGLA DE LIQUIDACIÓN
+    // =========================================
+    function calculateCartRules() {
+      let totalLqItems = 0;
+      
+      // Contar piezas que son de liquidación
+      cart.forEach(item => {
+        if(item.isLiquidation) {
+          totalLqItems += item.qty;
+        }
+      });
+
+      // Mostrar/Ocultar Banner
+      const promoBanner = document.getElementById('promo-banner');
+      if(totalLqItems >= 2) {
+        promoBanner.style.display = 'block';
+      } else {
+        promoBanner.style.display = 'none';
+      }
+
+      // Aplicar precios correspondientes
+      cart.forEach(item => {
+        if(item.isLiquidation) {
+          if(totalLqItems >= 2) {
+            item.price = item.promoPrice; // Activa promoción (ej. L 199)
+          } else {
+            item.price = item.regularPrice; // Mantiene precio regular (ej. L 518)
+          }
+        }
+      });
     }
 
     function renderCart() {
       const container = document.getElementById('cart-items-container');
       const panelCheckout = document.getElementById('checkout-panel');
       const mainContainer = document.getElementById('main-cart-container');
+      const promoBanner = document.getElementById('promo-banner');
+      
       let total = 0, totalItems = 0;
       container.innerHTML = '';
 
       if (cart.length === 0) {
         mainContainer.classList.add('cart-empty');
         panelCheckout.style.display = 'none';
+        promoBanner.style.display = 'none';
+        
         let titleText = justOrdered ? "Solicitud Recibida" : "Bolsa Vacía";
         let descText = justOrdered ? "Su información ha sido procesada con éxito. Puede revisar el estado en 'Mis Solicitudes V.I.P'." : "Explore el catálogo para descubrir nuestras colecciones de Alta Costura.";
         
@@ -445,6 +497,10 @@
           let subtotalItem = priceNum * item.qty;
           total += subtotalItem; totalItems += item.qty;
           
+          let promoTag = (item.isLiquidation && item.price === item.promoPrice) 
+                         ? `<span class="item-promo-tag">✓ Precio V.I.P Aplicado</span>` 
+                         : '';
+
           container.innerHTML += `
             <div class="cart-item">
               <div class="item-img-wrapper" onclick="openLightbox('${item.img}')" title="Ver imagen íntegra">
@@ -454,6 +510,7 @@
                 <span class="item-ref">${item.ref}</span>
                 <h3 class="item-name">${item.name}</h3>
                 <span class="item-price">L ${priceNum}</span>
+                ${promoTag}
               </div>
               <div class="item-actions">
                 <div class="qty-control">
@@ -475,6 +532,7 @@
     function updateQty(index, delta) { 
       if (cart[index].qty + delta > 0) { 
         cart[index].qty += delta; 
+        calculateCartRules();
         localStorage.setItem('enigme_cart', JSON.stringify(cart)); 
         renderCart(); 
         updateCounts();
@@ -483,6 +541,7 @@
     
     function removeItem(index) { 
       cart.splice(index, 1); 
+      calculateCartRules();
       localStorage.setItem('enigme_cart', JSON.stringify(cart)); 
       renderCart(); 
       updateCounts();
@@ -593,16 +652,13 @@
       })
       .then(response => response.json())
       .then(result => {
-         // Correo enviado (o petición recibida por Formsubmit). 
          finishStripeProcess(order.totalGlobal);
       })
       .catch(error => {
          console.error("Error al enviar notificación:", error);
-         // Aunque falle el correo (ej. bloqueador de red), no impedimos que el cliente pague.
          finishStripeProcess(order.totalGlobal);
       })
       .finally(() => {
-         // Restaurar botón (por si acaso)
          btnStripe.innerHTML = originalText;
          btnStripe.style.pointerEvents = "auto";
       });
@@ -687,4 +743,4 @@
     window.onload = loadCart;
   </script>
 </body>
-</html>
+</html>s
