@@ -105,18 +105,20 @@
     .gallery-title { font-family: 'Cinzel', serif; font-size: clamp(2.2rem, 5vw, 3.5rem); letter-spacing: 0.15em; text-transform: uppercase; color: var(--carbon); margin-bottom: 20px; }
     .gallery-desc { font-size: 0.8rem; line-height: 2; color: var(--gris-suave); max-width: 650px; margin: 0 auto; font-weight: 300; letter-spacing: 1px; }
 
+    /* INFO DE EMPAQUE */
     .premium-packaging { max-width: 600px; margin: 40px auto 0; padding: 15px; border-top: 1px dashed var(--dorado); border-bottom: 1px dashed var(--dorado); text-align: center; }
     .premium-packaging p { font-size: 0.6rem; letter-spacing: 2px; line-height: 1.8; text-transform: uppercase; font-weight: 500; color: var(--carbon); }
     .premium-packaging p strong { color: var(--dorado); }
 
     /* =========================================
-       GRID DE PRODUCTOS (DELICADO Y SIN RECORTES)
+       GRID DE PRODUCTOS (PEQUEÑOS Y UNIFORMES)
        ========================================= */
     .product-grid {
       display: grid; 
       grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); 
       gap: 60px 30px; 
-      padding: 60px 5vw 120px; max-width: 1100px; 
+      padding: 60px 5vw 120px; 
+      max-width: 1000px; 
       margin: 0 auto; width: 100%;
     }
 
@@ -126,9 +128,10 @@
     }
     .product-card:hover { transform: translateY(-5px); }
 
-    /* CONTENEDOR FOTOGRÁFICO: SIN RECORTES */
+    /* CONTENEDOR FOTOGRÁFICO: BLOQUEADO A 1:1 EN TODAS LAS PANTALLAS */
     .carousel-wrapper { 
       position: relative; background-color: var(--fondo-galeria); width: 100%;
+      aspect-ratio: 1/1; /* Obliga a todas las tarjetas a medir lo mismo en PC y Móvil */
       overflow: hidden; display: flex; align-items: center; justify-content: center;
       touch-action: pan-y;
     }
@@ -153,11 +156,11 @@
     /* INFO DEL PRODUCTO */
     .product-info { padding: 20px 10px 10px; text-align: center; display: flex; flex-direction: column; flex-grow: 1; }
     .product-code { font-size: 0.45rem; letter-spacing: 3px; color: var(--gris-suave); margin-bottom: 8px; }
-    .product-name { font-family: 'Cinzel', serif; font-size: 1.1rem; letter-spacing: 0.15em; color: var(--carbon); margin-bottom: 8px; text-transform: uppercase; font-weight: 500; }
+    .product-name { font-family: 'Cinzel', serif; font-size: 1.1rem; letter-spacing: 0.15em; color: var(--carbon); margin-bottom: 6px; text-transform: uppercase; font-weight: 500; }
     .product-lema { font-size: 0.65rem; color: var(--gris-suave); margin-bottom: 20px; font-weight: 300; font-style: italic; }
     
     /* ETIQUETAS Y TALLA */
-    .specs-block { display: flex; flex-direction: column; align-items: center; gap: 6px; margin-bottom: 25px; }
+    .specs-block { display: flex; flex-direction: column; align-items: center; gap: 6px; margin-bottom: 20px; }
     .size-select {
       appearance: none; background: transparent; border: none; border-bottom: 1px solid var(--carbon);
       font-family: 'Montserrat', sans-serif; font-size: 0.55rem; letter-spacing: 2px; color: var(--carbon);
@@ -175,12 +178,12 @@
     .purchase-action { display: flex; border: 1px solid var(--carbon); height: 35px; transition: var(--transition); }
     .purchase-action:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.08); }
     .qty-selector { display: flex; align-items: center; justify-content: space-between; width: 60px; background: var(--blanco-dior); border-right: 1px solid var(--linea-fina); }
-    .qty-selector button { width: 20px; height: 100%; font-size: 1rem; color: var(--gris-suave); display: flex; align-items: center; justify-content: center; }
+    .qty-selector button { width: 20px; height: 100%; font-size: 0.9rem; color: var(--gris-suave); display: flex; align-items: center; justify-content: center; }
     .qty-selector button:hover { color: var(--carbon); }
-    .qty-selector span { font-size: 0.7rem; font-weight: 600; color: var(--carbon); }
+    .qty-selector span { font-size: 0.65rem; font-weight: 600; color: var(--carbon); }
     
     .btn-cart { flex-grow: 1; background-color: var(--carbon); color: var(--blanco-dior); font-size: 0.5rem; letter-spacing: 2px; text-transform: uppercase; transition: var(--transition); font-weight: 500; cursor: pointer; }
-    .btn-cart:hover { background-color: var(--dorado); color: var(--carbon); }
+    .btn-cart:hover { background-color: var(--carbon); color: var(--blanco-dior); }
     .btn-cart.added { background: var(--dorado); color: var(--carbon); border-color: var(--dorado); font-weight: 600; }
 
     /* =========================================
@@ -280,30 +283,35 @@
     .founder-credit { margin-top: 40px; font-size: 0.5rem; letter-spacing: 0.25em; color: var(--gris-suave); opacity: 0.5; text-transform: uppercase; font-weight: 300; }
 
     /* =========================================
-       RESPONSIVE MOBILE (VISTA 2 COLUMNAS PURA)
+       RESPONSIVE MOBILE (MENÚ REORDENADO)
        ========================================= */
     @media (max-width: 768px) {
       .navbar { padding: 20px; flex-wrap: wrap; justify-content: space-between; }
       .brand { position: relative; left: 0; transform: none; width: 100%; margin-bottom: 15px; order: -1; }
-      .nav-group { width: 100%; justify-content: space-between; }
+      
+      /* REORDENACIÓN DEL MENÚ MÓVIL */
+      .nav-group.right { flex-direction: column; width: 100%; gap: 10px; align-items: stretch; }
+      .nav-group.right .dropdown { order: 1; display: flex; justify-content: center; width: 100%; }
+      .nav-group.right .dropdown .dropbtn { width: 100%; justify-content: center; padding: 8px 0; }
+      .nav-group.right .btn-cart-nav { order: 2; width: 100%; justify-content: center; }
+      .nav-group.right a[href="favoritos.html"] { order: 3; width: 100%; justify-content: center; margin-left: 0 !important; }
+      
       .btn-menu-brand { padding: 8px 12px; font-size: 0.55rem; letter-spacing: 1px; }
       .dropbtn { font-size: 0.6rem; letter-spacing: 1px; }
       
       .gallery-header { padding: 50px 15px 30px; }
       .gallery-title { font-size: 1.8rem; }
       
-      /* LA CLAVE PARA MÓVILES: 2 COLUMNAS COMPACTAS */
+      /* PRODUCTOS EN 2 COLUMNAS COMPACTAS */
       .product-grid { 
         grid-template-columns: repeat(2, 1fr); 
         gap: 15px; 
         padding: 30px 10px 100px; 
       }
       
-      .carousel-wrapper { aspect-ratio: 1/1; }
-      
       .product-info { padding: 15px 8px 8px; }
       .product-name { font-size: 0.85rem; margin-bottom: 5px; }
-      .product-lema { display: none; } /* Oculto en móvil para mantener limpieza */
+      .product-lema { display: none; }
       
       .specs-block { padding: 5px; gap: 4px; margin-bottom: 10px; }
       .size-select { font-size: 0.5rem; padding: 4px 15px 4px 5px; background-size: 8px; margin-bottom: 3px; }
@@ -364,13 +372,13 @@
           <a href="liquidacion.html">El Archivo</a>
         </div>
       </div>
-      <a href="favoritos.html" class="btn-menu-brand" style="margin-left: 10px;">
-        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-        <span id="fav-count" class="counter-badge">0</span>
-      </a>
       <a href="carrito.html" class="btn-menu-brand btn-cart-nav">
         <svg viewBox="0 0 24 24"><path d="M16 6V4a4 4 0 0 0-8 0v2H3v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6h-5zm-6-2a2 2 0 0 1 4 0v2h-4V4zm8 16H6V8h2v2a1 1 0 0 0 2 0V8h4v2a1 1 0 0 0 2 0V8h2v12z"/></svg>
         BOLSA (<span id="cart-count" class="counter-badge">0</span>)
+      </a>
+      <a href="favoritos.html" class="btn-menu-brand" style="margin-left: 10px;">
+        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        <span id="fav-count" class="counter-badge">0</span>
       </a>
     </div>
   </nav>
@@ -838,7 +846,6 @@
       let wrappers = lbTrack.children;
       let audio = document.getElementById('audio-boda');
       
-      // Detenemos todos los videos
       for(let i=0; i<wrappers.length; i++) {
         let vid = wrappers[i].querySelector('video');
         if (vid) {
@@ -847,7 +854,7 @@
             vid.play().catch(e => console.log("Auto-play prevenido por el navegador."));
             if(!globalMuted) {
               audio.play().catch(e => {
-                globalMuted = true; // Si falla, forzamos mute visual
+                globalMuted = true; 
                 document.querySelectorAll('.lb-sound-btn').forEach(btn => btn.innerHTML = getSoundIcon(globalMuted));
               });
             }
@@ -857,14 +864,14 @@
         }
       }
 
-      // Si la slide actual no es video, pausamos el audio general
       let currentItem = wrappers[lbCurrentIndex];
       if(!currentItem.querySelector('video')) {
          audio.pause();
       }
     }
 
-    function closeLightbox() {
+    function closeLightbox(e) {
+      if(e) e.stopPropagation();
       lightbox.classList.remove('active');
       document.body.style.overflow = 'auto'; 
       let vids = lbTrack.querySelectorAll('video');
