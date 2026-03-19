@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Acceda a El Archivo de La Casa ÈNIGME. Curaduría exclusiva de alta joyería en acero inoxidable con valores de liquidación privados." />
   <title>El Archivo | Liquidación | La Casa ÈNIGME</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -42,25 +43,24 @@
     button { background: none; border: none; font-family: inherit; cursor: pointer; outline: none; }
 
     /* =========================================
-       NAVBAR MINIMALISTA Y CREDIBILIDAD
+       NAVBAR SUPER RESPONSIVO
        ========================================= */
     .navbar {
-      width: 100%; padding: 25px 5vw; display: flex; align-items: center; justify-content: space-between;
+      width: 100%; padding: clamp(15px, 3vw, 25px) 5vw; display: flex; align-items: center; justify-content: space-between;
       border-bottom: 1px solid var(--linea-fina); background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000;
     }
 
     .brand {
-      font-family: 'Cinzel', serif; font-size: clamp(1.4rem, 2.5vw, 1.8rem); letter-spacing: 0.35em;
+      font-family: 'Cinzel', serif; font-size: clamp(1.4rem, 4vw, 1.8rem); letter-spacing: 0.35em;
       color: var(--carbon); text-align: center; position: absolute; left: 50%; transform: translateX(-50%);
     }
 
-    .nav-group { display: flex; gap: 20px; align-items: center; }
+    .nav-group { display: flex; gap: clamp(10px, 2vw, 20px); align-items: center; }
     
-    /* MENÚ DESPLEGABLE */
     .dropdown { position: relative; display: inline-block; }
     .dropbtn {
-      font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; color: var(--carbon);
+      font-size: clamp(0.55rem, 1.5vw, 0.65rem); letter-spacing: 3px; text-transform: uppercase; color: var(--carbon);
       font-weight: 500; display: flex; align-items: center; gap: 5px; padding: 10px 0;
     }
     .dropbtn svg { width: 10px; height: 10px; transition: transform 0.3s; }
@@ -82,14 +82,13 @@
     .dropdown-content a:hover { background-color: var(--fondo-galeria); color: var(--dorado) !important; padding-left: 32px; }
     .dropdown.right .dropdown-content { left: auto; right: 0; }
 
-    /* BOTONES DE VENTA EN NAVBAR */
     .btn-menu-brand {
-      display: flex; align-items: center; gap: 8px; color: var(--carbon) !important; padding: 8px 16px;
-      border: 1px solid rgba(203, 170, 99, 0.4); font-size: 0.6rem; font-weight: 500; letter-spacing: 2px;
-      text-transform: uppercase; transition: var(--transition);
+      display: flex; align-items: center; gap: 8px; color: var(--carbon) !important; padding: clamp(6px, 1.5vw, 8px) clamp(10px, 2vw, 16px);
+      border: 1px solid rgba(203, 170, 99, 0.4); font-size: clamp(0.5rem, 1.2vw, 0.6rem); font-weight: 500; letter-spacing: clamp(1px, 0.5vw, 2px);
+      text-transform: uppercase; transition: var(--transition); border-radius: 2px;
     }
     .btn-menu-brand:hover { background-color: var(--dorado); border-color: var(--dorado); color: var(--blanco-dior) !important; }
-    .btn-menu-brand svg { width: 13px; height: 13px; fill: currentColor; }
+    .btn-menu-brand svg { width: clamp(10px, 1.5vw, 13px); height: clamp(10px, 1.5vw, 13px); fill: currentColor; }
 
     @keyframes pulse-soft { 0% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0.2); } 70% { box-shadow: 0 0 0 6px rgba(203, 170, 99, 0); } 100% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0); } }
     .btn-cart-nav { animation: pulse-soft 2.5s infinite; background-color: var(--marfil); }
@@ -97,40 +96,39 @@
     .counter-badge { font-weight: 600; }
 
     /* =========================================
-       BOTÓN VOLVER ATRÁS
+       ENCABEZADO EDITORIAL Y POLÍTICA DE PRECIOS
        ========================================= */
-    .btn-back { position: absolute; top: 110px; left: 5vw; font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gris-suave); display: flex; align-items: center; gap: 8px; transition: var(--transition); z-index: 10; }
-    .btn-back:hover { color: var(--carbon); transform: translateX(-5px); }
-    .btn-back svg { width: 12px; height: 12px; fill: currentColor; }
+    .gallery-header { text-align: center; padding: clamp(40px, 8vw, 80px) 20px clamp(20px, 4vw, 40px); border-bottom: 1px solid var(--linea-fina); background-color: var(--fondo-galeria); }
+    .gallery-kicker { font-family: 'Cinzel', serif; font-style: italic; font-size: clamp(0.7rem, 2vw, 0.9rem); color: var(--dorado); letter-spacing: 5px; text-transform: uppercase; margin-bottom: 10px; }
+    .gallery-title { font-family: 'Cinzel', serif; font-size: clamp(2rem, 6vw, 3.5rem); letter-spacing: 0.15em; text-transform: uppercase; color: var(--carbon); margin-bottom: 15px; }
+    .gallery-desc { font-size: clamp(0.7rem, 1.5vw, 0.8rem); line-height: 2; color: var(--gris-suave); max-width: 650px; margin: 0 auto; font-weight: 300; letter-spacing: 1px; }
+
+    /* BANNER DE REGLA DE COMPRA */
+    .promo-banner {
+      max-width: 800px; margin: 30px auto 0; padding: 15px 20px; background-color: var(--carbon); color: var(--dorado);
+      border-radius: 2px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+    .promo-banner p { font-size: clamp(0.55rem, 1.2vw, 0.7rem); letter-spacing: 2px; line-height: 1.8; text-transform: uppercase; font-weight: 500; margin: 0; }
+    .promo-banner strong { color: var(--blanco-dior); font-weight: 700; }
 
     /* =========================================
-       ENCABEZADO EDITORIAL
-       ========================================= */
-    .gallery-header { text-align: center; padding: 80px 20px 40px; border-bottom: 1px solid var(--linea-fina); background-color: var(--fondo-galeria); }
-    .gallery-kicker { font-family: 'Cinzel', serif; font-style: italic; font-size: 0.9rem; color: var(--dorado); letter-spacing: 5px; text-transform: uppercase; margin-bottom: 15px; }
-    .gallery-title { font-family: 'Cinzel', serif; font-size: clamp(2.2rem, 5vw, 3.5rem); letter-spacing: 0.15em; text-transform: uppercase; color: var(--carbon); margin-bottom: 20px; }
-    .gallery-desc { font-size: 0.8rem; line-height: 2; color: var(--gris-suave); max-width: 650px; margin: 0 auto; font-weight: 300; letter-spacing: 1px; }
-
-    /* AVISO DE LIQUIDACIÓN */
-    .premium-packaging { max-width: 600px; margin: 40px auto 0; padding: 15px; border-top: 1px dashed var(--carbon); border-bottom: 1px dashed var(--carbon); text-align: center; }
-    .premium-packaging p { font-size: 0.6rem; letter-spacing: 2px; line-height: 1.8; text-transform: uppercase; font-weight: 500; color: var(--carbon); }
-    .premium-packaging p strong { color: var(--dorado); }
-
-    /* =========================================
-       GRID DE PRODUCTOS (PEQUEÑOS Y UNIFORMES)
+       GRID DE PRODUCTOS TURBO RESPONSIVO
        ========================================= */
     .product-grid {
       display: grid; 
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); 
-      gap: 60px 30px; 
-      padding: 60px 5vw 120px; 
-      max-width: 1000px; 
+      /* Autoajuste fluido, mínimo 220px en PC para elegancia, pero en móvil forzaremos 2 columnas */
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
+      gap: clamp(20px, 4vw, 50px) clamp(15px, 3vw, 30px); 
+      padding: clamp(30px, 5vw, 60px) 5vw 120px; 
+      max-width: 1100px; 
       margin: 0 auto; width: 100%;
     }
 
     .product-card { 
       display: flex; flex-direction: column; background: var(--blanco-dior); 
       transition: var(--transition); border: none; 
+      content-visibility: auto; /* Acelerador de renderizado */
+      contain-intrinsic-size: 350px;
     }
     .product-card:hover { transform: translateY(-5px); }
 
@@ -139,111 +137,109 @@
       position: relative; background-color: var(--fondo-galeria); width: 100%;
       aspect-ratio: 1/1; 
       overflow: hidden; display: flex; align-items: center; justify-content: center;
-      touch-action: pan-y;
-      cursor: pointer;
+      touch-action: pan-y; cursor: pointer; border: 1px solid var(--linea-fina); border-bottom: none;
     }
     
-    /* El track que faltaba para que funcione el Lightbox */
-    .carousel-track { display: flex; width: 100%; height: 100%; transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); align-items: center; }
+    .carousel-track { display: flex; width: 100%; height: 100%; align-items: center; }
 
     .product-media { 
       flex: 0 0 100%; width: 100%; height: 100%; object-fit: contain; pointer-events: none; display: block; padding: 5px;
     }
 
-    /* CORAZÓN DE FAVORITOS (SUTIL) */
+    /* CORAZÓN DE FAVORITOS */
     .btn-fav { 
-      position: absolute; top: 10px; right: 10px; width: 28px; height: 28px; 
-      background-color: rgba(255, 255, 255, 0.8); border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+      position: absolute; top: 10px; right: 10px; width: clamp(24px, 4vw, 28px); height: clamp(24px, 4vw, 28px); 
+      background-color: rgba(255, 255, 255, 0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; 
       box-shadow: 0 2px 8px rgba(0,0,0,0.05); z-index: 10; transition: var(--transition); color: var(--gris-suave); border: 1px solid transparent;
     }
     .btn-fav:hover { transform: scale(1.1); color: var(--carbon); border-color: var(--linea-fina); background-color: var(--blanco-dior); }
-    .btn-fav svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2; transition: var(--transition); }
+    .btn-fav svg { width: clamp(10px, 2vw, 12px); height: clamp(10px, 2vw, 12px); fill: none; stroke: currentColor; stroke-width: 2; transition: var(--transition); }
     .btn-fav.active { background-color: var(--carbon); border-color: var(--carbon); }
     .btn-fav.active svg { fill: var(--dorado); stroke: var(--dorado); }
 
     /* INFO DEL PRODUCTO */
-    .product-info { padding: 20px 10px 10px; text-align: center; display: flex; flex-direction: column; flex-grow: 1; }
-    .product-code { font-size: 0.45rem; letter-spacing: 3px; color: var(--gris-suave); margin-bottom: 8px; }
-    .product-name { font-family: 'Cinzel', serif; font-size: 1.1rem; letter-spacing: 0.15em; color: var(--carbon); margin-bottom: 6px; text-transform: uppercase; font-weight: 500; }
-    .product-lema { font-size: 0.65rem; color: var(--gris-suave); margin-bottom: 20px; font-weight: 300; font-style: italic; }
+    .product-info { padding: clamp(10px, 2vw, 20px) 10px 10px; text-align: center; display: flex; flex-direction: column; flex-grow: 1; border: 1px solid var(--linea-fina); border-top: none; }
+    .product-code { font-size: clamp(0.4rem, 1vw, 0.45rem); letter-spacing: 3px; color: var(--gris-suave); margin-bottom: 6px; }
+    .product-name { font-family: 'Cinzel', serif; font-size: clamp(0.85rem, 2.5vw, 1.1rem); letter-spacing: 0.1em; color: var(--carbon); margin-bottom: 6px; text-transform: uppercase; font-weight: 600; line-height: 1.2; }
+    .product-lema { font-size: clamp(0.55rem, 1.5vw, 0.65rem); color: var(--gris-suave); margin-bottom: 15px; font-weight: 300; font-style: italic; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;}
     
     /* ETIQUETAS Y TALLA */
-    .specs-block { display: flex; flex-direction: column; align-items: center; gap: 6px; margin-bottom: 20px; }
+    .specs-block { display: flex; flex-direction: column; align-items: center; gap: 4px; margin-bottom: 15px; }
     .size-select {
       appearance: none; background: transparent; border: none; border-bottom: 1px solid var(--carbon);
-      font-family: 'Montserrat', sans-serif; font-size: 0.55rem; letter-spacing: 2px; color: var(--carbon);
+      font-family: 'Montserrat', sans-serif; font-size: clamp(0.45rem, 1.5vw, 0.55rem); letter-spacing: 2px; color: var(--carbon);
       font-weight: 600; text-transform: uppercase; padding: 4px 15px 4px 5px; cursor: pointer; outline: none;
       background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231C1C1C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-      background-repeat: no-repeat; background-position: right center; background-size: 10px;
-      margin-bottom: 5px; text-align: center;
+      background-repeat: no-repeat; background-position: right center; background-size: 8px;
+      margin-bottom: 5px; text-align: center; width: 100%; max-width: 140px;
     }
-    .spec-material { font-size: 0.5rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; color: var(--carbon); border: 1px solid var(--linea-fina); padding: 2px 8px; border-radius: 2px;}
+    .spec-material { font-size: clamp(0.4rem, 1.2vw, 0.45rem); letter-spacing: 2px; text-transform: uppercase; color: var(--carbon); border: 1px solid var(--linea-fina); padding: 3px 6px; border-radius: 2px;}
 
     /* PRECIO Y BOTÓN DE AÑADIR */
-    .product-price { font-size: 1.1rem; letter-spacing: 2px; color: var(--carbon); font-weight: 600; margin-bottom: 15px; margin-top: auto; }
-    .price-old { font-size: 0.7rem; color: var(--gris-suave); text-decoration: line-through; letter-spacing: 1px; display: block; margin-bottom: 5px;}
+    .price-old { font-size: clamp(0.6rem, 1.5vw, 0.7rem); color: var(--gris-suave); text-decoration: line-through; letter-spacing: 1px; display: block; margin-bottom: 2px;}
+    .product-price { font-size: clamp(0.9rem, 2.5vw, 1.1rem); letter-spacing: 2px; color: var(--carbon); font-weight: 600; margin-bottom: 15px; margin-top: auto; }
     
-    .purchase-action { display: flex; border: 1px solid var(--carbon); height: 35px; transition: var(--transition); }
+    .purchase-action { display: flex; border: 1px solid var(--carbon); height: clamp(30px, 5vw, 35px); transition: var(--transition); }
     .purchase-action:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.08); }
-    .qty-selector { display: flex; align-items: center; justify-content: space-between; width: 60px; background: var(--blanco-dior); border-right: 1px solid var(--linea-fina); }
-    .qty-selector button { width: 20px; height: 100%; font-size: 0.9rem; color: var(--gris-suave); display: flex; align-items: center; justify-content: center; }
+    .qty-selector { display: flex; align-items: center; justify-content: space-between; width: clamp(45px, 10vw, 60px); background: var(--blanco-dior); border-right: 1px solid var(--linea-fina); }
+    .qty-selector button { width: clamp(15px, 4vw, 20px); height: 100%; font-size: clamp(0.8rem, 2vw, 0.9rem); color: var(--gris-suave); display: flex; align-items: center; justify-content: center; }
     .qty-selector button:hover { color: var(--carbon); }
-    .qty-selector span { font-size: 0.65rem; font-weight: 600; color: var(--carbon); }
+    .qty-selector span { font-size: clamp(0.55rem, 1.5vw, 0.65rem); font-weight: 600; color: var(--carbon); }
     
-    .btn-cart { flex-grow: 1; background-color: var(--carbon); color: var(--blanco-dior); font-size: 0.5rem; letter-spacing: 2px; text-transform: uppercase; transition: var(--transition); font-weight: 500; cursor: pointer; }
-    .btn-cart:hover { background-color: var(--carbon); color: var(--blanco-dior); }
-    .btn-cart.added { background: var(--dorado); color: var(--carbon); border-color: var(--dorado); font-weight: 600; }
+    .btn-cart { flex-grow: 1; background-color: var(--carbon); color: var(--blanco-dior); font-size: clamp(0.4rem, 1.5vw, 0.5rem); letter-spacing: clamp(1px, 0.5vw, 2px); text-transform: uppercase; transition: var(--transition); font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0 5px;}
+    .btn-cart:hover { background-color: var(--dorado); color: var(--carbon); border-color: var(--dorado);}
+    .btn-cart.added { background: var(--dorado); color: var(--carbon); font-weight: 600; }
 
     /* =========================================
        BOTÓN FLOTANTE DESPLEGABLE (SÓLO 2 OPCIONES)
        ========================================= */
-    .fab-container { position: fixed; bottom: 30px; right: 30px; z-index: 9999; display: flex; flex-direction: column-reverse; align-items: flex-end; gap: 10px; }
+    .fab-container { position: fixed; bottom: 20px; right: 20px; z-index: 9999; display: flex; flex-direction: column-reverse; align-items: flex-end; gap: 10px; }
     
     .fab-main { 
-      width: 50px; height: 50px; background-color: var(--carbon); color: var(--blanco-dior); 
+      width: clamp(40px, 10vw, 50px); height: clamp(40px, 10vw, 50px); background-color: var(--carbon); color: var(--blanco-dior); 
       border-radius: 50%; display: flex; align-items: center; justify-content: center; 
       box-shadow: 0 4px 15px rgba(0,0,0,0.2); cursor: pointer; transition: var(--transition); z-index: 2;
     }
-    .fab-main svg { width: 24px; height: 24px; fill: currentColor; transition: transform 0.4s ease; }
+    .fab-main svg { width: clamp(18px, 5vw, 24px); height: clamp(18px, 5vw, 24px); fill: currentColor; transition: transform 0.4s ease; }
     .fab-container:hover .fab-main, .fab-container.active .fab-main { background-color: var(--dorado); color: var(--carbon); }
     
     .fab-menu {
       display: flex; flex-direction: column; align-items: flex-end; gap: 10px; 
-      opacity: 0; visibility: hidden; transform: translateY(20px); transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); margin-bottom: 10px;
+      opacity: 0; visibility: hidden; transform: translateY(20px); transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); margin-bottom: 5px;
     }
     .fab-container:hover .fab-menu, .fab-container.active .fab-menu { opacity: 1; visibility: visible; transform: translateY(0); }
     
     .fab-item { 
-      background: var(--marfil); color: var(--carbon); padding: 10px 18px; border-radius: 20px; 
-      font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; 
+      background: var(--marfil); color: var(--carbon); padding: clamp(8px, 2vw, 10px) clamp(12px, 3vw, 18px); border-radius: 20px; 
+      font-size: clamp(0.45rem, 1.5vw, 0.55rem); letter-spacing: 2px; text-transform: uppercase; font-weight: 500; 
       border: 1px solid var(--linea-fina); box-shadow: 0 4px 10px rgba(0,0,0,0.05); white-space: nowrap; transition: var(--transition);
     }
     .fab-item.vip { background: var(--dorado); color: var(--carbon); border-color: var(--dorado); font-weight: 600; }
     .fab-item:hover { transform: translateX(-5px); background: var(--carbon); color: var(--blanco-dior); border-color: var(--carbon); }
 
     /* =========================================
-       LIGHTBOX (VISUALIZACIÓN DE IMAGEN ÍNTEGRA)
+       LIGHTBOX INMERSIVO (CLICK FUERA PARA CERRAR)
        ========================================= */
     .lightbox { 
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
-      background-color: rgba(250, 249, 246, 0.98); backdrop-filter: blur(10px); 
+      background-color: rgba(18, 18, 18, 0.98); backdrop-filter: blur(10px); 
       z-index: 99999; display: flex; align-items: center; justify-content: center; 
       opacity: 0; pointer-events: none; transition: opacity 0.4s ease; 
     }
     .lightbox.active { opacity: 1; pointer-events: auto; }
     
     .lightbox-track {
-      display: flex; width: 100%; height: 100%; align-items: center; justify-content: center;
+      display: flex; width: 100%; height: 100%; align-items: center; justify-content: center; cursor: pointer;
     }
     
     .lightbox img { 
-      max-width: 90vw; max-height: 90vh; object-fit: contain; transform: scale(0.95); 
-      transition: transform 0.4s ease; box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+      max-width: 90vw; max-height: 85vh; object-fit: contain; transform: scale(0.95); 
+      transition: transform 0.4s ease; box-shadow: 0 20px 50px rgba(0,0,0,0.2); background: var(--blanco-dior); border-radius: 2px; cursor: default;
     }
     .lightbox.active img { transform: scale(1); }
     
     .lightbox-close { 
-      position: absolute; top: 30px; right: 40px; font-size: 3rem; color: var(--carbon); 
+      position: absolute; top: clamp(15px, 4vw, 30px); right: clamp(15px, 4vw, 40px); font-size: clamp(2rem, 6vw, 3rem); color: var(--blanco-dior); 
       cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 200; line-height: 1; 
       transition: var(--transition); z-index: 10001; 
     }
@@ -252,25 +248,29 @@
     /* =========================================
        NOTIFICACIÓN TOAST
        ========================================= */
-    .toast-notification { position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%) translateY(100px); background-color: var(--marfil); color: var(--carbon); border: 1px solid var(--dorado); padding: 15px 30px; font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; box-shadow: 0 10px 40px rgba(0,0,0,0.1); z-index: 10000; opacity: 0; transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); display: flex; align-items: center; gap: 12px; pointer-events: none; }
+    .toast-notification { position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%) translateY(100px); background-color: var(--marfil); color: var(--carbon); border: 1px solid var(--dorado); padding: 15px 30px; font-size: clamp(0.5rem, 1.5vw, 0.6rem); letter-spacing: 2px; text-transform: uppercase; font-weight: 500; box-shadow: 0 10px 40px rgba(0,0,0,0.1); z-index: 10000; opacity: 0; transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); display: flex; align-items: center; justify-content: center; gap: 12px; pointer-events: none; width: max-content; max-width: 90%; }
     .toast-notification svg { fill: var(--dorado); width: 16px; height: 16px; }
     .toast-notification.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
-    /* BANNER LEGAL DE CONFIANZA */
+    /* =========================================
+       BANNER LEGAL DE CONFIANZA
+       ========================================= */
     .legal-banner { border-top: 1px solid var(--linea-fina); padding: 60px 5vw 40px; text-align: center; margin-top: auto; background-color: var(--fondo-galeria); }
-    .trust-badges-container { display: flex; justify-content: center; gap: 40px; margin-bottom: 40px; padding: 0 5vw; flex-wrap: wrap; }
-    .trust-badge-item { display: flex; flex-direction: column; align-items: center; gap: 10px; color: var(--carbon); font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; }
-    .trust-badge-item svg { width: 24px; height: 24px; fill: var(--dorado); }
-    .legal-text { font-size: 0.6rem; line-height: 2.2; letter-spacing: 1.5px; color: var(--gris-suave); max-width: 900px; margin: 0 auto; text-transform: uppercase; }
+    .trust-badges-container { display: flex; justify-content: center; gap: clamp(15px, 4vw, 40px); margin-bottom: 40px; padding: 0 5vw; flex-wrap: wrap; }
+    .trust-badge-item { display: flex; flex-direction: column; align-items: center; gap: 10px; color: var(--carbon); font-size: clamp(0.45rem, 1.2vw, 0.55rem); letter-spacing: 2px; text-transform: uppercase; font-weight: 500; }
+    .trust-badge-item svg { width: clamp(18px, 4vw, 24px); height: clamp(18px, 4vw, 24px); fill: var(--dorado); }
+    .legal-text { font-size: clamp(0.5rem, 1.2vw, 0.6rem); line-height: 2.2; letter-spacing: 1.5px; color: var(--gris-suave); max-width: 900px; margin: 0 auto; text-transform: uppercase; }
     .legal-text strong { color: var(--carbon); }
-    .btn-policy { display: inline-block; margin-top: 25px; padding: 10px 20px; border: 1px solid var(--carbon); color: var(--carbon); font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; transition: var(--transition); background: transparent; }
+    .btn-policy { display: inline-block; margin-top: 25px; padding: 10px 20px; border: 1px solid var(--carbon); color: var(--carbon); font-size: clamp(0.45rem, 1.2vw, 0.55rem); letter-spacing: 2px; text-transform: uppercase; font-weight: 600; transition: var(--transition); background: transparent; }
     .btn-policy:hover { background-color: var(--carbon); color: var(--blanco-dior); }
-    .founder-credit { margin-top: 40px; font-size: 0.5rem; letter-spacing: 0.25em; color: var(--gris-suave); opacity: 0.5; text-transform: uppercase; font-weight: 300; }
+    .founder-credit { margin-top: 40px; font-size: clamp(0.4rem, 1vw, 0.5rem); letter-spacing: 0.25em; color: var(--gris-suave); opacity: 0.5; text-transform: uppercase; font-weight: 300; }
 
-    /* RESPONSIVE */
+    /* =========================================
+       SÚPER RESPONSIVO (MÓVIL EN 2 COLUMNAS FORZADO)
+       ========================================= */
     @media (max-width: 768px) {
-      .navbar { padding: 20px; flex-wrap: wrap; justify-content: space-between; }
-      .brand { position: relative; left: 0; transform: none; width: 100%; margin-bottom: 15px; order: -1; font-size: 1.6rem; }
+      .navbar { flex-wrap: wrap; justify-content: space-between; }
+      .brand { position: relative; left: 0; transform: none; width: 100%; margin-bottom: 15px; order: -1; }
       
       .nav-group.right { flex-direction: column; width: 100%; gap: 10px; align-items: stretch; }
       .nav-group.right .dropdown { order: 1; display: flex; justify-content: center; width: 100%; }
@@ -278,50 +278,14 @@
       .nav-group.right .btn-cart-nav { order: 2; width: 100%; justify-content: center; margin-left: 0 !important; }
       .nav-group.right a[href="favoritos.html"] { order: 3; width: 100%; justify-content: center; margin-left: 0 !important; }
 
-      .nav-link { font-size: 0.55rem; letter-spacing: 2px; }
-      .btn-menu-brand { padding: 8px 12px; font-size: 0.55rem; letter-spacing: 1px; }
       .dropdown-content { min-width: 160px; }
-      .dropdown-content a { font-size: 0.6rem; padding: 15px; }
-
-      .gallery-header { padding: 50px 15px 30px; }
-      .gallery-title { font-size: 1.8rem; }
-      .btn-back { top: 160px; }
       
-      /* PRODUCTOS EN 2 COLUMNAS COMPACTAS */
+      /* REGLA DE ORO MÓVIL: 2 COLUMNAS SIEMPRE */
       .product-grid { 
         grid-template-columns: repeat(2, 1fr); 
-        gap: 15px; 
+        gap: 15px 10px; 
         padding: 30px 10px 100px; 
       }
-      
-      .carousel-wrapper { aspect-ratio: 1/1; }
-      
-      .product-info { padding: 15px 8px 8px; }
-      .product-name { font-size: 0.85rem; margin-bottom: 5px; }
-      .product-lema { display: none; } /* Oculto en móvil */
-      
-      .specs-block { padding: 5px; gap: 4px; margin-bottom: 10px; }
-      .size-select { font-size: 0.5rem; padding: 4px 15px 4px 5px; background-size: 8px; margin-bottom: 3px; }
-      .spec-material { font-size: 0.45rem; padding: 3px 6px; }
-
-      .price-old { font-size: 0.65rem; margin-bottom: 2px; }
-      .product-price { font-size: 1rem; margin-bottom: 10px; }
-      
-      .purchase-action { height: 32px; flex-direction: row; }
-      .qty-selector { width: 50px; }
-      .qty-selector button { width: 15px; font-size: 0.9rem; }
-      .qty-selector span { font-size: 0.6rem; }
-      .btn-cart { font-size: 0.45rem; letter-spacing: 1px; padding: 0; display: flex; align-items: center; justify-content: center; }
-
-      .btn-fav { width: 22px; height: 22px; top: 6px; right: 6px; }
-      .btn-fav svg { width: 10px; height: 10px; }
-      
-      .fab-container { bottom: 20px; right: 20px; }
-      .fab-main { width: 45px; height: 45px; }
-      .fab-main svg { width: 20px; height: 20px; }
-      
-      .toast-notification { width: 90%; justify-content: center; bottom: 20px; font-size: 0.5rem; padding: 12px; }
-      .lightbox-close { top: 15px; right: 15px; font-size: 2.5rem; }
     }
   </style>
 </head>
@@ -354,16 +318,16 @@
           <a href="joyeria.html">Alta Joyería</a>
           <a href="boutique.html">Bolsos Boutique</a>
           <a href="plata.html">Colección Plata</a>
-          <a href="liquidacion.html">El Archivo</a>
+          <a href="liquidacion.html" style="color:var(--dorado)!important;">El Archivo</a>
         </div>
       </div>
       <a href="carrito.html" class="btn-menu-brand btn-cart-nav" style="margin-left: 10px;">
         <svg viewBox="0 0 24 24"><path d="M16 6V4a4 4 0 0 0-8 0v2H3v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6h-5zm-6-2a2 2 0 0 1 4 0v2h-4V4zm8 16H6V8h2v2a1 1 0 0 0 2 0V8h4v2a1 1 0 0 0 2 0V8h2v12z"/></svg>
-        BOLSA (<span id="cart-count">0</span>)
+        BOLSA (<span id="cart-count" class="counter-badge">0</span>)
       </a>
       <a href="favoritos.html" class="btn-menu-brand">
         <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-        <span id="fav-count">0</span>
+        <span id="fav-count" class="counter-badge">0</span>
       </a>
     </div>
   </nav>
@@ -380,19 +344,14 @@
     </div>
   </div>
 
-  <a href="#" onclick="window.history.back(); return false;" class="btn-back">
-    <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
-    Volver atrás
-  </a>
-
   <header class="gallery-header">
     <p class="gallery-kicker">Private Sales</p>
     <h1 class="gallery-title">El Archivo</h1>
     <p class="gallery-desc">La belleza atemporal que trasciende las temporadas. Colección curada de oportunidades exclusivas.</p>
   </header>
 
-  <div class="premium-packaging">
-    <p>Selección Especial de Acero Inoxidable con valores exclusivos entre <strong>L 99 y L 299</strong>.</p>
+  <div class="promo-banner">
+    <p>OFERTA EXCLUSIVA: <strong>Precios de liquidación válidos a partir de la adquisición de 2 piezas.</strong> Si adquiere solo 1 pieza de esta colección, aplicará el valor regular (precio tachado).</p>
   </div>
 
   <main class="product-grid">
@@ -402,8 +361,8 @@
         <button class="btn-fav" data-ref="LQ001" onclick="toggleFav('LQ001', 'Aretes Lo-Ve', 'L 199', 'l1.png', this); event.stopPropagation();">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
-        <div class="carousel-track" data-index="0">
-          <img src="l1.png" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=LIQUIDACION+1'">
+        <div class="carousel-track">
+          <img src="l1.png" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+1'">
         </div>
       </div>
       <div class="product-info">
@@ -412,9 +371,7 @@
         <p class="product-lema">"El romance en su forma más pura."</p>
         
         <div class="specs-block">
-          <select id="size-LQ001" class="size-select">
-            <option value="UNICA">Talla Única</option>
-          </select>
+          <select id="size-LQ001" class="size-select"><option value="UNICA">Talla Única</option></select>
           <span class="spec-material"><strong>Acero Inoxidable</strong></span>
         </div>
 
@@ -427,7 +384,7 @@
             <span id="qty-LQ001">1</span>
             <button onclick="changeCardQty('qty-LQ001', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('LQ001', 'Aretes Lo-Ve', 'L 199', 'l1.png', this, 'qty-LQ001', 'size-LQ001')">Añadir a la Bolsa</button>
+          <button class="btn-cart" onclick="addToCartLiquidation('LQ001', 'Aretes Lo-Ve', '199', '518', 'l1.png', this, 'qty-LQ001', 'size-LQ001')">Añadir a la Bolsa</button>
         </div>
       </div>
     </article>
@@ -437,19 +394,17 @@
         <button class="btn-fav" data-ref="LQ002" onclick="toggleFav('LQ002', 'Set 6 Argollas Classique', 'L 199', 'l2.png', this); event.stopPropagation();">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
-        <div class="carousel-track" data-index="0">
-          <img src="l2.png" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=LIQUIDACION+2'">
+        <div class="carousel-track">
+          <img src="l2.png" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+2'">
         </div>
       </div>
       <div class="product-info">
         <span class="product-code">REF: LQ002</span>
-        <h2 class="product-name">Set Argollas Classique</h2>
+        <h2 class="product-name">6 Argollas Classique</h2>
         <p class="product-lema">"Elegancia versátil para cada día."</p>
         
         <div class="specs-block">
-          <select id="size-LQ002" class="size-select">
-            <option value="UNICA">Set 6 Pares</option>
-          </select>
+          <select id="size-LQ002" class="size-select"><option value="UNICA">Set Completo</option></select>
           <span class="spec-material"><strong>Acero Inoxidable</strong></span>
         </div>
 
@@ -462,7 +417,7 @@
             <span id="qty-LQ002">1</span>
             <button onclick="changeCardQty('qty-LQ002', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('LQ002', 'Set 6 Argollas Classique', 'L 199', 'l2.png', this, 'qty-LQ002', 'size-LQ002')">Añadir a la Bolsa</button>
+          <button class="btn-cart" onclick="addToCartLiquidation('LQ002', 'Set 6 Argollas Classique', '199', '518', 'l2.png', this, 'qty-LQ002', 'size-LQ002')">Añadir a la Bolsa</button>
         </div>
       </div>
     </article>
@@ -472,8 +427,8 @@
         <button class="btn-fav" data-ref="LQ003" onclick="toggleFav('LQ003', 'Anillo Demi-Cœur', 'L 149', 'l3.png', this); event.stopPropagation();">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
-        <div class="carousel-track" data-index="0">
-          <img src="l3.png" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=LIQUIDACION+3'">
+        <div class="carousel-track">
+          <img src="l3.png" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+3'">
         </div>
       </div>
       <div class="product-info">
@@ -482,9 +437,7 @@
         <p class="product-lema">"La otra mitad de tu esencia."</p>
         
         <div class="specs-block">
-          <select id="size-LQ003" class="size-select">
-            <option value="AJUSTABLE">Ajustable</option>
-          </select>
+          <select id="size-LQ003" class="size-select"><option value="AJUSTABLE">Ajustable</option></select>
           <span class="spec-material"><strong>Acero Inoxidable</strong></span>
         </div>
 
@@ -497,7 +450,7 @@
             <span id="qty-LQ003">1</span>
             <button onclick="changeCardQty('qty-LQ003', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('LQ003', 'Anillo Demi-Cœur', 'L 149', 'l3.png', this, 'qty-LQ003', 'size-LQ003')">Añadir a la Bolsa</button>
+          <button class="btn-cart" onclick="addToCartLiquidation('LQ003', 'Anillo Demi-Cœur', '149', '468', 'l3.png', this, 'qty-LQ003', 'size-LQ003')">Añadir a la Bolsa</button>
         </div>
       </div>
     </article>
@@ -507,19 +460,17 @@
         <button class="btn-fav" data-ref="LQ004" onclick="toggleFav('LQ004', 'Set Alianzas Éternel', 'L 299', 'l4.png', this); event.stopPropagation();">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
-        <div class="carousel-track" data-index="0">
-          <img src="l4.png" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=LIQUIDACION+4'">
+        <div class="carousel-track">
+          <img src="l4.png" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+4'">
         </div>
       </div>
       <div class="product-info">
         <span class="product-code">REF: LQ004</span>
-        <h2 class="product-name">Set Alianzas Éternel</h2>
+        <h2 class="product-name">Alianzas Éternel</h2>
         <p class="product-lema">"Un pacto forjado en acero."</p>
         
         <div class="specs-block">
-          <select id="size-LQ004" class="size-select">
-            <option value="8">Talla 8 (Hombre/Mujer)</option>
-          </select>
+          <select id="size-LQ004" class="size-select"><option value="8">Talla 8 (Ambos)</option></select>
           <span class="spec-material"><strong>Acero Inoxidable</strong></span>
         </div>
 
@@ -532,7 +483,7 @@
             <span id="qty-LQ004">1</span>
             <button onclick="changeCardQty('qty-LQ004', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('LQ004', 'Set Alianzas Éternel', 'L 299', 'l4.png', this, 'qty-LQ004', 'size-LQ004')">Añadir a la Bolsa</button>
+          <button class="btn-cart" onclick="addToCartLiquidation('LQ004', 'Set Alianzas Éternel', '299', '618', 'l4.png', this, 'qty-LQ004', 'size-LQ004')">Añadir a la Bolsa</button>
         </div>
       </div>
     </article>
@@ -542,8 +493,8 @@
         <button class="btn-fav" data-ref="LQ005" onclick="toggleFav('LQ005', 'Anillo Rosée', 'L 199', 'l5.png', this); event.stopPropagation();">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
-        <div class="carousel-track" data-index="0">
-          <img src="l5.png" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=LIQUIDACION+5'">
+        <div class="carousel-track">
+          <img src="l5.png" class="product-media" decoding="async" loading="lazy" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+5'">
         </div>
       </div>
       <div class="product-info">
@@ -552,9 +503,7 @@
         <p class="product-lema">"La delicadeza de una gota de rocío."</p>
         
         <div class="specs-block">
-          <select id="size-LQ005" class="size-select">
-            <option value="7">Talla 7</option>
-          </select>
+          <select id="size-LQ005" class="size-select"><option value="7">Talla 7</option></select>
           <span class="spec-material"><strong>Acero Inoxidable</strong></span>
         </div>
 
@@ -567,7 +516,7 @@
             <span id="qty-LQ005">1</span>
             <button onclick="changeCardQty('qty-LQ005', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('LQ005', 'Anillo Rosée', 'L 199', 'l5.png', this, 'qty-LQ005', 'size-LQ005')">Añadir a la Bolsa</button>
+          <button class="btn-cart" onclick="addToCartLiquidation('LQ005', 'Anillo Rosée', '199', '518', 'l5.png', this, 'qty-LQ005', 'size-LQ005')">Añadir a la Bolsa</button>
         </div>
       </div>
     </article>
@@ -577,8 +526,8 @@
         <button class="btn-fav" data-ref="LQ006" onclick="toggleFav('LQ006', 'Collar Étoile Cristal', 'L 299', 'l6.png', this); event.stopPropagation();">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
-        <div class="carousel-track" data-index="0">
-          <img src="l6.png" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=LIQUIDACION+6'">
+        <div class="carousel-track">
+          <img src="l6.png" class="product-media" decoding="async" loading="lazy" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+6'">
         </div>
       </div>
       <div class="product-info">
@@ -587,9 +536,7 @@
         <p class="product-lema">"Una estrella fugaz capturada para ti."</p>
         
         <div class="specs-block">
-          <select id="size-LQ006" class="size-select">
-            <option value="UNICA">Talla Única</option>
-          </select>
+          <select id="size-LQ006" class="size-select"><option value="UNICA">Talla Única</option></select>
           <span class="spec-material"><strong>Acero Inoxidable</strong></span>
         </div>
 
@@ -602,7 +549,7 @@
             <span id="qty-LQ006">1</span>
             <button onclick="changeCardQty('qty-LQ006', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('LQ006', 'Collar Étoile Cristal', 'L 299', 'l6.png', this, 'qty-LQ006', 'size-LQ006')">Añadir a la Bolsa</button>
+          <button class="btn-cart" onclick="addToCartLiquidation('LQ006', 'Collar Étoile Cristal', '299', '618', 'l6.png', this, 'qty-LQ006', 'size-LQ006')">Añadir a la Bolsa</button>
         </div>
       </div>
     </article>
@@ -612,19 +559,17 @@
         <button class="btn-fav" data-ref="LQ007" onclick="toggleFav('LQ007', 'Aretes Cercle Parfait', 'L 129', 'l7.png', this); event.stopPropagation();">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
-        <div class="carousel-track" data-index="0">
-          <img src="l7.png" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=LIQUIDACION+7'">
+        <div class="carousel-track">
+          <img src="l7.png" class="product-media" decoding="async" loading="lazy" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+7'">
         </div>
       </div>
       <div class="product-info">
         <span class="product-code">REF: LQ007</span>
         <h2 class="product-name">Cercle Parfait</h2>
-        <p class="product-lema">"Volumen y minimalismo en perfecta armonía."</p>
+        <p class="product-lema">"Volumen y minimalismo en armonía."</p>
         
         <div class="specs-block">
-          <select id="size-LQ007" class="size-select">
-            <option value="UNICA">Talla Única</option>
-          </select>
+          <select id="size-LQ007" class="size-select"><option value="UNICA">Talla Única</option></select>
           <span class="spec-material"><strong>Acero Inoxidable</strong></span>
         </div>
 
@@ -637,7 +582,7 @@
             <span id="qty-LQ007">1</span>
             <button onclick="changeCardQty('qty-LQ007', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('LQ007', 'Aretes Cercle Parfait', 'L 129', 'l7.png', this, 'qty-LQ007', 'size-LQ007')">Añadir a la Bolsa</button>
+          <button class="btn-cart" onclick="addToCartLiquidation('LQ007', 'Aretes Cercle Parfait', '129', '448', 'l7.png', this, 'qty-LQ007', 'size-LQ007')">Añadir a la Bolsa</button>
         </div>
       </div>
     </article>
@@ -647,8 +592,8 @@
         <button class="btn-fav" data-ref="LQ008" onclick="toggleFav('LQ008', 'Pulsera Sphères', 'L 199', 'l8.png', this); event.stopPropagation();">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
-        <div class="carousel-track" data-index="0">
-          <img src="l8.png" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=LIQUIDACION+8'">
+        <div class="carousel-track">
+          <img src="l8.png" class="product-media" decoding="async" loading="lazy" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+8'">
         </div>
       </div>
       <div class="product-info">
@@ -657,9 +602,7 @@
         <p class="product-lema">"Simetría absoluta en tu muñeca."</p>
         
         <div class="specs-block">
-          <select id="size-LQ008" class="size-select">
-            <option value="UNICA">Talla Única</option>
-          </select>
+          <select id="size-LQ008" class="size-select"><option value="UNICA">Talla Única</option></select>
           <span class="spec-material"><strong>Acero Inoxidable</strong></span>
         </div>
 
@@ -672,7 +615,7 @@
             <span id="qty-LQ008">1</span>
             <button onclick="changeCardQty('qty-LQ008', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('LQ008', 'Pulsera Sphères', 'L 199', 'l8.png', this, 'qty-LQ008', 'size-LQ008')">Añadir a la Bolsa</button>
+          <button class="btn-cart" onclick="addToCartLiquidation('LQ008', 'Pulsera Sphères', '199', '518', 'l8.png', this, 'qty-LQ008', 'size-LQ008')">Añadir a la Bolsa</button>
         </div>
       </div>
     </article>
@@ -682,8 +625,8 @@
         <button class="btn-fav" data-ref="LQ009" onclick="toggleFav('LQ009', 'Pulsera Sphères Flex', 'L 219', 'l9.png', this); event.stopPropagation();">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
-        <div class="carousel-track" data-index="0">
-          <img src="l9.png" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=LIQUIDACION+9'">
+        <div class="carousel-track">
+          <img src="l9.png" class="product-media" decoding="async" loading="lazy" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+9'">
         </div>
       </div>
       <div class="product-info">
@@ -692,9 +635,7 @@
         <p class="product-lema">"Fluidez y adaptabilidad milimétrica."</p>
         
         <div class="specs-block">
-          <select id="size-LQ009" class="size-select">
-            <option value="AJUSTABLE">Ajustable</option>
-          </select>
+          <select id="size-LQ009" class="size-select"><option value="AJUSTABLE">Ajustable</option></select>
           <span class="spec-material"><strong>Acero Inoxidable</strong></span>
         </div>
 
@@ -707,7 +648,7 @@
             <span id="qty-LQ009">1</span>
             <button onclick="changeCardQty('qty-LQ009', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('LQ009', 'Pulsera Sphères Flex', 'L 219', 'l9.png', this, 'qty-LQ009', 'size-LQ009')">Añadir a la Bolsa</button>
+          <button class="btn-cart" onclick="addToCartLiquidation('LQ009', 'Pulsera Sphères Flex', '219', '538', 'l9.png', this, 'qty-LQ009', 'size-LQ009')">Añadir a la Bolsa</button>
         </div>
       </div>
     </article>
@@ -717,8 +658,8 @@
         <button class="btn-fav" data-ref="LQ010" onclick="toggleFav('LQ010', 'Charms Heritage', 'L 299', 'l10.png', this); event.stopPropagation();">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
-        <div class="carousel-track" data-index="0">
-          <img src="l10.png" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=LIQUIDACION+10'">
+        <div class="carousel-track">
+          <img src="l10.png" class="product-media" decoding="async" loading="lazy" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+10'">
         </div>
       </div>
       <div class="product-info">
@@ -727,9 +668,7 @@
         <p class="product-lema">"Una historia contada a través de dijes."</p>
         
         <div class="specs-block">
-          <select id="size-LQ010" class="size-select">
-            <option value="UNICA">Talla Única</option>
-          </select>
+          <select id="size-LQ010" class="size-select"><option value="UNICA">Talla Única</option></select>
           <span class="spec-material"><strong>Acero Inoxidable</strong></span>
         </div>
 
@@ -742,7 +681,7 @@
             <span id="qty-LQ010">1</span>
             <button onclick="changeCardQty('qty-LQ010', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('LQ010', 'Charms Heritage', 'L 299', 'l10.png', this, 'qty-LQ010', 'size-LQ010')">Añadir a la Bolsa</button>
+          <button class="btn-cart" onclick="addToCartLiquidation('LQ010', 'Charms Heritage', '299', '618', 'l10.png', this, 'qty-LQ010', 'size-LQ010')">Añadir a la Bolsa</button>
         </div>
       </div>
     </article>
@@ -752,19 +691,17 @@
         <button class="btn-fav" data-ref="LQ011" onclick="toggleFav('LQ011', 'Collar Lumière Pastel', 'L 299', 'l11.png', this); event.stopPropagation();">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
-        <div class="carousel-track" data-index="0">
-          <img src="l11.png" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=LIQUIDACION+11'">
+        <div class="carousel-track">
+          <img src="l11.png" class="product-media" decoding="async" loading="lazy" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+11'">
         </div>
       </div>
       <div class="product-info">
         <span class="product-code">REF: LQ011</span>
-        <h2 class="product-name">Collar Lumière Pastel</h2>
+        <h2 class="product-name">Lumière Pastel</h2>
         <p class="product-lema">"Destellos de color que iluminan tu aura."</p>
         
         <div class="specs-block">
-          <select id="size-LQ011" class="size-select">
-            <option value="UNICA">Talla Única</option>
-          </select>
+          <select id="size-LQ011" class="size-select"><option value="UNICA">Talla Única</option></select>
           <span class="spec-material"><strong>Acero Inoxidable</strong></span>
         </div>
 
@@ -777,29 +714,27 @@
             <span id="qty-LQ011">1</span>
             <button onclick="changeCardQty('qty-LQ011', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('LQ011', 'Collar Lumière Pastel', 'L 299', 'l11.png', this, 'qty-LQ011', 'size-LQ011')">Añadir a la Bolsa</button>
+          <button class="btn-cart" onclick="addToCartLiquidation('LQ011', 'Collar Lumière Pastel', '299', '618', 'l11.png', this, 'qty-LQ011', 'size-LQ011')">Añadir a la Bolsa</button>
         </div>
       </div>
     </article>
 
     <article class="product-card">
       <div class="carousel-wrapper" onclick="openLightbox(this)">
-        <button class="btn-fav" data-ref="LQ012" onclick="toggleFav('LQ012', 'Collar Fe-Male', 'L 299', 'l12.png', this); event.stopPropagation();">
+        <button class="btn-fav" data-ref="LQ012" onclick="toggleFav('LQ012', 'Collar Croix de Perles', 'L 299', 'l12.png', this); event.stopPropagation();">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
-        <div class="carousel-track" data-index="0">
-          <img src="l12.png" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=LIQUIDACION+12'">
+        <div class="carousel-track">
+          <img src="l12.png" class="product-media" decoding="async" loading="lazy" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+12'">
         </div>
       </div>
       <div class="product-info">
         <span class="product-code">REF: LQ012</span>
-        <h2 class="product-name">Collar Fe-Male</h2>
+        <h2 class="product-name">Croix de Perles</h2>
         <p class="product-lema">"La devoción se viste de perlas y acero."</p>
         
         <div class="specs-block">
-          <select id="size-LQ012" class="size-select">
-            <option value="UNICA">Talla Única</option>
-          </select>
+          <select id="size-LQ012" class="size-select"><option value="UNICA">Talla Única</option></select>
           <span class="spec-material"><strong>Acero Inoxidable</strong></span>
         </div>
 
@@ -812,29 +747,27 @@
             <span id="qty-LQ012">1</span>
             <button onclick="changeCardQty('qty-LQ012', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('LQ012', 'Collar Fe-Male', 'L 299', 'l12.png', this, 'qty-LQ012', 'size-LQ012')">Añadir a la Bolsa</button>
+          <button class="btn-cart" onclick="addToCartLiquidation('LQ012', 'Collar Croix de Perles', '299', '618', 'l12.png', this, 'qty-LQ012', 'size-LQ012')">Añadir a la Bolsa</button>
         </div>
       </div>
     </article>
 
     <article class="product-card">
       <div class="carousel-wrapper" onclick="openLightbox(this)">
-        <button class="btn-fav" data-ref="LQ013" onclick="toggleFav('LQ013', 'Collar Croix', 'L 249', 'l13.png', this); event.stopPropagation();">
+        <button class="btn-fav" data-ref="LQ013" onclick="toggleFav('LQ013', 'Collar Croix Minimal', 'L 249', 'l13.png', this); event.stopPropagation();">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
-        <div class="carousel-track" data-index="0">
-          <img src="l13.png" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=LIQUIDACION+13'">
+        <div class="carousel-track">
+          <img src="l13.png" class="product-media" decoding="async" loading="lazy" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+13'">
         </div>
       </div>
       <div class="product-info">
         <span class="product-code">REF: LQ013</span>
-        <h2 class="product-name">Collar Croix</h2>
-        <p class="product-lema">"Simbolismo puro y minimalista."</p>
+        <h2 class="product-name">Croix Minimal</h2>
+        <p class="product-lema">"Simbolismo puro y líneas exactas."</p>
         
         <div class="specs-block">
-          <select id="size-LQ013" class="size-select">
-            <option value="UNICA">Talla Única</option>
-          </select>
+          <select id="size-LQ013" class="size-select"><option value="UNICA">Talla Única</option></select>
           <span class="spec-material"><strong>Acero Inoxidable</strong></span>
         </div>
 
@@ -847,7 +780,7 @@
             <span id="qty-LQ013">1</span>
             <button onclick="changeCardQty('qty-LQ013', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('LQ013', 'Collar Croix', 'L 249', 'l13.png', this, 'qty-LQ013', 'size-LQ013')">Añadir a la Bolsa</button>
+          <button class="btn-cart" onclick="addToCartLiquidation('LQ013', 'Collar Croix Minimal', '249', '568', 'l13.png', this, 'qty-LQ013', 'size-LQ013')">Añadir a la Bolsa</button>
         </div>
       </div>
     </article>
@@ -857,8 +790,8 @@
         <button class="btn-fav" data-ref="LQ014" onclick="toggleFav('LQ014', 'Collar Rosé', 'L 219', 'l14.png', this); event.stopPropagation();">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
-        <div class="carousel-track" data-index="0">
-          <img src="l14.png" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=LIQUIDACION+14'">
+        <div class="carousel-track">
+          <img src="l14.png" class="product-media" decoding="async" loading="lazy" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+14'">
         </div>
       </div>
       <div class="product-info">
@@ -867,9 +800,7 @@
         <p class="product-lema">"El rubor del atardecer en tu escote."</p>
         
         <div class="specs-block">
-          <select id="size-LQ014" class="size-select">
-            <option value="UNICA">Talla Única</option>
-          </select>
+          <select id="size-LQ014" class="size-select"><option value="UNICA">Talla Única</option></select>
           <span class="spec-material"><strong>Acero Inoxidable</strong></span>
         </div>
 
@@ -882,7 +813,7 @@
             <span id="qty-LQ014">1</span>
             <button onclick="changeCardQty('qty-LQ014', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('LQ014', 'Collar Rosé', 'L 219', 'l14.png', this, 'qty-LQ014', 'size-LQ014')">Añadir a la Bolsa</button>
+          <button class="btn-cart" onclick="addToCartLiquidation('LQ014', 'Collar Rosé', '219', '538', 'l14.png', this, 'qty-LQ014', 'size-LQ014')">Añadir a la Bolsa</button>
         </div>
       </div>
     </article>
@@ -892,8 +823,8 @@
         <button class="btn-fav" data-ref="LQ015" onclick="toggleFav('LQ015', 'Set Perles d\'Eau', 'L 299', 'l15.png', this); event.stopPropagation();">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
-        <div class="carousel-track" data-index="0">
-          <img src="l15.png" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=LIQUIDACION+15'">
+        <div class="carousel-track">
+          <img src="l15.png" class="product-media" decoding="async" loading="lazy" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+15'">
         </div>
       </div>
       <div class="product-info">
@@ -902,9 +833,7 @@
         <p class="product-lema">"La atemporalidad de las perlas en conjunto."</p>
         
         <div class="specs-block">
-          <select id="size-LQ015" class="size-select">
-            <option value="UNICA">Collar y Aretes</option>
-          </select>
+          <select id="size-LQ015" class="size-select"><option value="UNICA">Collar y Aretes</option></select>
           <span class="spec-material"><strong>Acero Inoxidable</strong></span>
         </div>
 
@@ -917,7 +846,7 @@
             <span id="qty-LQ015">1</span>
             <button onclick="changeCardQty('qty-LQ015', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('LQ015', 'Set Perles d\'Eau', 'L 299', 'l15.png', this, 'qty-LQ015', 'size-LQ015')">Añadir a la Bolsa</button>
+          <button class="btn-cart" onclick="addToCartLiquidation('LQ015', 'Set Perles d\'Eau', '299', '618', 'l15.png', this, 'qty-LQ015', 'size-LQ015')">Añadir a la Bolsa</button>
         </div>
       </div>
     </article>
@@ -927,19 +856,17 @@
         <button class="btn-fav" data-ref="LQ016" onclick="toggleFav('LQ016', 'Set Love Me', 'L 299', 'l16.png', this); event.stopPropagation();">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
-        <div class="carousel-track" data-index="0">
-          <img src="l16.png" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=LIQUIDACION+16'">
+        <div class="carousel-track">
+          <img src="l16.png" class="product-media" decoding="async" loading="lazy" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+16'">
         </div>
       </div>
       <div class="product-info">
         <span class="product-code">REF: LQ016</span>
         <h2 class="product-name">Set Love Me</h2>
-        <p class="product-lema">"Una declaración de intenciones."</p>
+        <p class="product-lema">"Una declaración de intenciones brillante."</p>
         
         <div class="specs-block">
-          <select id="size-LQ016" class="size-select">
-            <option value="UNICA">Pulsera y Collar</option>
-          </select>
+          <select id="size-LQ016" class="size-select"><option value="UNICA">Pulsera y Collar</option></select>
           <span class="spec-material"><strong>Acero Inoxidable</strong></span>
         </div>
 
@@ -952,7 +879,7 @@
             <span id="qty-LQ016">1</span>
             <button onclick="changeCardQty('qty-LQ016', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('LQ016', 'Set Love Me', 'L 299', 'l16.png', this, 'qty-LQ016', 'size-LQ016')">Añadir a la Bolsa</button>
+          <button class="btn-cart" onclick="addToCartLiquidation('LQ016', 'Set Love Me', '299', '618', 'l16.png', this, 'qty-LQ016', 'size-LQ016')">Añadir a la Bolsa</button>
         </div>
       </div>
     </article>
@@ -962,8 +889,8 @@
         <button class="btn-fav" data-ref="LQ017" onclick="toggleFav('LQ017', 'Set Vénus', 'L 299', 'l17.png', this); event.stopPropagation();">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
-        <div class="carousel-track" data-index="0">
-          <img src="l17.png" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=LIQUIDACION+17'">
+        <div class="carousel-track">
+          <img src="l17.png" class="product-media" decoding="async" loading="lazy" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+17'">
         </div>
       </div>
       <div class="product-info">
@@ -972,9 +899,7 @@
         <p class="product-lema">"Corazones entrelazados para la diosa moderna."</p>
         
         <div class="specs-block">
-          <select id="size-LQ017" class="size-select">
-            <option value="UNICA">Aretes y Collar</option>
-          </select>
+          <select id="size-LQ017" class="size-select"><option value="UNICA">Aretes y Collar</option></select>
           <span class="spec-material"><strong>Acero Inoxidable</strong></span>
         </div>
 
@@ -987,7 +912,7 @@
             <span id="qty-LQ017">1</span>
             <button onclick="changeCardQty('qty-LQ017', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('LQ017', 'Set Vénus', 'L 299', 'l17.png', this, 'qty-LQ017', 'size-LQ017')">Añadir a la Bolsa</button>
+          <button class="btn-cart" onclick="addToCartLiquidation('LQ017', 'Set Vénus', '299', '618', 'l17.png', this, 'qty-LQ017', 'size-LQ017')">Añadir a la Bolsa</button>
         </div>
       </div>
     </article>
@@ -997,8 +922,8 @@
         <button class="btn-fav" data-ref="LQ018" onclick="toggleFav('LQ018', 'Set Ball Gold', 'L 299', 'l18.png', this); event.stopPropagation();">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
-        <div class="carousel-track" data-index="0">
-          <img src="l18.png" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=LIQUIDACION+18'">
+        <div class="carousel-track">
+          <img src="l18.png" class="product-media" decoding="async" loading="lazy" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+18'">
         </div>
       </div>
       <div class="product-info">
@@ -1007,9 +932,7 @@
         <p class="product-lema">"Geometría fina y destellos dorados."</p>
         
         <div class="specs-block">
-          <select id="size-LQ018" class="size-select">
-            <option value="UNICA">Aretes y Collar</option>
-          </select>
+          <select id="size-LQ018" class="size-select"><option value="UNICA">Aretes y Collar</option></select>
           <span class="spec-material"><strong>Acero Inoxidable</strong></span>
         </div>
 
@@ -1022,7 +945,7 @@
             <span id="qty-LQ018">1</span>
             <button onclick="changeCardQty('qty-LQ018', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('LQ018', 'Set Ball Gold', 'L 299', 'l18.png', this, 'qty-LQ018', 'size-LQ018')">Añadir a la Bolsa</button>
+          <button class="btn-cart" onclick="addToCartLiquidation('LQ018', 'Set Ball Gold', '299', '618', 'l18.png', this, 'qty-LQ018', 'size-LQ018')">Añadir a la Bolsa</button>
         </div>
       </div>
     </article>
@@ -1032,8 +955,8 @@
         <button class="btn-fav" data-ref="LQ019" onclick="toggleFav('LQ019', 'Set Océan', 'L 299', 'l19.png', this); event.stopPropagation();">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
-        <div class="carousel-track" data-index="0">
-          <img src="l19.png" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=LIQUIDACION+19'">
+        <div class="carousel-track">
+          <img src="l19.png" class="product-media" decoding="async" loading="lazy" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+19'">
         </div>
       </div>
       <div class="product-info">
@@ -1042,9 +965,7 @@
         <p class="product-lema">"Tesoros marinos inmortalizados en acero."</p>
         
         <div class="specs-block">
-          <select id="size-LQ019" class="size-select">
-            <option value="UNICA">Aretes y Collar</option>
-          </select>
+          <select id="size-LQ019" class="size-select"><option value="UNICA">Aretes y Collar</option></select>
           <span class="spec-material"><strong>Acero Inoxidable</strong></span>
         </div>
 
@@ -1057,7 +978,7 @@
             <span id="qty-LQ019">1</span>
             <button onclick="changeCardQty('qty-LQ019', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('LQ019', 'Set Océan', 'L 299', 'l19.png', this, 'qty-LQ019', 'size-LQ019')">Añadir a la Bolsa</button>
+          <button class="btn-cart" onclick="addToCartLiquidation('LQ019', 'Set Océan', '299', '618', 'l19.png', this, 'qty-LQ019', 'size-LQ019')">Añadir a la Bolsa</button>
         </div>
       </div>
     </article>
@@ -1067,8 +988,8 @@
         <button class="btn-fav" data-ref="LQ020" onclick="toggleFav('LQ020', 'Quatuor Ajustable', 'L 299', 'l20.png', this); event.stopPropagation();">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
-        <div class="carousel-track" data-index="0">
-          <img src="l20.png" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=LIQUIDACION+20'">
+        <div class="carousel-track">
+          <img src="l20.png" class="product-media" decoding="async" loading="lazy" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+20'">
         </div>
       </div>
       <div class="product-info">
@@ -1077,9 +998,7 @@
         <p class="product-lema">"Cuatro piezas, infinitas combinaciones."</p>
         
         <div class="specs-block">
-          <select id="size-LQ020" class="size-select">
-            <option value="UNICA">Set 4 Pulseras</option>
-          </select>
+          <select id="size-LQ020" class="size-select"><option value="UNICA">Set 4 Pulseras</option></select>
           <span class="spec-material"><strong>Acero Inoxidable</strong></span>
         </div>
 
@@ -1092,7 +1011,7 @@
             <span id="qty-LQ020">1</span>
             <button onclick="changeCardQty('qty-LQ020', 1)">+</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('LQ020', 'Quatuor Ajustable', 'L 299', 'l20.png', this, 'qty-LQ020', 'size-LQ020')">Añadir a la Bolsa</button>
+          <button class="btn-cart" onclick="addToCartLiquidation('LQ020', 'Quatuor Ajustable', '299', '618', 'l20.png', this, 'qty-LQ020', 'size-LQ020')">Añadir a la Bolsa</button>
         </div>
       </div>
     </article>
@@ -1121,10 +1040,9 @@
     <p class="founder-credit">© 2026 ÈNIGME HONDURAS POR CARLOS ARMAS MARTÍNEZ. TODOS LOS DERECHOS RESERVADOS.</p>
   </footer>
 
-  <div id="lightbox" class="lightbox">
+  <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
     <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
-    <div class="lightbox-track" id="lightbox-track"></div>
-    <div class="lb-indicator" id="lb-indicator"></div>
+    <div class="lightbox-track" id="lightbox-track" onclick="event.stopPropagation()"></div>
   </div>
 
   <div id="toast-notification" class="toast-notification">
@@ -1185,7 +1103,10 @@
       setTimeout(() => { toast.classList.remove('show'); }, 3000);
     }
 
-    function addToCart(ref, name, price, img, btn, qtyId, sizeId) {
+    /* =========================================
+       LÓGICA INTELIGENTE DE LIQUIDACIÓN
+       ========================================= */
+    function addToCartLiquidation(ref, name, promoPriceStr, regularPriceStr, img, btn, qtyId, sizeId) {
       if (btn.classList.contains('added')) return; 
       
       const qtyToAdd = parseInt(document.getElementById(qtyId).innerText) || 1;
@@ -1196,11 +1117,41 @@
       let cart = JSON.parse(localStorage.getItem('enigme_cart')) || [];
       let existing = cart.find(i => i.ref === uniqueRef);
       
+      // 1. Agregar o actualizar cantidad
       if(existing) {
         existing.qty += qtyToAdd;
       } else { 
-        cart.push({ref: uniqueRef, name: fullName, price, img, qty: qtyToAdd}); 
+        // Inicialmente guardamos con un precio temporal, luego recalculamos todo
+        cart.push({
+          ref: uniqueRef, 
+          name: fullName, 
+          price: "L " + regularPriceStr, // Base temporal
+          img: img, 
+          qty: qtyToAdd,
+          isLiquidation: true,
+          promoPrice: "L " + promoPriceStr,
+          regularPrice: "L " + regularPriceStr
+        }); 
       }
+
+      // 2. Calcular cuántas piezas de liquidación hay en total en la bolsa
+      let totalLqItems = 0;
+      cart.forEach(item => {
+        if(item.isLiquidation) {
+          totalLqItems += item.qty;
+        }
+      });
+
+      // 3. Aplicar regla de negocio: Si hay >= 2, aplicar promo. Si no, precio regular.
+      cart.forEach(item => {
+        if(item.isLiquidation) {
+          if(totalLqItems >= 2) {
+            item.price = item.promoPrice; // Activa promoción
+          } else {
+            item.price = item.regularPrice; // Mantiene precio regular
+          }
+        }
+      });
       
       localStorage.setItem('enigme_cart', JSON.stringify(cart));
       
@@ -1208,8 +1159,9 @@
       btn.classList.add('added');
       btn.innerText = "SELECCIONADO ✓";
       document.getElementById(qtyId).innerText = "1";
-      showToast("Añadido a la bolsa", false);
-      setTimeout(() => { btn.classList.remove('added'); btn.innerText = originalText; }, 1500);
+      showToast(totalLqItems >= 2 ? "Precio de Liquidación Activado" : "Añadido (Falta 1 pieza para Promo)", false);
+      
+      setTimeout(() => { btn.classList.remove('added'); btn.innerText = originalText; }, 2000);
       updateCounts();
     }
 
@@ -1227,30 +1179,33 @@
     /* LIGHTBOX INMERSIVO */
     const lightbox = document.getElementById('lightbox');
     const lbTrack = document.getElementById('lightbox-track');
-    const lbIndicator = document.getElementById('lb-indicator');
     let lbCurrentIndex = 0;
     let lbItemsCount = 0;
 
     function openLightbox(wrapperElement) {
       lbTrack.innerHTML = '';
-      lbIndicator.innerHTML = '';
       let sourceTrack = wrapperElement.querySelector('.carousel-track');
       let items = sourceTrack.children;
       lbItemsCount = items.length;
       lbCurrentIndex = parseInt(sourceTrack.getAttribute('data-index') || 0);
 
       for(let i=0; i<items.length; i++) {
-        let lbItem = document.createElement('div');
-        lbItem.className = 'lightbox-item';
         let clone = items[i].cloneNode(true);
-        clone.className = 'lightbox-media';
+        clone.style.maxWidth = "90vw";
+        clone.style.maxHeight = "90vh";
+        clone.style.objectFit = "contain";
+        clone.style.pointerEvents = "none";
+        
+        let lbItem = document.createElement('div');
+        lbItem.style.flex = "0 0 100vw";
+        lbItem.style.width = "100vw";
+        lbItem.style.height = "100vh";
+        lbItem.style.display = "flex";
+        lbItem.style.justifyContent = "center";
+        lbItem.style.alignItems = "center";
         
         lbItem.appendChild(clone);
         lbTrack.appendChild(lbItem);
-
-        let dot = document.createElement('div');
-        dot.className = 'lb-dot';
-        lbIndicator.appendChild(dot);
       }
 
       updateLightboxPosition();
@@ -1260,43 +1215,17 @@
 
     function updateLightboxPosition() {
       lbTrack.style.transform = `translateX(-${lbCurrentIndex * 100}vw)`;
-      let dots = lbIndicator.children;
-      for(let i=0; i<dots.length; i++) {
-        if(i === lbCurrentIndex) dots[i].classList.add('active');
-        else dots[i].classList.remove('active');
-      }
     }
 
     function closeLightbox(e) {
-      if(e) e.stopPropagation();
-      lightbox.classList.remove('active');
-      document.body.style.overflow = 'auto'; 
+      // Si el clic viene del contenedor padre oscuro, o de la X.
+      if(e.target === lightbox || e.target.classList.contains('lightbox-close')) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = 'auto'; 
+      }
     }
 
-    /* Swipe Logic Lightbox */
-    let lbIsDown = false; let lbStartX; let lbIsDragged = false;
-    lbTrack.addEventListener('mousedown', (e) => { lbIsDown = true; lbIsDragged = false; lbStartX = e.pageX; });
-    lbTrack.addEventListener('mousemove', (e) => { if (!lbIsDown) return; if (Math.abs(e.pageX - lbStartX) > 20) lbIsDragged = true; });
-    lbTrack.addEventListener('mouseup', (e) => {
-      lbIsDown = false;
-      if (lbIsDragged) {
-        if (lbStartX > e.pageX) { lbCurrentIndex++; if(lbCurrentIndex >= lbItemsCount) lbCurrentIndex = 0; }
-        else { lbCurrentIndex--; if(lbCurrentIndex < 0) lbCurrentIndex = lbItemsCount - 1; }
-        updateLightboxPosition();
-      }
-    });
-    lbTrack.addEventListener('mouseleave', () => { lbIsDown = false; });
-    lbTrack.addEventListener('touchstart', (e) => { lbStartX = e.touches[0].clientX; lbIsDragged = false; }, {passive: true});
-    lbTrack.addEventListener('touchmove', (e) => { if (Math.abs(e.touches[0].clientX - lbStartX) > 20) lbIsDragged = true; }, {passive: true});
-    lbTrack.addEventListener('touchend', (e) => {
-      if (lbIsDragged) {
-        let endX = e.changedTouches[0].clientX;
-        if (lbStartX > endX) { lbCurrentIndex++; if(lbCurrentIndex >= lbItemsCount) lbCurrentIndex = 0; }
-        else { lbCurrentIndex--; if(lbCurrentIndex < 0) lbCurrentIndex = lbItemsCount - 1; }
-        updateLightboxPosition();
-      }
-    });
-
+    /* Navegación por Teclado en Lightbox */
     document.addEventListener('keydown', (e) => {
       if (lightbox.classList.contains('active')) {
         if (e.key === 'ArrowLeft') {
@@ -1308,7 +1237,7 @@
           if(lbCurrentIndex >= lbItemsCount) lbCurrentIndex = 0;
           updateLightboxPosition();
         } else if (e.key === 'Escape') {
-          closeLightbox();
+          closeLightbox({target: lightbox});
         }
       }
     });
