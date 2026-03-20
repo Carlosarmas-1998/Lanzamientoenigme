@@ -3,11 +3,45 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>El Catálogo | La Casa ÈNIGME</title>
+  
+  <title>Catálogo Oficial | Alta Joyería y Bolsos | La Casa ÈNIGME</title>
+  <meta name="description" content="Explore el catálogo completo de La Casa ÈNIGME en Honduras. Alta Joyería en Oro 14K, Colección Plata de Ley 925, Bolsos Boutique y Liquidación Exclusiva." />
+  <meta name="keywords" content="catálogo joyería Honduras, joyas de acero, comprar oro 14k Honduras, plata 925, bolsos de lujo, carteras boutique, liquidación joyas, Choluteca, Valle, Francisco Morazán, ÈNIGME, Carlos Armas Martínez" />
+  <meta name="author" content="Carlos Armas Martínez" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  
+  <meta name="geo.region" content="HN" />
+  <meta name="geo.placename" content="Choluteca, Valle, Honduras" />
+  
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Catálogo Oficial | La Casa ÈNIGME" />
+  <meta property="og:description" content="Descubra nuestras colecciones: Alta Joyería, Plata de Ley, Bolsos Boutique y Liquidación. Lujo accesible en Honduras." />
+  <meta property="og:image" content="https://enigmeofficial.com/portada.png" />
+  <meta property="og:url" content="https://enigmeofficial.com/catalogo.html" />
+  <meta property="og:site_name" content="La Casa ÈNIGME" />
+  <meta property="og:locale" content="es_HN" />
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Catálogo General - La Casa ÈNIGME",
+    "description": "Explora todas las colecciones de La Casa ÈNIGME: Joyería bañada en Oro 14K, Plata 925, Marroquinería y Liquidación.",
+    "url": "https://enigmeofficial.com/catalogo.html",
+    "image": "https://enigmeofficial.com/portada.png",
+    "publisher": {
+      "@type": "Organization",
+      "name": "La Casa ÈNIGME",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://enigmeofficial.com/logo.png"
+      }
+    }
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
     :root {
@@ -41,6 +75,46 @@
     a { text-decoration: none; color: inherit; transition: var(--transition); }
 
     /* =========================================
+       TOP BANNER EN MOVIMIENTO (MARQUEE CSS)
+       ========================================= */
+    .top-announcement {
+      display: flex;
+      width: 100%;
+      overflow: hidden;
+      background-color: var(--carbon);
+      color: var(--dorado);
+      text-decoration: none;
+      padding: 10px 0;
+      z-index: 1001;
+      position: relative;
+    }
+    
+    .top-announcement:hover .marquee-track {
+      animation-play-state: paused;
+    }
+
+    .marquee-track {
+      display: flex;
+      white-space: nowrap;
+      animation: scrollBanner 25s linear infinite;
+    }
+
+    .marquee-track span {
+      font-size: clamp(0.5rem, 1.2vw, 0.6rem);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 500;
+      padding-right: 50px;
+    }
+    
+    .marquee-track strong { color: var(--blanco-dior); font-weight: 700; }
+
+    @keyframes scrollBanner {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); } 
+    }
+
+    /* =========================================
        NAVBAR ULTRALIMPIA Y ENFOCADA EN VENTAS
        ========================================= */
     .navbar {
@@ -66,11 +140,12 @@
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
+      font-weight: 500;
     }
 
     .nav-group { display: flex; gap: 20px; align-items: center; }
     
-    /* MENÚ DESPLEGABLE "ATENCIÓN" */
+    /* MENÚ DESPLEGABLE */
     .dropdown {
       position: relative;
       display: inline-block;
@@ -81,7 +156,7 @@
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--carbon);
-      font-weight: 500;
+      font-weight: 700 !important; /* Negrita Extrema */
       background: none;
       border: none;
       cursor: pointer;
@@ -99,15 +174,20 @@
       top: 100%;
       left: 0;
       background-color: var(--blanco-dior);
-      min-width: 180px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      min-width: 220px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
       border: 1px solid var(--linea-fina);
+      border-top: 2px solid var(--dorado);
       opacity: 0;
       visibility: hidden;
-      transform: translateY(10px);
+      transform: translateY(15px);
       transition: all 0.3s ease;
       display: flex;
       flex-direction: column;
+    }
+
+    .dropdown-content::before {
+      content: ''; position: absolute; top: -15px; left: 0; width: 100%; height: 15px; background: transparent;
     }
 
     .dropdown:hover .dropdown-content {
@@ -117,9 +197,10 @@
     }
 
     .dropdown-content a {
-      color: var(--gris-suave);
-      padding: 15px 20px;
-      font-size: 0.6rem;
+      color: var(--carbon) !important;
+      padding: 16px 24px;
+      font-size: 0.65rem;
+      font-weight: 600;
       letter-spacing: 2px;
       text-transform: uppercase;
       border-bottom: 1px solid var(--fondo-galeria);
@@ -128,9 +209,12 @@
 
     .dropdown-content a:hover {
       background-color: var(--fondo-galeria);
-      color: var(--carbon);
-      padding-left: 25px;
+      color: var(--dorado) !important;
+      padding-left: 32px;
     }
+    
+    .dropdown-content a:last-child { border-bottom: none; }
+    .dropdown.right .dropdown-content { left: auto; right: 0; }
 
     /* BOTONES DE VENTA (DERECHA) */
     .btn-menu-brand {
@@ -141,10 +225,11 @@
       padding: 8px 16px;
       border: 1px solid rgba(203, 170, 99, 0.4);
       font-size: 0.6rem;
-      font-weight: 500;
+      font-weight: 600;
       letter-spacing: 2px;
       text-transform: uppercase;
       transition: var(--transition);
+      border-radius: 2px;
     }
 
     .btn-menu-brand:hover {
@@ -163,7 +248,7 @@
 
     .btn-cart-nav { animation: pulse-soft 2.5s infinite; background-color: var(--marfil); }
     .btn-cart-nav:hover { animation: none; }
-    .counter-badge { font-weight: 600; }
+    .counter-badge { font-weight: 700; }
 
     /* =========================================
        ENCABEZADO MINIMALISTA
@@ -182,15 +267,16 @@
       letter-spacing: 5px;
       text-transform: uppercase;
       color: var(--gris-suave);
+      font-weight: 500;
     }
 
     /* =========================================
-       GRID DE CATÁLOGO (AJUSTADO SIN ESPACIOS)
+       GRID DE CATÁLOGO (AJUSTADO)
        ========================================= */
     .split-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 30px 20px; /* Reducido de 50px a 30px para juntar secciones */
+      gap: 30px 20px; 
       padding: 0 5vw 80px;
       flex-grow: 1; 
       max-width: 1200px; 
@@ -209,21 +295,21 @@
     .image-wrapper {
       background-color: var(--fondo-galeria);
       border: 1px solid var(--linea-fina);
-      overflow: hidden; /* Se eliminó el padding y el aspect-ratio fijo */
+      overflow: hidden; 
     }
 
     .category-card:hover .image-wrapper { border-color: var(--dorado); }
 
     .image-wrapper img {
       width: 100%;
-      height: auto; /* La altura se adapta exactamente a tu fotografía */
+      height: auto; 
       display: block;
       transition: transform 0.8s ease;
     }
 
     .category-card:hover img { transform: scale(1.03); }
 
-    .card-content { text-align: center; padding: 20px 10px 10px; } /* Padding ajustado */
+    .card-content { text-align: center; padding: 20px 10px 10px; } 
     .card-title {
       font-family: 'Cinzel', serif;
       font-size: clamp(1.2rem, 2vw, 1.5rem);
@@ -270,19 +356,19 @@
       font-size: 0.6rem; line-height: 2; letter-spacing: 1.5px;
       color: var(--gris-suave); max-width: 900px; margin: 0 auto; text-transform: uppercase;
     }
-    .legal-text strong { color: var(--carbon); font-weight: 500; }
+    .legal-text strong { color: var(--carbon); font-weight: 600; }
     
     .btn-policy {
       display: inline-block; margin-top: 25px; padding: 10px 20px;
       border: 1px solid var(--carbon); color: var(--carbon); font-size: 0.55rem;
       letter-spacing: 2px; text-transform: uppercase; font-weight: 600;
-      transition: var(--transition); background: transparent;
+      transition: var(--transition); background: transparent; border-radius: 2px;
     }
     .btn-policy:hover { background-color: var(--carbon); color: var(--blanco-dior); }
 
     .founder-credit { 
       margin-top: 40px; font-size: 0.5rem; letter-spacing: 0.25em; 
-      color: var(--gris-suave); opacity: 0.5; text-transform: uppercase; font-weight: 300; 
+      color: var(--gris-suave); opacity: 0.6; text-transform: uppercase; font-weight: 400; 
     }
 
     /* =========================================
@@ -312,11 +398,20 @@
 </head>
 <body>
 
+  <a href="liquidacion.html" class="top-announcement">
+    <div class="marquee-track">
+      <span>✦ DESCUBRA <strong>OFERTAS EXCLUSIVAS</strong> EN NUESTRAS COLECCIONES DE <strong>PLATA DE LEY</strong> Y <strong>LIQUIDACIÓN</strong> ✦ CLICK AQUÍ ✦</span>
+      <span>✦ DESCUBRA <strong>OFERTAS EXCLUSIVAS</strong> EN NUESTRAS COLECCIONES DE <strong>PLATA DE LEY</strong> Y <strong>LIQUIDACIÓN</strong> ✦ CLICK AQUÍ ✦</span>
+      <span>✦ DESCUBRA <strong>OFERTAS EXCLUSIVAS</strong> EN NUESTRAS COLECCIONES DE <strong>PLATA DE LEY</strong> Y <strong>LIQUIDACIÓN</strong> ✦ CLICK AQUÍ ✦</span>
+      <span>✦ DESCUBRA <strong>OFERTAS EXCLUSIVAS</strong> EN NUESTRAS COLECCIONES DE <strong>PLATA DE LEY</strong> Y <strong>LIQUIDACIÓN</strong> ✦ CLICK AQUÍ ✦</span>
+    </div>
+  </a>
+
   <nav class="navbar">
     
     <div class="nav-group">
       <div class="dropdown">
-        <button class="dropbtn">
+        <button class="dropbtn" style="font-weight: 700;">
           ATENCIÓN 
           <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
         </button>
@@ -331,7 +426,21 @@
     
     <a href="index.html" class="brand">È N I G M E</a>
     
-    <div class="nav-group">
+    <div class="nav-group right">
+      <div class="dropdown right">
+        <button class="dropbtn" style="font-weight: 700;">
+          CATÁLOGO 
+          <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+        </button>
+        <div class="dropdown-content">
+          <a href="catalogo.html" style="color:var(--dorado)!important;">Catálogo Completo</a>
+          <a href="joyeria.html">Alta Joyería</a>
+          <a href="boutique.html">Bolsos Boutique</a>
+          <a href="plata.html">Colección Plata</a>
+          <a href="liquidacion.html">Liquidación</a>
+        </div>
+      </div>
+
       <a href="favoritos.html" class="btn-menu-brand">
         <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
         <span id="fav-count" class="counter-badge">0</span>
@@ -359,7 +468,7 @@
     
     <a href="joyeria.html" class="category-card">
       <div class="image-wrapper">
-        <img src="modelo1.png" alt="Alta Joyería ÈNIGME" onerror="this.src='https://via.placeholder.com/600x400?text=JOYERÍA'">
+        <img src="modelo1.png" alt="Alta Joyería ÈNIGME" onerror="this.src='https://via.placeholder.com/600x800?text=JOYERÍA'">
       </div>
       <div class="card-content">
         <h2 class="card-title">Joyería</h2>
@@ -369,7 +478,7 @@
 
     <a href="boutique.html" class="category-card">
       <div class="image-wrapper">
-        <img src="modelo2.png" alt="Bolsos Boutique ÈNIGME" onerror="this.src='https://via.placeholder.com/600x400?text=BOUTIQUE'">
+        <img src="modelo2.png" alt="Bolsos Boutique ÈNIGME" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE'">
       </div>
       <div class="card-content">
         <h2 class="card-title">Boutique</h2>
@@ -379,7 +488,7 @@
 
     <a href="plata.html" class="category-card">
       <div class="image-wrapper">
-        <img src="modelo3.png" alt="Línea Plata de ley ÈNIGME" onerror="this.src='https://via.placeholder.com/600x400?text=PLATA'">
+        <img src="modelo3.png" alt="Línea Plata de ley ÈNIGME" onerror="this.src='https://via.placeholder.com/600x800?text=PLATA'">
       </div>
       <div class="card-content">
         <h2 class="card-title">Plata de Ley</h2>
@@ -389,10 +498,10 @@
             
     <a href="liquidacion.html" class="category-card">
       <div class="image-wrapper">
-        <img src="modelo4.png" alt="Línea Liquidación ÈNIGME" onerror="this.src='https://via.placeholder.com/600x400?text=ARCHIVO'">
+        <img src="modelo4.png" alt="Línea Liquidación ÈNIGME" onerror="this.src='https://via.placeholder.com/600x800?text=LIQUIDACIÓN'">
       </div>
       <div class="card-content">
-        <h2 class="card-title">El Archivo</h2>
+        <h2 class="card-title">Liquidación</h2>
         <span class="card-btn">Últimas Piezas</span>
       </div>
     </a>
