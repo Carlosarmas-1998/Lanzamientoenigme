@@ -3,11 +3,51 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
   <title>Bolsos Boutique | Capítulo II | La Casa ÈNIGME</title>
+  <meta name="description" content="Descubra la colección de Bolsos Boutique de La Casa ÈNIGME. Arquitectura en marroquinería y carteras de lujo para la mujer moderna en Honduras. Envíos exclusivos." />
+  <meta name="keywords" content="bolsos de lujo Honduras, carteras boutique, comprar bolsos Choluteca, mochilas mujer Valle, accesorios de marca, bolsos elegantes, ÈNIGME, Carlos Armas Martínez" />
+  <meta name="author" content="Carlos Armas Martínez" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  
+  <meta name="geo.region" content="HN" />
+  <meta name="geo.placename" content="Choluteca, Valle, Honduras" />
+  
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Bolsos Boutique | La Casa ÈNIGME" />
+  <meta property="og:description" content="Arquitectura en marroquinería. Piezas diseñadas para redefinir la presencia y el lujo. Incluye Tarjeta de Autenticidad." />
+  <meta property="og:image" content="https://enigmeofficial.com/b11.jpg" /> 
+  <meta property="og:url" content="https://enigmeofficial.com/boutique.html" />
+  <meta property="og:site_name" content="La Casa ÈNIGME" />
+  <meta property="og:locale" content="es_HN" />
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "name": "Boutique La Casa ÈNIGME",
+    "description": "Colección exclusiva de bolsos, carteras y marroquinería de lujo en Honduras con certificado de autenticidad.",
+    "image": "https://enigmeofficial.com/b11.jpg",
+    "location": {
+      "@type": "Place",
+      "name": "La Casa ÈNIGME (Online)",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Choluteca",
+        "addressRegion": "Choluteca",
+        "addressCountry": "HN"
+      }
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "Carlos Armas Martínez"
+    },
+    "url": "https://enigmeofficial.com"
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
     :root {
@@ -17,10 +57,9 @@
       --carbon: #1C1C1C;
       --gris-suave: #888888;
       --dorado: #CBAA63;
-      --rosa-palo: #D8C3BC;
       --fondo-galeria: #FAFAFA;
       --linea-fina: rgba(216, 195, 188, 0.4);
-      --transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -35,305 +74,223 @@
       display: flex;
       flex-direction: column;
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
 
     a { text-decoration: none; color: inherit; transition: var(--transition); }
     button { background: none; border: none; font-family: inherit; cursor: pointer; outline: none; }
 
     /* =========================================
-       NAVBAR MINIMALISTA Y CREDIBILIDAD
+       NAVBAR SUPER RESPONSIVO
        ========================================= */
     .navbar {
-      width: 100%; padding: 25px 5vw; display: flex; align-items: center; justify-content: space-between;
+      width: 100%; padding: clamp(15px, 3vw, 25px) 5vw; display: flex; align-items: center; justify-content: space-between;
       border-bottom: 1px solid var(--linea-fina); background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000;
     }
 
-    .brand {
-      font-family: 'Cinzel', serif; font-size: clamp(1.4rem, 2.5vw, 1.8rem); letter-spacing: 0.35em;
-      color: var(--carbon); text-align: center; position: absolute; left: 50%; transform: translateX(-50%);
-    }
-
-    .nav-group { display: flex; gap: 20px; align-items: center; }
+    .brand { font-family: 'Cinzel', serif; font-size: clamp(1.4rem, 4vw, 1.8rem); letter-spacing: 0.35em; color: var(--carbon); text-align: center; position: absolute; left: 50%; transform: translateX(-50%); font-weight: 500; }
+    .nav-group { display: flex; gap: clamp(10px, 2vw, 20px); align-items: center; }
     
-    /* MENÚ DESPLEGABLE */
     .dropdown { position: relative; display: inline-block; }
-    .dropbtn {
-      font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; color: var(--carbon);
-      font-weight: 500; display: flex; align-items: center; gap: 5px; padding: 10px 0;
-    }
+    .dropbtn { font-size: clamp(0.55rem, 1.5vw, 0.65rem); letter-spacing: 3px; text-transform: uppercase; color: var(--carbon); font-weight: 700 !important; display: flex; align-items: center; gap: 5px; padding: 10px 0; }
     .dropbtn svg { width: 10px; height: 10px; transition: transform 0.3s; }
     .dropdown:hover .dropbtn svg { transform: rotate(180deg); }
 
-    .dropdown-content {
-      position: absolute; top: 100%; left: 0; background-color: var(--blanco-dior); min-width: 220px;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.15); border: 1px solid var(--linea-fina); border-top: 2px solid var(--dorado);
-      opacity: 0; visibility: hidden; transform: translateY(15px); transition: var(--transition); display: flex; flex-direction: column; z-index: 9999;
-    }
+    .dropdown-content { position: absolute; top: 100%; left: 0; background-color: var(--blanco-dior); min-width: 220px; box-shadow: 0 15px 40px rgba(0,0,0,0.15); border: 1px solid var(--linea-fina); border-top: 2px solid var(--dorado); opacity: 0; visibility: hidden; transform: translateY(15px); transition: var(--transition); display: flex; flex-direction: column; z-index: 9999; }
     .dropdown-content::before { content: ''; position: absolute; top: -15px; left: 0; width: 100%; height: 15px; background: transparent; }
     .dropdown:hover .dropdown-content { opacity: 1; visibility: visible; transform: translateY(0); }
     
-    .dropdown-content a {
-      color: var(--carbon) !important; font-weight: 600; padding: 16px 24px; font-size: 0.65rem; letter-spacing: 2px;
-      text-transform: uppercase; border-bottom: 1px solid var(--fondo-galeria); transition: var(--transition);
-    }
+    .dropdown-content a { color: var(--carbon) !important; font-weight: 600; padding: 16px 24px; font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; border-bottom: 1px solid var(--fondo-galeria); transition: var(--transition); }
     .dropdown-content a:last-child { border-bottom: none; }
     .dropdown-content a:hover { background-color: var(--fondo-galeria); color: var(--dorado) !important; padding-left: 32px; }
     .dropdown.right .dropdown-content { left: auto; right: 0; }
 
-    /* BOTONES DE VENTA EN NAVBAR */
-    .btn-menu-brand {
-      display: flex; align-items: center; gap: 8px; color: var(--carbon) !important; padding: 8px 16px;
-      border: 1px solid rgba(203, 170, 99, 0.4); font-size: 0.6rem; font-weight: 500; letter-spacing: 2px;
-      text-transform: uppercase; transition: var(--transition);
-    }
+    .btn-menu-brand { display: flex; align-items: center; gap: 8px; color: var(--carbon) !important; padding: clamp(6px, 1.5vw, 8px) clamp(10px, 2vw, 16px); border: 1px solid rgba(203, 170, 99, 0.4); font-size: clamp(0.5rem, 1.2vw, 0.6rem); font-weight: 600; letter-spacing: clamp(1px, 0.5vw, 2px); text-transform: uppercase; transition: var(--transition); border-radius: 2px; background: transparent; }
     .btn-menu-brand:hover { background-color: var(--dorado); border-color: var(--dorado); color: var(--blanco-dior) !important; }
-    .btn-menu-brand svg { width: 13px; height: 13px; fill: currentColor; }
+    .btn-menu-brand svg { width: clamp(10px, 1.5vw, 13px); height: clamp(10px, 1.5vw, 13px); fill: currentColor; }
 
-    @keyframes pulse-soft { 0% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0.2); } 70% { box-shadow: 0 0 0 6px rgba(203, 170, 99, 0); } 100% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0); } }
-    .btn-cart-nav { animation: pulse-soft 2.5s infinite; background-color: var(--marfil); }
+    @keyframes bagWigglePulse {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      5% { transform: scale(1.1) rotate(-8deg); }
+      10% { transform: scale(1.1) rotate(8deg); }
+      15% { transform: scale(1.1) rotate(-8deg); }
+      20% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.05); }
+    }
+    .btn-cart-nav { animation: bagWigglePulse 6s ease-in-out infinite; background-color: var(--marfil); }
     .btn-cart-nav:hover { animation: none; }
-    .counter-badge { font-weight: 600; }
-
-    /* =========================================
-       BOTÓN VOLVER ATRÁS
-       ========================================= */
-    .btn-back { position: absolute; top: 110px; left: 5vw; font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gris-suave); display: flex; align-items: center; gap: 8px; transition: var(--transition); z-index: 10; }
-    .btn-back:hover { color: var(--carbon); transform: translateX(-5px); }
-    .btn-back svg { width: 12px; height: 12px; fill: currentColor; }
+    .counter-badge { font-weight: 700; }
 
     /* =========================================
        ENCABEZADO EDITORIAL
        ========================================= */
-    .gallery-header { text-align: center; padding: 80px 20px 50px; border-bottom: 1px solid var(--linea-fina); display: flex; flex-direction: column; align-items: center; background-color: var(--fondo-galeria); }
-    .gallery-kicker { font-family: 'Cinzel', serif; font-style: italic; font-size: 0.9rem; color: var(--dorado); letter-spacing: 5px; text-transform: uppercase; margin-bottom: 15px; }
-    .gallery-title { font-family: 'Cinzel', serif; font-size: clamp(2rem, 4vw, 3.5rem); letter-spacing: 0.15em; text-transform: uppercase; color: var(--carbon); margin-bottom: 20px; }
-    .gallery-desc { font-size: 0.85rem; line-height: 2.2; color: var(--gris-suave); max-width: 650px; margin: 0 auto 15px; font-weight: 300; }
+    .gallery-header { text-align: center; padding: clamp(40px, 8vw, 80px) 20px clamp(20px, 4vw, 40px); border-bottom: 1px solid var(--linea-fina); display: flex; flex-direction: column; align-items: center; background-color: var(--marfil); }
+    .gallery-kicker { font-family: 'Cinzel', serif; font-style: italic; font-size: clamp(0.7rem, 2vw, 0.9rem); color: var(--dorado); letter-spacing: 5px; text-transform: uppercase; margin-bottom: 15px; font-weight: 600; }
+    .gallery-title { font-family: 'Cinzel', serif; font-size: clamp(2rem, 6vw, 3.5rem); letter-spacing: 0.15em; text-transform: uppercase; color: var(--carbon); margin-bottom: 20px; font-weight: 500;}
+    .gallery-desc { font-size: clamp(0.7rem, 1.5vw, 0.8rem); line-height: 2.2; color: var(--gris-suave); max-width: 650px; margin: 0 auto 15px; font-weight: 400; letter-spacing: 1px;}
     
     .cert-seal-link { display: inline-block; margin-top: 5px; margin-bottom: 15px; transition: var(--transition); }
     .cert-seal-link:hover { transform: scale(1.05); }
     .cert-seal-img { max-width: 100px; height: auto; filter: drop-shadow(0 0 10px rgba(203, 170, 99, 0.2)); }
-    .trust-text { font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; color: var(--carbon); font-weight: 500; display: flex; align-items: center; gap: 8px; margin-top: 10px; }
-    .trust-text svg { width: 12px; height: 12px; fill: var(--dorado); }
+    .trust-text { font-size: clamp(0.5rem, 1.2vw, 0.6rem); letter-spacing: 2px; text-transform: uppercase; color: var(--carbon); font-weight: 600; display: flex; align-items: center; gap: 8px; margin-top: 10px; }
+    .trust-text svg { width: 14px; height: 14px; fill: var(--dorado); }
 
     /* =========================================
-       GRID DE PRODUCTOS (PEQUEÑOS Y UNIFORMES)
+       GRID DE PRODUCTOS (SIMETRÍA ESTRICTA)
        ========================================= */
-    .product-grid {
-      display: grid; 
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); 
-      gap: 60px 30px; 
-      padding: 60px 5vw 120px; 
-      max-width: 1000px; 
-      margin: 0 auto; width: 100%;
-    }
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: clamp(30px, 5vw, 60px) clamp(20px, 3vw, 40px); padding: clamp(40px, 5vw, 60px) 5vw 120px; max-width: 1200px; margin: 0 auto; width: 100%; }
+    .product-card { display: flex; flex-direction: column; background: var(--blanco-dior); transition: var(--transition); border: 1px solid var(--linea-fina); height: 100%; }
+    .product-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.05); border-color: var(--dorado); }
 
-    .product-card { 
-      display: flex; flex-direction: column; background: var(--blanco-dior); 
-      transition: var(--transition); border: none; 
-    }
-    .product-card:hover { transform: translateY(-5px); }
-
-    /* CONTENEDOR FOTOGRÁFICO: BLOQUEADO A 1:1 */
-    .carousel-wrapper { 
-      position: relative; background-color: var(--fondo-galeria); width: 100%;
-      aspect-ratio: 1/1; 
-      overflow: hidden; display: flex; align-items: center; justify-content: center;
-      touch-action: pan-y;
-    }
-    .carousel-track { display: flex; width: 100%; transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); cursor: pointer; align-items: center; }
-    .carousel-track:active { cursor: grabbing; }
-    
-    /* SOLUCIÓN ANTI-MODELOS SIN CARA: 'contain' */
-    .product-media { 
-      flex: 0 0 100%; width: 100%; height: auto; object-fit: contain; pointer-events: none; display: block;
-    }
+    /* CONTENEDOR FOTOGRÁFICO: SIN BORDES BLANCOS */
+    .carousel-wrapper { position: relative; background-color: var(--fondo-galeria); width: 100%; aspect-ratio: 3/4; overflow: hidden; display: block; touch-action: pan-y; cursor: pointer; border-bottom: 1px solid var(--linea-fina); }
+    .carousel-track { display: flex; width: 100%; height: 100%; align-items: center; justify-content: flex-start; transition: transform 0.4s ease; }
+    .product-media { flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; object-position: top center; pointer-events: none; display: block; padding: 0; }
 
     /* CORAZÓN DE FAVORITOS */
-    .btn-fav { 
-      position: absolute; top: 10px; right: 10px; width: 28px; height: 28px; 
-      background-color: rgba(255, 255, 255, 0.8); border-radius: 50%; display: flex; align-items: center; justify-content: center; 
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05); z-index: 10; transition: var(--transition); color: var(--gris-suave); border: 1px solid transparent;
-    }
-    .btn-fav:hover { transform: scale(1.1); color: var(--carbon); border-color: var(--linea-fina); background-color: var(--blanco-dior); }
-    .btn-fav svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2; transition: var(--transition); }
+    .btn-fav { position: absolute; top: 12px; right: 12px; width: clamp(28px, 4vw, 32px); height: clamp(28px, 4vw, 32px); background-color: rgba(255, 255, 255, 0.95); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.08); z-index: 10; transition: var(--transition); color: var(--gris-suave); border: 1px solid var(--linea-fina); }
+    .btn-fav:hover { transform: scale(1.1); color: var(--carbon); border-color: var(--carbon); }
+    .btn-fav svg { width: clamp(12px, 2vw, 14px); height: clamp(12px, 2vw, 14px); fill: none; stroke: currentColor; stroke-width: 2; transition: var(--transition); }
     .btn-fav.active { background-color: var(--carbon); border-color: var(--carbon); }
     .btn-fav.active svg { fill: var(--dorado); stroke: var(--dorado); }
 
-    /* INFO DEL PRODUCTO */
-    .product-info { padding: 20px 10px 10px; text-align: center; display: flex; flex-direction: column; flex-grow: 1; }
-    .product-code { font-size: 0.45rem; letter-spacing: 3px; color: var(--gris-suave); margin-bottom: 8px; }
-    .product-name { font-family: 'Cinzel', serif; font-size: 1.1rem; letter-spacing: 0.15em; color: var(--carbon); margin-bottom: 6px; text-transform: uppercase; font-weight: 500; }
-    .product-specs { font-size: 0.55rem; letter-spacing: 1px; color: var(--dorado); text-transform: uppercase; margin-bottom: 8px; font-weight: 600; }
-    .product-slogan { font-size: 0.65rem; color: var(--gris-suave); margin-bottom: 20px; font-weight: 300; font-style: italic; }
-    
-    /* PRECIO Y BOTÓN DE AÑADIR */
-    .product-price { font-size: 1.1rem; letter-spacing: 2px; color: var(--carbon); font-weight: 600; margin-bottom: 15px; margin-top: auto; }
-    .price-old { font-size: 0.7rem; color: var(--gris-suave); text-decoration: line-through; letter-spacing: 1px; display: block; margin-bottom: 5px;}
-    
-    .purchase-action { display: flex; border: 1px solid var(--carbon); height: 35px; transition: var(--transition); }
-    .purchase-action:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.08); }
-    .qty-selector { display: flex; align-items: center; justify-content: space-between; width: 60px; background: var(--blanco-dior); border-right: 1px solid var(--linea-fina); }
-    .qty-selector button { width: 20px; height: 100%; font-size: 0.9rem; color: var(--gris-suave); display: flex; align-items: center; justify-content: center; }
-    .qty-selector button:hover { color: var(--carbon); }
-    .qty-selector span { font-size: 0.65rem; font-weight: 600; color: var(--carbon); }
-    
-    .btn-cart { flex-grow: 1; background-color: var(--carbon); color: var(--blanco-dior); font-size: 0.5rem; letter-spacing: 2px; text-transform: uppercase; transition: var(--transition); font-weight: 500; cursor: pointer; }
-    .btn-cart:hover { background-color: var(--carbon); color: var(--blanco-dior); }
-    .btn-cart.added { background: var(--dorado); color: var(--carbon); border-color: var(--dorado); font-weight: 600; }
-
     /* =========================================
-       BOTÓN FLOTANTE DESPLEGABLE (SÓLO 2 OPCIONES)
+       TEXTOS DE ALTA COSTURA (PRO)
        ========================================= */
-    .fab-container { position: fixed; bottom: 30px; right: 30px; z-index: 9999; display: flex; flex-direction: column-reverse; align-items: flex-end; gap: 10px; }
+    .product-info { padding: clamp(20px, 3vw, 30px) 15px 15px; text-align: center; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
+    .product-meta { display: flex; flex-direction: column; align-items: center; }
     
-    .fab-main { 
-      width: 50px; height: 50px; background-color: var(--carbon); color: var(--blanco-dior); 
-      border-radius: 50%; display: flex; align-items: center; justify-content: center; 
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2); cursor: pointer; transition: var(--transition); z-index: 2;
-    }
-    .fab-main svg { width: 24px; height: 24px; fill: currentColor; transition: transform 0.4s ease; }
-    .fab-container:hover .fab-main, .fab-container.active .fab-main { background-color: var(--dorado); color: var(--carbon); }
+    .product-code { font-size: clamp(0.45rem, 1vw, 0.5rem); letter-spacing: 3px; color: var(--gris-suave); margin-bottom: 12px; font-weight: 500;}
     
-    .fab-menu {
-      display: flex; flex-direction: column; align-items: flex-end; gap: 10px; 
-      opacity: 0; visibility: hidden; transform: translateY(20px); transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); margin-bottom: 10px;
+    .product-name { 
+      font-family: 'Cinzel', serif; 
+      font-size: clamp(1.1rem, 3vw, 1.4rem); 
+      letter-spacing: 0.15em; 
+      color: var(--carbon); 
+      margin-bottom: 10px; 
+      text-transform: uppercase; 
+      font-weight: 700; /* Negrita máxima */
+      line-height: 1.2; 
     }
+    
+    .product-lema { 
+      font-size: clamp(0.65rem, 1.5vw, 0.75rem); 
+      color: var(--carbon); /* Más oscuro, más imponente */
+      margin-bottom: 25px; 
+      font-weight: 500; /* Mayor presencia */
+      line-height: 1.6; 
+      max-width: 90%;
+    }
+    
+    /* TALLAS TENUES */
+    .product-specs { 
+      font-size: clamp(0.45rem, 1vw, 0.5rem); 
+      letter-spacing: 2px; 
+      text-transform: uppercase; 
+      color: var(--gris-suave); 
+      font-weight: 400; /* Mucho más tenue y sutil */
+      opacity: 0.8;
+      margin-bottom: 15px;
+    }
+
+    /* PRECIO Y BOTÓN DE AÑADIR */
+    .pricing-action-wrapper { width: 100%; margin-top: auto; }
+    .price-old { font-size: clamp(0.65rem, 1.5vw, 0.75rem); color: var(--gris-suave); text-decoration: line-through; letter-spacing: 1px; display: block; margin-bottom: 4px; font-weight: 500;}
+    .product-price { font-size: clamp(1rem, 2.5vw, 1.2rem); letter-spacing: 2px; color: var(--carbon); font-weight: 700; margin-bottom: 20px; margin-top: 5px;}
+    
+    .purchase-action { display: flex; border: 1px solid var(--carbon); height: clamp(35px, 5vw, 42px); transition: var(--transition); border-radius: 2px; overflow: hidden;}
+    .qty-selector { display: flex; align-items: center; justify-content: space-between; width: clamp(60px, 10vw, 80px); background: var(--fondo-galeria); border-right: 1px solid var(--linea-fina); }
+    .qty-selector button { width: 30%; height: 100%; font-size: clamp(1rem, 2vw, 1.2rem); color: var(--gris-suave); display: flex; align-items: center; justify-content: center; }
+    .qty-selector button:hover { color: var(--carbon); background: var(--linea-fina); }
+    .qty-selector span { font-size: clamp(0.65rem, 1.5vw, 0.75rem); font-weight: 600; color: var(--carbon); flex-grow: 1; text-align: center;}
+    
+    .btn-cart { flex-grow: 1; background-color: var(--carbon); color: var(--blanco-dior); font-size: clamp(0.45rem, 1.5vw, 0.55rem); letter-spacing: clamp(1.5px, 0.5vw, 3px); text-transform: uppercase; transition: var(--transition); font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0 10px; border: none; outline: none;}
+    .btn-cart:hover { background-color: var(--dorado); color: var(--carbon); }
+    .btn-cart.added { background: var(--dorado); color: var(--carbon); }
+
+    /* BOTÓN FLOTANTE DESPLEGABLE */
+    .fab-container { position: fixed; bottom: 20px; right: 20px; z-index: 9999; display: flex; flex-direction: column-reverse; align-items: flex-end; gap: 10px; }
+    .fab-main { width: clamp(45px, 12vw, 55px); height: clamp(45px, 12vw, 55px); background-color: var(--carbon); color: var(--blanco-dior); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 20px rgba(0,0,0,0.3); cursor: pointer; transition: var(--transition); z-index: 2; border: 1px solid var(--carbon); }
+    .fab-main svg { width: clamp(20px, 5vw, 24px); height: clamp(20px, 5vw, 24px); fill: currentColor; transition: transform 0.4s ease; }
+    .fab-container:hover .fab-main, .fab-container.active .fab-main { background-color: var(--dorado); color: var(--carbon); border-color: var(--dorado);}
+    .fab-menu { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; opacity: 0; visibility: hidden; transform: translateY(20px); transition: var(--transition); margin-bottom: 5px; }
     .fab-container:hover .fab-menu, .fab-container.active .fab-menu { opacity: 1; visibility: visible; transform: translateY(0); }
-    
-    .fab-item { 
-      background: var(--marfil); color: var(--carbon); padding: 10px 18px; border-radius: 20px; 
-      font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; 
-      border: 1px solid var(--linea-fina); box-shadow: 0 4px 10px rgba(0,0,0,0.05); white-space: nowrap; transition: var(--transition);
-    }
-    .fab-item.vip { background: var(--dorado); color: var(--carbon); border-color: var(--dorado); font-weight: 600; }
+    .fab-item { background: var(--blanco-dior); color: var(--carbon); padding: clamp(10px, 2vw, 12px) clamp(15px, 3vw, 20px); border-radius: 25px; font-size: clamp(0.5rem, 1.5vw, 0.6rem); letter-spacing: 2px; text-transform: uppercase; font-weight: 600; border: 1px solid var(--linea-fina); box-shadow: 0 5px 15px rgba(0,0,0,0.08); white-space: nowrap; transition: var(--transition); }
+    .fab-item.vip { background: var(--dorado); color: var(--carbon); border-color: var(--dorado); }
     .fab-item:hover { transform: translateX(-5px); background: var(--carbon); color: var(--blanco-dior); border-color: var(--carbon); }
 
-    /* =========================================
-       LIGHTBOX INMERSIVO (GALERÍA COMPLETA Y VIDEO)
-       ========================================= */
-    .lightbox { 
-      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
-      background-color: rgba(18, 18, 18, 0.98); 
-      backdrop-filter: blur(15px); z-index: 99999; opacity: 0; pointer-events: none; 
-      transition: opacity 0.4s ease; overflow: hidden; display: flex; align-items: center; 
-    }
+    /* LIGHTBOX INMERSIVO */
+    .lightbox { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(15, 15, 15, 0.98); backdrop-filter: blur(15px); z-index: 99999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
     .lightbox.active { opacity: 1; pointer-events: auto; }
-    
-    .lightbox-close { 
-      position: absolute; top: 20px; right: 30px; font-size: 3rem; color: var(--blanco-dior); 
-      cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 200; line-height: 1; 
-      z-index: 10; transition: var(--transition); 
-    }
-    .lightbox-close:hover { color: var(--dorado); transform: scale(1.1); }
+    .lightbox-track { display: flex; width: 100%; height: 100%; align-items: center; justify-content: flex-start; cursor: pointer; transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    .lightbox-item { flex: 0 0 100vw; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; position: relative;}
+    .lightbox-media { max-width: 95vw; max-height: 85vh; object-fit: contain; transform: scale(0.95); transition: transform 0.3s ease; box-shadow: 0 20px 50px rgba(0,0,0,0.3); background: transparent; border-radius: 4px; pointer-events: none; }
+    .lightbox.active .lightbox-media { transform: scale(1); }
+    .lightbox-close { position: absolute; top: clamp(20px, 4vw, 30px); right: clamp(20px, 4vw, 40px); font-size: clamp(2.5rem, 6vw, 3.5rem); color: var(--blanco-dior); cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 200; line-height: 1; transition: var(--transition); z-index: 10001; }
+    .lightbox-close:hover { color: var(--dorado); transform: scale(1.1) rotate(90deg); }
 
-    .lightbox-track {
-      display: flex; width: 100%; height: 100%; transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      cursor: grab; align-items: center; touch-action: none;
-    }
-    .lightbox-track:active { cursor: grabbing; }
-
-    .lightbox-item {
-      flex: 0 0 100vw; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; position: relative;
-    }
-    
-    .lightbox-media {
-      max-width: 100%; max-height: 90vh; width: auto; height: auto; object-fit: contain; pointer-events: none;
-    }
-
-    /* Controles de Sonido en Lightbox */
     .lb-sound-btn {
       position: absolute; bottom: 60px; left: 50%; transform: translateX(-50%);
       background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.4);
       color: var(--blanco-dior); border-radius: 50%; width: 50px; height: 50px;
       display: flex; align-items: center; justify-content: center; cursor: pointer;
-      backdrop-filter: blur(5px); transition: var(--transition); z-index: 10;
+      backdrop-filter: blur(5px); transition: var(--transition); z-index: 10001; pointer-events: auto;
     }
     .lb-sound-btn:hover { background: var(--dorado); border-color: var(--dorado); color: var(--carbon); }
     .lb-sound-btn svg { width: 20px; height: 20px; fill: currentColor; }
 
-    /* Indicador de Fotos en Lightbox */
-    .lb-indicator {
-      position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
-      display: flex; gap: 8px; z-index: 10;
-    }
+    .lb-indicator { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 10; }
     .lb-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); transition: var(--transition); }
     .lb-dot.active { background: var(--dorado); transform: scale(1.3); }
 
-    /* =========================================
-       NOTIFICACIÓN TOAST
-       ========================================= */
-    .toast-notification { position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%) translateY(100px); background-color: var(--marfil); color: var(--carbon); border: 1px solid var(--dorado); padding: 15px 30px; font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; box-shadow: 0 10px 40px rgba(0,0,0,0.1); z-index: 10000; opacity: 0; transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); display: flex; align-items: center; gap: 12px; pointer-events: none; }
-    .toast-notification svg { fill: var(--dorado); width: 16px; height: 16px; }
+    /* NOTIFICACIÓN TOAST */
+    .toast-notification { position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%) translateY(100px); background-color: var(--carbon); color: var(--dorado); border: 1px solid var(--dorado); padding: 15px 30px; font-size: clamp(0.55rem, 1.5vw, 0.65rem); letter-spacing: 2px; text-transform: uppercase; font-weight: 600; box-shadow: 0 15px 40px rgba(0,0,0,0.2); z-index: 10000; opacity: 0; transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); display: flex; align-items: center; justify-content: center; gap: 12px; pointer-events: none; width: max-content; max-width: 90%; border-radius: 2px;}
+    .toast-notification svg { fill: var(--dorado); width: 18px; height: 18px; }
     .toast-notification.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
-    /* =========================================
-       BANNER LEGAL DE CONFIANZA
-       ========================================= */
+    /* BANNER LEGAL DE CONFIANZA */
     .legal-banner { border-top: 1px solid var(--linea-fina); padding: 60px 5vw 40px; text-align: center; margin-top: auto; background-color: var(--fondo-galeria); }
-    .trust-badges-container { display: flex; justify-content: center; gap: 40px; margin-bottom: 40px; padding: 0 5vw; flex-wrap: wrap; }
-    .trust-badge-item { display: flex; flex-direction: column; align-items: center; gap: 10px; color: var(--carbon); font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; }
-    .trust-badge-item svg { width: 24px; height: 24px; fill: var(--dorado); }
-    .legal-text { font-size: 0.6rem; line-height: 2.2; letter-spacing: 1.5px; color: var(--gris-suave); max-width: 900px; margin: 0 auto; text-transform: uppercase; }
-    .legal-text strong { color: var(--carbon); }
-    .btn-policy { display: inline-block; margin-top: 25px; padding: 10px 20px; border: 1px solid var(--carbon); color: var(--carbon); font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; transition: var(--transition); background: transparent; }
+    .trust-badges-container { display: flex; justify-content: center; gap: clamp(20px, 4vw, 50px); margin-bottom: 40px; padding: 0 5vw; flex-wrap: wrap; }
+    .trust-badge-item { display: flex; flex-direction: column; align-items: center; gap: 12px; color: var(--carbon); font-size: clamp(0.5rem, 1.2vw, 0.6rem); letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
+    .trust-badge-item svg { width: clamp(20px, 4vw, 28px); height: clamp(20px, 4vw, 28px); fill: var(--dorado); }
+    .legal-text { font-size: clamp(0.55rem, 1.2vw, 0.65rem); line-height: 2.2; letter-spacing: 1.5px; color: var(--gris-suave); max-width: 900px; margin: 0 auto; text-transform: uppercase; }
+    .legal-text strong { color: var(--carbon); font-weight: 600;}
+    .btn-policy { display: inline-block; margin-top: 25px; padding: 12px 24px; border: 1px solid var(--carbon); color: var(--carbon); font-size: clamp(0.5rem, 1.2vw, 0.6rem); letter-spacing: 2px; text-transform: uppercase; font-weight: 600; transition: var(--transition); background: transparent; border-radius: 2px;}
     .btn-policy:hover { background-color: var(--carbon); color: var(--blanco-dior); }
-    .founder-credit { margin-top: 40px; font-size: 0.5rem; letter-spacing: 0.25em; color: var(--gris-suave); opacity: 0.5; text-transform: uppercase; font-weight: 300; }
+    .founder-credit { margin-top: 40px; font-size: clamp(0.45rem, 1vw, 0.55rem); letter-spacing: 0.25em; color: var(--gris-suave); opacity: 0.6; text-transform: uppercase; font-weight: 400; }
 
-    /* =========================================
-       RESPONSIVE MOBILE (MENÚ ORDENADO, COMPACTO Y 2 COLUMNAS)
-       ========================================= */
+    /* RESPONSIVE MÓVIL EN 2 COLUMNAS PERFECTAS */
     @media (max-width: 768px) {
-      .navbar { padding: 20px; flex-wrap: wrap; justify-content: space-between; }
-      .brand { position: relative; left: 0; transform: none; width: 100%; margin-bottom: 15px; order: -1; }
+      .navbar { padding: 15px 20px; flex-direction: row; justify-content: space-between; gap: 5px; }
+      .brand { position: static; transform: none; font-size: 1.2rem; flex-grow: 1; text-align: center; margin-top: -3px;}
       
-      /* REORDENACIÓN DEL MENÚ MÓVIL - COMPACTO Y ELEGANTE */
-      .nav-group.right { flex-direction: column; width: 100%; gap: 10px; align-items: center; } 
-      .nav-group.right .dropdown { order: 1; }
-      .nav-group.right .dropdown .dropbtn { padding: 8px 16px; border: 1px solid rgba(203, 170, 99, 0.4); border-radius: 2px; justify-content: center; }
-      .nav-group.right .btn-cart-nav { order: 2; margin-left: 0 !important; width: auto; }
-      .nav-group.right a[href="favoritos.html"] { order: 3; margin-left: 0 !important; width: auto; }
-      
-      .btn-menu-brand { padding: 8px 12px; font-size: 0.55rem; letter-spacing: 1px; }
-      .dropbtn { font-size: 0.6rem; letter-spacing: 1px; }
-      
-      .gallery-header { padding: 50px 15px 30px; }
-      .gallery-title { font-size: 1.8rem; }
-      .btn-back { top: 160px; }
-      
-      /* PRODUCTOS EN 2 COLUMNAS COMPACTAS */
-      .product-grid { 
-        grid-template-columns: repeat(2, 1fr); 
-        gap: 15px; 
-        padding: 30px 10px 100px; 
-      }
-      
-      .carousel-wrapper { aspect-ratio: 1/1; }
-      
-      .product-info { padding: 15px 8px 8px; }
-      .product-name { font-size: 0.85rem; margin-bottom: 5px; }
-      .product-slogan { display: none; } /* Oculto en móvil para mantener limpieza */
-      .product-specs { font-size: 0.45rem; margin-bottom: 10px;}
-      
-      .product-price { font-size: 1rem; margin-bottom: 10px; }
-      .price-old { font-size: 0.65rem; }
-      
-      .purchase-action { height: 32px; flex-direction: row; }
-      .qty-selector { width: 50px; }
-      .qty-selector button { width: 15px; font-size: 0.9rem; }
-      .qty-selector span { font-size: 0.6rem; }
-      .btn-cart { font-size: 0.45rem; letter-spacing: 1px; padding: 0; display: flex; align-items: center; justify-content: center; }
+      .nav-group { flex-direction: row; gap: 8px; flex-shrink: 0;}
+      .nav-group.right { justify-content: flex-end;}
 
-      .btn-fav { width: 22px; height: 22px; top: 6px; right: 6px; }
-      .btn-fav svg { width: 10px; height: 10px; }
+      .dropbtn { font-size: 0.6rem; letter-spacing: 1px; padding: 5px 0;}
+      .dropbtn svg { display: none;} 
+
+      .navbar .dropdown { position: static;} 
+      .dropdown-content { top: calc(100% + 1px); left: 0; right: 0; width: 100vw; min-width: 100%; text-align: center; border-left: none; border-right: none; margin-left: -15px; }
+      .dropdown-content a { font-size: 0.65rem; padding: 15px 20px;}
+      .dropdown-content a:hover { padding-left: 15px;}
+
+      .product-grid { grid-template-columns: repeat(2, 1fr); gap: 15px 10px; padding: 20px 10px 100px; }
+      .product-info { padding: 15px 8px 10px; }
       
-      .fab-container { bottom: 20px; right: 20px; }
-      .fab-main { width: 45px; height: 45px; }
-      .fab-main svg { width: 20px; height: 20px; }
+      /* Ajustes precisos en móvil para la nueva jerarquía */
+      .product-name { font-size: 0.95rem; margin-bottom: 6px; min-height: 2.4em; }
+      .product-lema { font-size: 0.55rem; margin-bottom: 15px; line-height: 1.4; }
+      .product-specs { font-size: 0.35rem; margin-bottom: 10px;}
       
-      .toast-notification { width: 90%; justify-content: center; bottom: 20px; font-size: 0.5rem; padding: 12px; }
-      .lightbox-close { top: 15px; right: 15px; font-size: 2.5rem; }
+      .price-old { font-size: 0.6rem; }
+      .product-price { font-size: 1rem; margin-bottom: 15px; margin-top: 5px;}
+      
+      .purchase-action { height: 32px; }
+      .qty-selector { width: 45px; }
+      .qty-selector button { font-size: 0.8rem; }
+      .qty-selector span { font-size: 0.55rem; }
+      .btn-cart { font-size: 0.4rem; letter-spacing: 1px; padding: 0 2px; }
     }
   </style>
 </head>
@@ -345,7 +302,7 @@
     <div class="nav-group">
       <div class="dropdown">
         <button class="nav-link dropbtn">
-          ATENCIÓN <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+          ATENCIÓN <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z" fill="currentColor"/></svg>
         </button>
         <div class="dropdown-content">
           <a href="soporte.html">Soporte al Cliente</a>
@@ -361,21 +318,21 @@
     <div class="nav-group right">
       <div class="dropdown right">
         <button class="nav-link dropbtn">
-          CATÁLOGO <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+          CATÁLOGO <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z" fill="currentColor"/></svg>
         </button>
         <div class="dropdown-content">
           <a href="catalogo.html">Catálogo Completo</a>
           <a href="joyeria.html">Alta Joyería</a>
-          <a href="boutique.html">Bolsos Boutique</a>
+          <a href="boutique.html" style="color:var(--dorado)!important;">Bolsos Boutique</a>
           <a href="plata.html">Colección Plata</a>
-          <a href="liquidacion.html">El Archivo</a>
+          <a href="liquidacion.html">Liquidación</a>
         </div>
       </div>
       <a href="carrito.html" class="btn-menu-brand btn-cart-nav" style="margin-left: 10px;">
         <svg viewBox="0 0 24 24"><path d="M16 6V4a4 4 0 0 0-8 0v2H3v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6h-5zm-6-2a2 2 0 0 1 4 0v2h-4V4zm8 16H6V8h2v2a1 1 0 0 0 2 0V8h4v2a1 1 0 0 0 2 0V8h2v12z"/></svg>
         BOLSA (<span id="cart-count" class="counter-badge">0</span>)
       </a>
-      <a href="favoritos.html" class="btn-menu-brand">
+      <a href="favoritos.html" class="btn-menu-brand" style="border-color: var(--dorado); background-color: var(--fondo-galeria);">
         <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
         <span id="fav-count" class="counter-badge">0</span>
       </a>
@@ -394,11 +351,6 @@
     </div>
   </div>
 
-  <a href="#" onclick="window.history.back(); return false;" class="btn-back">
-    <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
-    Volver atrás
-  </a>
-
   <header class="gallery-header">
     <p class="gallery-kicker">Capítulo II</p>
     <h1 class="gallery-title">Bolsos Boutique</h1>
@@ -416,186 +368,207 @@
 
     <article class="product-card">
       <div class="carousel-wrapper" onclick="openLightbox(this)">
-        <button class="btn-fav" data-ref="895623" onclick="toggleFav('895623', 'Bolso Enigma', 'L 1199', 'b11.jpg', this); event.stopPropagation();">
+        <button class="btn-fav" data-ref="B001" onclick="toggleFav('B001', 'Bolso Enigma', 'L 1199', 'b11.jpg', this); event.stopPropagation();">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track" data-index="0">
-          <img src="b11.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ÈNIGME'">
-          <img src="b1.png" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ÈNIGME'">
-          <video src="vb1.mp4" class="product-media" preload="metadata" muted playsinline loop></video>
+          <img src="b11.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+1'">
+          <img src="b1.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+1'">
         </div>
       </div>
       <div class="product-info">
-        <span class="product-code">REF: 895623</span>
-        <h2 class="product-name">Bolso Enigma</h2>
-        <span class="product-specs">Medida: 27 x 15 CM</span>
-        <p class="product-slogan">Un espectáculo de arquitectura pura en <strong>gris metalizado</strong>.</p>
-        
-        <span class="price-old">L 1358</span>
-        <div class="product-price">L 1199</div>
-        
-        <div class="purchase-action">
-          <div class="qty-selector">
-            <button onclick="changeCardQty('qty-895623', -1)">-</button>
-            <span id="qty-895623">1</span>
-            <button onclick="changeCardQty('qty-895623', 1)">+</button>
+        <div class="product-meta">
+          <span class="product-code">REF: B001</span>
+          <h2 class="product-name">Bolso Enigma</h2>
+          <span class="product-specs">Medida: 27 x 15 CM</span>
+          <p class="product-lema">Arquitectura pura forjada en gris metalizado. Una declaración de intenciones.</p>
+        </div>
+
+        <div class="pricing-action-wrapper">
+          <span class="price-old">L 1398</span>
+          <div class="product-price">L 1199</div>
+          
+          <div class="purchase-action">
+            <div class="qty-selector">
+              <button onclick="changeCardQty('qty-B001', -1)">-</button>
+              <span id="qty-B001">1</span>
+              <button onclick="changeCardQty('qty-B001', 1)">+</button>
+            </div>
+            <button class="btn-cart" onclick="addToCartBase('B001', 'Bolso Enigma', '1199', 'b11.jpg', this, 'qty-B001')">Añadir a la Bolsa</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('895623', 'Bolso Enigma', 'L 1199', 'b11.jpg', this, 'qty-895623')">Añadir a la Bolsa</button>
         </div>
       </div>
     </article>
 
     <article class="product-card">
       <div class="carousel-wrapper" onclick="openLightbox(this)">
-        <button class="btn-fav" data-ref="895500" onclick="toggleFav('895500', 'Bolso Electric', 'L 1199', 'b22.jpg', this); event.stopPropagation();">
+        <button class="btn-fav" data-ref="B002" onclick="toggleFav('B002', 'Bolso Electric', 'L 1199', 'b22.jpg', this); event.stopPropagation();">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track" data-index="0">
-          <img src="b22.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ÈNIGME'">
-          <img src="b2.png" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ÈNIGME'">
-          <video src="vb2.mp4" class="product-media" preload="metadata" muted playsinline loop></video>
+          <img src="b22.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+2'">
+          <img src="b2.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+2'">
         </div>
       </div>
       <div class="product-info">
-        <span class="product-code">REF: 895500</span>
-        <h2 class="product-name">Bolso Electric</h2>
-        <span class="product-specs">Medida: 27 x 15 CM</span>
-        <p class="product-slogan">El magnetismo del lujo. Estructura vibrante en tono <strong>dorado</strong>.</p>
-        
-        <span class="price-old">L 1358</span>
-        <div class="product-price">L 1199</div>
-        
-        <div class="purchase-action">
-          <div class="qty-selector">
-            <button onclick="changeCardQty('qty-895500', -1)">-</button>
-            <span id="qty-895500">1</span>
-            <button onclick="changeCardQty('qty-895500', 1)">+</button>
+        <div class="product-meta">
+          <span class="product-code">REF: B002</span>
+          <h2 class="product-name">Bolso Electric</h2>
+          <span class="product-specs">Medida: 27 x 15 CM</span>
+          <p class="product-lema">El magnetismo del lujo absoluto. Una silueta vibrante bañada en destellos dorados.</p>
+        </div>
+
+        <div class="pricing-action-wrapper">
+          <span class="price-old">L 1398</span>
+          <div class="product-price">L 1199</div>
+          
+          <div class="purchase-action">
+            <div class="qty-selector">
+              <button onclick="changeCardQty('qty-B002', -1)">-</button>
+              <span id="qty-B002">1</span>
+              <button onclick="changeCardQty('qty-B002', 1)">+</button>
+            </div>
+            <button class="btn-cart" onclick="addToCartBase('B002', 'Bolso Electric', '1199', 'b22.jpg', this, 'qty-B002')">Añadir a la Bolsa</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('895500', 'Bolso Electric', 'L 1199', 'b22.jpg', this, 'qty-895500')">Añadir a la Bolsa</button>
         </div>
       </div>
     </article>
 
     <article class="product-card">
       <div class="carousel-wrapper" onclick="openLightbox(this)">
-        <button class="btn-fav" data-ref="894477" onclick="toggleFav('894477', 'Bolso Elegance', 'L 1599', 'b33.jpg', this); event.stopPropagation();">
+        <button class="btn-fav" data-ref="B003" onclick="toggleFav('B003', 'Bolso Elegance', 'L 1599', 'b33.jpg', this); event.stopPropagation();">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track" data-index="0">
-          <img src="b33.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ÈNIGME'">
-          <img src="b3.png" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ÈNIGME'">
-          <video src="vb3.mp4" class="product-media" preload="metadata" muted playsinline loop></video>
+          <video src="vb3.mp4" class="product-media" preload="metadata" autoplay muted playsinline loop></video>
+          <img src="b33.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+3'">
+          <img src="b3.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+3'">
         </div>
       </div>
       <div class="product-info">
-        <span class="product-code">REF: 894477</span>
-        <h2 class="product-name">Bolso Elegance</h2>
-        <span class="product-specs">UNITALLA</span>
-        <p class="product-slogan">Líneas pulcras y sofisticación atemporal. <strong>Clásico y elegante</strong>.</p>
-        
-        <span class="price-old">L 1758</span>
-        <div class="product-price">L 1599</div>
-        
-        <div class="purchase-action">
-          <div class="qty-selector">
-            <button onclick="changeCardQty('qty-894477', -1)">-</button>
-            <span id="qty-894477">1</span>
-            <button onclick="changeCardQty('qty-894477', 1)">+</button>
+        <div class="product-meta">
+          <span class="product-code">REF: B003</span>
+          <h2 class="product-name">Bolso Elegance</h2>
+          <span class="product-specs">UNITALLA</span>
+          <p class="product-lema">Líneas de una pulcritud magistral. La sofisticación atemporal en su estado más puro.</p>
+        </div>
+
+        <div class="pricing-action-wrapper">
+          <span class="price-old">L 1798</span>
+          <div class="product-price">L 1599</div>
+          
+          <div class="purchase-action">
+            <div class="qty-selector">
+              <button onclick="changeCardQty('qty-B003', -1)">-</button>
+              <span id="qty-B003">1</span>
+              <button onclick="changeCardQty('qty-B003', 1)">+</button>
+            </div>
+            <button class="btn-cart" onclick="addToCartBase('B003', 'Bolso Elegance', '1599', 'b33.jpg', this, 'qty-B003')">Añadir a la Bolsa</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('894477', 'Bolso Elegance', 'L 1599', 'b33.jpg', this, 'qty-894477')">Añadir a la Bolsa</button>
         </div>
       </div>
     </article>
 
     <article class="product-card">
       <div class="carousel-wrapper" onclick="openLightbox(this)">
-        <button class="btn-fav" data-ref="894488" onclick="toggleFav('894488', 'Bolso Aura', 'L 1399', 'b44.jpg', this); event.stopPropagation();">
+        <button class="btn-fav" data-ref="B004" onclick="toggleFav('B004', 'Bolso Aura', 'L 1399', 'b44.jpg', this); event.stopPropagation();">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track" data-index="0">
-          <img src="b44.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ÈNIGME'">
-          <img src="b4.png" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ÈNIGME'">
-          <video src="vb4.mp4" class="product-media" preload="metadata" muted playsinline loop></video>
+          <img src="b44.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+4'">
+          <img src="b4.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+4'">
         </div>
       </div>
       <div class="product-info">
-        <span class="product-code">REF: 894488</span>
-        <h2 class="product-name">Bolso Aura</h2>
-        <span class="product-specs">UNITALLA</span>
-        <p class="product-slogan">Silueta imponente que define el estándar del <strong>alto lujo</strong>.</p>
-        
-        <span class="price-old">L 1558</span>
-        <div class="product-price">L 1399</div>
-        
-        <div class="purchase-action">
-          <div class="qty-selector">
-            <button onclick="changeCardQty('qty-894488', -1)">-</button>
-            <span id="qty-894488">1</span>
-            <button onclick="changeCardQty('qty-894488', 1)">+</button>
+        <div class="product-meta">
+          <span class="product-code">REF: B004</span>
+          <h2 class="product-name">Bolso Aura</h2>
+          <span class="product-specs">UNITALLA</span>
+          <p class="product-lema">Una silueta de presencia imponente. El nuevo estándar del alto lujo contemporáneo.</p>
+        </div>
+
+        <div class="pricing-action-wrapper">
+          <span class="price-old">L 1598</span>
+          <div class="product-price">L 1399</div>
+          
+          <div class="purchase-action">
+            <div class="qty-selector">
+              <button onclick="changeCardQty('qty-B004', -1)">-</button>
+              <span id="qty-B004">1</span>
+              <button onclick="changeCardQty('qty-B004', 1)">+</button>
+            </div>
+            <button class="btn-cart" onclick="addToCartBase('B004', 'Bolso Aura', '1399', 'b44.jpg', this, 'qty-B004')">Añadir a la Bolsa</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('894488', 'Bolso Aura', 'L 1399', 'b44.jpg', this, 'qty-894488')">Añadir a la Bolsa</button>
         </div>
       </div>
     </article>
 
     <article class="product-card">
       <div class="carousel-wrapper" onclick="openLightbox(this)">
-        <button class="btn-fav" data-ref="894499" onclick="toggleFav('894499', 'Bolso Misterio', 'L 1499', 'b55.jpg', this); event.stopPropagation();">
+        <button class="btn-fav" data-ref="B005" onclick="toggleFav('B005', 'Bolso Misterio', 'L 1499', 'b55.jpg', this); event.stopPropagation();">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track" data-index="0">
-          <img src="b55.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ÈNIGME'">
-          <img src="b5.png" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ÈNIGME'">
-          <video src="vb5.mp4" class="product-media" preload="metadata" muted playsinline loop></video>
+          <video src="vb5.mp4" class="product-media" preload="metadata" autoplay muted playsinline loop></video>
+          <img src="b55.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+5'">
+          <img src="b5.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+5'">
         </div>
       </div>
       <div class="product-info">
-        <span class="product-code">REF: 894499</span>
-        <h2 class="product-name">Bolso Misterio</h2>
-        <span class="product-specs">Medida: 33 x 60 CM (MAXI)</span>
-        <p class="product-slogan">Un formato maxi estructurado que guarda los secretos de la mujer <strong>ÈNIGME</strong>.</p>
-        
-        <span class="price-old">L 1658</span>
-        <div class="product-price">L 1499</div>
-        
-        <div class="purchase-action">
-          <div class="qty-selector">
-            <button onclick="changeCardQty('qty-894499', -1)">-</button>
-            <span id="qty-894499">1</span>
-            <button onclick="changeCardQty('qty-894499', 1)">+</button>
+        <div class="product-meta">
+          <span class="product-code">REF: B005</span>
+          <h2 class="product-name">Bolso Misterio</h2>
+          <span class="product-specs">Medida: 33 x 60 CM (MAXI)</span>
+          <p class="product-lema">Volumen y estructura en perfecta armonía. Un formato concebido para cautivar.</p>
+        </div>
+
+        <div class="pricing-action-wrapper">
+          <span class="price-old">L 1698</span>
+          <div class="product-price">L 1499</div>
+          
+          <div class="purchase-action">
+            <div class="qty-selector">
+              <button onclick="changeCardQty('qty-B005', -1)">-</button>
+              <span id="qty-B005">1</span>
+              <button onclick="changeCardQty('qty-B005', 1)">+</button>
+            </div>
+            <button class="btn-cart" onclick="addToCartBase('B005', 'Bolso Misterio', '1499', 'b55.jpg', this, 'qty-B005')">Añadir a la Bolsa</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('894499', 'Bolso Misterio', 'L 1499', 'b55.jpg', this, 'qty-894499')">Añadir a la Bolsa</button>
         </div>
       </div>
     </article>
 
     <article class="product-card">
       <div class="carousel-wrapper" onclick="openLightbox(this)">
-        <button class="btn-fav" data-ref="890371" onclick="toggleFav('890371', 'Bolso BurdeúX', 'L 1099', 'b66.jpg', this); event.stopPropagation();">
+        <button class="btn-fav" data-ref="B006" onclick="toggleFav('B006', 'Bolso BurdeúX', 'L 1099', 'b66.jpg', this); event.stopPropagation();">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track" data-index="0">
-          <img src="b66.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ÈNIGME'">
-          <img src="b6.png" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ÈNIGME'">
-          <video src="vb6.mp4" class="product-media" preload="metadata" muted playsinline loop></video>
+          <video src="vb6.mp4" class="product-media" preload="metadata" autoplay muted playsinline loop></video>
+          <img src="b66.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+6'">
+          <img src="b6.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+6'">
         </div>
       </div>
       <div class="product-info">
-        <span class="product-code">REF: 890371</span>
-        <h2 class="product-name">Bolso BurdeúX</h2>
-        <span class="product-specs">Medida: 28 x 12 CM</span>
-        <p class="product-slogan">El tono del poder. Una silueta en <strong>burdeos</strong> que eleva cualquier estilismo.</p>
-        
-        <span class="price-old">L 1258</span>
-        <div class="product-price">L 1099</div>
-        
-        <div class="purchase-action">
-          <div class="qty-selector">
-            <button onclick="changeCardQty('qty-890371', -1)">-</button>
-            <span id="qty-890371">1</span>
-            <button onclick="changeCardQty('qty-890371', 1)">+</button>
+        <div class="product-meta">
+          <span class="product-code">REF: B006</span>
+          <h2 class="product-name">Bolso BurdeúX</h2>
+          <span class="product-specs">Medida: 28 x 12 CM</span>
+          <p class="product-lema">El color del poder absoluto. Una obra maestra en burdeos que domina el espacio.</p>
+        </div>
+
+        <div class="pricing-action-wrapper">
+          <span class="price-old">L 1298</span>
+          <div class="product-price">L 1099</div>
+          
+          <div class="purchase-action">
+            <div class="qty-selector">
+              <button onclick="changeCardQty('qty-B006', -1)">-</button>
+              <span id="qty-B006">1</span>
+              <button onclick="changeCardQty('qty-B006', 1)">+</button>
+            </div>
+            <button class="btn-cart" onclick="addToCartBase('B006', 'Bolso BurdeúX', '1099', 'b66.jpg', this, 'qty-B006')">Añadir a la Bolsa</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('890371', 'Bolso BurdeúX', 'L 1099', 'b66.jpg', this, 'qty-890371')">Añadir a la Bolsa</button>
         </div>
       </div>
     </article>
@@ -627,10 +600,10 @@
     <p class="founder-credit">© 2026 ÈNIGME HONDURAS POR CARLOS ARMAS MARTÍNEZ. TODOS LOS DERECHOS RESERVADOS.</p>
   </footer>
 
-  <div id="lightbox" class="lightbox">
-    <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+  <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
     <div class="lightbox-track" id="lightbox-track">
       </div>
+    <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
     <div class="lb-indicator" id="lb-indicator"></div>
   </div>
 
@@ -709,7 +682,15 @@
         favs.splice(index, 1);
         btn.classList.remove('active');
       } else {
-        favs.push({ref, name, price, img});
+        // En los favoritos capturamos toda la galería multimedia, incluyendo videos
+        let card = btn.closest('.product-card');
+        let track = card.querySelector('.carousel-track');
+        let mediaElements = [];
+        Array.from(track.children).forEach(child => {
+          let type = child.tagName.toLowerCase() === 'video' ? 'video' : 'img';
+          mediaElements.push({type: type, src: child.src || child.getAttribute('src')});
+        });
+        favs.push({ref, name, price, img, media: mediaElements});
         btn.classList.add('active');
       }
       localStorage.setItem('enigme_favs', JSON.stringify(favs));
@@ -728,18 +709,26 @@
       setTimeout(() => { toast.classList.remove('show'); }, 3000);
     }
 
-    function addToCart(ref, name, price, img, btn, qtyId) {
+    function addToCartBase(ref, name, priceStr, img, btn, qtyId) {
       if (btn.classList.contains('added')) return; 
       
       const qtyToAdd = parseInt(document.getElementById(qtyId).innerText) || 1;
-      
       let cart = JSON.parse(localStorage.getItem('enigme_cart')) || [];
       let existing = cart.find(i => i.ref === ref);
       
+      // Capturamos toda la galería multimedia al añadir a la bolsa
+      let card = btn.closest('.product-card');
+      let track = card.querySelector('.carousel-track');
+      let mediaElements = [];
+      Array.from(track.children).forEach(child => {
+         let type = child.tagName.toLowerCase() === 'video' ? 'video' : 'img';
+         mediaElements.push({type: type, src: child.src || child.getAttribute('src')});
+      });
+
       if(existing) {
         existing.qty += qtyToAdd;
       } else { 
-        cart.push({ref, name, price, img, qty: qtyToAdd}); 
+        cart.push({ref, name, price: "L " + priceStr, img, qty: qtyToAdd, media: mediaElements}); 
       }
       
       localStorage.setItem('enigme_cart', JSON.stringify(cart));
@@ -796,15 +785,17 @@
         
         let clone = items[i].cloneNode(true);
         clone.className = 'lightbox-media';
+        clone.style.pointerEvents = 'none'; 
         
         if(clone.tagName.toLowerCase() === 'video') {
           clone.loop = true;
-          clone.muted = true; // El video nativo siempre mudo. Usaremos boda.mp3
+          clone.muted = true; 
           clone.setAttribute('playsinline', '');
           
           let soundBtn = document.createElement('button');
           soundBtn.className = 'lb-sound-btn';
           soundBtn.innerHTML = getSoundIcon(globalMuted); 
+          soundBtn.style.pointerEvents = 'auto'; 
           
           soundBtn.onclick = (e) => {
             e.stopPropagation();
@@ -871,46 +862,49 @@
 
       let currentItem = wrappers[lbCurrentIndex];
       if(!currentItem.querySelector('video')) {
-         audio.pause();
+         audio?.pause();
       }
     }
 
     function closeLightbox(e) {
-      if(e) e.stopPropagation();
+      if(e && e.target && e.target.closest && e.target.closest('.lb-sound-btn')) return;
       lightbox.classList.remove('active');
       document.body.style.overflow = 'auto'; 
       let vids = lbTrack.querySelectorAll('video');
       vids.forEach(v => v.pause());
-      document.getElementById('audio-boda').pause();
+      document.getElementById('audio-boda')?.pause();
     }
 
-    /* Swipe Logic para el Lightbox */
+    /* Swipe Logic Ultra Rapido + Clic DENTRO o FUERA para cerrar */
     let lbIsDown = false; let lbStartX; let lbIsDragged = false;
 
     lbTrack.addEventListener('mousedown', (e) => { lbIsDown = true; lbIsDragged = false; lbStartX = e.pageX; });
-    lbTrack.addEventListener('mousemove', (e) => { if (!lbIsDown) return; if (Math.abs(e.pageX - lbStartX) > 20) lbIsDragged = true; });
+    lbTrack.addEventListener('mousemove', (e) => { if (!lbIsDown) return; if (Math.abs(e.pageX - lbStartX) > 5) lbIsDragged = true; });
     lbTrack.addEventListener('mouseup', (e) => {
       lbIsDown = false;
       if (lbIsDragged) {
         if (lbStartX > e.pageX) { lbCurrentIndex++; if(lbCurrentIndex >= lbItemsCount) lbCurrentIndex = 0; }
         else { lbCurrentIndex--; if(lbCurrentIndex < 0) lbCurrentIndex = lbItemsCount - 1; }
         updateLightboxPosition();
+      } else {
+        closeLightbox(e); /* CLIC PURO: CIERRA */
       }
     });
     lbTrack.addEventListener('mouseleave', () => { lbIsDown = false; });
-
+    
     lbTrack.addEventListener('touchstart', (e) => { lbStartX = e.touches[0].clientX; lbIsDragged = false; }, {passive: true});
-    lbTrack.addEventListener('touchmove', (e) => { if (Math.abs(e.touches[0].clientX - lbStartX) > 20) lbIsDragged = true; }, {passive: true});
+    lbTrack.addEventListener('touchmove', (e) => { if (Math.abs(e.touches[0].clientX - lbStartX) > 5) lbIsDragged = true; }, {passive: true});
     lbTrack.addEventListener('touchend', (e) => {
       if (lbIsDragged) {
         let endX = e.changedTouches[0].clientX;
         if (lbStartX > endX) { lbCurrentIndex++; if(lbCurrentIndex >= lbItemsCount) lbCurrentIndex = 0; }
         else { lbCurrentIndex--; if(lbCurrentIndex < 0) lbCurrentIndex = lbItemsCount - 1; }
         updateLightboxPosition();
+      } else {
+        closeLightbox(e); /* TOQUE PURO: CIERRA */
       }
     });
 
-    /* Navegación por Teclado en Lightbox */
     document.addEventListener('keydown', (e) => {
       if (lightbox.classList.contains('active')) {
         if (e.key === 'ArrowLeft') {
