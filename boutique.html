@@ -45,6 +45,7 @@
     "url": "https://enigmeofficial.com"
   }
   </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -85,7 +86,6 @@
       display: none !important;
       -webkit-appearance: none !important;
     }
-    video { pointer-events: none; }
 
     /* =========================================
        NAVBAR SUPER RESPONSIVO (NUEVA ARQUITECTURA)
@@ -172,20 +172,11 @@
     
     .product-code { font-size: clamp(0.45rem, 1vw, 0.5rem); letter-spacing: 3px; color: var(--gris-suave); margin-bottom: 12px; font-weight: 500;}
     
-    .product-name { 
-      font-family: 'Cinzel', serif; font-size: clamp(1.1rem, 3vw, 1.4rem); letter-spacing: 0.15em; color: var(--carbon); 
-      margin-bottom: 10px; text-transform: uppercase; font-weight: 700; line-height: 1.2; 
-    }
+    .product-name { font-family: 'Cinzel', serif; font-size: clamp(1.1rem, 3vw, 1.4rem); letter-spacing: 0.15em; color: var(--carbon); margin-bottom: 10px; text-transform: uppercase; font-weight: 700; line-height: 1.2; }
     
-    .product-lema { 
-      font-size: clamp(0.65rem, 1.5vw, 0.75rem); color: var(--carbon); margin-bottom: 25px; 
-      font-weight: 500; line-height: 1.6; max-width: 90%;
-    }
+    .product-lema { font-size: clamp(0.65rem, 1.5vw, 0.75rem); color: var(--carbon); margin-bottom: 25px; font-weight: 500; line-height: 1.6; max-width: 90%; }
     
-    .product-specs { 
-      font-size: clamp(0.45rem, 1vw, 0.5rem); letter-spacing: 2px; text-transform: uppercase; 
-      color: var(--gris-suave); font-weight: 400; opacity: 0.8; margin-bottom: 15px;
-    }
+    .product-specs { font-size: clamp(0.45rem, 1vw, 0.5rem); letter-spacing: 2px; text-transform: uppercase; color: var(--gris-suave); font-weight: 400; opacity: 0.8; margin-bottom: 15px; }
 
     .pricing-action-wrapper { width: 100%; margin-top: auto; }
     .price-old { font-size: clamp(0.65rem, 1.5vw, 0.75rem); color: var(--gris-suave); text-decoration: line-through; letter-spacing: 1px; display: block; margin-bottom: 4px; font-weight: 500;}
@@ -224,27 +215,11 @@
       opacity: 0; pointer-events: none; transition: opacity 0.3s ease; 
     }
     .lightbox.active { opacity: 1; pointer-events: auto; }
-    
-    .lightbox-track {
-      display: flex; width: 100%; height: 100%; align-items: center; justify-content: flex-start; cursor: pointer; transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    
-    .lightbox-item { 
-      flex: 0 0 100vw; 
-      width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; position: relative;
-    }
-
-    .lightbox-media { 
-      max-width: 95vw; max-height: 85vh; object-fit: contain; transform: scale(0.95); 
-      transition: transform 0.3s ease; box-shadow: 0 20px 50px rgba(0,0,0,0.3); background: transparent; border-radius: 4px; pointer-events: none; padding: 15px;
-    }
+    .lightbox-track { display: flex; width: 100%; height: 100%; align-items: center; justify-content: flex-start; cursor: pointer; transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    .lightbox-item { flex: 0 0 100vw; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; position: relative;}
+    .lightbox-media { max-width: 95vw; max-height: 85vh; object-fit: contain; transform: scale(0.95); transition: transform 0.3s ease; box-shadow: 0 20px 50px rgba(0,0,0,0.3); background: transparent; border-radius: 4px; pointer-events: none; padding: 15px; }
     .lightbox.active .lightbox-media { transform: scale(1); }
-    
-    .lightbox-close { 
-      position: absolute; top: clamp(20px, 4vw, 30px); right: clamp(20px, 4vw, 40px); font-size: clamp(2.5rem, 6vw, 3.5rem); color: var(--blanco-dior); 
-      cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 200; line-height: 1; 
-      transition: var(--transition); z-index: 10001; 
-    }
+    .lightbox-close { position: absolute; top: clamp(20px, 4vw, 30px); right: clamp(20px, 4vw, 40px); font-size: clamp(2.5rem, 6vw, 3.5rem); color: var(--blanco-dior); cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 200; line-height: 1; transition: var(--transition); z-index: 10001; }
     .lightbox-close:hover { color: var(--dorado); transform: scale(1.1) rotate(90deg); }
 
     .lb-sound-btn {
@@ -278,7 +253,7 @@
     .founder-credit { margin-top: 40px; font-size: clamp(0.45rem, 1vw, 0.55rem); letter-spacing: 0.25em; color: var(--gris-suave); opacity: 0.6; text-transform: uppercase; font-weight: 400; }
 
     /* =========================================
-       SÚPER RESPONSIVO MÓVIL (GRID DE ALTA COSTURA Y CERO CORTES)
+       RESPONSIVE MÓVIL EN 2 COLUMNAS PERFECTAS
        ========================================= */
     @media (max-width: 768px) {
       .navbar { 
@@ -286,31 +261,27 @@
         justify-content: space-between; align-items: center; 
       }
       
-      /* 1. MARCA ARRIBA DEL TODO (MÁS GRANDE Y SIN CORTES) */
+      /* CERO CORTES EN LA MARCA */
       .brand { 
         position: relative; left: 0; transform: none; width: 100%; 
         text-align: center; font-size: 1.8rem; letter-spacing: 0.2em; 
         order: 1; margin-bottom: 15px; white-space: nowrap;
       }
       
-      /* 2. BOTONES ABAJO PERFECTAMENTE ALINEADOS */
       .nav-group { order: 2; width: auto; gap: 10px; }
       .nav-group.right { order: 3; width: auto; gap: 8px; justify-content: flex-end; }
       
-      /* Ocultar palabra BOLSA para dar espacio y estética limpia a los íconos */
       .txt-hide-mobile { display: none; }
       
       .btn-menu-brand { padding: 6px 10px; font-size: 0.6rem; margin-left: 0 !important; }
       .dropbtn { font-size: 0.65rem; letter-spacing: 1px; padding: 5px 0;}
       .dropbtn svg { display: none;} 
 
-      /* MEGA MENÚ MÓVIL A PANTALLA COMPLETA */
       .navbar .dropdown { position: static;} 
       .dropdown-content { top: calc(100% + 1px); left: 0; right: 0; width: 100vw; min-width: 100%; text-align: center; border-left: none; border-right: none; margin-left: -4vw; }
       .dropdown-content a { font-size: 0.65rem; padding: 15px 20px;}
       .dropdown-content a:hover { padding-left: 15px;}
 
-      /* GRID DE PRODUCTOS EN 2 COLUMNAS */
       .product-grid { grid-template-columns: repeat(2, 1fr); gap: 15px 10px; padding: 20px 10px 100px; }
       .product-info { padding: 15px 8px 10px; }
       
@@ -321,13 +292,13 @@
       .price-old { font-size: 0.6rem; }
       .product-price { font-size: 1rem; margin-bottom: 15px; margin-top: 5px;}
       
-      .purchase-action { height: 32px; }
+      .purchase-action { height: 32px; flex-direction: row; }
       .qty-selector { width: 45px; }
       .qty-selector button { font-size: 0.8rem; }
       .qty-selector span { font-size: 0.55rem; }
       .btn-cart { font-size: 0.4rem; letter-spacing: 1px; padding: 0 2px; }
 
-      /* BOTÓN CORAZÓN REPARADO EN TARJETAS */
+      /* BOTÓN FAVORITOS MÓVIL REPARADO */
       .btn-fav { width: 28px; height: 28px; top: 8px; right: 8px; z-index: 100; }
       .btn-fav svg { width: 12px; height: 12px; }
     }
@@ -381,7 +352,7 @@
   <div class="fab-container" id="fab-container">
     <div class="fab-menu">
       <a href="catalogo.html" class="fab-item">Catálogo</a>
-      <a href="https://wa.me/34602149162?text=Hola,%20estoy%20en%20la%20Boutique%20de%20Bolsos%20y%20deseo%20asesoría%20VIP." class="fab-item vip" target="_blank" rel="noopener noreferrer">Atención VIP</a>
+      <a href="https://wa.me/34602149162?text=Hola,%20estoy%20en%20Bolsos%20Boutique%20y%20deseo%20asesoría%20VIP." class="fab-item vip" target="_blank" rel="noopener noreferrer">Atención VIP</a>
     </div>
     <div class="fab-main" onclick="toggleFabMobile()">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -406,10 +377,10 @@
   <main class="product-grid">
 
     <article class="product-card">
+      <button class="btn-fav" data-ref="B001" onclick="toggleFav('B001', 'Bolso Enigma', 'L 1199', 'b11.jpg', this); event.stopPropagation();">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+      </button>
       <div class="carousel-wrapper" onclick="openLightbox(this)">
-        <button class="btn-fav" data-ref="B001" onclick="toggleFav('B001', 'Bolso Enigma', 'L 1199', 'b11.jpg', this); event.stopPropagation();">
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-        </button>
         <div class="carousel-track" data-index="0">
           <img src="b11.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+1'">
           <img src="b1.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+1'">
@@ -440,10 +411,10 @@
     </article>
 
     <article class="product-card">
+      <button class="btn-fav" data-ref="B002" onclick="toggleFav('B002', 'Bolso Electric', 'L 1199', 'b22.jpg', this); event.stopPropagation();">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+      </button>
       <div class="carousel-wrapper" onclick="openLightbox(this)">
-        <button class="btn-fav" data-ref="B002" onclick="toggleFav('B002', 'Bolso Electric', 'L 1199', 'b22.jpg', this); event.stopPropagation();">
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-        </button>
         <div class="carousel-track" data-index="0">
           <img src="b22.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+2'">
           <img src="b2.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+2'">
@@ -474,12 +445,12 @@
     </article>
 
     <article class="product-card">
+      <button class="btn-fav" data-ref="B003" onclick="toggleFav('B003', 'Bolso Elegance', 'L 1599', 'b33.jpg', this); event.stopPropagation();">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+      </button>
       <div class="carousel-wrapper" onclick="openLightbox(this)">
-        <button class="btn-fav" data-ref="B003" onclick="toggleFav('B003', 'Bolso Elegance', 'L 1599', 'b33.jpg', this); event.stopPropagation();">
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-        </button>
         <div class="carousel-track" data-index="0">
-          <video src="vb3.mp4" class="product-media" preload="auto" autoplay muted playsinline loop disablePictureInPicture></video>
+          <video src="vb3.mp4" poster="b33.jpg" class="product-media" autoplay muted playsinline loop></video>
           <img src="b33.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+3'">
           <img src="b3.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+3'">
         </div>
@@ -509,10 +480,10 @@
     </article>
 
     <article class="product-card">
+      <button class="btn-fav" data-ref="B004" onclick="toggleFav('B004', 'Bolso Aura', 'L 1399', 'b44.jpg', this); event.stopPropagation();">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+      </button>
       <div class="carousel-wrapper" onclick="openLightbox(this)">
-        <button class="btn-fav" data-ref="B004" onclick="toggleFav('B004', 'Bolso Aura', 'L 1399', 'b44.jpg', this); event.stopPropagation();">
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-        </button>
         <div class="carousel-track" data-index="0">
           <img src="b44.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+4'">
           <img src="b4.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+4'">
@@ -543,12 +514,12 @@
     </article>
 
     <article class="product-card">
+      <button class="btn-fav" data-ref="B005" onclick="toggleFav('B005', 'Bolso Misterio', 'L 1499', 'b55.jpg', this); event.stopPropagation();">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+      </button>
       <div class="carousel-wrapper" onclick="openLightbox(this)">
-        <button class="btn-fav" data-ref="B005" onclick="toggleFav('B005', 'Bolso Misterio', 'L 1499', 'b55.jpg', this); event.stopPropagation();">
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-        </button>
         <div class="carousel-track" data-index="0">
-          <video src="vb5.mp4" class="product-media" preload="auto" autoplay muted playsinline loop disablePictureInPicture></video>
+          <video src="vb5.mp4" poster="b55.jpg" class="product-media" autoplay muted playsinline loop></video>
           <img src="b55.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+5'">
           <img src="b5.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+5'">
         </div>
@@ -578,12 +549,12 @@
     </article>
 
     <article class="product-card">
+      <button class="btn-fav" data-ref="B006" onclick="toggleFav('B006', 'Bolso BurdeúX', 'L 1099', 'b66.jpg', this); event.stopPropagation();">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+      </button>
       <div class="carousel-wrapper" onclick="openLightbox(this)">
-        <button class="btn-fav" data-ref="B006" onclick="toggleFav('B006', 'Bolso BurdeúX', 'L 1099', 'b66.jpg', this); event.stopPropagation();">
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-        </button>
         <div class="carousel-track" data-index="0">
-          <video src="vb6.mp4" class="product-media" preload="auto" autoplay muted playsinline loop disablePictureInPicture></video>
+          <video src="vb6.mp4" poster="b66.jpg" class="product-media" autoplay muted playsinline loop></video>
           <img src="b66.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+6'">
           <img src="b6.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+6'">
         </div>
@@ -640,7 +611,8 @@
   </footer>
 
   <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
-    <div class="lightbox-track" id="lightbox-track"></div>
+    <div class="lightbox-track" id="lightbox-track">
+      </div>
     <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
     <div class="lb-indicator" id="lb-indicator"></div>
   </div>
@@ -652,9 +624,18 @@
 
   <script>
     /* =========================================
-       AUDIO GLOBAL
+       AUDIO GLOBAL & FORZADO DE VIDEOS
        ========================================= */
     let globalMuted = true;
+
+    // Forzar videos mudos al cargar para garantizar autoplay móvil
+    document.addEventListener("DOMContentLoaded", function() {
+        var vids = document.querySelectorAll('.carousel-track video');
+        vids.forEach(function(v) {
+            v.muted = true;
+            v.play().catch(function(e){ console.log("Autoplay móvil prevenido"); });
+        });
+    });
 
     /* =========================================
        BOTÓN FLOTANTE MÓVIL
@@ -790,7 +771,7 @@
     }
 
     /* =========================================
-       LIGHTBOX INMERSIVO Y AUDIO INTELIGENTE
+       LIGHTBOX INMERSIVO Y CONTROL DE AUDIO
        ========================================= */
     const lightbox = document.getElementById('lightbox');
     const lbTrack = document.getElementById('lightbox-track');
@@ -814,6 +795,9 @@
       lbItemsCount = items.length;
       
       lbCurrentIndex = parseInt(sourceTrack.getAttribute('data-index') || 0);
+      let audio = document.getElementById('audio-boda');
+
+      let hasVideoInitially = false;
 
       for(let i=0; i<items.length; i++) {
         let lbItem = document.createElement('div');
@@ -824,6 +808,8 @@
         clone.style.pointerEvents = 'none'; 
         
         if(clone.tagName.toLowerCase() === 'video') {
+          if(i === lbCurrentIndex) hasVideoInitially = true;
+
           clone.loop = true;
           clone.muted = true; 
           clone.setAttribute('playsinline', '');
@@ -836,12 +822,7 @@
           soundBtn.onclick = (e) => {
             e.stopPropagation();
             globalMuted = !globalMuted;
-            const audio = document.getElementById('audio-boda');
-            
-            document.querySelectorAll('.lb-sound-btn').forEach(btn => {
-              btn.innerHTML = getSoundIcon(globalMuted);
-            });
-
+            document.querySelectorAll('.lb-sound-btn').forEach(btn => btn.innerHTML = getSoundIcon(globalMuted));
             if(!globalMuted) {
               audio.play().catch(err => console.log("Interactúa con la página para activar el audio."));
             } else {
@@ -859,6 +840,13 @@
         let dot = document.createElement('div');
         dot.className = 'lb-dot';
         lbIndicator.appendChild(dot);
+      }
+
+      // Si se abre directo en un video, ENCENDER AUDIO
+      if(hasVideoInitially) {
+         globalMuted = false;
+         audio.play().catch(err => console.log("Audio de inicio bloqueado por el navegador."));
+         document.querySelectorAll('.lb-sound-btn').forEach(btn => btn.innerHTML = getSoundIcon(globalMuted));
       }
 
       updateLightboxPosition();
@@ -882,14 +870,15 @@
       
       if (vid) {
          vid.currentTime = 0;
-         vid.play().catch(e => console.log("Auto-play prevenido."));
+         vid.play().catch(e => console.log("Auto-play prevenido en lightbox."));
          
-         // AL ESTAR EN UN VIDEO, ACTIVAR SONIDO AUTOMÁTICAMENTE
+         // AL ESTAR EN UN VIDEO, ACTIVAR SONIDO
          globalMuted = false;
-         audio.play().catch(e => console.log("Navegador exige toque previo para el audio."));
+         audio.play().catch(e => console.log("Audio prevenido."));
          document.querySelectorAll('.lb-sound-btn').forEach(btn => btn.innerHTML = getSoundIcon(globalMuted));
       } else {
-         // AL ESTAR EN UNA FOTO, SILENCIAR AUTOMÁTICAMENTE
+         // AL PASAR A UNA FOTO, SILENCIAR AUTOMÁTICAMENTE
+         globalMuted = true;
          audio.pause();
       }
 
@@ -909,6 +898,7 @@
       let vids = lbTrack.querySelectorAll('video');
       vids.forEach(v => v.pause());
       document.getElementById('audio-boda')?.pause(); // Silenciar al cerrar
+      globalMuted = true;
     }
 
     /* Swipe Logic Ultra Rapido + Clic DENTRO o FUERA para cerrar */
