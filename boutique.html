@@ -79,7 +79,7 @@
     a { text-decoration: none; color: inherit; transition: var(--transition); }
     button { background: none; border: none; font-family: inherit; cursor: pointer; outline: none; }
 
-    /* ELIMINAR BOTÓN DE PLAY EN VIDEOS MÓVILES */
+    /* ELIMINAR BOTÓN DE PLAY EN VIDEOS MÓVILES PARA ESTÉTICA LIMPIA */
     video::-webkit-media-controls-start-playback-button,
     video::-webkit-media-controls-play-button,
     video::-webkit-media-controls {
@@ -145,20 +145,25 @@
     .trust-text svg { width: 14px; height: 14px; fill: var(--dorado); }
 
     /* =========================================
-       GRID DE PRODUCTOS
+       GRID DE PRODUCTOS 
        ========================================= */
     .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: clamp(30px, 5vw, 60px) clamp(20px, 3vw, 40px); padding: clamp(40px, 5vw, 60px) 5vw 120px; max-width: 1200px; margin: 0 auto; width: 100%; }
-    .product-card { display: flex; flex-direction: column; background: var(--blanco-dior); transition: var(--transition); border: 1px solid var(--linea-fina); height: 100%; }
+    .product-card { display: flex; flex-direction: column; background: var(--blanco-dior); transition: var(--transition); border: 1px solid var(--linea-fina); height: 100%; position: relative; }
     .product-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.05); border-color: var(--dorado); }
 
     .carousel-wrapper { position: relative; background-color: var(--fondo-galeria); width: 100%; aspect-ratio: 3/4; overflow: hidden; display: block; touch-action: pan-y; cursor: pointer; border-bottom: 1px solid var(--linea-fina); }
     .carousel-track { display: flex; width: 100%; height: 100%; align-items: center; justify-content: flex-start; transition: transform 0.4s ease; }
     
-    .product-media { flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; padding: 0; }
+    .product-media { flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; object-position: top center; pointer-events: none; display: block; padding: 0; }
 
-    .btn-fav { position: absolute; top: 12px; right: 12px; width: clamp(28px, 4vw, 32px); height: clamp(28px, 4vw, 32px); background-color: rgba(255, 255, 255, 0.95); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.08); z-index: 10; transition: var(--transition); color: var(--gris-suave); border: 1px solid var(--linea-fina); }
+    /* CORAZÓN DE FAVORITOS - ARREGLADO (Z-INDEX 100) */
+    .btn-fav { 
+      position: absolute; top: 12px; right: 12px; width: 32px; height: 32px; 
+      background-color: rgba(255, 255, 255, 0.95); border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15); z-index: 100; transition: var(--transition); color: var(--gris-suave); border: 1px solid var(--linea-fina); 
+    }
     .btn-fav:hover { transform: scale(1.1); color: var(--carbon); border-color: var(--carbon); }
-    .btn-fav svg { width: clamp(12px, 2vw, 14px); height: clamp(12px, 2vw, 14px); fill: none; stroke: currentColor; stroke-width: 2; transition: var(--transition); }
+    .btn-fav svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; transition: var(--transition); }
     .btn-fav.active { background-color: var(--carbon); border-color: var(--carbon); }
     .btn-fav.active svg { fill: var(--dorado); stroke: var(--dorado); }
 
@@ -213,15 +218,36 @@
     .fab-item:hover { transform: translateX(-5px); background: var(--carbon); color: var(--blanco-dior); border-color: var(--carbon); }
 
     /* =========================================
-       LIGHTBOX INMERSIVO
+       LIGHTBOX INMERSIVO Y GALERÍA SÚPER FLUIDA
        ========================================= */
-    .lightbox { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(15, 15, 15, 0.98); backdrop-filter: blur(15px); z-index: 99999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+    .lightbox { 
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
+      background-color: rgba(15, 15, 15, 0.98); backdrop-filter: blur(15px); 
+      z-index: 99999; display: flex; align-items: center; justify-content: center; 
+      opacity: 0; pointer-events: none; transition: opacity 0.3s ease; 
+    }
     .lightbox.active { opacity: 1; pointer-events: auto; }
-    .lightbox-track { display: flex; width: 100%; height: 100%; align-items: center; justify-content: flex-start; cursor: pointer; transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-    .lightbox-item { flex: 0 0 100vw; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; position: relative;}
-    .lightbox-media { max-width: 95vw; max-height: 85vh; object-fit: contain; transform: scale(0.95); transition: transform 0.3s ease; box-shadow: 0 20px 50px rgba(0,0,0,0.3); background: transparent; border-radius: 4px; pointer-events: none; }
+    
+    .lightbox-track {
+      display: flex; width: 100%; height: 100%; align-items: center; justify-content: flex-start; cursor: pointer; transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .lightbox-item { 
+      flex: 0 0 100vw; 
+      width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; position: relative;
+    }
+
+    .lightbox-media { 
+      max-width: 95vw; max-height: 85vh; object-fit: contain; transform: scale(0.95); 
+      transition: transform 0.3s ease; box-shadow: 0 20px 50px rgba(0,0,0,0.3); background: transparent; border-radius: 4px; pointer-events: none; padding: 15px;
+    }
     .lightbox.active .lightbox-media { transform: scale(1); }
-    .lightbox-close { position: absolute; top: clamp(20px, 4vw, 30px); right: clamp(20px, 4vw, 40px); font-size: clamp(2.5rem, 6vw, 3.5rem); color: var(--blanco-dior); cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 200; line-height: 1; transition: var(--transition); z-index: 10001; }
+    
+    .lightbox-close { 
+      position: absolute; top: clamp(20px, 4vw, 30px); right: clamp(20px, 4vw, 40px); font-size: clamp(2.5rem, 6vw, 3.5rem); color: var(--blanco-dior); 
+      cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 200; line-height: 1; 
+      transition: var(--transition); z-index: 10001; 
+    }
     .lightbox-close:hover { color: var(--dorado); transform: scale(1.1) rotate(90deg); }
 
     .lb-sound-btn {
@@ -287,6 +313,10 @@
       .qty-selector button { font-size: 0.8rem; }
       .qty-selector span { font-size: 0.55rem; }
       .btn-cart { font-size: 0.4rem; letter-spacing: 1px; padding: 0 2px; }
+
+      /* BOTÓN FAVORITOS MÓVIL REPARADO */
+      .btn-fav { width: 28px; height: 28px; top: 8px; right: 8px; z-index: 100; }
+      .btn-fav svg { width: 12px; height: 12px; }
     }
   </style>
 </head>
@@ -363,10 +393,10 @@
   <main class="product-grid">
 
     <article class="product-card">
+      <button class="btn-fav" data-ref="B001" onclick="toggleFav('B001', 'Bolso Enigma', 'L 1199', 'b11.jpg', this); event.stopPropagation();">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+      </button>
       <div class="carousel-wrapper" onclick="openLightbox(this)">
-        <button class="btn-fav" data-ref="B001" onclick="toggleFav('B001', 'Bolso Enigma', 'L 1199', 'b11.jpg', this); event.stopPropagation();">
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-        </button>
         <div class="carousel-track" data-index="0">
           <img src="b11.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+1'">
           <img src="b1.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+1'">
@@ -376,8 +406,8 @@
         <div class="product-meta">
           <span class="product-code">REF: B001</span>
           <h2 class="product-name">Bolso Enigma</h2>
-          <span class="product-specs">Medida: 27 x 15 CM</span>
           <p class="product-lema">Arquitectura pura forjada en gris metalizado. Una declaración de intenciones.</p>
+          <span class="product-specs">Medida: 27 x 15 CM</span>
         </div>
 
         <div class="pricing-action-wrapper">
@@ -397,10 +427,10 @@
     </article>
 
     <article class="product-card">
+      <button class="btn-fav" data-ref="B002" onclick="toggleFav('B002', 'Bolso Electric', 'L 1199', 'b22.jpg', this); event.stopPropagation();">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+      </button>
       <div class="carousel-wrapper" onclick="openLightbox(this)">
-        <button class="btn-fav" data-ref="B002" onclick="toggleFav('B002', 'Bolso Electric', 'L 1199', 'b22.jpg', this); event.stopPropagation();">
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-        </button>
         <div class="carousel-track" data-index="0">
           <img src="b22.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+2'">
           <img src="b2.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+2'">
@@ -410,8 +440,8 @@
         <div class="product-meta">
           <span class="product-code">REF: B002</span>
           <h2 class="product-name">Bolso Electric</h2>
-          <span class="product-specs">Medida: 27 x 15 CM</span>
           <p class="product-lema">El magnetismo del lujo absoluto. Una silueta vibrante bañada en destellos dorados.</p>
+          <span class="product-specs">Medida: 27 x 15 CM</span>
         </div>
 
         <div class="pricing-action-wrapper">
@@ -431,10 +461,10 @@
     </article>
 
     <article class="product-card">
+      <button class="btn-fav" data-ref="B003" onclick="toggleFav('B003', 'Bolso Elegance', 'L 1599', 'b33.jpg', this); event.stopPropagation();">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+      </button>
       <div class="carousel-wrapper" onclick="openLightbox(this)">
-        <button class="btn-fav" data-ref="B003" onclick="toggleFav('B003', 'Bolso Elegance', 'L 1599', 'b33.jpg', this); event.stopPropagation();">
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-        </button>
         <div class="carousel-track" data-index="0">
           <video src="vb3.mp4" class="product-media" preload="auto" autoplay muted playsinline loop disablePictureInPicture></video>
           <img src="b33.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+3'">
@@ -445,8 +475,8 @@
         <div class="product-meta">
           <span class="product-code">REF: B003</span>
           <h2 class="product-name">Bolso Elegance</h2>
-          <span class="product-specs">UNITALLA</span>
           <p class="product-lema">Líneas de una pulcritud magistral. La sofisticación atemporal en su estado más puro.</p>
+          <span class="product-specs">UNITALLA</span>
         </div>
 
         <div class="pricing-action-wrapper">
@@ -466,10 +496,10 @@
     </article>
 
     <article class="product-card">
+      <button class="btn-fav" data-ref="B004" onclick="toggleFav('B004', 'Bolso Aura', 'L 1399', 'b44.jpg', this); event.stopPropagation();">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+      </button>
       <div class="carousel-wrapper" onclick="openLightbox(this)">
-        <button class="btn-fav" data-ref="B004" onclick="toggleFav('B004', 'Bolso Aura', 'L 1399', 'b44.jpg', this); event.stopPropagation();">
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-        </button>
         <div class="carousel-track" data-index="0">
           <img src="b44.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+4'">
           <img src="b4.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+4'">
@@ -479,8 +509,8 @@
         <div class="product-meta">
           <span class="product-code">REF: B004</span>
           <h2 class="product-name">Bolso Aura</h2>
-          <span class="product-specs">UNITALLA</span>
           <p class="product-lema">Una silueta de presencia imponente. El nuevo estándar del alto lujo contemporáneo.</p>
+          <span class="product-specs">UNITALLA</span>
         </div>
 
         <div class="pricing-action-wrapper">
@@ -500,10 +530,10 @@
     </article>
 
     <article class="product-card">
+      <button class="btn-fav" data-ref="B005" onclick="toggleFav('B005', 'Bolso Misterio', 'L 1499', 'b55.jpg', this); event.stopPropagation();">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+      </button>
       <div class="carousel-wrapper" onclick="openLightbox(this)">
-        <button class="btn-fav" data-ref="B005" onclick="toggleFav('B005', 'Bolso Misterio', 'L 1499', 'b55.jpg', this); event.stopPropagation();">
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-        </button>
         <div class="carousel-track" data-index="0">
           <video src="vb5.mp4" class="product-media" preload="auto" autoplay muted playsinline loop disablePictureInPicture></video>
           <img src="b55.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+5'">
@@ -514,8 +544,8 @@
         <div class="product-meta">
           <span class="product-code">REF: B005</span>
           <h2 class="product-name">Bolso Misterio</h2>
+          <p class="product-lema">Volumen y estructura en perfecta armonía. Un formato maxi concebido para cautivar.</p>
           <span class="product-specs">Medida: 33 x 60 CM (MAXI)</span>
-          <p class="product-lema">Volumen y estructura en perfecta armonía. Un formato concebido para cautivar.</p>
         </div>
 
         <div class="pricing-action-wrapper">
@@ -535,10 +565,10 @@
     </article>
 
     <article class="product-card">
+      <button class="btn-fav" data-ref="B006" onclick="toggleFav('B006', 'Bolso BurdeúX', 'L 1099', 'b66.jpg', this); event.stopPropagation();">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+      </button>
       <div class="carousel-wrapper" onclick="openLightbox(this)">
-        <button class="btn-fav" data-ref="B006" onclick="toggleFav('B006', 'Bolso BurdeúX', 'L 1099', 'b66.jpg', this); event.stopPropagation();">
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-        </button>
         <div class="carousel-track" data-index="0">
           <video src="vb6.mp4" class="product-media" preload="auto" autoplay muted playsinline loop disablePictureInPicture></video>
           <img src="b66.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+6'">
@@ -549,8 +579,8 @@
         <div class="product-meta">
           <span class="product-code">REF: B006</span>
           <h2 class="product-name">Bolso BurdeúX</h2>
-          <span class="product-specs">Medida: 28 x 12 CM</span>
           <p class="product-lema">El color del poder absoluto. Una obra maestra en burdeos que domina el espacio.</p>
+          <span class="product-specs">Medida: 28 x 12 CM</span>
         </div>
 
         <div class="pricing-action-wrapper">
@@ -613,24 +643,6 @@
        AUDIO GLOBAL (BODA.MP3)
        ========================================= */
     let globalMuted = true;
-
-    /* REPRODUCCIÓN INTELIGENTE AL PRIMER TOQUE (El secreto V.I.P) */
-    function unlockAudio() {
-      let audio = document.getElementById('audio-boda');
-      if (globalMuted && audio.paused) {
-        audio.play().then(() => {
-          globalMuted = false;
-        }).catch(err => console.log("Navegador esperando acción más fuerte."));
-      }
-      // Se remueve para que no se ejecute miles de veces
-      document.removeEventListener('touchstart', unlockAudio);
-      document.removeEventListener('click', unlockAudio);
-      document.removeEventListener('scroll', unlockAudio);
-    }
-    
-    document.addEventListener('touchstart', unlockAudio, {once:true});
-    document.addEventListener('click', unlockAudio, {once:true});
-    document.addEventListener('scroll', unlockAudio, {once:true});
 
     /* =========================================
        BOTÓN FLOTANTE MÓVIL
@@ -696,7 +708,6 @@
         favs.splice(index, 1);
         btn.classList.remove('active');
       } else {
-        // En los favoritos capturamos toda la galería multimedia, incluyendo videos
         let card = btn.closest('.product-card');
         let track = card.querySelector('.carousel-track');
         let mediaElements = [];
@@ -730,7 +741,6 @@
       let cart = JSON.parse(localStorage.getItem('enigme_cart')) || [];
       let existing = cart.find(i => i.ref === ref);
       
-      // Capturamos toda la galería multimedia al añadir a la bolsa
       let card = btn.closest('.product-card');
       let track = card.querySelector('.carousel-track');
       let mediaElements = [];
@@ -768,7 +778,7 @@
     }
 
     /* =========================================
-       LIGHTBOX INMERSIVO (PANTALLA COMPLETA)
+       LIGHTBOX INMERSIVO (INTELIGENCIA DE AUDIO)
        ========================================= */
     const lightbox = document.getElementById('lightbox');
     const lbTrack = document.getElementById('lightbox-track');
@@ -821,7 +831,7 @@
             });
 
             if(!globalMuted) {
-              audio.play().catch(err => console.log("Interactúa con la página para activar el audio."));
+              audio.play().catch(err => console.log("Bloqueado por el navegador."));
             } else {
               audio.pause();
             }
@@ -855,28 +865,28 @@
 
       let wrappers = lbTrack.children;
       let audio = document.getElementById('audio-boda');
+      let currentItem = wrappers[lbCurrentIndex];
+      let vid = currentItem.querySelector('video');
       
-      for(let i=0; i<wrappers.length; i++) {
-        let vid = wrappers[i].querySelector('video');
-        if (vid) {
-          if (i === lbCurrentIndex) {
-            vid.currentTime = 0;
-            vid.play().catch(e => console.log("Auto-play prevenido por el navegador."));
-            if(!globalMuted) {
-              audio.play().catch(e => {
-                globalMuted = true; 
-                document.querySelectorAll('.lb-sound-btn').forEach(btn => btn.innerHTML = getSoundIcon(globalMuted));
-              });
-            }
-          } else {
-            vid.pause();
-          }
-        }
+      if (vid) {
+         vid.currentTime = 0;
+         vid.play().catch(e => console.log("Auto-play prevenido."));
+         
+         // AL ESTAR EN UN VIDEO, ACTIVAR SONIDO AUTOMÁTICAMENTE
+         globalMuted = false;
+         audio.play().catch(e => console.log("Navegador exige toque previo."));
+         document.querySelectorAll('.lb-sound-btn').forEach(btn => btn.innerHTML = getSoundIcon(globalMuted));
+      } else {
+         // AL ESTAR EN UNA FOTO, SILENCIAR AUTOMÁTICAMENTE
+         audio.pause();
       }
 
-      let currentItem = wrappers[lbCurrentIndex];
-      if(!currentItem.querySelector('video')) {
-         audio?.pause();
+      // Pausar los otros videos
+      for(let i=0; i<wrappers.length; i++) {
+        if(i !== lbCurrentIndex) {
+           let otherVid = wrappers[i].querySelector('video');
+           if(otherVid) otherVid.pause();
+        }
       }
     }
 
@@ -886,7 +896,7 @@
       document.body.style.overflow = 'auto'; 
       let vids = lbTrack.querySelectorAll('video');
       vids.forEach(v => v.pause());
-      document.getElementById('audio-boda')?.pause();
+      document.getElementById('audio-boda')?.pause(); // Silenciar al cerrar
     }
 
     /* Swipe Logic Ultra Rapido + Clic DENTRO o FUERA para cerrar */
