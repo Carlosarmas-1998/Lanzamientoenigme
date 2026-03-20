@@ -44,9 +44,10 @@
     "url": "https://enigmeofficial.com"
   }
   </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
     :root {
@@ -74,11 +75,19 @@
       display: flex;
       flex-direction: column;
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
 
     a { text-decoration: none; color: inherit; transition: var(--transition); }
     button { background: none; border: none; font-family: inherit; cursor: pointer; outline: none; }
+
+    /* ELIMINAR BOTÓN DE PLAY EN VIDEOS MÓVILES PARA ESTÉTICA LIMPIA */
+    video::-webkit-media-controls-start-playback-button,
+    video::-webkit-media-controls-play-button,
+    video::-webkit-media-controls {
+      display: none !important;
+      -webkit-appearance: none !important;
+    }
+    video { pointer-events: none; }
 
     /* =========================================
        NAVBAR SUPER RESPONSIVO
@@ -99,7 +108,7 @@
     .dropdown { position: relative; display: inline-block; }
     .dropbtn {
       font-size: clamp(0.55rem, 1.5vw, 0.65rem); letter-spacing: 3px; text-transform: uppercase; color: var(--carbon);
-      font-weight: 600; display: flex; align-items: center; gap: 5px; padding: 10px 0;
+      font-weight: 700 !important; display: flex; align-items: center; gap: 5px; padding: 10px 0;
     }
     .dropbtn svg { width: 10px; height: 10px; transition: transform 0.3s; }
     .dropdown:hover .dropbtn svg { transform: rotate(180deg); }
@@ -116,8 +125,8 @@
       color: var(--carbon) !important; font-weight: 600; padding: 16px 24px; font-size: 0.65rem; letter-spacing: 2px;
       text-transform: uppercase; border-bottom: 1px solid var(--fondo-galeria); transition: var(--transition);
     }
-    .dropdown-content a:last-child { border-bottom: none; }
     .dropdown-content a:hover { background-color: var(--fondo-galeria); color: var(--dorado) !important; padding-left: 32px; }
+    .dropdown-content a:last-child { border-bottom: none; }
     .dropdown.right .dropdown-content { left: auto; right: 0; }
 
     .btn-menu-brand {
@@ -128,10 +137,19 @@
     .btn-menu-brand:hover { background-color: var(--dorado); border-color: var(--dorado); color: var(--blanco-dior) !important; }
     .btn-menu-brand svg { width: clamp(10px, 1.5vw, 13px); height: clamp(10px, 1.5vw, 13px); fill: currentColor; }
 
-    @keyframes pulse-soft { 0% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0.2); } 70% { box-shadow: 0 0 0 6px rgba(203, 170, 99, 0); } 100% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0); } }
-    .btn-cart-nav { animation: pulse-soft 2.5s infinite; background-color: var(--marfil); }
+    @keyframes bagWigglePulse {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      5% { transform: scale(1.1) rotate(-8deg); }
+      10% { transform: scale(1.1) rotate(8deg); }
+      15% { transform: scale(1.1) rotate(-8deg); }
+      20% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.05); }
+    }
+    .btn-cart-nav { animation: bagWigglePulse 6s ease-in-out infinite; background-color: var(--marfil); }
     .btn-cart-nav:hover { animation: none; }
     .counter-badge { font-weight: 700; }
+    
+    .txt-hide-mobile { display: inline; }
 
     /* =========================================
        ENCABEZADO EDITORIAL Y PROMOCIÓN
@@ -168,50 +186,46 @@
 
     .product-card { 
       display: flex; flex-direction: column; background: var(--blanco-dior); 
-      transition: var(--transition); border: 1px solid var(--linea-fina); height: 100%;
+      transition: var(--transition); border: 1px solid var(--linea-fina); height: 100%; position: relative;
     }
     .product-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.05); border-color: var(--dorado); }
 
-    /* CONTENEDOR FOTOGRÁFICO: SIN BORDES BLANCOS */
+    /* CONTENEDOR FOTOGRÁFICO */
     .carousel-wrapper { 
       position: relative; background-color: var(--fondo-galeria); width: 100%;
-      aspect-ratio: 3/4; /* Formato Retrato */
-      overflow: hidden; display: block;
+      aspect-ratio: 3/4; overflow: hidden; display: block;
       touch-action: pan-y; cursor: pointer; border-bottom: 1px solid var(--linea-fina);
     }
     
-    .carousel-track { display: flex; width: 100%; height: 100%; align-items: center; justify-content: flex-start; }
+    .carousel-track { display: flex; width: 100%; height: 100%; align-items: center; justify-content: flex-start; transition: transform 0.4s ease; }
 
-    /* LA REGLA MÁGICA: FLEX 0 0 100% EVITA EL AMONTONAMIENTO */
     .product-media { 
       flex: 0 0 100%; width: 100%; height: 100%; 
-      object-fit: cover; 
-      object-position: top center; 
+      object-fit: cover; object-position: top center; 
       pointer-events: none; display: block; padding: 0;
     }
 
-    /* CORAZÓN DE FAVORITOS */
+    /* CORAZÓN DE FAVORITOS EN LA TARJETA */
     .btn-fav { 
       position: absolute; top: 12px; right: 12px; width: clamp(28px, 4vw, 32px); height: clamp(28px, 4vw, 32px); 
       background-color: rgba(255, 255, 255, 0.95); border-radius: 50%; display: flex; align-items: center; justify-content: center; 
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08); z-index: 10; transition: var(--transition); color: var(--gris-suave); border: 1px solid var(--linea-fina);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15); z-index: 100; transition: var(--transition); color: var(--gris-suave); border: 1px solid var(--linea-fina);
     }
     .btn-fav:hover { transform: scale(1.1); color: var(--carbon); border-color: var(--carbon); }
     .btn-fav svg { width: clamp(12px, 2vw, 14px); height: clamp(12px, 2vw, 14px); fill: none; stroke: currentColor; stroke-width: 2; transition: var(--transition); }
     .btn-fav.active { background-color: var(--carbon); border-color: var(--carbon); }
     .btn-fav.active svg { fill: var(--dorado); stroke: var(--dorado); }
 
-    /* INFO DEL PRODUCTO (ALINEACIÓN ESTRUCTURAL) */
-    .product-info { 
-      padding: clamp(15px, 2vw, 25px) 15px 15px; text-align: center; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; 
-    }
-    
+    /* =========================================
+       INFORMACIÓN DEL PRODUCTO (DISEÑO ORIGINAL)
+       ========================================= */
+    .product-info { padding: clamp(15px, 2vw, 25px) 15px 15px; text-align: center; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
     .product-meta { display: flex; flex-direction: column; align-items: center; }
+    
     .product-code { font-size: clamp(0.45rem, 1vw, 0.5rem); letter-spacing: 3px; color: var(--gris-suave); margin-bottom: 8px; font-weight: 500;}
     .product-name { font-family: 'Cinzel', serif; font-size: clamp(0.95rem, 2.5vw, 1.15rem); letter-spacing: 0.1em; color: var(--carbon); margin-bottom: 8px; text-transform: uppercase; font-weight: 600; line-height: 1.3; min-height: 2.6em; display: flex; align-items: center; justify-content: center;}
     .product-lema { font-size: clamp(0.6rem, 1.5vw, 0.7rem); color: var(--gris-suave); margin-bottom: 15px; font-weight: 400; font-style: italic; line-height: 1.5; min-height: 3em; display: flex; align-items: center; justify-content: center; }
     
-    /* ETIQUETAS Y TALLA */
     .specs-block { display: flex; flex-direction: column; align-items: center; gap: 6px; margin-bottom: 20px; width: 100%;}
     .size-select {
       appearance: none; background: transparent; border: none; border-bottom: 1px solid var(--carbon);
@@ -223,7 +237,7 @@
     }
     .spec-material { font-size: clamp(0.45rem, 1.2vw, 0.5rem); letter-spacing: 2px; text-transform: uppercase; color: var(--carbon); border: 1px solid var(--linea-fina); padding: 4px 10px; border-radius: 2px;}
 
-    /* PRECIO FIJO */
+    /* PRECIO Y BOTÓN DE AÑADIR */
     .pricing-action-wrapper { width: 100%; margin-top: auto; }
     .product-price { font-size: clamp(1rem, 2.5vw, 1.2rem); letter-spacing: 2px; color: var(--carbon); font-weight: 700; margin-bottom: 20px; }
     
@@ -241,31 +255,17 @@
        BOTÓN FLOTANTE DESPLEGABLE
        ========================================= */
     .fab-container { position: fixed; bottom: 20px; right: 20px; z-index: 9999; display: flex; flex-direction: column-reverse; align-items: flex-end; gap: 10px; }
-    
-    .fab-main { 
-      width: clamp(45px, 12vw, 55px); height: clamp(45px, 12vw, 55px); background-color: var(--carbon); color: var(--blanco-dior); 
-      border-radius: 50%; display: flex; align-items: center; justify-content: center; 
-      box-shadow: 0 5px 20px rgba(0,0,0,0.3); cursor: pointer; transition: var(--transition); z-index: 2; border: 1px solid var(--carbon);
-    }
+    .fab-main { width: clamp(45px, 12vw, 55px); height: clamp(45px, 12vw, 55px); background-color: var(--carbon); color: var(--blanco-dior); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 20px rgba(0,0,0,0.3); cursor: pointer; transition: var(--transition); z-index: 2; border: 1px solid var(--carbon); }
     .fab-main svg { width: clamp(20px, 5vw, 24px); height: clamp(20px, 5vw, 24px); fill: currentColor; transition: transform 0.4s ease; }
     .fab-container:hover .fab-main, .fab-container.active .fab-main { background-color: var(--dorado); color: var(--carbon); border-color: var(--dorado);}
-    
-    .fab-menu {
-      display: flex; flex-direction: column; align-items: flex-end; gap: 10px; 
-      opacity: 0; visibility: hidden; transform: translateY(20px); transition: var(--transition); margin-bottom: 5px;
-    }
+    .fab-menu { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; opacity: 0; visibility: hidden; transform: translateY(20px); transition: var(--transition); margin-bottom: 5px; }
     .fab-container:hover .fab-menu, .fab-container.active .fab-menu { opacity: 1; visibility: visible; transform: translateY(0); }
-    
-    .fab-item { 
-      background: var(--blanco-dior); color: var(--carbon); padding: clamp(10px, 2vw, 12px) clamp(15px, 3vw, 20px); border-radius: 25px; 
-      font-size: clamp(0.5rem, 1.5vw, 0.6rem); letter-spacing: 2px; text-transform: uppercase; font-weight: 600; 
-      border: 1px solid var(--linea-fina); box-shadow: 0 5px 15px rgba(0,0,0,0.08); white-space: nowrap; transition: var(--transition);
-    }
+    .fab-item { background: var(--blanco-dior); color: var(--carbon); padding: clamp(10px, 2vw, 12px) clamp(15px, 3vw, 20px); border-radius: 25px; font-size: clamp(0.5rem, 1.5vw, 0.6rem); letter-spacing: 2px; text-transform: uppercase; font-weight: 600; border: 1px solid var(--linea-fina); box-shadow: 0 5px 15px rgba(0,0,0,0.08); white-space: nowrap; transition: var(--transition); }
     .fab-item.vip { background: var(--dorado); color: var(--carbon); border-color: var(--dorado); }
     .fab-item:hover { transform: translateX(-5px); background: var(--carbon); color: var(--blanco-dior); border-color: var(--carbon); }
 
     /* =========================================
-       LIGHTBOX INMERSIVO (SÚPER RÁPIDO Y TÁCTIL)
+       LIGHTBOX INMERSIVO Y GALERÍA SÚPER FLUIDA
        ========================================= */
     .lightbox { 
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
@@ -276,10 +276,13 @@
     .lightbox.active { opacity: 1; pointer-events: auto; }
     
     .lightbox-track {
-      display: flex; width: 100%; height: 100%; align-items: center; justify-content: flex-start; cursor: pointer; padding: 20px; transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      display: flex; width: 100%; height: 100%; align-items: center; justify-content: flex-start; cursor: pointer; transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     
-    .lightbox-item { flex: 0 0 100vw; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; position: relative;}
+    .lightbox-item { 
+      flex: 0 0 100vw; 
+      width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; position: relative;
+    }
 
     .lightbox-media { 
       max-width: 95vw; max-height: 85vh; object-fit: contain; transform: scale(0.95); 
@@ -332,38 +335,55 @@
        SÚPER RESPONSIVO (MÓVIL EN 2 COLUMNAS PERFECTAS)
        ========================================= */
     @media (max-width: 768px) {
-      .navbar { flex-wrap: wrap; justify-content: space-between; }
-      .brand { position: relative; left: 0; transform: none; width: 100%; margin-bottom: 15px; order: -1; }
-      
-      .nav-group.right { flex-direction: column; width: 100%; gap: 10px; align-items: stretch; }
-      .nav-group.right .dropdown { order: 1; display: flex; justify-content: center; width: 100%; }
-      .nav-group.right .dropdown .dropbtn { width: 100%; justify-content: center; padding: 10px 0; border: 1px solid rgba(203, 170, 99, 0.4); border-radius: 2px;}
-      .nav-group.right .btn-cart-nav { order: 2; width: 100%; justify-content: center; margin-left: 0 !important; }
-      .nav-group.right a[href="favoritos.html"] { order: 3; width: 100%; justify-content: center; margin-left: 0 !important; }
-
-      .dropdown-content { min-width: 160px; }
-      
-      /* LA REGLA DE ORO: 2 COLUMNAS FIJAS EN MÓVIL SIN PARTIRSE */
-      .product-grid { 
-        grid-template-columns: repeat(2, 1fr); 
-        gap: 15px 10px; 
-        padding: 20px 10px 100px; 
+      .navbar { 
+        display: flex; flex-wrap: wrap; padding: 15px 4vw; 
+        justify-content: space-between; align-items: center; 
       }
       
+      /* 1. MARCA ARRIBA DEL TODO (MÁS GRANDE Y SIN CORTES) */
+      .brand { 
+        position: relative; left: 0; transform: none; width: 100%; 
+        text-align: center; font-size: 1.8rem; letter-spacing: 0.2em; 
+        order: 1; margin-bottom: 15px; white-space: nowrap;
+      }
+      
+      /* 2. BOTONES ABAJO PERFECTAMENTE ALINEADOS */
+      .nav-group { order: 2; width: auto; gap: 10px; }
+      .nav-group.right { order: 3; width: auto; gap: 8px; justify-content: flex-end; }
+      
+      /* Ocultar palabra BOLSA para dar espacio */
+      .txt-hide-mobile { display: none; }
+      
+      .btn-menu-brand { padding: 6px 10px; font-size: 0.6rem; margin-left: 0 !important; }
+      .dropbtn { font-size: 0.65rem; letter-spacing: 1px; padding: 5px 0;}
+      .dropbtn svg { display: none;} 
+
+      /* MEGA MENÚ MÓVIL A PANTALLA COMPLETA */
+      .navbar .dropdown { position: static;} 
+      .dropdown-content { top: calc(100% + 1px); left: 0; right: 0; width: 100vw; min-width: 100%; text-align: center; border-left: none; border-right: none; margin-left: -4vw; }
+      .dropdown-content a { font-size: 0.65rem; padding: 15px 20px;}
+      .dropdown-content a:hover { padding-left: 15px;}
+
+      /* GRID DE PRODUCTOS EN 2 COLUMNAS */
+      .product-grid { grid-template-columns: repeat(2, 1fr); gap: 15px 10px; padding: 20px 10px 100px; }
       .product-info { padding: 12px 8px 8px; }
       .product-name { font-size: 0.8rem; margin-bottom: 4px; min-height: 2.8em; }
       .product-lema { display: none; }
       .specs-block { margin-bottom: 15px; }
       .size-select { font-size: 0.45rem; padding: 4px 15px 4px 2px; }
-      .spec-material { font-size: 0.4rem; padding: 2px 4px; }
+      .spec-material { font-size: 0.35rem; padding: 2px 4px; letter-spacing: 0.5px;}
       
-      .product-price { font-size: 0.95rem; margin-bottom: 12px; }
+      .product-price { font-size: 0.95rem; margin-bottom: 12px; margin-top: 5px;}
       
       .purchase-action { height: 32px; }
       .qty-selector { width: 45px; }
       .qty-selector button { font-size: 0.8rem; }
       .qty-selector span { font-size: 0.55rem; }
       .btn-cart { font-size: 0.4rem; letter-spacing: 1px; padding: 0 2px; }
+
+      /* BOTÓN FAVORITOS MÓVIL REPARADO */
+      .btn-fav { width: 28px; height: 28px; top: 8px; right: 8px; z-index: 100; }
+      .btn-fav svg { width: 12px; height: 12px; }
     }
   </style>
 </head>
@@ -401,13 +421,13 @@
           <a href="liquidacion.html">Liquidación</a>
         </div>
       </div>
-      <a href="carrito.html" class="btn-menu-brand btn-cart-nav" style="margin-left: 10px;">
-        <svg viewBox="0 0 24 24"><path d="M16 6V4a4 4 0 0 0-8 0v2H3v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6h-5zm-6-2a2 2 0 0 1 4 0v2h-4V4zm8 16H6V8h2v2a1 1 0 0 0 2 0V8h4v2a1 1 0 0 0 2 0V8h2v12z"/></svg>
-        BOLSA (<span id="cart-count" class="counter-badge">0</span>)
-      </a>
-      <a href="favoritos.html" class="btn-menu-brand">
+      <a href="favoritos.html" class="btn-menu-brand" style="border-color: var(--dorado); background-color: var(--fondo-galeria);">
         <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
         <span id="fav-count" class="counter-badge">0</span>
+      </a>
+      <a href="carrito.html" class="btn-menu-brand btn-cart-nav">
+        <svg viewBox="0 0 24 24"><path d="M16 6V4a4 4 0 0 0-8 0v2H3v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6h-5zm-6-2a2 2 0 0 1 4 0v2h-4V4zm8 16H6V8h2v2a1 1 0 0 0 2 0V8h4v2a1 1 0 0 0 2 0V8h2v12z"/></svg>
+        <span class="txt-hide-mobile">BOLSA</span> (<span id="cart-count" class="counter-badge">0</span>)
       </a>
     </div>
   </nav>
@@ -438,10 +458,10 @@
   <main class="product-grid">
 
     <article class="product-card">
+      <button class="btn-fav" data-ref="PL001" onclick="toggleFav('PL001', 'Anillo Aura Céleste', 'L 1499', 'pl1.jpg', this); event.stopPropagation();">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+      </button>
       <div class="carousel-wrapper" onclick="openLightbox(this)">
-        <button class="btn-fav" data-ref="PL001" onclick="toggleFav('PL001', 'Anillo Aura Céleste', 'L 1499', 'pl1.jpg', this); event.stopPropagation();">
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-        </button>
         <div class="carousel-track" data-index="0">
           <img src="pl1.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=PLATA+1'">
           <img src="pl2.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=PLATA+2'">
@@ -479,10 +499,10 @@
     </article>
 
     <article class="product-card">
+      <button class="btn-fav" data-ref="PL002" onclick="toggleFav('PL002', 'Anillo Éclat de Lune', 'L 1899', 'pl3.jpg', this); event.stopPropagation();">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+      </button>
       <div class="carousel-wrapper" onclick="openLightbox(this)">
-        <button class="btn-fav" data-ref="PL002" onclick="toggleFav('PL002', 'Anillo Éclat de Lune', 'L 1899', 'pl3.jpg', this); event.stopPropagation();">
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-        </button>
         <div class="carousel-track" data-index="0">
           <img src="pl3.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=PLATA+3'">
           <img src="pl4.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=PLATA+4'">
@@ -520,10 +540,10 @@
     </article>
 
     <article class="product-card">
+      <button class="btn-fav" data-ref="PL003" onclick="toggleFav('PL003', 'Anillo Sortilège', 'L 1399', 'pl5.jpg', this); event.stopPropagation();">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+      </button>
       <div class="carousel-wrapper" onclick="openLightbox(this)">
-        <button class="btn-fav" data-ref="PL003" onclick="toggleFav('PL003', 'Anillo Sortilège', 'L 1399', 'pl5.jpg', this); event.stopPropagation();">
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-        </button>
         <div class="carousel-track" data-index="0">
           <img src="pl5.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=PLATA+5'">
           <img src="pl6.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=PLATA+6'">
@@ -561,10 +581,10 @@
     </article>
 
     <article class="product-card">
+      <button class="btn-fav" data-ref="PL004" onclick="toggleFav('PL004', 'Anillo Majesté', 'L 1599', 'pl7.jpg', this); event.stopPropagation();">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+      </button>
       <div class="carousel-wrapper" onclick="openLightbox(this)">
-        <button class="btn-fav" data-ref="PL004" onclick="toggleFav('PL004', 'Anillo Majesté', 'L 1599', 'pl7.jpg', this); event.stopPropagation();">
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-        </button>
         <div class="carousel-track" data-index="0">
           <img src="pl7.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=PLATA+7'">
           <img src="pl8.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=PLATA+8'">
@@ -602,10 +622,10 @@
     </article>
 
     <article class="product-card">
+      <button class="btn-fav" data-ref="PL005" onclick="toggleFav('PL005', 'Pulsera Éternité Bleu', 'L 1299', 'pl9.jpg', this); event.stopPropagation();">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+      </button>
       <div class="carousel-wrapper" onclick="openLightbox(this)">
-        <button class="btn-fav" data-ref="PL005" onclick="toggleFav('PL005', 'Pulsera Éternité Bleu', 'L 1299', 'pl9.jpg', this); event.stopPropagation();">
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-        </button>
         <div class="carousel-track" data-index="0">
           <img src="pl9.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=PLATA+9'">
           <img src="pl10.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=PLATA+10'">
@@ -661,7 +681,7 @@
     <p class="founder-credit">© 2026 ÈNIGME HONDURAS POR CARLOS ARMAS MARTÍNEZ. TODOS LOS DERECHOS RESERVADOS.</p>
   </footer>
 
-  <div id="lightbox" class="lightbox">
+  <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
     <div class="lightbox-track" id="lightbox-track"></div>
     <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
     <div class="lb-indicator" id="lb-indicator"></div>
@@ -685,7 +705,46 @@
       }
     }
 
-    /* CARRITO Y FAVORITOS */
+    /* CARRUSEL TÁCTIL EN TARJETAS (SWIPE/DRAG) */
+    document.querySelectorAll('.carousel-track').forEach(track => {
+      let isDown = false; let startX; let isDragged = false;
+
+      track.addEventListener('mousedown', (e) => { isDown = true; isDragged = false; startX = e.pageX; });
+      track.addEventListener('mousemove', (e) => { if (!isDown) return; if (Math.abs(e.pageX - startX) > 20) isDragged = true; });
+      track.addEventListener('mouseup', (e) => {
+        isDown = false;
+        if (isDragged) {
+          if (startX > e.pageX) moveSlideSwipeCard(track, 1);
+          else moveSlideSwipeCard(track, -1);
+        }
+      });
+      track.addEventListener('mouseleave', () => { isDown = false; });
+      
+      track.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; isDragged = false; }, {passive: true});
+      track.addEventListener('touchmove', (e) => { if (Math.abs(e.touches[0].clientX - startX) > 20) isDragged = true; }, {passive: true});
+      track.addEventListener('touchend', (e) => {
+        if (isDragged) {
+          let endX = e.changedTouches[0].clientX;
+          if (startX > endX) moveSlideSwipeCard(track, 1);
+          else moveSlideSwipeCard(track, -1);
+        }
+      });
+    });
+
+    function moveSlideSwipeCard(track, direction) {
+      let mediaItems = track.children;
+      if (mediaItems.length <= 1) return;
+      let currentIndex = parseInt(track.getAttribute('data-index') || 0);
+      currentIndex += direction;
+      if (currentIndex < 0) currentIndex = mediaItems.length - 1;
+      if (currentIndex >= mediaItems.length) currentIndex = 0;
+      track.setAttribute('data-index', currentIndex);
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    /* =========================================
+       MOTOR DEL CARRITO Y FAVORITOS
+       ========================================= */
     function changeCardQty(id, delta) {
       let el = document.getElementById(id);
       let current = parseInt(el.innerText);
@@ -699,7 +758,14 @@
         favs.splice(index, 1);
         btn.classList.remove('active');
       } else {
-        favs.push({ref, name, price, img});
+        let card = btn.closest('.product-card');
+        let track = card.querySelector('.carousel-track');
+        let mediaElements = [];
+        Array.from(track.children).forEach(child => {
+          let type = child.tagName.toLowerCase() === 'video' ? 'video' : 'img';
+          mediaElements.push({type: type, src: child.src || child.getAttribute('src')});
+        });
+        favs.push({ref, name, price, img, media: mediaElements});
         btn.classList.add('active');
       }
       localStorage.setItem('enigme_favs', JSON.stringify(favs));
@@ -718,9 +784,7 @@
       setTimeout(() => { toast.classList.remove('show'); }, 3000);
     }
 
-    /* =========================================
-       LÓGICA INTELIGENTE (PLATA - 5% DESC >= 2 PIEZAS)
-       ========================================= */
+    /* LÓGICA INTELIGENTE (PLATA - 5% DESC >= 2 PIEZAS) */
     function addToCartSilver(ref, name, priceStr, img, btn, qtyId, sizeId) {
       if (btn.classList.contains('added')) return; 
       
@@ -732,35 +796,37 @@
       let cart = JSON.parse(localStorage.getItem('enigme_cart')) || [];
       let existing = cart.find(i => i.ref === uniqueRef);
       
+      let card = btn.closest('.product-card');
+      let track = card.querySelector('.carousel-track');
+      let mediaElements = [];
+      Array.from(track.children).forEach(child => {
+         let type = child.tagName.toLowerCase() === 'video' ? 'video' : 'img';
+         mediaElements.push({type: type, src: child.src || child.getAttribute('src')});
+      });
+
       if(existing) {
         existing.qty += qtyToAdd;
       } else { 
-        // Marcamos como isSilver para aplicar el 5% si cumple la regla
         cart.push({
           ref: uniqueRef, 
           name: fullName, 
           price: "L " + priceStr, 
           img: img, 
+          media: mediaElements,
           qty: qtyToAdd,
           isSilver: true,
-          baseSilverPrice: "L " + priceStr // Guardamos el precio original intacto
+          baseSilverPrice: "L " + priceStr
         }); 
       }
 
-      // Calcular cuántas piezas de PLATA hay en total
       let totalSilverItems = 0;
-      cart.forEach(item => {
-        if(item.isSilver) {
-          totalSilverItems += item.qty;
-        }
-      });
+      cart.forEach(item => { if(item.isSilver) totalSilverItems += item.qty; });
 
-      // Aplicar 5% de descuento a todas las de plata si hay 2 o más
       cart.forEach(item => {
         if(item.isSilver) {
           let baseNum = parseInt(item.baseSilverPrice.replace(/\D/g, ''));
           if(totalSilverItems >= 2) {
-            let descPrice = Math.round(baseNum * 0.95); // 5% de descuento
+            let descPrice = Math.round(baseNum * 0.95); 
             item.price = "L " + descPrice;
           } else {
             item.price = item.baseSilverPrice;
@@ -792,7 +858,7 @@
     }
 
     /* =========================================
-       LIGHTBOX INMERSIVO (TURBO SENSITIVITY Y CIERRE INTERNO)
+       LIGHTBOX INMERSIVO Y AUDIO INTELIGENTE
        ========================================= */
     const lightbox = document.getElementById('lightbox');
     const lbTrack = document.getElementById('lightbox-track');
@@ -823,7 +889,7 @@
         
         let clone = items[i].cloneNode(true);
         clone.className = 'lightbox-media';
-        clone.style.pointerEvents = 'none'; // Importante para que el track detecte el clic encima
+        clone.style.pointerEvents = 'none'; 
         
         if(clone.tagName.toLowerCase() === 'video') {
           clone.loop = true;
@@ -833,10 +899,10 @@
           let soundBtn = document.createElement('button');
           soundBtn.className = 'lb-sound-btn';
           soundBtn.innerHTML = getSoundIcon(globalMuted); 
-          soundBtn.style.pointerEvents = 'auto'; // El botón de sonido sí debe ser clicleable
+          soundBtn.style.pointerEvents = 'auto'; 
           
           soundBtn.onclick = (e) => {
-            e.stopPropagation(); // No cerrar lightbox al tocar sonido
+            e.stopPropagation();
             globalMuted = !globalMuted;
             const audio = document.getElementById('audio-boda');
             
@@ -879,75 +945,59 @@
 
       let wrappers = lbTrack.children;
       let audio = document.getElementById('audio-boda');
+      let currentItem = wrappers[lbCurrentIndex];
+      let vid = currentItem.querySelector('video');
       
-      for(let i=0; i<wrappers.length; i++) {
-        let vid = wrappers[i].querySelector('video');
-        if (vid) {
-          if (i === lbCurrentIndex) {
-            vid.currentTime = 0;
-            vid.play().catch(e => console.log("Auto-play prevenido."));
-            if(!globalMuted) {
-              audio.play().catch(e => {
-                globalMuted = true; 
-                document.querySelectorAll('.lb-sound-btn').forEach(btn => btn.innerHTML = getSoundIcon(globalMuted));
-              });
-            }
-          } else {
-            vid.pause();
-          }
-        }
+      if (vid) {
+         vid.currentTime = 0;
+         vid.play().catch(e => console.log("Auto-play prevenido."));
+         
+         // AL ESTAR EN UN VIDEO, ACTIVAR SONIDO AUTOMÁTICAMENTE
+         globalMuted = false;
+         audio.play().catch(e => console.log("Navegador exige toque previo para el audio."));
+         document.querySelectorAll('.lb-sound-btn').forEach(btn => btn.innerHTML = getSoundIcon(globalMuted));
+      } else {
+         // AL ESTAR EN UNA FOTO, SILENCIAR AUTOMÁTICAMENTE
+         audio.pause();
       }
 
-      let currentItem = wrappers[lbCurrentIndex];
-      if(!currentItem.querySelector('video')) {
-         audio.pause();
+      // Pausar los otros videos
+      for(let i=0; i<wrappers.length; i++) {
+        if(i !== lbCurrentIndex) {
+           let otherVid = wrappers[i].querySelector('video');
+           if(otherVid) otherVid.pause();
+        }
       }
     }
 
     function closeLightbox(e) {
-      // Si el evento existe y viene del botón de sonido, no cerrar
       if(e && e.target && e.target.closest && e.target.closest('.lb-sound-btn')) return;
-      
       lightbox.classList.remove('active');
       document.body.style.overflow = 'auto'; 
       let vids = lbTrack.querySelectorAll('video');
       vids.forEach(v => v.pause());
-      document.getElementById('audio-boda').pause();
+      document.getElementById('audio-boda')?.pause(); // Silenciar al cerrar
     }
 
-    /* Swipe Logic Altamente Sensible + Clic DENTRO para cerrar */
+    /* Swipe Logic Ultra Rapido + Clic DENTRO o FUERA para cerrar */
     let lbIsDown = false; let lbStartX; let lbIsDragged = false;
-    
-    // El listener se aplica a lbTrack, que cubre toda la pantalla.
+
     lbTrack.addEventListener('mousedown', (e) => { lbIsDown = true; lbIsDragged = false; lbStartX = e.pageX; });
-    
-    lbTrack.addEventListener('mousemove', (e) => { 
-      if (!lbIsDown) return; 
-      if (Math.abs(e.pageX - lbStartX) > 5) lbIsDragged = true; /* Maxima sensibilidad de arrastre */
-    });
-    
+    lbTrack.addEventListener('mousemove', (e) => { if (!lbIsDown) return; if (Math.abs(e.pageX - lbStartX) > 5) lbIsDragged = true; });
     lbTrack.addEventListener('mouseup', (e) => {
       lbIsDown = false;
       if (lbIsDragged) {
-        // Lógica de cambio de imagen
         if (lbStartX > e.pageX) { lbCurrentIndex++; if(lbCurrentIndex >= lbItemsCount) lbCurrentIndex = 0; }
         else { lbCurrentIndex--; if(lbCurrentIndex < 0) lbCurrentIndex = lbItemsCount - 1; }
         updateLightboxPosition();
       } else {
-        // Clic puro (sin arrastre) DENTRO del track: CERRAR
-        closeLightbox(e);
+        closeLightbox(e); /* CLIC PURO: CIERRA */
       }
     });
-    
     lbTrack.addEventListener('mouseleave', () => { lbIsDown = false; });
     
-    // Táctil
     lbTrack.addEventListener('touchstart', (e) => { lbStartX = e.touches[0].clientX; lbIsDragged = false; }, {passive: true});
-    
-    lbTrack.addEventListener('touchmove', (e) => { 
-      if (Math.abs(e.touches[0].clientX - lbStartX) > 5) lbIsDragged = true; 
-    }, {passive: true});
-    
+    lbTrack.addEventListener('touchmove', (e) => { if (Math.abs(e.touches[0].clientX - lbStartX) > 5) lbIsDragged = true; }, {passive: true});
     lbTrack.addEventListener('touchend', (e) => {
       if (lbIsDragged) {
         let endX = e.changedTouches[0].clientX;
@@ -955,12 +1005,10 @@
         else { lbCurrentIndex--; if(lbCurrentIndex < 0) lbCurrentIndex = lbItemsCount - 1; }
         updateLightboxPosition();
       } else {
-        // Toque puro DENTRO del track: CERRAR
-        closeLightbox(e);
+        closeLightbox(e); /* TOQUE PURO: CIERRA */
       }
     });
 
-    // Teclado
     document.addEventListener('keydown', (e) => {
       if (lightbox.classList.contains('active')) {
         if (e.key === 'ArrowLeft') {
