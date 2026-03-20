@@ -3,8 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Colección Plata de Ley | Capítulo III | La Casa ÈNIGME</title>
+  
+  <title>Colección Plata de Ley 925 | Alta Joyería en Honduras | La Casa ÈNIGME</title>
+  <meta name="description" content="Descubra la Colección Plata de Ley 925 de La Casa ÈNIGME en Honduras. Joyería exclusiva, anillos de compromiso, collares y pulseras de acero inoxidable y oro. Ofertas y envíos a Choluteca y Valle." />
+  <meta name="keywords" content="joyería en Honduras, plata de ley 925, comprar oro Honduras, joyas de acero inoxidable, anillos de compromiso, collares de plata, ofertas de joyería, Choluteca, Valle, ÈNIGME, Carlos Armas Martínez" />
+  <meta name="author" content="Carlos Armas Martínez" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  
+  <meta name="geo.region" content="HN" />
+  <meta name="geo.placename" content="Choluteca, Valle, Honduras" />
+  
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Colección Plata de Ley 925 | La Casa ÈNIGME Honduras" />
+  <meta property="og:description" content="La eternidad forjada en metal noble. Piezas de alta joyería diseñadas para sellar promesas inquebrantables. Envíos exclusivos en Choluteca y Valle." />
+  <meta property="og:image" content="https://via.placeholder.com/1200x630?text=ENIGME+Plata+De+Ley" /> <meta property="og:url" content="https://tu-dominio.com/plata.html" />
+  <meta property="og:site_name" content="La Casa ÈNIGME" />
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "JewelryStore",
+    "name": "La Casa ÈNIGME",
+    "image": "https://via.placeholder.com/600x600?text=Logo+ENIGME",
+    "description": "Firma de alta joyería y marroquinería. Colecciones exclusivas en Plata de Ley 925, Acero Inoxidable, bolsos boutique y próximamente Oro 14K y 18K.",
+    "url": "https://tu-dominio.com",
+    "telephone": "+34602149162",
+    "email": "info@enigmeofficial.com",
+    "founder": {
+      "@type": "Person",
+      "name": "Carlos Armas Martínez"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Choluteca",
+      "addressRegion": "Choluteca",
+      "addressCountry": "HN"
+    },
+    "areaServed": ["Choluteca", "Valle", "Francisco Morazán", "Cortés"],
+    "priceRange": "L",
+    "sameAs": [
+      "https://wa.me/34602149162"
+    ]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
@@ -18,10 +59,9 @@
       --gris-suave: #888888;
       --dorado: #CBAA63;
       --plata: #C0C0C0;
-      --celeste: #8CBED6;
       --fondo-galeria: #FAFAFA;
       --linea-fina: rgba(216, 195, 188, 0.4);
-      --transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -43,26 +83,25 @@
     button { background: none; border: none; font-family: inherit; cursor: pointer; outline: none; }
 
     /* =========================================
-       NAVBAR MINIMALISTA Y CREDIBILIDAD
+       NAVBAR SUPER RESPONSIVO
        ========================================= */
     .navbar {
-      width: 100%; padding: 25px 5vw; display: flex; align-items: center; justify-content: space-between;
+      width: 100%; padding: clamp(15px, 3vw, 25px) 5vw; display: flex; align-items: center; justify-content: space-between;
       border-bottom: 1px solid var(--linea-fina); background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000;
     }
 
     .brand {
-      font-family: 'Cinzel', serif; font-size: clamp(1.4rem, 2.5vw, 1.8rem); letter-spacing: 0.35em;
-      color: var(--carbon); text-align: center; position: absolute; left: 50%; transform: translateX(-50%);
+      font-family: 'Cinzel', serif; font-size: clamp(1.4rem, 4vw, 1.8rem); letter-spacing: 0.35em;
+      color: var(--carbon); text-align: center; position: absolute; left: 50%; transform: translateX(-50%); font-weight: 500;
     }
 
-    .nav-group { display: flex; gap: 20px; align-items: center; }
+    .nav-group { display: flex; gap: clamp(10px, 2vw, 20px); align-items: center; }
     
-    /* MENÚ DESPLEGABLE */
     .dropdown { position: relative; display: inline-block; }
     .dropbtn {
-      font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; color: var(--carbon);
-      font-weight: 500; display: flex; align-items: center; gap: 5px; padding: 10px 0;
+      font-size: clamp(0.55rem, 1.5vw, 0.65rem); letter-spacing: 3px; text-transform: uppercase; color: var(--carbon);
+      font-weight: 600; display: flex; align-items: center; gap: 5px; padding: 10px 0;
     }
     .dropbtn svg { width: 10px; height: 10px; transition: transform 0.3s; }
     .dropdown:hover .dropbtn svg { transform: rotate(180deg); }
@@ -83,258 +122,249 @@
     .dropdown-content a:hover { background-color: var(--fondo-galeria); color: var(--dorado) !important; padding-left: 32px; }
     .dropdown.right .dropdown-content { left: auto; right: 0; }
 
-    /* BOTONES DE VENTA EN NAVBAR */
     .btn-menu-brand {
-      display: flex; align-items: center; gap: 8px; color: var(--carbon) !important; padding: 8px 16px;
-      border: 1px solid rgba(203, 170, 99, 0.4); font-size: 0.6rem; font-weight: 500; letter-spacing: 2px;
-      text-transform: uppercase; transition: var(--transition);
+      display: flex; align-items: center; gap: 8px; color: var(--carbon) !important; padding: clamp(6px, 1.5vw, 8px) clamp(10px, 2vw, 16px);
+      border: 1px solid rgba(203, 170, 99, 0.4); font-size: clamp(0.5rem, 1.2vw, 0.6rem); font-weight: 600; letter-spacing: clamp(1px, 0.5vw, 2px);
+      text-transform: uppercase; transition: var(--transition); border-radius: 2px; background: transparent;
     }
     .btn-menu-brand:hover { background-color: var(--dorado); border-color: var(--dorado); color: var(--blanco-dior) !important; }
-    .btn-menu-brand svg { width: 13px; height: 13px; fill: currentColor; }
+    .btn-menu-brand svg { width: clamp(10px, 1.5vw, 13px); height: clamp(10px, 1.5vw, 13px); fill: currentColor; }
 
     @keyframes pulse-soft { 0% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0.2); } 70% { box-shadow: 0 0 0 6px rgba(203, 170, 99, 0); } 100% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0); } }
     .btn-cart-nav { animation: pulse-soft 2.5s infinite; background-color: var(--marfil); }
     .btn-cart-nav:hover { animation: none; }
-    .counter-badge { font-weight: 600; }
+    .counter-badge { font-weight: 700; }
 
     /* =========================================
-       ENCABEZADO EDITORIAL
+       ENCABEZADO EDITORIAL Y PROMOCIÓN
        ========================================= */
-    .gallery-header { text-align: center; padding: 80px 20px 40px; border-bottom: 1px solid var(--linea-fina); background-color: var(--fondo-galeria); }
-    .gallery-kicker { font-family: 'Cinzel', serif; font-style: italic; font-size: 0.9rem; color: var(--dorado); letter-spacing: 5px; text-transform: uppercase; margin-bottom: 15px; }
-    .gallery-title { font-family: 'Cinzel', serif; font-size: clamp(2.2rem, 5vw, 3.5rem); letter-spacing: 0.15em; text-transform: uppercase; color: var(--carbon); margin-bottom: 20px; }
-    .gallery-desc { font-size: 0.8rem; line-height: 2; color: var(--gris-suave); max-width: 650px; margin: 0 auto; font-weight: 300; letter-spacing: 1px; }
+    .gallery-header { text-align: center; padding: clamp(40px, 8vw, 80px) 20px clamp(20px, 4vw, 40px); border-bottom: 1px solid var(--linea-fina); background-color: var(--fondo-galeria); }
+    .gallery-kicker { font-family: 'Cinzel', serif; font-style: italic; font-size: clamp(0.7rem, 2vw, 0.9rem); color: var(--dorado); letter-spacing: 5px; text-transform: uppercase; margin-bottom: 10px; font-weight: 600; }
+    .gallery-title { font-family: 'Cinzel', serif; font-size: clamp(2rem, 6vw, 3.5rem); letter-spacing: 0.15em; text-transform: uppercase; color: var(--carbon); margin-bottom: 15px; font-weight: 500;}
+    .gallery-desc { font-size: clamp(0.7rem, 1.5vw, 0.8rem); line-height: 2; color: var(--gris-suave); max-width: 650px; margin: 0 auto; font-weight: 400; letter-spacing: 1px; }
 
-    /* INFO DE EMPAQUE */
-    .premium-packaging { max-width: 600px; margin: 40px auto 0; padding: 15px; border-top: 1px dashed var(--dorado); border-bottom: 1px dashed var(--dorado); text-align: center; }
-    .premium-packaging p { font-size: 0.6rem; letter-spacing: 2px; line-height: 1.8; text-transform: uppercase; font-weight: 500; color: var(--carbon); }
-    .premium-packaging p strong { color: var(--dorado); }
+    /* BANNER DE REGLA DE COMPRA Y ORO */
+    .promo-banner {
+      max-width: 800px; margin: 30px auto 0; padding: 20px; background-color: var(--carbon); color: var(--plata);
+      border-radius: 2px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.15); width: 90%; border: 1px solid var(--plata);
+    }
+    .promo-banner p { font-size: clamp(0.55rem, 1.2vw, 0.7rem); letter-spacing: 2px; line-height: 1.8; text-transform: uppercase; font-weight: 500; margin: 0; color: var(--blanco-dior);}
+    .promo-banner strong { color: var(--dorado); font-weight: 700; }
+    
+    .oro-announcement {
+      margin-top: 15px; padding-top: 15px; border-top: 1px dashed rgba(255,255,255,0.2);
+      font-size: clamp(0.5rem, 1vw, 0.65rem); letter-spacing: 3px; color: var(--dorado); font-weight: 700; text-transform: uppercase;
+    }
 
     /* =========================================
-       GRID DE PRODUCTOS (PEQUEÑOS Y UNIFORMES)
+       GRID DE PRODUCTOS (SIMETRÍA ESTRICTA)
        ========================================= */
     .product-grid {
       display: grid; 
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); 
-      gap: 60px 30px; 
-      padding: 60px 5vw 120px; 
-      max-width: 1000px; 
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); 
+      gap: clamp(30px, 5vw, 60px) clamp(20px, 3vw, 40px); 
+      padding: clamp(40px, 5vw, 60px) 5vw 120px; 
+      max-width: 1200px; 
       margin: 0 auto; width: 100%;
     }
 
     .product-card { 
       display: flex; flex-direction: column; background: var(--blanco-dior); 
-      transition: var(--transition); border: none; 
+      transition: var(--transition); border: 1px solid var(--linea-fina); height: 100%;
     }
-    .product-card:hover { transform: translateY(-5px); }
+    .product-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.05); border-color: var(--dorado); }
 
-    /* CONTENEDOR FOTOGRÁFICO: BLOQUEADO A 1:1 EN TODAS LAS PANTALLAS */
+    /* CONTENEDOR FOTOGRÁFICO: SIN BORDES BLANCOS (RETRATO 3/4) */
     .carousel-wrapper { 
       position: relative; background-color: var(--fondo-galeria); width: 100%;
-      aspect-ratio: 1/1; /* Obliga a todas las tarjetas a medir lo mismo en PC y Móvil */
-      overflow: hidden; display: flex; align-items: center; justify-content: center;
-      touch-action: pan-y;
+      aspect-ratio: 3/4; /* Formato Retrato */
+      overflow: hidden; display: block;
+      touch-action: pan-y; cursor: pointer; border-bottom: 1px solid var(--linea-fina);
     }
-    .carousel-track { display: flex; width: 100%; transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); cursor: pointer; align-items: center; }
-    .carousel-track:active { cursor: grabbing; }
     
+    .carousel-track { display: flex; width: 100%; height: 100%; align-items: center; justify-content: center; }
+
     .product-media { 
-      flex: 0 0 100%; width: 100%; height: auto; object-fit: contain; pointer-events: none; display: block;
+      flex: 0 0 100%; width: 100%; height: 100%; 
+      object-fit: cover; /* Llenar todo el espacio */
+      object-position: top center; /* Anclado arriba para no cortar caras/detalles */
+      pointer-events: none; display: block; padding: 0;
     }
 
-    /* CORAZÓN DE FAVORITOS (SUTIL) */
+    /* CORAZÓN DE FAVORITOS */
     .btn-fav { 
-      position: absolute; top: 10px; right: 10px; width: 28px; height: 28px; 
-      background-color: rgba(255, 255, 255, 0.8); border-radius: 50%; display: flex; align-items: center; justify-content: center; 
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05); z-index: 10; transition: var(--transition); color: var(--gris-suave); border: 1px solid transparent;
+      position: absolute; top: 12px; right: 12px; width: clamp(28px, 4vw, 32px); height: clamp(28px, 4vw, 32px); 
+      background-color: rgba(255, 255, 255, 0.95); border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08); z-index: 10; transition: var(--transition); color: var(--gris-suave); border: 1px solid var(--linea-fina);
     }
-    .btn-fav:hover { transform: scale(1.1); color: var(--carbon); border-color: var(--linea-fina); background-color: var(--blanco-dior); }
-    .btn-fav svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2; transition: var(--transition); }
+    .btn-fav:hover { transform: scale(1.1); color: var(--carbon); border-color: var(--carbon); }
+    .btn-fav svg { width: clamp(12px, 2vw, 14px); height: clamp(12px, 2vw, 14px); fill: none; stroke: currentColor; stroke-width: 2; transition: var(--transition); }
     .btn-fav.active { background-color: var(--carbon); border-color: var(--carbon); }
     .btn-fav.active svg { fill: var(--dorado); stroke: var(--dorado); }
 
-    /* INFO DEL PRODUCTO */
-    .product-info { padding: 20px 10px 10px; text-align: center; display: flex; flex-direction: column; flex-grow: 1; }
-    .product-code { font-size: 0.45rem; letter-spacing: 3px; color: var(--gris-suave); margin-bottom: 8px; }
-    .product-name { font-family: 'Cinzel', serif; font-size: 1.1rem; letter-spacing: 0.15em; color: var(--carbon); margin-bottom: 6px; text-transform: uppercase; font-weight: 500; }
-    .product-lema { font-size: 0.65rem; color: var(--gris-suave); margin-bottom: 20px; font-weight: 300; font-style: italic; }
+    /* INFO DEL PRODUCTO (ALINEACIÓN ESTRUCTURAL) */
+    .product-info { 
+      padding: clamp(15px, 2vw, 25px) 15px 15px; text-align: center; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; 
+    }
+    
+    .product-meta { display: flex; flex-direction: column; align-items: center; }
+    .product-code { font-size: clamp(0.45rem, 1vw, 0.5rem); letter-spacing: 3px; color: var(--gris-suave); margin-bottom: 8px; font-weight: 500;}
+    .product-name { font-family: 'Cinzel', serif; font-size: clamp(0.95rem, 2.5vw, 1.15rem); letter-spacing: 0.1em; color: var(--carbon); margin-bottom: 8px; text-transform: uppercase; font-weight: 600; line-height: 1.3; min-height: 2.6em; display: flex; align-items: center; justify-content: center;}
+    .product-lema { font-size: clamp(0.6rem, 1.5vw, 0.7rem); color: var(--gris-suave); margin-bottom: 15px; font-weight: 400; font-style: italic; line-height: 1.5; min-height: 3em; display: flex; align-items: center; justify-content: center; }
     
     /* ETIQUETAS Y TALLA */
-    .specs-block { display: flex; flex-direction: column; align-items: center; gap: 6px; margin-bottom: 20px; }
+    .specs-block { display: flex; flex-direction: column; align-items: center; gap: 6px; margin-bottom: 20px; width: 100%;}
     .size-select {
       appearance: none; background: transparent; border: none; border-bottom: 1px solid var(--carbon);
-      font-family: 'Montserrat', sans-serif; font-size: 0.55rem; letter-spacing: 2px; color: var(--carbon);
-      font-weight: 600; text-transform: uppercase; padding: 4px 15px 4px 5px; cursor: pointer; outline: none;
+      font-family: 'Montserrat', sans-serif; font-size: clamp(0.5rem, 1.5vw, 0.6rem); letter-spacing: 2px; color: var(--carbon);
+      font-weight: 600; text-transform: uppercase; padding: 4px 20px 4px 5px; cursor: pointer; outline: none;
       background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231C1C1C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
       background-repeat: no-repeat; background-position: right center; background-size: 10px;
-      margin-bottom: 5px; text-align: center;
+      margin-bottom: 5px; text-align: center; width: 100%; max-width: 160px;
     }
-    .spec-material { font-size: 0.5rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; color: var(--gris-suave); }
+    .spec-material { font-size: clamp(0.45rem, 1.2vw, 0.5rem); letter-spacing: 2px; text-transform: uppercase; color: var(--carbon); border: 1px solid var(--linea-fina); padding: 4px 10px; border-radius: 2px;}
 
-    /* PRECIO Y BOTÓN DE AÑADIR */
-    .product-price { font-size: 1.1rem; letter-spacing: 2px; color: var(--carbon); font-weight: 600; margin-bottom: 15px; margin-top: auto; }
-    .price-old { font-size: 0.7rem; color: var(--gris-suave); text-decoration: line-through; letter-spacing: 1px; display: block; margin-bottom: 5px;}
+    /* PRECIO FIJO */
+    .pricing-action-wrapper { width: 100%; margin-top: auto; }
+    .product-price { font-size: clamp(1rem, 2.5vw, 1.2rem); letter-spacing: 2px; color: var(--carbon); font-weight: 700; margin-bottom: 20px; }
     
-    .purchase-action { display: flex; border: 1px solid var(--carbon); height: 35px; transition: var(--transition); }
-    .purchase-action:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.08); }
-    .qty-selector { display: flex; align-items: center; justify-content: space-between; width: 60px; background: var(--blanco-dior); border-right: 1px solid var(--linea-fina); }
-    .qty-selector button { width: 20px; height: 100%; font-size: 0.9rem; color: var(--gris-suave); display: flex; align-items: center; justify-content: center; }
-    .qty-selector button:hover { color: var(--carbon); }
-    .qty-selector span { font-size: 0.65rem; font-weight: 600; color: var(--carbon); }
+    .purchase-action { display: flex; border: 1px solid var(--carbon); height: clamp(35px, 5vw, 42px); transition: var(--transition); border-radius: 2px; overflow: hidden;}
+    .qty-selector { display: flex; align-items: center; justify-content: space-between; width: clamp(60px, 10vw, 80px); background: var(--fondo-galeria); border-right: 1px solid var(--linea-fina); }
+    .qty-selector button { width: 30%; height: 100%; font-size: clamp(1rem, 2vw, 1.2rem); color: var(--gris-suave); display: flex; align-items: center; justify-content: center; }
+    .qty-selector button:hover { color: var(--carbon); background: var(--linea-fina); }
+    .qty-selector span { font-size: clamp(0.65rem, 1.5vw, 0.75rem); font-weight: 600; color: var(--carbon); flex-grow: 1; text-align: center;}
     
-    .btn-cart { flex-grow: 1; background-color: var(--carbon); color: var(--blanco-dior); font-size: 0.5rem; letter-spacing: 2px; text-transform: uppercase; transition: var(--transition); font-weight: 500; cursor: pointer; }
-    .btn-cart:hover { background-color: var(--carbon); color: var(--blanco-dior); }
-    .btn-cart.added { background: var(--dorado); color: var(--carbon); border-color: var(--dorado); font-weight: 600; }
+    .btn-cart { flex-grow: 1; background-color: var(--carbon); color: var(--blanco-dior); font-size: clamp(0.45rem, 1.5vw, 0.55rem); letter-spacing: clamp(1.5px, 0.5vw, 3px); text-transform: uppercase; transition: var(--transition); font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0 10px; border: none; outline: none;}
+    .btn-cart:hover { background-color: var(--dorado); color: var(--carbon); }
+    .btn-cart.added { background: var(--dorado); color: var(--carbon); }
 
     /* =========================================
-       BOTÓN FLOTANTE DESPLEGABLE (SÓLO 2 OPCIONES)
+       BOTÓN FLOTANTE DESPLEGABLE
        ========================================= */
-    .fab-container { position: fixed; bottom: 30px; right: 30px; z-index: 9999; display: flex; flex-direction: column-reverse; align-items: flex-end; gap: 10px; }
+    .fab-container { position: fixed; bottom: 20px; right: 20px; z-index: 9999; display: flex; flex-direction: column-reverse; align-items: flex-end; gap: 10px; }
     
     .fab-main { 
-      width: 50px; height: 50px; background-color: var(--carbon); color: var(--blanco-dior); 
+      width: clamp(45px, 12vw, 55px); height: clamp(45px, 12vw, 55px); background-color: var(--carbon); color: var(--blanco-dior); 
       border-radius: 50%; display: flex; align-items: center; justify-content: center; 
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2); cursor: pointer; transition: var(--transition); z-index: 2;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.3); cursor: pointer; transition: var(--transition); z-index: 2; border: 1px solid var(--carbon);
     }
-    .fab-main svg { width: 24px; height: 24px; fill: currentColor; transition: transform 0.4s ease; }
-    .fab-container:hover .fab-main, .fab-container.active .fab-main { background-color: var(--dorado); color: var(--carbon); }
+    .fab-main svg { width: clamp(20px, 5vw, 24px); height: clamp(20px, 5vw, 24px); fill: currentColor; transition: transform 0.4s ease; }
+    .fab-container:hover .fab-main, .fab-container.active .fab-main { background-color: var(--dorado); color: var(--carbon); border-color: var(--dorado);}
     
     .fab-menu {
       display: flex; flex-direction: column; align-items: flex-end; gap: 10px; 
-      opacity: 0; visibility: hidden; transform: translateY(20px); transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); margin-bottom: 10px;
+      opacity: 0; visibility: hidden; transform: translateY(20px); transition: var(--transition); margin-bottom: 5px;
     }
     .fab-container:hover .fab-menu, .fab-container.active .fab-menu { opacity: 1; visibility: visible; transform: translateY(0); }
     
     .fab-item { 
-      background: var(--marfil); color: var(--carbon); padding: 10px 18px; border-radius: 20px; 
-      font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; 
-      border: 1px solid var(--linea-fina); box-shadow: 0 4px 10px rgba(0,0,0,0.05); white-space: nowrap; transition: var(--transition);
+      background: var(--blanco-dior); color: var(--carbon); padding: clamp(10px, 2vw, 12px) clamp(15px, 3vw, 20px); border-radius: 25px; 
+      font-size: clamp(0.5rem, 1.5vw, 0.6rem); letter-spacing: 2px; text-transform: uppercase; font-weight: 600; 
+      border: 1px solid var(--linea-fina); box-shadow: 0 5px 15px rgba(0,0,0,0.08); white-space: nowrap; transition: var(--transition);
     }
-    .fab-item.vip { background: var(--dorado); color: var(--carbon); border-color: var(--dorado); font-weight: 600; }
+    .fab-item.vip { background: var(--dorado); color: var(--carbon); border-color: var(--dorado); }
     .fab-item:hover { transform: translateX(-5px); background: var(--carbon); color: var(--blanco-dior); border-color: var(--carbon); }
 
     /* =========================================
-       LIGHTBOX INMERSIVO (GALERÍA COMPLETA Y VIDEO)
+       LIGHTBOX INMERSIVO (SÚPER RÁPIDO Y TÁCTIL)
        ========================================= */
     .lightbox { 
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
-      background-color: rgba(18, 18, 18, 0.98); 
-      backdrop-filter: blur(15px); z-index: 99999; opacity: 0; pointer-events: none; 
-      transition: opacity 0.4s ease; overflow: hidden; display: flex; align-items: center; 
+      background-color: rgba(15, 15, 15, 0.98); backdrop-filter: blur(15px); 
+      z-index: 99999; display: flex; align-items: center; justify-content: center; 
+      opacity: 0; pointer-events: none; transition: opacity 0.3s ease; 
     }
     .lightbox.active { opacity: 1; pointer-events: auto; }
     
-    .lightbox-close { 
-      position: absolute; top: 20px; right: 30px; font-size: 3rem; color: var(--blanco-dior); 
-      cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 200; line-height: 1; 
-      z-index: 10; transition: var(--transition); 
-    }
-    .lightbox-close:hover { color: var(--dorado); transform: scale(1.1); }
-
     .lightbox-track {
-      display: flex; width: 100%; height: 100%; transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      cursor: grab; align-items: center; touch-action: none;
-    }
-    .lightbox-track:active { cursor: grabbing; }
-
-    .lightbox-item {
-      flex: 0 0 100vw; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; position: relative;
+      display: flex; width: 100%; height: 100%; align-items: center; justify-content: flex-start; cursor: pointer; transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     
-    .lightbox-media {
-      max-width: 100%; max-height: 90vh; width: auto; height: auto; object-fit: contain; pointer-events: none;
-    }
+    .lightbox-item { flex: 0 0 100vw; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; position: relative;}
 
-    /* Controles de Sonido en Lightbox */
+    .lightbox-media { 
+      max-width: 95vw; max-height: 85vh; object-fit: contain; transform: scale(0.95); 
+      transition: transform 0.3s ease; box-shadow: 0 20px 50px rgba(0,0,0,0.3); background: transparent; border-radius: 4px; pointer-events: none;
+    }
+    .lightbox.active .lightbox-media { transform: scale(1); }
+    
+    .lightbox-close { 
+      position: absolute; top: clamp(20px, 4vw, 30px); right: clamp(20px, 4vw, 40px); font-size: clamp(2.5rem, 6vw, 3.5rem); color: var(--blanco-dior); 
+      cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 200; line-height: 1; 
+      transition: var(--transition); z-index: 10001; 
+    }
+    .lightbox-close:hover { color: var(--dorado); transform: scale(1.1) rotate(90deg); }
+
     .lb-sound-btn {
       position: absolute; bottom: 60px; left: 50%; transform: translateX(-50%);
       background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.4);
       color: var(--blanco-dior); border-radius: 50%; width: 50px; height: 50px;
       display: flex; align-items: center; justify-content: center; cursor: pointer;
-      backdrop-filter: blur(5px); transition: var(--transition); z-index: 10;
+      backdrop-filter: blur(5px); transition: var(--transition); z-index: 10001; pointer-events: auto;
     }
     .lb-sound-btn:hover { background: var(--dorado); border-color: var(--dorado); color: var(--carbon); }
     .lb-sound-btn svg { width: 20px; height: 20px; fill: currentColor; }
 
-    /* Indicador de Fotos en Lightbox */
-    .lb-indicator {
-      position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
-      display: flex; gap: 8px; z-index: 10;
-    }
+    .lb-indicator { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 10; }
     .lb-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); transition: var(--transition); }
     .lb-dot.active { background: var(--dorado); transform: scale(1.3); }
 
     /* =========================================
        NOTIFICACIÓN TOAST
        ========================================= */
-    .toast-notification { position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%) translateY(100px); background-color: var(--marfil); color: var(--carbon); border: 1px solid var(--dorado); padding: 15px 30px; font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; box-shadow: 0 10px 40px rgba(0,0,0,0.1); z-index: 10000; opacity: 0; transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); display: flex; align-items: center; gap: 12px; pointer-events: none; }
-    .toast-notification svg { fill: var(--dorado); width: 16px; height: 16px; }
+    .toast-notification { position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%) translateY(100px); background-color: var(--carbon); color: var(--dorado); border: 1px solid var(--dorado); padding: 15px 30px; font-size: clamp(0.55rem, 1.5vw, 0.65rem); letter-spacing: 2px; text-transform: uppercase; font-weight: 600; box-shadow: 0 15px 40px rgba(0,0,0,0.2); z-index: 10000; opacity: 0; transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); display: flex; align-items: center; justify-content: center; gap: 12px; pointer-events: none; width: max-content; max-width: 90%; border-radius: 2px;}
+    .toast-notification svg { fill: var(--dorado); width: 18px; height: 18px; }
     .toast-notification.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
-    /* BANNER LEGAL DE CONFIANZA */
+    /* =========================================
+       BANNER LEGAL DE CONFIANZA
+       ========================================= */
     .legal-banner { border-top: 1px solid var(--linea-fina); padding: 60px 5vw 40px; text-align: center; margin-top: auto; background-color: var(--fondo-galeria); }
-    .trust-badges-container { display: flex; justify-content: center; gap: 40px; margin-bottom: 40px; padding: 0 5vw; flex-wrap: wrap; }
-    .trust-badge-item { display: flex; flex-direction: column; align-items: center; gap: 10px; color: var(--carbon); font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; }
-    .trust-badge-item svg { width: 24px; height: 24px; fill: var(--dorado); }
-    .legal-text { font-size: 0.6rem; line-height: 2.2; letter-spacing: 1.5px; color: var(--gris-suave); max-width: 900px; margin: 0 auto; text-transform: uppercase; }
-    .legal-text strong { color: var(--carbon); }
-    .btn-policy { display: inline-block; margin-top: 25px; padding: 10px 20px; border: 1px solid var(--carbon); color: var(--carbon); font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; transition: var(--transition); background: transparent; }
+    .trust-badges-container { display: flex; justify-content: center; gap: clamp(20px, 4vw, 50px); margin-bottom: 40px; padding: 0 5vw; flex-wrap: wrap; }
+    .trust-badge-item { display: flex; flex-direction: column; align-items: center; gap: 12px; color: var(--carbon); font-size: clamp(0.5rem, 1.2vw, 0.6rem); letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
+    .trust-badge-item svg { width: clamp(20px, 4vw, 28px); height: clamp(20px, 4vw, 28px); fill: var(--dorado); }
+    .legal-text { font-size: clamp(0.55rem, 1.2vw, 0.65rem); line-height: 2.2; letter-spacing: 1.5px; color: var(--gris-suave); max-width: 900px; margin: 0 auto; text-transform: uppercase; }
+    .legal-text strong { color: var(--carbon); font-weight: 600;}
+    .btn-policy { display: inline-block; margin-top: 25px; padding: 12px 24px; border: 1px solid var(--carbon); color: var(--carbon); font-size: clamp(0.5rem, 1.2vw, 0.6rem); letter-spacing: 2px; text-transform: uppercase; font-weight: 600; transition: var(--transition); background: transparent; border-radius: 2px;}
     .btn-policy:hover { background-color: var(--carbon); color: var(--blanco-dior); }
-    .founder-credit { margin-top: 40px; font-size: 0.5rem; letter-spacing: 0.25em; color: var(--gris-suave); opacity: 0.5; text-transform: uppercase; font-weight: 300; }
+    .founder-credit { margin-top: 40px; font-size: clamp(0.45rem, 1vw, 0.55rem); letter-spacing: 0.25em; color: var(--gris-suave); opacity: 0.6; text-transform: uppercase; font-weight: 400; }
 
     /* =========================================
-       RESPONSIVE MOBILE (MENÚ REORDENADO)
+       SÚPER RESPONSIVO (MÓVIL EN 2 COLUMNAS PERFECTAS)
        ========================================= */
     @media (max-width: 768px) {
-      .navbar { padding: 20px; flex-wrap: wrap; justify-content: space-between; }
+      .navbar { flex-wrap: wrap; justify-content: space-between; }
       .brand { position: relative; left: 0; transform: none; width: 100%; margin-bottom: 15px; order: -1; }
       
-      /* REORDENACIÓN DEL MENÚ MÓVIL */
       .nav-group.right { flex-direction: column; width: 100%; gap: 10px; align-items: stretch; }
       .nav-group.right .dropdown { order: 1; display: flex; justify-content: center; width: 100%; }
-      .nav-group.right .dropdown .dropbtn { width: 100%; justify-content: center; padding: 8px 0; }
-      .nav-group.right .btn-cart-nav { order: 2; width: 100%; justify-content: center; }
+      .nav-group.right .dropdown .dropbtn { width: 100%; justify-content: center; padding: 10px 0; border: 1px solid rgba(203, 170, 99, 0.4); border-radius: 2px;}
+      .nav-group.right .btn-cart-nav { order: 2; width: 100%; justify-content: center; margin-left: 0 !important; }
       .nav-group.right a[href="favoritos.html"] { order: 3; width: 100%; justify-content: center; margin-left: 0 !important; }
+
+      .dropdown-content { min-width: 160px; }
       
-      .btn-menu-brand { padding: 8px 12px; font-size: 0.55rem; letter-spacing: 1px; }
-      .dropbtn { font-size: 0.6rem; letter-spacing: 1px; }
-      
-      .gallery-header { padding: 50px 15px 30px; }
-      .gallery-title { font-size: 1.8rem; }
-      
-      /* PRODUCTOS EN 2 COLUMNAS COMPACTAS */
+      /* LA REGLA DE ORO: 2 COLUMNAS FIJAS EN MÓVIL SIN PARTIRSE */
       .product-grid { 
         grid-template-columns: repeat(2, 1fr); 
-        gap: 15px; 
-        padding: 30px 10px 100px; 
+        gap: 15px 10px; 
+        padding: 20px 10px 100px; 
       }
       
-      .product-info { padding: 15px 8px 8px; }
-      .product-name { font-size: 0.85rem; margin-bottom: 5px; }
+      .product-info { padding: 12px 8px 8px; }
+      .product-name { font-size: 0.8rem; margin-bottom: 4px; min-height: 2.8em; }
       .product-lema { display: none; }
+      .specs-block { margin-bottom: 15px; }
+      .size-select { font-size: 0.45rem; padding: 4px 15px 4px 2px; }
+      .spec-material { font-size: 0.4rem; padding: 2px 4px; }
       
-      .specs-block { padding: 5px; gap: 4px; margin-bottom: 10px; }
-      .size-select { font-size: 0.5rem; padding: 4px 15px 4px 5px; background-size: 8px; margin-bottom: 3px; }
-      .spec-material { font-size: 0.45rem; padding: 3px 6px; }
-
-      .product-price { font-size: 1rem; margin-bottom: 10px; }
-      .price-old { font-size: 0.65rem; }
+      .product-price { font-size: 0.95rem; margin-bottom: 12px; }
       
-      .purchase-action { height: 32px; flex-direction: row; }
-      .qty-selector { width: 50px; }
-      .qty-selector button { width: 15px; font-size: 0.9rem; }
-      .qty-selector span { font-size: 0.6rem; }
-      .btn-cart { font-size: 0.45rem; letter-spacing: 1px; padding: 0; display: flex; align-items: center; justify-content: center; }
-
-      .btn-fav { width: 22px; height: 22px; top: 6px; right: 6px; }
-      .btn-fav svg { width: 10px; height: 10px; }
-      
-      .fab-container { bottom: 20px; right: 20px; }
-      .fab-main { width: 45px; height: 45px; }
-      .fab-main svg { width: 20px; height: 20px; }
-      
-      .toast-notification { width: 90%; justify-content: center; bottom: 20px; font-size: 0.5rem; padding: 12px; }
-      .lightbox-close { top: 15px; right: 15px; font-size: 2.5rem; }
+      .purchase-action { height: 32px; }
+      .qty-selector { width: 45px; }
+      .qty-selector button { font-size: 0.8rem; }
+      .qty-selector span { font-size: 0.55rem; }
+      .btn-cart { font-size: 0.4rem; letter-spacing: 1px; padding: 0 2px; }
     }
   </style>
 </head>
@@ -346,7 +376,7 @@
     <div class="nav-group">
       <div class="dropdown">
         <button class="nav-link dropbtn">
-          ATENCIÓN <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+          ATENCIÓN <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z" fill="currentColor"/></svg>
         </button>
         <div class="dropdown-content">
           <a href="soporte.html">Soporte al Cliente</a>
@@ -362,21 +392,21 @@
     <div class="nav-group right">
       <div class="dropdown right">
         <button class="nav-link dropbtn">
-          CATÁLOGO <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+          CATÁLOGO <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z" fill="currentColor"/></svg>
         </button>
         <div class="dropdown-content">
           <a href="catalogo.html">Catálogo Completo</a>
           <a href="joyeria.html">Alta Joyería</a>
           <a href="boutique.html">Bolsos Boutique</a>
-          <a href="plata.html">Colección Plata</a>
-          <a href="liquidacion.html">El Archivo</a>
+          <a href="plata.html" style="color:var(--dorado)!important;">Colección Plata</a>
+          <a href="liquidacion.html">Liquidación</a>
         </div>
       </div>
-      <a href="carrito.html" class="btn-menu-brand btn-cart-nav">
+      <a href="carrito.html" class="btn-menu-brand btn-cart-nav" style="margin-left: 10px;">
         <svg viewBox="0 0 24 24"><path d="M16 6V4a4 4 0 0 0-8 0v2H3v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6h-5zm-6-2a2 2 0 0 1 4 0v2h-4V4zm8 16H6V8h2v2a1 1 0 0 0 2 0V8h4v2a1 1 0 0 0 2 0V8h2v12z"/></svg>
         BOLSA (<span id="cart-count" class="counter-badge">0</span>)
       </a>
-      <a href="favoritos.html" class="btn-menu-brand" style="margin-left: 10px;">
+      <a href="favoritos.html" class="btn-menu-brand">
         <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
         <span id="fav-count" class="counter-badge">0</span>
       </a>
@@ -401,197 +431,213 @@
     <p class="gallery-desc">La eternidad forjada en metal noble. Piezas diseñadas para sellar promesas inquebrantables.</p>
   </header>
 
-  <div class="premium-packaging">
-    <p>Toda adquisición en esta colección incluye un estuche de lujo con <strong>luz LED interior</strong>, <strong>alfombrilla de limpieza</strong> y su respectiva <strong>tarjeta de autenticidad</strong>.</p>
+  <div class="promo-banner">
+    <p>COLECCIÓN POR ENCARGO: <strong>Las piezas de Plata de Ley se trabajan bajo solicitud directa.</strong> <br>Al adquirir 2 o más piezas de esta colección, se aplicará automáticamente un <strong>5% de descuento</strong> en su bolsa.</p>
+    <p class="oro-announcement">✦ PRÓXIMAMENTE: MANUFACTURA A MEDIDA EN ORO 14K Y 18K ✦</p>
   </div>
 
   <main class="product-grid">
 
     <article class="product-card">
       <div class="carousel-wrapper" onclick="openLightbox(this)">
-        <button class="btn-fav" data-ref="PL000898" onclick="toggleFav('PL000898', 'Anillo Aura Céleste', 'L 1499', 'pl1.jpg', this); event.stopPropagation();">
+        <button class="btn-fav" data-ref="PL001" onclick="toggleFav('PL001', 'Anillo Aura Céleste', 'L 1499', 'pl1.jpg', this); event.stopPropagation();">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track" data-index="0">
-          <img src="pl1.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=PLATA+1'">
-          <img src="pl2.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=PLATA+2'">
-          <video src="vpl1.mp4" class="product-media" playsinline loop></video>
+          <img src="pl1.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=PLATA+1'">
+          <img src="pl2.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=PLATA+2'">
+          <video src="vpl1.mp4" class="product-media" preload="metadata" muted playsinline loop></video>
         </div>
       </div>
       <div class="product-info">
-        <span class="product-code">REF: PL000898</span>
-        <h2 class="product-name">Aura Céleste</h2>
-        <p class="product-lema">"Un fragmento de cielo capturado en plata."</p>
-        
-        <div class="specs-block">
-          <select id="size-000898" class="size-select">
-            <option value="7">Talla 7</option>
-            <option value="8">Talla 8</option>
-          </select>
-          <span class="spec-material">Plata de Ley 925</span>
+        <div class="product-meta">
+          <span class="product-code">REF: PL001</span>
+          <h2 class="product-name">Aura Céleste</h2>
+          <p class="product-lema">"Un fragmento de cielo capturado en plata."</p>
+          
+          <div class="specs-block">
+            <select id="size-PL001" class="size-select">
+              <option value="7">Talla 7</option>
+              <option value="8">Talla 8</option>
+            </select>
+            <span class="spec-material"><strong>Plata de Ley 925</strong></span>
+          </div>
         </div>
 
-        <span class="price-old">L 1999</span>
-        <div class="product-price">L 1499</div>
-        
-        <div class="purchase-action">
-          <div class="qty-selector">
-            <button onclick="changeCardQty('qty-000898', -1)">-</button>
-            <span id="qty-000898">1</span>
-            <button onclick="changeCardQty('qty-000898', 1)">+</button>
+        <div class="pricing-action-wrapper">
+          <div class="product-price">L 1499</div>
+          
+          <div class="purchase-action">
+            <div class="qty-selector">
+              <button onclick="changeCardQty('qty-PL001', -1)">-</button>
+              <span id="qty-PL001">1</span>
+              <button onclick="changeCardQty('qty-PL001', 1)">+</button>
+            </div>
+            <button class="btn-cart" onclick="addToCartSilver('PL001', 'Anillo Aura Céleste', '1499', 'pl1.jpg', this, 'qty-PL001', 'size-PL001')">Añadir a la Bolsa</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('PL000898', 'Anillo Aura Céleste', 'L 1499', 'pl1.jpg', this, 'qty-000898', 'size-000898')">Añadir a la Bolsa</button>
         </div>
       </div>
     </article>
 
     <article class="product-card">
       <div class="carousel-wrapper" onclick="openLightbox(this)">
-        <button class="btn-fav" data-ref="PL003012" onclick="toggleFav('PL003012', 'Anillo Éclat de Lune', 'L 1899', 'pl3.jpg', this); event.stopPropagation();">
+        <button class="btn-fav" data-ref="PL002" onclick="toggleFav('PL002', 'Anillo Éclat de Lune', 'L 1899', 'pl3.jpg', this); event.stopPropagation();">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track" data-index="0">
-          <img src="pl3.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=PLATA+3'">
-          <img src="pl4.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=PLATA+4'">
-          <video src="vpl2.mp4" class="product-media" playsinline loop></video>
+          <img src="pl3.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=PLATA+3'">
+          <img src="pl4.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=PLATA+4'">
+          <video src="vpl2.mp4" class="product-media" preload="metadata" muted playsinline loop></video>
         </div>
       </div>
       <div class="product-info">
-        <span class="product-code">REF: PL003012</span>
-        <h2 class="product-name">Éclat de Lune</h2>
-        <p class="product-lema">"Luz forjada en la penumbra. Hipnotizante."</p>
-        
-        <div class="specs-block">
-          <select id="size-003012" class="size-select">
-            <option value="7">Talla 7</option>
-            <option value="8">Talla 8</option>
-          </select>
-          <span class="spec-material">Plata de Ley 925</span>
+        <div class="product-meta">
+          <span class="product-code">REF: PL002</span>
+          <h2 class="product-name">Éclat de Lune</h2>
+          <p class="product-lema">"Luz forjada en la penumbra. Hipnotizante."</p>
+          
+          <div class="specs-block">
+            <select id="size-PL002" class="size-select">
+              <option value="7">Talla 7</option>
+              <option value="8">Talla 8</option>
+            </select>
+            <span class="spec-material"><strong>Plata de Ley 925</strong></span>
+          </div>
         </div>
 
-        <span class="price-old">L 2299</span>
-        <div class="product-price">L 1899</div>
-        
-        <div class="purchase-action">
-          <div class="qty-selector">
-            <button onclick="changeCardQty('qty-003012', -1)">-</button>
-            <span id="qty-003012">1</span>
-            <button onclick="changeCardQty('qty-003012', 1)">+</button>
+        <div class="pricing-action-wrapper">
+          <div class="product-price">L 1899</div>
+          
+          <div class="purchase-action">
+            <div class="qty-selector">
+              <button onclick="changeCardQty('qty-PL002', -1)">-</button>
+              <span id="qty-PL002">1</span>
+              <button onclick="changeCardQty('qty-PL002', 1)">+</button>
+            </div>
+            <button class="btn-cart" onclick="addToCartSilver('PL002', 'Anillo Éclat de Lune', '1899', 'pl3.jpg', this, 'qty-PL002', 'size-PL002')">Añadir a la Bolsa</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('PL003012', 'Anillo Éclat de Lune', 'L 1899', 'pl3.jpg', this, 'qty-003012', 'size-003012')">Añadir a la Bolsa</button>
         </div>
       </div>
     </article>
 
     <article class="product-card">
       <div class="carousel-wrapper" onclick="openLightbox(this)">
-        <button class="btn-fav" data-ref="PL001403" onclick="toggleFav('PL001403', 'Anillo Sortilège', 'L 1399', 'pl5.jpg', this); event.stopPropagation();">
+        <button class="btn-fav" data-ref="PL003" onclick="toggleFav('PL003', 'Anillo Sortilège', 'L 1399', 'pl5.jpg', this); event.stopPropagation();">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track" data-index="0">
-          <img src="pl5.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=PLATA+5'">
-          <img src="pl6.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=PLATA+6'">
+          <img src="pl5.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=PLATA+5'">
+          <img src="pl6.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=PLATA+6'">
           <video src="vpl3.mp4" class="product-media" playsinline loop></video>
         </div>
       </div>
       <div class="product-info">
-        <span class="product-code">REF: PL001403</span>
-        <h2 class="product-name">Sortilège</h2>
-        <p class="product-lema">"La elegancia de un hechizo silencioso."</p>
-        
-        <div class="specs-block">
-          <select id="size-001403" class="size-select">
-            <option value="7">Talla 7</option>
-            <option value="8">Talla 8</option>
-          </select>
-          <span class="spec-material">Plata de Ley 925</span>
+        <div class="product-meta">
+          <span class="product-code">REF: PL003</span>
+          <h2 class="product-name">Sortilège</h2>
+          <p class="product-lema">"La elegancia de un hechizo silencioso."</p>
+          
+          <div class="specs-block">
+            <select id="size-PL003" class="size-select">
+              <option value="7">Talla 7</option>
+              <option value="8">Talla 8</option>
+            </select>
+            <span class="spec-material"><strong>Plata de Ley 925</strong></span>
+          </div>
         </div>
 
-        <span class="price-old">L 1899</span>
-        <div class="product-price">L 1399</div>
-        
-        <div class="purchase-action">
-          <div class="qty-selector">
-            <button onclick="changeCardQty('qty-001403', -1)">-</button>
-            <span id="qty-001403">1</span>
-            <button onclick="changeCardQty('qty-001403', 1)">+</button>
+        <div class="pricing-action-wrapper">
+          <div class="product-price">L 1399</div>
+          
+          <div class="purchase-action">
+            <div class="qty-selector">
+              <button onclick="changeCardQty('qty-PL003', -1)">-</button>
+              <span id="qty-PL003">1</span>
+              <button onclick="changeCardQty('qty-PL003', 1)">+</button>
+            </div>
+            <button class="btn-cart" onclick="addToCartSilver('PL003', 'Anillo Sortilège', '1399', 'pl5.jpg', this, 'qty-PL003', 'size-PL003')">Añadir a la Bolsa</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('PL001403', 'Anillo Sortilège', 'L 1399', 'pl5.jpg', this, 'qty-001403', 'size-001403')">Añadir a la Bolsa</button>
         </div>
       </div>
     </article>
 
     <article class="product-card">
       <div class="carousel-wrapper" onclick="openLightbox(this)">
-        <button class="btn-fav" data-ref="PL001003" onclick="toggleFav('PL001003', 'Anillo Majesté', 'L 1599', 'pl7.jpg', this); event.stopPropagation();">
+        <button class="btn-fav" data-ref="PL004" onclick="toggleFav('PL004', 'Anillo Majesté', 'L 1599', 'pl7.jpg', this); event.stopPropagation();">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track" data-index="0">
-          <img src="pl7.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=PLATA+7'">
-          <img src="pl8.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=PLATA+8'">
+          <img src="pl7.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=PLATA+7'">
+          <img src="pl8.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=PLATA+8'">
           <video src="vpl4.mp4" class="product-media" playsinline loop></video>
         </div>
       </div>
       <div class="product-info">
-        <span class="product-code">REF: PL001003</span>
-        <h2 class="product-name">Majesté</h2>
-        <p class="product-lema">"Una corona diseñada para dominar el espacio."</p>
-        
-        <div class="specs-block">
-          <select id="size-001003" class="size-select">
-            <option value="7">Talla 7</option>
-            <option value="8">Talla 8</option>
-          </select>
-          <span class="spec-material">Plata de Ley 925</span>
+        <div class="product-meta">
+          <span class="product-code">REF: PL004</span>
+          <h2 class="product-name">Majesté</h2>
+          <p class="product-lema">"Una corona diseñada para dominar el espacio."</p>
+          
+          <div class="specs-block">
+            <select id="size-PL004" class="size-select">
+              <option value="7">Talla 7</option>
+              <option value="8">Talla 8</option>
+            </select>
+            <span class="spec-material"><strong>Plata de Ley 925</strong></span>
+          </div>
         </div>
 
-        <span class="price-old">L 2099</span>
-        <div class="product-price">L 1599</div>
-        
-        <div class="purchase-action">
-          <div class="qty-selector">
-            <button onclick="changeCardQty('qty-001003', -1)">-</button>
-            <span id="qty-001003">1</span>
-            <button onclick="changeCardQty('qty-001003', 1)">+</button>
+        <div class="pricing-action-wrapper">
+          <div class="product-price">L 1599</div>
+          
+          <div class="purchase-action">
+            <div class="qty-selector">
+              <button onclick="changeCardQty('qty-PL004', -1)">-</button>
+              <span id="qty-PL004">1</span>
+              <button onclick="changeCardQty('qty-PL004', 1)">+</button>
+            </div>
+            <button class="btn-cart" onclick="addToCartSilver('PL004', 'Anillo Majesté', '1599', 'pl7.jpg', this, 'qty-PL004', 'size-PL004')">Añadir a la Bolsa</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('PL001003', 'Anillo Majesté', 'L 1599', 'pl7.jpg', this, 'qty-001003', 'size-001003')">Añadir a la Bolsa</button>
         </div>
       </div>
     </article>
 
     <article class="product-card">
       <div class="carousel-wrapper" onclick="openLightbox(this)">
-        <button class="btn-fav" data-ref="PL002810" onclick="toggleFav('PL002810', 'Pulsera Éternité Bleu', 'L 1299', 'pl10.jpg', this); event.stopPropagation();">
+        <button class="btn-fav" data-ref="PL005" onclick="toggleFav('PL005', 'Pulsera Éternité Bleu', 'L 1299', 'pl9.jpg', this); event.stopPropagation();">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track" data-index="0">
-          <img src="pl10.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=PLATA+10'">
-          <img src="pl9.jpg" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=PLATA+9'">
+          <img src="pl9.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=PLATA+9'">
+          <img src="pl10.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=PLATA+10'">
           <video src="vpl5.mp4" class="product-media" playsinline loop></video>
         </div>
       </div>
       <div class="product-info">
-        <span class="product-code">REF: PL002810</span>
-        <h2 class="product-name">Éternité Bleu</h2>
-        <p class="product-lema">"El ciclo interminable de un aura cautivadora."</p>
-        
-        <div class="specs-block">
-          <select id="size-002810" class="size-select">
-            <option value="UNICA">Ajuste Unisex</option>
-          </select>
-          <span class="spec-material">Plata de Ley 925</span>
+        <div class="product-meta">
+          <span class="product-code">REF: PL005</span>
+          <h2 class="product-name">Éternité Bleu</h2>
+          <p class="product-lema">"El ciclo interminable de un aura cautivadora."</p>
+          
+          <div class="specs-block">
+            <select id="size-PL005" class="size-select">
+              <option value="UNICA">Ajuste Unisex</option>
+            </select>
+            <span class="spec-material"><strong>Plata de Ley 925</strong></span>
+          </div>
         </div>
 
-        <span class="price-old">L 1699</span>
-        <div class="product-price">L 1299</div>
-        
-        <div class="purchase-action">
-          <div class="qty-selector">
-            <button onclick="changeCardQty('qty-002810', -1)">-</button>
-            <span id="qty-002810">1</span>
-            <button onclick="changeCardQty('qty-002810', 1)">+</button>
+        <div class="pricing-action-wrapper">
+          <div class="product-price">L 1299</div>
+          
+          <div class="purchase-action">
+            <div class="qty-selector">
+              <button onclick="changeCardQty('qty-PL005', -1)">-</button>
+              <span id="qty-PL005">1</span>
+              <button onclick="changeCardQty('qty-PL005', 1)">+</button>
+            </div>
+            <button class="btn-cart" onclick="addToCartSilver('PL005', 'Pulsera Éternité Bleu', '1299', 'pl9.jpg', this, 'qty-PL005', 'size-PL005')">Añadir a la Bolsa</button>
           </div>
-          <button class="btn-cart" onclick="addToCart('PL002810', 'Pulsera Éternité Bleu', 'L 1299', 'pl10.jpg', this, 'qty-002810', 'size-002810')">Añadir a la Bolsa</button>
         </div>
       </div>
     </article>
@@ -610,19 +656,15 @@
       </div>
     </div>
     <p class="legal-text">
-      <strong>Política de Compra y Envíos:</strong> Operamos bajo la máxima seguridad transaccional cifrada. Debido a la curaduría y altos estándares de importación, las piezas se entregan <strong>25 días hábiles</strong> posteriores a la confirmación de pago. <strong>Cada pieza ÈNIGME es real y auténtica, entregada con su respectiva tarjeta de marca.</strong><br><br>
-      Distribución logística exclusiva en <strong>Choluteca y Valle</strong>, <strong>CON ENVÍO INCLUIDO</strong> hasta punto de encuentro seguro en la ciudad.
+      <strong>Política de Compra y Envíos:</strong> Operamos bajo la máxima seguridad transaccional cifrada. Debido a la curaduría y altos estándares, las piezas se entregan <strong>25 días hábiles</strong> posteriores a la confirmación de pago. <strong>Cada pieza ÈNIGME es auténtica, entregada con su respectiva tarjeta de marca.</strong>
     </p>
-    
     <a href="ley.html" class="btn-policy">Políticas de Garantía y Devoluciones</a>
-
     <p class="founder-credit">© 2026 ÈNIGME HONDURAS POR CARLOS ARMAS MARTÍNEZ. TODOS LOS DERECHOS RESERVADOS.</p>
   </footer>
 
-  <div id="lightbox" class="lightbox">
+  <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-track" id="lightbox-track"></div>
     <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
-    <div class="lightbox-track" id="lightbox-track">
-      </div>
     <div class="lb-indicator" id="lb-indicator"></div>
   </div>
 
@@ -633,61 +675,18 @@
 
   <script>
     /* =========================================
-       AUDIO GLOBAL (BODA.MP3)
+       AUDIO GLOBAL
        ========================================= */
     let globalMuted = true;
 
-    /* =========================================
-       BOTÓN FLOTANTE MÓVIL
-       ========================================= */
+    /* BOTÓN FLOTANTE MÓVIL */
     function toggleFabMobile() {
       if(window.innerWidth <= 768) {
         document.getElementById('fab-container').classList.toggle('active');
       }
     }
 
-    /* =========================================
-       CARRUSEL TÁCTIL EN TARJETAS (SWIPE/DRAG)
-       ========================================= */
-    document.querySelectorAll('.carousel-track').forEach(track => {
-      let isDown = false; let startX; let isDragged = false;
-
-      track.addEventListener('mousedown', (e) => { isDown = true; isDragged = false; startX = e.pageX; });
-      track.addEventListener('mousemove', (e) => { if (!isDown) return; if (Math.abs(e.pageX - startX) > 20) isDragged = true; });
-      track.addEventListener('mouseup', (e) => {
-        isDown = false;
-        if (isDragged) {
-          if (startX > e.pageX) moveSlideSwipeCard(track, 1);
-          else moveSlideSwipeCard(track, -1);
-        }
-      });
-      track.addEventListener('mouseleave', () => { isDown = false; });
-      
-      track.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; isDragged = false; }, {passive: true});
-      track.addEventListener('touchmove', (e) => { if (Math.abs(e.touches[0].clientX - startX) > 20) isDragged = true; }, {passive: true});
-      track.addEventListener('touchend', (e) => {
-        if (isDragged) {
-          let endX = e.changedTouches[0].clientX;
-          if (startX > endX) moveSlideSwipeCard(track, 1);
-          else moveSlideSwipeCard(track, -1);
-        }
-      });
-    });
-
-    function moveSlideSwipeCard(track, direction) {
-      let mediaItems = track.children;
-      if (mediaItems.length <= 1) return;
-      let currentIndex = parseInt(track.getAttribute('data-index') || 0);
-      currentIndex += direction;
-      if (currentIndex < 0) currentIndex = mediaItems.length - 1;
-      if (currentIndex >= mediaItems.length) currentIndex = 0;
-      track.setAttribute('data-index', currentIndex);
-      track.style.transform = `translateX(-${currentIndex * 100}%)`;
-    }
-
-    /* =========================================
-       MOTOR DEL CARRITO Y FAVORITOS
-       ========================================= */
+    /* CARRITO Y FAVORITOS */
     function changeCardQty(id, delta) {
       let el = document.getElementById(id);
       let current = parseInt(el.innerText);
@@ -720,7 +719,10 @@
       setTimeout(() => { toast.classList.remove('show'); }, 3000);
     }
 
-    function addToCart(ref, name, price, img, btn, qtyId, sizeId) {
+    /* =========================================
+       LÓGICA INTELIGENTE (PLATA - 5% DESC >= 2 PIEZAS)
+       ========================================= */
+    function addToCartSilver(ref, name, priceStr, img, btn, qtyId, sizeId) {
       if (btn.classList.contains('added')) return; 
       
       const qtyToAdd = parseInt(document.getElementById(qtyId).innerText) || 1;
@@ -734,8 +736,35 @@
       if(existing) {
         existing.qty += qtyToAdd;
       } else { 
-        cart.push({ref: uniqueRef, name: fullName, price, img, qty: qtyToAdd}); 
+        cart.push({
+          ref: uniqueRef, 
+          name: fullName, 
+          price: "L " + priceStr, 
+          img: img, 
+          qty: qtyToAdd,
+          isSilver: true,
+          baseSilverPrice: "L " + priceStr 
+        }); 
       }
+
+      let totalSilverItems = 0;
+      cart.forEach(item => {
+        if(item.isSilver) {
+          totalSilverItems += item.qty;
+        }
+      });
+
+      cart.forEach(item => {
+        if(item.isSilver) {
+          let baseNum = parseInt(item.baseSilverPrice.replace(/\D/g, ''));
+          if(totalSilverItems >= 2) {
+            let descPrice = Math.round(baseNum * 0.95);
+            item.price = "L " + descPrice;
+          } else {
+            item.price = item.baseSilverPrice;
+          }
+        }
+      });
       
       localStorage.setItem('enigme_cart', JSON.stringify(cart));
       
@@ -743,8 +772,9 @@
       btn.classList.add('added');
       btn.innerText = "SELECCIONADO ✓";
       document.getElementById(qtyId).innerText = "1";
-      showToast("Añadido a la bolsa", false);
-      setTimeout(() => { btn.classList.remove('added'); btn.innerText = originalText; }, 1500);
+      showToast(totalSilverItems >= 2 ? "Descuento Plata Activado" : "Añadido (Falta 1 para descuento)", false);
+      
+      setTimeout(() => { btn.classList.remove('added'); btn.innerText = originalText; }, 2000);
       updateCounts();
     }
 
@@ -760,7 +790,7 @@
     }
 
     /* =========================================
-       LIGHTBOX INMERSIVO (PANTALLA COMPLETA)
+       LIGHTBOX INMERSIVO (TURBO SENSITIVITY Y CIERRE)
        ========================================= */
     const lightbox = document.getElementById('lightbox');
     const lbTrack = document.getElementById('lightbox-track');
@@ -791,18 +821,20 @@
         
         let clone = items[i].cloneNode(true);
         clone.className = 'lightbox-media';
+        clone.style.pointerEvents = 'none'; // Permite que el Track lea el click encima de la foto
         
         if(clone.tagName.toLowerCase() === 'video') {
           clone.loop = true;
-          clone.muted = true; // El video nativo siempre mudo. Usaremos boda.mp3
+          clone.muted = true; 
           clone.setAttribute('playsinline', '');
           
           let soundBtn = document.createElement('button');
           soundBtn.className = 'lb-sound-btn';
           soundBtn.innerHTML = getSoundIcon(globalMuted); 
+          soundBtn.style.pointerEvents = 'auto'; 
           
           soundBtn.onclick = (e) => {
-            e.stopPropagation();
+            e.stopPropagation(); 
             globalMuted = !globalMuted;
             const audio = document.getElementById('audio-boda');
             
@@ -851,7 +883,7 @@
         if (vid) {
           if (i === lbCurrentIndex) {
             vid.currentTime = 0;
-            vid.play().catch(e => console.log("Auto-play prevenido por el navegador."));
+            vid.play().catch(e => console.log("Auto-play prevenido."));
             if(!globalMuted) {
               audio.play().catch(e => {
                 globalMuted = true; 
@@ -871,7 +903,8 @@
     }
 
     function closeLightbox(e) {
-      if(e) e.stopPropagation();
+      if(e && e.target && e.target.closest && e.target.closest('.lb-sound-btn')) return;
+      
       lightbox.classList.remove('active');
       document.body.style.overflow = 'auto'; 
       let vids = lbTrack.querySelectorAll('video');
@@ -879,33 +912,41 @@
       document.getElementById('audio-boda').pause();
     }
 
-    /* Swipe Logic para el Lightbox */
+    /* Swipe Logic Sensible + Clic en cualquier lugar para cerrar */
     let lbIsDown = false; let lbStartX; let lbIsDragged = false;
-
+    
     lbTrack.addEventListener('mousedown', (e) => { lbIsDown = true; lbIsDragged = false; lbStartX = e.pageX; });
-    lbTrack.addEventListener('mousemove', (e) => { if (!lbIsDown) return; if (Math.abs(e.pageX - lbStartX) > 20) lbIsDragged = true; });
+    lbTrack.addEventListener('mousemove', (e) => { 
+      if (!lbIsDown) return; 
+      if (Math.abs(e.pageX - lbStartX) > 5) lbIsDragged = true; 
+    });
     lbTrack.addEventListener('mouseup', (e) => {
       lbIsDown = false;
       if (lbIsDragged) {
         if (lbStartX > e.pageX) { lbCurrentIndex++; if(lbCurrentIndex >= lbItemsCount) lbCurrentIndex = 0; }
         else { lbCurrentIndex--; if(lbCurrentIndex < 0) lbCurrentIndex = lbItemsCount - 1; }
         updateLightboxPosition();
+      } else {
+        closeLightbox(e); /* CLIC PURO: CERRAR */
       }
     });
     lbTrack.addEventListener('mouseleave', () => { lbIsDown = false; });
-
+    
     lbTrack.addEventListener('touchstart', (e) => { lbStartX = e.touches[0].clientX; lbIsDragged = false; }, {passive: true});
-    lbTrack.addEventListener('touchmove', (e) => { if (Math.abs(e.touches[0].clientX - lbStartX) > 20) lbIsDragged = true; }, {passive: true});
+    lbTrack.addEventListener('touchmove', (e) => { 
+      if (Math.abs(e.touches[0].clientX - lbStartX) > 5) lbIsDragged = true; 
+    }, {passive: true});
     lbTrack.addEventListener('touchend', (e) => {
       if (lbIsDragged) {
         let endX = e.changedTouches[0].clientX;
         if (lbStartX > endX) { lbCurrentIndex++; if(lbCurrentIndex >= lbItemsCount) lbCurrentIndex = 0; }
         else { lbCurrentIndex--; if(lbCurrentIndex < 0) lbCurrentIndex = lbItemsCount - 1; }
         updateLightboxPosition();
+      } else {
+        closeLightbox(e); /* TOQUE PURO: CERRAR */
       }
     });
 
-    /* Navegación por Teclado en Lightbox */
     document.addEventListener('keydown', (e) => {
       if (lightbox.classList.contains('active')) {
         if (e.key === 'ArrowLeft') {
