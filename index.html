@@ -4,23 +4,55 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>ÈNIGME | Alta Joyería, Bolsos Boutique y Lujo Accesible en Honduras</title>
-  <meta name="description" content="Descubre ÈNIGME: La firma de alta joyería, bolsos boutique y accesorios de lujo accesible en Honduras. Compra carteras, mochilas, aretes, cadenas y pulseras en Choluteca, Valle y todo el país. Ofrecemos oportunidades de trabajo y ventas por catálogo para mujeres emprendedoras." />
-  <meta name="keywords" content="ÈNIGME, joyería Honduras, joyeria Choluteca, alta joyeria, comprar joyas, boutique de bolsos, carteras de lujo, mochilas mujer, cadenas de oro 14k, aritos, pendientes, pulseras de acero inoxidable, accesorios de mujer, lujo accesible, joyas baratas, ofertas, trabajo en Honduras, empleo en Choluteca, trabajo en Valle, ventas por catálogo Honduras, venta directa, emprendimiento femenino, distribuidora de joyas, plata 925" />
+  <title>ÈNIGME | Alta Joyería, Plata 925 y Bolsos Boutique en Honduras</title>
+  <meta name="description" content="Descubre ÈNIGME: La firma de alta joyería, bolsos boutique y accesorios de lujo en Honduras. Compra carteras, aretes de Oro 14K y pulseras de Plata 925 en Choluteca y Valle. Únete a nuestro equipo de ventas por catálogo." />
+  <meta name="keywords" content="ÈNIGME, joyería Honduras, joyeria Choluteca, alta joyeria, comprar joyas, boutique de bolsos, carteras de lujo, mochilas mujer, cadenas de oro 14k, aritos, pendientes, pulseras de acero inoxidable, accesorios de mujer, lujo accesible, joyas baratas, ofertas, liquidación de joyas, trabajo en Honduras, empleo en Choluteca, trabajo en Valle, ventas por catálogo Honduras, venta directa, emprendimiento femenino, distribuidora de joyas, plata de ley 925" />
   <meta name="author" content="Carlos Armas Martínez" />
-  <meta name="robots" content="index, follow" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
   
-  <meta property="og:title" content="ÈNIGME | Alta Joyería y Boutique en Honduras" />
-  <meta property="og:description" content="El arte de la exclusividad. Alta joyería, bolsos de lujo y oportunidades de trabajo por catálogo en Choluteca y Valle. Únete al legado ÈNIGME." />
-  <meta property="og:image" content="portada.png" />
+  <meta name="geo.region" content="HN" />
+  <meta name="geo.placename" content="Choluteca, Valle, Francisco Morazán, Honduras" />
+  
   <meta property="og:type" content="website" />
+  <meta property="og:title" content="ÈNIGME | Alta Joyería y Boutique en Honduras" />
+  <meta property="og:description" content="El arte de la exclusividad. Alta joyería en Oro 14K, Plata 925, bolsos de lujo y oportunidades de trabajo en Choluteca y Valle. Únete al legado ÈNIGME." />
+  <meta property="og:image" content="https://enigmeofficial.com/portada.png" />
+  <meta property="og:url" content="https://enigmeofficial.com/" />
+  <meta property="og:site_name" content="La Casa ÈNIGME" />
   <meta property="og:locale" content="es_HN" />
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "JewelryStore",
+    "name": "La Casa ÈNIGME",
+    "image": "https://enigmeofficial.com/portada.png",
+    "description": "Firma de alta joyería, Plata de Ley 925, Acero Inoxidable bañado en Oro 14K y marroquinería boutique. Ofrecemos venta por catálogo y oportunidades de emprendimiento femenino en Honduras.",
+    "url": "https://enigmeofficial.com",
+    "telephone": "+34602149162",
+    "email": "info@enigmeofficial.com",
+    "founder": {
+      "@type": "Person",
+      "name": "Carlos Armas Martínez"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Choluteca",
+      "addressRegion": "Choluteca",
+      "addressCountry": "HN"
+    },
+    "areaServed": ["Choluteca", "Valle", "Francisco Morazán", "Cortés", "Honduras"],
+    "priceRange": "L",
+    "sameAs": [
+      "https://wa.me/34602149162"
+    ]
+  }
+  </script>
   <link rel="preload" as="image" href="portada.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
     :root {
@@ -51,6 +83,47 @@
     }
 
     a { text-decoration: none; color: inherit; transition: var(--transition); }
+
+    /* =========================================
+       TOP BANNER EN MOVIMIENTO (MARQUEE CSS)
+       ========================================= */
+    .top-announcement {
+      display: flex;
+      width: 100%;
+      overflow: hidden;
+      background-color: var(--carbon);
+      color: var(--dorado);
+      text-decoration: none;
+      padding: 10px 0;
+      z-index: 1001;
+      position: relative;
+    }
+    
+    .top-announcement:hover .marquee-track {
+      animation-play-state: paused; /* Pausa al pasar el ratón para que puedan hacer clic más fácil */
+    }
+
+    .marquee-track {
+      display: flex;
+      white-space: nowrap;
+      animation: scrollBanner 25s linear infinite;
+    }
+
+    .marquee-track span {
+      font-size: clamp(0.5rem, 1.2vw, 0.6rem);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 500;
+      padding-right: 50px; /* Separación entre cada repetición del texto */
+    }
+    
+    .marquee-track strong { color: var(--blanco-dior); font-weight: 700; }
+
+    /* La animación mueve el contenido a la izquierda hasta la mitad, creando un loop infinito perfecto */
+    @keyframes scrollBanner {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); } 
+    }
 
     /* =========================================
        ANIMACIONES SUTILES
@@ -99,11 +172,10 @@
     .nav-group.right { justify-content: flex-end; }
     
     .nav-link {
-      font-size: 0.6rem;
+      font-size: 0.65rem;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: var(--gris-suave);
-      font-weight: 600;
+      color: var(--carbon); /* Cambiado a negro para que resalte más */
       position: relative;
       padding-bottom: 4px;
       cursor: pointer;
@@ -119,14 +191,15 @@
       transition: transform 0.4s ease;
     }
 
-    .nav-link:hover, .nav-link.active { color: var(--carbon); }
+    .nav-link:hover, .nav-link.active { color: var(--dorado); }
     .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); transform-origin: left; }
 
     /* =========================================
-       MENÚS DESPLEGABLES (ALTAMENTE VISIBLES)
+       MENÚS DESPLEGABLES
        ========================================= */
     .dropdown { position: relative; display: inline-block; }
-    .dropbtn { display: flex; align-items: center; gap: 5px; padding: 0; background: none; border: none; font-family: inherit; cursor: pointer; }
+    /* ATENCIÓN Y CATÁLOGO en Negrita Extrema (700) */
+    .dropbtn { display: flex; align-items: center; gap: 5px; padding: 0; background: none; border: none; font-family: inherit; cursor: pointer; font-weight: 700 !important; color: var(--carbon); }
     .dropbtn svg { width: 10px; height: 10px; transition: transform 0.3s; fill: currentColor; }
     .dropdown:hover .dropbtn svg { transform: rotate(180deg); }
     
@@ -135,32 +208,30 @@
       top: 100%; 
       left: 0; 
       background-color: var(--blanco-dior); 
-      min-width: 220px; /* Más ancho para mayor comodidad */
-      box-shadow: 0 15px 40px rgba(0,0,0,0.15); /* Sombra más fuerte y visible */
+      min-width: 220px; 
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15); 
       border: 1px solid var(--linea-fina); 
-      border-top: 2px solid var(--dorado); /* Acento dorado que enmarca el menú */
+      border-top: 2px solid var(--dorado); 
       opacity: 0; 
       visibility: hidden; 
       transform: translateY(15px); 
       transition: var(--transition); 
       display: flex; 
       flex-direction: column;
-      z-index: 9999; /* Asegura que esté por encima de TODO */
+      z-index: 9999; 
     }
     
-    /* Puente invisible para no perder el hover al mover el ratón hacia abajo */
     .dropdown-content::before {
       content: ''; position: absolute; top: -15px; left: 0; width: 100%; height: 15px; background: transparent;
     }
 
     .dropdown:hover .dropdown-content { opacity: 1; visibility: visible; transform: translateY(0); }
     
-    /* ENLACES DEL DESPLEGABLE MÁS FUERTES */
     .dropdown-content a {
-      color: var(--carbon) !important; /* Negro puro obligatorio */
-      font-weight: 600; /* Texto más grueso */
-      padding: 16px 24px; /* Mayor espacio de clic */
-      font-size: 0.65rem; /* Letra un poco más grande */
+      color: var(--carbon) !important; 
+      font-weight: 600; 
+      padding: 16px 24px; 
+      font-size: 0.65rem; 
       letter-spacing: 2px;
       text-transform: uppercase; 
       border-bottom: 1px solid var(--fondo-galeria); 
@@ -172,7 +243,7 @@
     .dropdown-content a:hover { 
       background-color: var(--fondo-galeria); 
       color: var(--dorado) !important; 
-      padding-left: 32px; /* Efecto visual elegante al pasar el cursor */
+      padding-left: 32px; 
     }
 
     .dropdown.right .dropdown-content { left: auto; right: 0; }
@@ -180,16 +251,11 @@
     /* BOTONES DE VENTA */
     .btn-menu-brand {
       display: flex; align-items: center; gap: 8px; color: var(--carbon) !important; padding: 8px 16px;
-      border: 1px solid rgba(203, 170, 99, 0.4); font-size: 0.6rem; font-weight: 500; letter-spacing: 2px;
-      text-transform: uppercase; transition: var(--transition);
+      border: 1px solid rgba(203, 170, 99, 0.4); font-size: 0.6rem; font-weight: 600; letter-spacing: 2px;
+      text-transform: uppercase; transition: var(--transition); border-radius: 2px; background: transparent;
     }
     .btn-menu-brand:hover { background-color: var(--dorado); border-color: var(--dorado); color: var(--blanco-dior) !important; }
     .btn-menu-brand svg { width: 13px; height: 13px; fill: currentColor; }
-
-    @keyframes pulse-soft { 0% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0.2); } 70% { box-shadow: 0 0 0 6px rgba(203, 170, 99, 0); } 100% { box-shadow: 0 0 0 0 rgba(203, 170, 99, 0); } }
-    .btn-cart-nav { animation: pulse-soft 2.5s infinite; background-color: var(--marfil); }
-    .btn-cart-nav:hover { animation: none; }
-    .counter-badge { font-weight: 600; }
 
     /* =========================================
        PORTADA (CERO RUIDO)
@@ -257,7 +323,7 @@
       display: inline-block; padding: 12px 30px; border: 1px solid var(--dorado);
       color: var(--carbon); background-color: var(--dorado); font-size: 0.65rem;
       letter-spacing: 3px; text-transform: uppercase; font-weight: 600;
-      transition: var(--transition); position: relative; z-index: 2;
+      transition: var(--transition); position: relative; z-index: 2; border-radius: 2px;
     }
     .btn-gold:hover { background-color: transparent; color: var(--dorado); }
 
@@ -288,7 +354,7 @@
     .index-list li::before { content: "✦"; color: var(--dorado); margin-right: 10px; }
 
     .magazine-cta { display: flex; justify-content: center; gap: 30px; margin-top: 60px; flex-wrap: wrap; }
-    .btn-editorial { display: inline-block; padding: 16px 40px; font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase; font-weight: 600; color: var(--carbon); border: 1px solid var(--dorado); background-color: transparent; transition: var(--transition); cursor: pointer; animation: ripplePulse 2.5s infinite; }
+    .btn-editorial { display: inline-block; padding: 16px 40px; font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase; font-weight: 600; color: var(--carbon); border: 1px solid var(--dorado); background-color: transparent; transition: var(--transition); cursor: pointer; border-radius: 2px; animation: ripplePulse 2.5s infinite; }
     .btn-editorial.primary { background: linear-gradient(120deg, var(--dorado) 0%, var(--dorado-brillo) 50%, var(--dorado) 100%); background-size: 200% auto; border: none; animation: goldShimmer 3s infinite linear, ripplePulse 2.5s infinite; box-shadow: 0 5px 15px rgba(203, 170, 99, 0.4); }
     .btn-editorial:not(.primary) { animation-delay: 1.25s; }
     .btn-editorial:hover { background: var(--carbon); border: 1px solid var(--carbon); color: var(--dorado); transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.2); animation: none; }
@@ -300,9 +366,9 @@
       position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px;
       background-color: var(--carbon); color: var(--blanco-dior); border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.15); z-index: 900; transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15); z-index: 900; transition: var(--transition); border: 1px solid var(--carbon);
     }
-    .whatsapp-float:hover { transform: translateY(-5px); background-color: var(--dorado); color: var(--carbon); }
+    .whatsapp-float:hover { transform: translateY(-5px); background-color: var(--dorado); color: var(--carbon); border-color: var(--dorado); }
     .whatsapp-float svg { width: 26px; height: 26px; fill: currentColor; }
 
     /* =========================================
@@ -324,9 +390,8 @@
       .navbar { padding: 20px; flex-wrap: wrap; justify-content: space-between; }
       .brand-nav { position: relative; left: 0; transform: none; width: 100%; margin-bottom: 15px; order: -1; }
       .nav-group { width: 100%; justify-content: space-between; }
-      .nav-link { font-size: 0.55rem; letter-spacing: 2px; }
       
-      /* Ajuste móvil para los desplegables */
+      .dropbtn { font-size: 0.65rem; }
       .dropdown-content { min-width: 160px; }
       .dropdown-content a { font-size: 0.6rem; padding: 15px; }
       
@@ -349,10 +414,19 @@
 </head>
 <body>
 
+  <a href="catalogo.html" class="top-announcement">
+    <div class="marquee-track">
+      <span>✦ DESCUBRA <strong>OFERTAS EXCLUSIVAS</strong> EN NUESTRAS COLECCIONES DE <strong>PLATA DE LEY</strong> Y <strong>LIQUIDACIÓN</strong> ✦ CLICK AQUÍ PARA VER CATÁLOGO ✦</span>
+      <span>✦ DESCUBRA <strong>OFERTAS EXCLUSIVAS</strong> EN NUESTRAS COLECCIONES DE <strong>PLATA DE LEY</strong> Y <strong>LIQUIDACIÓN</strong> ✦ CLICK AQUÍ PARA VER CATÁLOGO ✦</span>
+      <span>✦ DESCUBRA <strong>OFERTAS EXCLUSIVAS</strong> EN NUESTRAS COLECCIONES DE <strong>PLATA DE LEY</strong> Y <strong>LIQUIDACIÓN</strong> ✦ CLICK AQUÍ PARA VER CATÁLOGO ✦</span>
+      <span>✦ DESCUBRA <strong>OFERTAS EXCLUSIVAS</strong> EN NUESTRAS COLECCIONES DE <strong>PLATA DE LEY</strong> Y <strong>LIQUIDACIÓN</strong> ✦ CLICK AQUÍ PARA VER CATÁLOGO ✦</span>
+    </div>
+  </a>
+
   <nav class="navbar">
     <div class="nav-group">
       <div class="dropdown">
-        <button class="nav-link dropbtn">
+        <button class="nav-link dropbtn" style="font-weight: 700;">
           ATENCIÓN <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
         </button>
         <div class="dropdown-content">
@@ -369,7 +443,7 @@
     
     <div class="nav-group right">
       <div class="dropdown right">
-        <button class="nav-link dropbtn">
+        <button class="nav-link dropbtn" style="font-weight: 700;">
           CATÁLOGO <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
         </button>
         <div class="dropdown-content">
@@ -380,7 +454,7 @@
           <a href="liquidacion.html">Liquidación</a>
         </div>
       </div>
-      <a href="trabaja.html" class="nav-link" style="color: var(--carbon);">TRABAJA CON NOSOTROS</a>
+      <a href="trabaja.html" class="nav-link" style="color: var(--carbon); font-weight: 700;">TRABAJA CON NOSOTROS</a>
     </div>
   </nav>
 
