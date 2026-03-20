@@ -52,6 +52,7 @@
 
   <style>
     :root {
+      /* PALETA DE ALTA GAMA ÈNIGME */
       --blanco-dior: #FFFFFF;
       --marfil: #FAF9F6;
       --carbon: #1C1C1C;
@@ -79,16 +80,25 @@
     a { text-decoration: none; color: inherit; transition: var(--transition); }
     button { background: none; border: none; font-family: inherit; cursor: pointer; outline: none; }
 
-    /* ELIMINAR BOTÓN DE PLAY EN VIDEOS MÓVILES PARA ESTÉTICA LIMPIA */
+    /* =========================================
+       DOMINIO ABSOLUTO SOBRE LOS VIDEOS (ERRADICAR BOTONES)
+       ========================================= */
+    video::-webkit-media-controls-overlay-play-button,
     video::-webkit-media-controls-start-playback-button,
     video::-webkit-media-controls-play-button,
+    video::-webkit-media-controls-panel,
     video::-webkit-media-controls {
       display: none !important;
       -webkit-appearance: none !important;
+      opacity: 0 !important;
+    }
+    video { 
+      pointer-events: none; 
+      outline: none; 
     }
 
     /* =========================================
-       NAVBAR SUPER RESPONSIVO (NUEVA ARQUITECTURA)
+       NAVBAR SUPER RESPONSIVO (ARQUITECTURA MÓVIL)
        ========================================= */
     .navbar {
       width: 100%; padding: clamp(15px, 3vw, 25px) 5vw; display: flex; align-items: center; justify-content: space-between;
@@ -154,10 +164,9 @@
 
     .carousel-wrapper { position: relative; background-color: var(--fondo-galeria); width: 100%; aspect-ratio: 3/4; overflow: hidden; display: block; touch-action: pan-y; cursor: pointer; border-bottom: 1px solid var(--linea-fina); }
     .carousel-track { display: flex; width: 100%; height: 100%; align-items: center; justify-content: flex-start; transition: transform 0.4s ease; }
-    
     .product-media { flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; object-position: top center; pointer-events: none; display: block; padding: 0; }
 
-    /* CORAZÓN DE FAVORITOS EN LA TARJETA (SIEMPRE ARRIBA Z-INDEX 100) */
+    /* CORAZÓN DE FAVORITOS EN LA TARJETA (Z-INDEX 100) */
     .btn-fav { position: absolute; top: 12px; right: 12px; width: clamp(28px, 4vw, 32px); height: clamp(28px, 4vw, 32px); background-color: rgba(255, 255, 255, 0.95); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.15); z-index: 100; transition: var(--transition); color: var(--gris-suave); border: 1px solid var(--linea-fina); }
     .btn-fav:hover { transform: scale(1.1); color: var(--carbon); border-color: var(--carbon); }
     .btn-fav svg { width: clamp(12px, 2vw, 14px); height: clamp(12px, 2vw, 14px); fill: none; stroke: currentColor; stroke-width: 2; transition: var(--transition); }
@@ -208,12 +217,7 @@
     /* =========================================
        LIGHTBOX INMERSIVO Y GALERÍA SÚPER FLUIDA
        ========================================= */
-    .lightbox { 
-      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
-      background-color: rgba(15, 15, 15, 0.98); backdrop-filter: blur(15px); 
-      z-index: 99999; display: flex; align-items: center; justify-content: center; 
-      opacity: 0; pointer-events: none; transition: opacity 0.3s ease; 
-    }
+    .lightbox { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(15, 15, 15, 0.98); backdrop-filter: blur(15px); z-index: 99999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
     .lightbox.active { opacity: 1; pointer-events: auto; }
     .lightbox-track { display: flex; width: 100%; height: 100%; align-items: center; justify-content: flex-start; cursor: pointer; transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
     .lightbox-item { flex: 0 0 100vw; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; position: relative;}
@@ -253,20 +257,12 @@
     .founder-credit { margin-top: 40px; font-size: clamp(0.45rem, 1vw, 0.55rem); letter-spacing: 0.25em; color: var(--gris-suave); opacity: 0.6; text-transform: uppercase; font-weight: 400; }
 
     /* =========================================
-       RESPONSIVE MÓVIL EN 2 COLUMNAS PERFECTAS
+       SÚPER RESPONSIVO MÓVIL EN 2 COLUMNAS PERFECTAS
        ========================================= */
     @media (max-width: 768px) {
-      .navbar { 
-        display: flex; flex-wrap: wrap; padding: 15px 4vw; 
-        justify-content: space-between; align-items: center; 
-      }
+      .navbar { display: flex; flex-wrap: wrap; padding: 15px 4vw; justify-content: space-between; align-items: center; }
       
-      /* CERO CORTES EN LA MARCA */
-      .brand { 
-        position: relative; left: 0; transform: none; width: 100%; 
-        text-align: center; font-size: 1.8rem; letter-spacing: 0.2em; 
-        order: 1; margin-bottom: 15px; white-space: nowrap;
-      }
+      .brand { position: relative; left: 0; transform: none; width: 100%; text-align: center; font-size: 1.8rem; letter-spacing: 0.2em; order: 1; margin-bottom: 15px; white-space: nowrap; }
       
       .nav-group { order: 2; width: auto; gap: 10px; }
       .nav-group.right { order: 3; width: auto; gap: 8px; justify-content: flex-end; }
@@ -287,7 +283,9 @@
       
       .product-name { font-size: 0.95rem; margin-bottom: 6px; min-height: 2.4em; }
       .product-lema { font-size: 0.55rem; margin-bottom: 15px; line-height: 1.4; }
-      .product-specs { font-size: 0.35rem; margin-bottom: 10px;}
+      .specs-block { margin-bottom: 10px;}
+      .size-select { font-size: 0.35rem; padding: 4px 15px 4px 2px; }
+      .spec-material { font-size: 0.3rem; padding: 2px 4px; letter-spacing: 0.5px;}
       
       .price-old { font-size: 0.6rem; }
       .product-price { font-size: 1rem; margin-bottom: 15px; margin-top: 5px;}
@@ -298,7 +296,6 @@
       .qty-selector span { font-size: 0.55rem; }
       .btn-cart { font-size: 0.4rem; letter-spacing: 1px; padding: 0 2px; }
 
-      /* BOTÓN FAVORITOS MÓVIL REPARADO */
       .btn-fav { width: 28px; height: 28px; top: 8px; right: 8px; z-index: 100; }
       .btn-fav svg { width: 12px; height: 12px; }
     }
@@ -450,7 +447,7 @@
       </button>
       <div class="carousel-wrapper" onclick="openLightbox(this)">
         <div class="carousel-track" data-index="0">
-          <video src="vb3.mp4" poster="b33.jpg" class="product-media" autoplay muted playsinline loop></video>
+          <video src="vb3.mp4" poster="b33.jpg" class="product-media" autoplay muted playsinline loop disablePictureInPicture disableRemotePlayback></video>
           <img src="b33.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+3'">
           <img src="b3.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+3'">
         </div>
@@ -519,7 +516,7 @@
       </button>
       <div class="carousel-wrapper" onclick="openLightbox(this)">
         <div class="carousel-track" data-index="0">
-          <video src="vb5.mp4" poster="b55.jpg" class="product-media" autoplay muted playsinline loop></video>
+          <video src="vb5.mp4" poster="b55.jpg" class="product-media" autoplay muted playsinline loop disablePictureInPicture disableRemotePlayback></video>
           <img src="b55.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+5'">
           <img src="b5.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+5'">
         </div>
@@ -554,7 +551,7 @@
       </button>
       <div class="carousel-wrapper" onclick="openLightbox(this)">
         <div class="carousel-track" data-index="0">
-          <video src="vb6.mp4" poster="b66.jpg" class="product-media" autoplay muted playsinline loop></video>
+          <video src="vb6.mp4" poster="b66.jpg" class="product-media" autoplay muted playsinline loop disablePictureInPicture disableRemotePlayback></video>
           <img src="b66.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+6'">
           <img src="b6.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+6'">
         </div>
@@ -624,16 +621,16 @@
 
   <script>
     /* =========================================
-       AUDIO GLOBAL & FORZADO DE VIDEOS
+       AUDIO GLOBAL Y FORZADO DE VIDEOS
        ========================================= */
     let globalMuted = true;
 
-    // Forzar videos mudos al cargar para garantizar autoplay móvil
+    // Forzar videos mudos al cargar (Doble garantía contra el play button de iOS)
     document.addEventListener("DOMContentLoaded", function() {
         var vids = document.querySelectorAll('.carousel-track video');
         vids.forEach(function(v) {
             v.muted = true;
-            v.play().catch(function(e){ console.log("Autoplay móvil prevenido"); });
+            v.play().catch(function(e){ console.log("Autoplay pre-restringido por ahorro de batería, se usará póster."); });
         });
     });
 
@@ -771,7 +768,7 @@
     }
 
     /* =========================================
-       LIGHTBOX INMERSIVO Y CONTROL DE AUDIO
+       LIGHTBOX INMERSIVO Y AUDIO INTELIGENTE
        ========================================= */
     const lightbox = document.getElementById('lightbox');
     const lbTrack = document.getElementById('lightbox-track');
@@ -822,9 +819,12 @@
           soundBtn.onclick = (e) => {
             e.stopPropagation();
             globalMuted = !globalMuted;
-            document.querySelectorAll('.lb-sound-btn').forEach(btn => btn.innerHTML = getSoundIcon(globalMuted));
+            document.querySelectorAll('.lb-sound-btn').forEach(btn => {
+              btn.innerHTML = getSoundIcon(globalMuted);
+            });
+
             if(!globalMuted) {
-              audio.play().catch(err => console.log("Interactúa con la página para activar el audio."));
+              audio.play().catch(err => console.log("Interactúa para activar audio."));
             } else {
               audio.pause();
             }
@@ -842,7 +842,7 @@
         lbIndicator.appendChild(dot);
       }
 
-      // Si se abre directo en un video, ENCENDER AUDIO
+      // Si se abre directo en un video, ENCENDER AUDIO (Si el cliente interactuó)
       if(hasVideoInitially) {
          globalMuted = false;
          audio.play().catch(err => console.log("Audio de inicio bloqueado por el navegador."));
@@ -923,7 +923,7 @@
     lbTrack.addEventListener('touchend', (e) => {
       if (lbIsDragged) {
         let endX = e.changedTouches[0].clientX;
-        if (lbStartX > endX) { lbCurrentIndex++; if(lbCurrentIndex >= lbItemsCount) lbCurrentIndex = 0; }
+        if (startX > endX) { lbCurrentIndex++; if(lbCurrentIndex >= lbItemsCount) lbCurrentIndex = 0; }
         else { lbCurrentIndex--; if(lbCurrentIndex < 0) lbCurrentIndex = lbItemsCount - 1; }
         updateLightboxPosition();
       } else {
