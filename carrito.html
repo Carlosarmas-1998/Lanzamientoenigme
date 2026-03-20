@@ -15,10 +15,7 @@
       --marfil: #FAF9F6;
       --carbon: #1C1C1C;
       --gris-suave: #888888;
-      --gris-claro: #F5F5F5;
-      --gris-linea: #EAEAEA;
       --dorado: #CBAA63;
-      --rosa-palo: #D8C3BC;
       --blanco-puro: #FFFFFF;
       --fondo-galeria: #FAFAFA;
       --linea-fina: rgba(216, 195, 188, 0.4);
@@ -42,7 +39,7 @@
     button { background: none; border: none; font-family: inherit; cursor: pointer; outline: none; }
 
     /* =========================================
-       NAVBAR PURISTA (ESTÁNDAR ÈNIGME)
+       NAVBAR
        ========================================= */
     .navbar {
       width: 100%; padding: clamp(15px, 3vw, 25px) 5vw; display: flex; align-items: center; justify-content: space-between;
@@ -62,14 +59,7 @@
       font-size: clamp(0.55rem, 1.5vw, 0.65rem); letter-spacing: 3px; text-transform: uppercase; color: var(--carbon);
       font-weight: 600; display: flex; align-items: center; gap: 5px; padding: 10px 0;
     }
-    .nav-link::after {
-      content: ''; position: absolute; width: 100%; height: 1.5px; bottom: 0; left: 0;
-      background-color: var(--dorado); transform: scaleX(0); transform-origin: right; transition: transform 0.6s ease;
-    }
-    .nav-link:hover, .nav-link.active { color: var(--carbon); }
-    .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); transform-origin: left; }
-
-    /* MENÚS DESPLEGABLES */
+    
     .dropdown { position: relative; display: inline-block; }
     .dropbtn { display: flex; align-items: center; gap: 5px; padding: 0; cursor: pointer; background: transparent;}
     .dropbtn svg { width: 10px; height: 10px; transition: transform 0.3s; fill: currentColor; }
@@ -87,7 +77,6 @@
       color: var(--carbon) !important; font-weight: 600; padding: 16px 24px; font-size: 0.65rem; letter-spacing: 2px;
       text-transform: uppercase; border-bottom: 1px solid var(--fondo-galeria); transition: var(--transition);
     }
-    .dropdown-content a:last-child { border-bottom: none; }
     .dropdown-content a:hover { background-color: var(--fondo-galeria); color: var(--dorado) !important; padding-left: 32px; }
     .dropdown.right .dropdown-content { left: auto; right: 0; }
 
@@ -117,15 +106,13 @@
     .cart-container { max-width: 1300px; margin: 0 auto; padding: 40px 5vw 80px; display: grid; grid-template-columns: 1.8fr 1.2fr; gap: 60px; width: 100%; flex-grow: 1; align-items: start; }
     .cart-container.cart-empty { grid-template-columns: 1fr; }
 
-    /* =========================================
-       BANNERS DINÁMICOS DE DESCUENTO
-       ========================================= */
+    /* BANNERS DINÁMICOS DE DESCUENTO */
     .promo-banner {
       background-color: var(--carbon); color: var(--dorado); border-radius: 2px;
       text-align: center; padding: 15px; margin-bottom: 30px; display: none; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 1px solid var(--dorado);
     }
     .promo-banner p { font-size: clamp(0.55rem, 1.2vw, 0.65rem); letter-spacing: 2px; line-height: 1.6; text-transform: uppercase; font-weight: 500; margin: 5px 0; }
-    .promo-banner strong { color: var(--blanco-dior); font-weight: 700; }
+    .promo-banner strong { color: var(--blanco-puro); font-weight: 700; }
 
     /* =========================================
        LISTA DE PRODUCTOS
@@ -134,9 +121,9 @@
     .cart-item { display: grid; grid-template-columns: 110px 1fr auto; gap: 20px; align-items: center; padding: 20px; border: 1px solid var(--linea-fina); background: var(--blanco-puro); transition: var(--transition); border-radius: 2px;}
     .cart-item:hover { border-color: var(--dorado); box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
     
-    /* IMÁGENES DEL CARRITO (RETRATO PERFECTO) */
+    /* IMÁGENES DEL CARRITO (RETRATO PERFECTO Y GALERÍA) */
     .item-img-wrapper { width: 110px; aspect-ratio: 3/4; border: 1px solid var(--linea-fina); background: var(--fondo-galeria); overflow: hidden; cursor: zoom-in; position: relative; display: flex; align-items: center; justify-content: center; }
-    .item-img-wrapper::after { content: 'AMPLIAR'; position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.6); color: #fff; font-size: 0.45rem; letter-spacing: 2px; text-align: center; padding: 4px 0; opacity: 0; transition: var(--transition); text-transform: uppercase; }
+    .item-img-wrapper::after { content: 'GALERÍA'; position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.7); color: #fff; font-size: 0.45rem; letter-spacing: 2px; text-align: center; padding: 6px 0; opacity: 0; transition: var(--transition); text-transform: uppercase; font-weight: 600;}
     .item-img-wrapper:hover::after { opacity: 1; }
     .item-img { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform 0.5s ease; }
     .item-img-wrapper:hover .item-img { transform: scale(1.05); }
@@ -150,7 +137,7 @@
     /* CONTROLES DE CANTIDAD Y ELIMINAR */
     .item-actions { display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; height: 100%; gap: 20px;}
     .qty-control { display: flex; align-items: center; border: 1px solid var(--linea-fina); border-radius: 2px; overflow: hidden; background: var(--fondo-galeria);}
-    .qty-btn { width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-size: 1rem; color: var(--gris-suave); transition: var(--transition);}
+    .qty-btn { width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--gris-suave); transition: var(--transition);}
     .qty-btn:hover { color: var(--carbon); background: var(--linea-fina); }
     .qty-display { width: 35px; text-align: center; font-size: 0.75rem; font-weight: 600; color: var(--carbon); }
     
@@ -168,7 +155,7 @@
     .btn-return-home:hover { background-color: var(--carbon); color: var(--blanco-puro); }
 
     /* =========================================
-       FORMULARIO V.I.P (CONCIERGE)
+       FORMULARIO V.I.P Y PAGOS
        ========================================= */
     .checkout-panel { background: var(--blanco-puro); padding: 40px 35px; border: 1px solid var(--dorado); position: sticky; top: 120px; box-shadow: 0 20px 50px rgba(0,0,0,0.04); border-radius: 2px;}
     .summary-title { font-family: 'Cinzel', serif; font-size: 1.2rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 25px; border-bottom: 1px solid var(--linea-fina); padding-bottom: 15px; text-align: center; color: var(--carbon); font-weight: 600;}
@@ -180,7 +167,6 @@
     .form-input:focus, .form-select:focus { border-bottom-color: var(--dorado); }
     .form-select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23121212' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right center; background-size: 15px; }
 
-    /* TÉRMINOS Y CONDICIONES */
     .service-terms { background-color: var(--fondo-galeria); border: 1px solid var(--dorado); padding: 25px 20px; margin-bottom: 30px; border-radius: 2px;}
     .term-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 20px; font-size: 0.7rem; line-height: 1.8; color: var(--gris-suave); }
     .term-item:last-child { margin-bottom: 0; }
@@ -189,45 +175,19 @@
 
     .summary-total { display: flex; justify-content: space-between; padding-top: 20px; border-top: 1px solid var(--carbon); font-size: 1.2rem; font-weight: 700; color: var(--carbon); }
 
-    /* AVISO STRIPE */
-    .stripe-notice {
-      background-color: rgba(203, 170, 99, 0.1); border-left: 3px solid var(--dorado);
-      padding: 15px; margin-top: 25px; font-size: 0.65rem; line-height: 1.6; color: var(--carbon);
-      text-align: justify;
-    }
+    .stripe-notice { background-color: rgba(203, 170, 99, 0.1); border-left: 3px solid var(--dorado); padding: 15px; margin-top: 25px; font-size: 0.65rem; line-height: 1.6; color: var(--carbon); text-align: justify; }
     .stripe-notice strong { color: var(--dorado); }
 
-    /* BOTONES DE PAGO */
     .payment-methods { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; }
-    
     .btn-checkout { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 18px 0; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; transition: var(--transition); cursor: pointer; text-align: center; border-radius: 2px;}
-    
     .btn-checkout.whatsapp { background-color: var(--carbon); color: var(--dorado); border: 1px solid var(--carbon); }
     .btn-checkout.whatsapp:hover { background-color: var(--dorado); color: var(--carbon); border-color: var(--dorado); box-shadow: 0 10px 25px rgba(203, 170, 99, 0.2); }
-    
     .btn-checkout.stripe { background-color: var(--marfil); color: var(--carbon); border: 1px solid var(--carbon); }
     .btn-checkout.stripe:hover { background-color: var(--carbon); color: var(--blanco-puro); }
-    
     .btn-checkout svg { width: 18px !important; height: 18px !important; fill: currentColor; flex-shrink: 0; }
 
     /* =========================================
-       SECCIÓN MIS SOLICITUDES
-       ========================================= */
-    .history-wrapper { max-width: 1300px; margin: 0 auto 80px; padding: 0 5vw; width: 100%; }
-    .btn-toggle-history { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 20px; background: transparent; color: var(--carbon); font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 0.15em; text-transform: uppercase; border: 1px solid var(--dorado); cursor: pointer; transition: var(--transition); border-radius: 2px;}
-    .btn-toggle-history:hover { background: var(--dorado); color: var(--carbon); }
-    .history-content { display: none; padding-top: 20px; }
-    .history-content.open { display: block; }
-    .history-list { display: flex; flex-direction: column; gap: 20px; }
-    .history-card { border: 1px solid var(--linea-fina); padding: 25px; background: var(--blanco-puro); border-radius: 2px;}
-    .history-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed var(--linea-fina); padding-bottom: 15px; margin-bottom: 15px; flex-wrap: wrap; gap: 10px; }
-    .history-meta { display: flex; flex-direction: column; gap: 5px; }
-    .history-date { font-size: 0.7rem; color: var(--carbon); font-weight: 500; letter-spacing: 1px; text-transform: uppercase;}
-    .history-status { font-size: 0.6rem; color: var(--dorado); letter-spacing: 2px; text-transform: uppercase; font-weight: 600; padding: 5px 10px; border: 1px solid var(--dorado); }
-    .history-item-row { font-size: 0.8rem; color: var(--gris-suave); margin-bottom: 8px; display: flex; justify-content: space-between; }
-
-    /* =========================================
-       LIGHTBOX INMERSIVO ULTRA RÁPIDO
+       LIGHTBOX INMERSIVO MULTIMEDIA
        ========================================= */
     .lightbox { 
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
@@ -236,21 +196,48 @@
       opacity: 0; pointer-events: none; transition: opacity 0.3s ease; 
     }
     .lightbox.active { opacity: 1; pointer-events: auto; }
-    .lightbox-content { position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; padding: 20px; cursor: pointer;}
-    .lightbox img { max-width: 90vw; max-height: 85vh; object-fit: contain; transform: scale(0.95); transition: transform 0.3s ease; background: transparent; border-radius: 4px; pointer-events: none;}
-    .lightbox.active img { transform: scale(1); }
-    .lightbox-close { position: absolute; top: clamp(20px, 4vw, 30px); right: clamp(20px, 4vw, 40px); font-size: clamp(2.5rem, 6vw, 3.5rem); color: var(--blanco-dior); cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 200; line-height: 1; transition: var(--transition); z-index: 10001;}
+    
+    .lightbox-track {
+      display: flex; width: 100%; height: 100%; align-items: center; justify-content: flex-start; cursor: pointer; transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .lightbox-item { flex: 0 0 100vw; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; position: relative;}
+
+    .lightbox-media { 
+      max-width: 95vw; max-height: 85vh; object-fit: contain; transform: scale(0.95); 
+      transition: transform 0.3s ease; box-shadow: 0 20px 50px rgba(0,0,0,0.3); background: transparent; border-radius: 4px; pointer-events: none;
+    }
+    .lightbox.active .lightbox-media { transform: scale(1); }
+    
+    .lightbox-close { 
+      position: absolute; top: clamp(20px, 4vw, 30px); right: clamp(20px, 4vw, 40px); font-size: clamp(2.5rem, 6vw, 3.5rem); color: var(--blanco-dior); 
+      cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 200; line-height: 1; 
+      transition: var(--transition); z-index: 10001; 
+    }
     .lightbox-close:hover { color: var(--dorado); transform: scale(1.1) rotate(90deg); }
 
+    .lb-sound-btn {
+      position: absolute; bottom: 60px; left: 50%; transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.4);
+      color: var(--blanco-puro); border-radius: 50%; width: 50px; height: 50px;
+      display: flex; align-items: center; justify-content: center; cursor: pointer;
+      backdrop-filter: blur(5px); transition: var(--transition); z-index: 10001; pointer-events: auto;
+    }
+    .lb-sound-btn:hover { background: var(--dorado); border-color: var(--dorado); color: var(--carbon); }
+    .lb-sound-btn svg { width: 20px; height: 20px; fill: currentColor; }
+
+    .lb-indicator { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 10; }
+    .lb-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); transition: var(--transition); }
+    .lb-dot.active { background: var(--dorado); transform: scale(1.3); }
+
     /* FOOTER */
-    .footer { padding: 50px 5vw; text-align: center; border-top: 1px solid var(--linea-fina); font-size: 0.5rem; letter-spacing: 0.25em; color: var(--gris-suave); text-transform: uppercase; background: var(--blanco-puro); margin-top: auto;}
+    .footer { padding: 50px 5vw; text-align: center; border-top: 1px solid var(--linea-fina); font-size: clamp(0.4rem, 1vw, 0.5rem); letter-spacing: 0.25em; color: var(--gris-suave); text-transform: uppercase; background: var(--blanco-puro); opacity: 0.6; font-weight: 300; margin-top: auto;}
 
     /* RESPONSIVE MÓVIL */
     @media (max-width: 900px) { .cart-container { grid-template-columns: 1fr; gap: 40px; padding: 40px 5vw; } .checkout-panel { position: static; padding: 30px 20px; } }
     @media (max-width: 768px) {
       .navbar { padding: 20px; flex-wrap: wrap; justify-content: space-between; }
       .brand-nav { position: relative; left: 0; transform: none; width: 100%; margin-bottom: 15px; order: -1; font-size: 1.6rem; }
-      
       .nav-group.right { flex-direction: column; width: 100%; gap: 10px; align-items: stretch; }
       .nav-group.right .dropdown { order: 1; display: flex; justify-content: center; width: 100%; }
       .nav-group.right .dropdown .dropbtn { width: 100%; justify-content: center; padding: 8px 0; border: 1px solid rgba(203, 170, 99, 0.4); border-radius: 2px;}
@@ -260,12 +247,13 @@
       .cart-item { grid-template-columns: 80px 1fr; gap: 15px; padding: 15px;} 
       .item-actions { grid-column: span 2; flex-direction: row; justify-content: space-between; align-items: center; margin-top: 5px; height: auto;} 
       .item-img-wrapper { width: 80px; aspect-ratio: 3/4; height: auto;} 
-      
       .btn-checkout { padding: 15px 0; font-size: 0.65rem;}
     }
   </style>
 </head>
 <body>
+
+  <audio id="audio-boda" src="boda.mp3" loop preload="auto"></audio>
 
   <nav class="navbar">
     <div class="nav-group">
@@ -297,7 +285,7 @@
           <a href="liquidacion.html">Liquidación</a>
         </div>
       </div>
-      <a href="carrito.html" class="btn-menu-brand btn-cart-nav" style="margin-left: 10px; border-color: var(--dorado); background-color: var(--fondo-galeria);">
+      <a href="carrito.html" class="btn-menu-brand btn-cart-nav" style="margin-left: 10px;">
         <svg viewBox="0 0 24 24"><path d="M16 6V4a4 4 0 0 0-8 0v2H3v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6h-5zm-6-2a2 2 0 0 1 4 0v2h-4V4zm8 16H6V8h2v2a1 1 0 0 0 2 0V8h4v2a1 1 0 0 0 2 0V8h2v12z"/></svg>
         BOLSA (<span id="cart-count">0</span>)
       </a>
@@ -316,9 +304,7 @@
   <main class="cart-container" id="main-cart-container">
     
     <div class="cart-items">
-      <div id="promo-banner" class="promo-banner">
-      </div>
-      
+      <div id="promo-banner" class="promo-banner"></div>
       <div id="cart-items-container"></div>
     </div>
 
@@ -359,14 +345,7 @@
           <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
           <div>
             <strong>Gestión de Pago Segura</strong>
-            Podrá formalizar mediante transferencia directa o tarjeta de crédito internacional cifrada por <b>Stripe</b>.
-          </div>
-        </div>
-        <div class="term-item">
-          <svg viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          <div>
-            <strong>Logística y Entrega</strong>
-            Garantizamos la entrega en los plazos establecidos según la colección en departamentos autorizados.
+            Podrá formalizar mediante transferencia o tarjeta cifrada por <b>Stripe</b>.
           </div>
         </div>
       </div>
@@ -377,12 +356,12 @@
       </div>
 
       <div class="stripe-notice">
-        <strong>AVISO STRIPE:</strong> Al hacer clic en "Pagar con Tarjeta", será redirigido a nuestra pasarela bancaria. <br><br>Usted deberá ingresar manualmente el importe exacto de: <strong style="font-size: 0.8rem;" id="stripe-amount-notice">L 0</strong> correspondientes a su inversión para completar el pedido.
+        <strong>AVISO STRIPE:</strong> Al hacer clic en "Pagar con Tarjeta", será redirigido a nuestra pasarela bancaria. <br><br>Usted deberá ingresar manualmente el importe exacto de: <strong style="font-size: 0.8rem;" id="stripe-amount-notice">L 0</strong> para completar el pedido.
       </div>
 
       <div class="payment-methods">
         <button class="btn-checkout whatsapp" onclick="processWhatsAppOrder()">
-          <svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+          <svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6z"/></svg>
           Solicitar por WhatsApp
         </button>
 
@@ -394,21 +373,10 @@
     </div>
   </main>
 
-  <div class="history-wrapper" id="history-wrapper" style="display: none;">
-    <button class="btn-toggle-history" onclick="toggleHistory()">
-      Mis Solicitudes V.I.P.
-      <span id="history-arrow">▼</span>
-    </button>
-    <div class="history-content" id="history-content">
-      <div class="history-list" id="history-list-container"></div>
-    </div>
-  </div>
-
   <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-track" id="lightbox-track"></div>
     <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
-    <div class="lightbox-content" onclick="closeLightbox(event)">
-      <img id="lightbox-img" src="" alt="Pieza ÈNIGME" onclick="event.stopPropagation()">
-    </div>
+    <div class="lb-indicator" id="lb-indicator"></div>
   </div>
 
   <footer class="footer">
@@ -419,19 +387,13 @@
     let cart = [];
     let justOrdered = false; 
     let currentTotalGlobal = 0;
+    let globalMuted = true;
 
     function loadCart() {
       const rawCart = JSON.parse(localStorage.getItem('enigme_cart')) || [];
-      cart = [];
-      rawCart.forEach(item => {
-        let existing = cart.find(i => i.ref === item.ref);
-        if(existing) existing.qty = (existing.qty || 1) + (item.qty || 1);
-        else { item.qty = item.qty || 1; cart.push(item); }
-      });
-      localStorage.setItem('enigme_cart', JSON.stringify(cart));
+      cart = rawCart; // Tomamos el carrito completo (que ahora incluye item.media)
       calculateCartRules();
       renderCart();
-      renderHistory();
       updateCounts();
     }
 
@@ -442,34 +404,28 @@
       let totalLqItems = 0;
       let totalSilverItems = 0;
       
-      // 1. Escanear el carrito para contar piezas de cada colección
       cart.forEach(item => {
         if(item.isLiquidation) totalLqItems += item.qty;
         if(item.isSilver) totalSilverItems += item.qty;
       });
 
-      // 2. Aplicar los recálculos matemáticos según las reglas
       cart.forEach(item => {
         if(item.isLiquidation) {
-          if(totalLqItems >= 2) {
-            item.price = item.promoPrice; // VIP Liquidación
-          } else {
-            item.price = item.regularPrice; // Normal Liquidación
-          }
+          if(totalLqItems >= 2) item.price = item.promoPrice;
+          else item.price = item.regularPrice;
         }
         
         if(item.isSilver) {
           let baseNum = parseInt(item.baseSilverPrice.replace(/\D/g, ''));
           if(totalSilverItems >= 2) {
-            let descPrice = Math.round(baseNum * 0.95); // -5% Plata
+            let descPrice = Math.round(baseNum * 0.95);
             item.price = "L " + descPrice;
           } else {
-            item.price = item.baseSilverPrice; // Normal Plata
+            item.price = item.baseSilverPrice;
           }
         }
       });
 
-      // 3. Generar el texto del banner dinámicamente
       const promoBanner = document.getElementById('promo-banner');
       let bannerHtml = '';
 
@@ -503,15 +459,13 @@
         promoBanner.style.display = 'none';
         
         let titleText = justOrdered ? "Solicitud Recibida" : "Bolsa Vacía";
-        let descText = justOrdered ? "Su información ha sido procesada con éxito. Puede revisar el estado en 'Mis Solicitudes V.I.P'." : "Explore el catálogo para descubrir nuestras colecciones de Alta Costura.";
+        let descText = justOrdered ? "Su información ha sido procesada con éxito." : "Explore el catálogo para descubrir nuestras colecciones de Alta Costura.";
         
         container.innerHTML = `
           <div class="empty-state-wrapper">
             <h2 class="empty-state-title">${titleText}</h2>
             <p class="empty-state-desc">${descText}</p>
-            <a href="catalogo.html" class="btn-return-home">
-              EXPLORAR COLECCIONES
-            </a>
+            <a href="catalogo.html" class="btn-return-home">EXPLORAR COLECCIONES</a>
           </div>
         `;
       } else {
@@ -519,8 +473,7 @@
         panelCheckout.style.display = 'block';
         justOrdered = false; 
 
-        let totalLqItems = 0;
-        let totalSilverItems = 0;
+        let totalLqItems = 0, totalSilverItems = 0;
         cart.forEach(i => {
            if(i.isLiquidation) totalLqItems += i.qty;
            if(i.isSilver) totalSilverItems += i.qty;
@@ -531,7 +484,6 @@
           let subtotalItem = priceNum * item.qty;
           total += subtotalItem; totalItems += item.qty;
           
-          // Crear la etiqueta (Tag) visual correcta según la colección
           let promoTag = '';
           if(item.isLiquidation && totalLqItems >= 2) {
              promoTag = `<span class="item-promo-tag">✓ Precio V.I.P Aplicado</span>`;
@@ -539,10 +491,24 @@
              promoTag = `<span class="item-promo-tag">✓ -5% Plata Aplicado</span>`;
           }
 
+          // CONSTRUIMOS EL TRACK DE LA GALERÍA OCULTO PARA EL LIGHTBOX
+          let trackHtml = '';
+          let mediaArray = item.media || [{type: 'img', src: item.img}];
+          mediaArray.forEach(m => {
+             if(m.type === 'video') {
+                trackHtml += `<video src="${m.src}" class="product-media" preload="metadata" muted playsinline loop></video>`;
+             } else {
+                trackHtml += `<img src="${m.src}" class="product-media">`;
+             }
+          });
+
           container.innerHTML += `
             <div class="cart-item">
-              <div class="item-img-wrapper" onclick="openLightbox('${item.img}')" title="Ver imagen íntegra">
+              <div class="item-img-wrapper" onclick="openLightbox(this)" title="Ver galería íntegra">
                 <img src="${item.img}" alt="${item.name}" class="item-img" onerror="this.src='https://via.placeholder.com/200x250?text=ÈNIGME'">
+                <div class="carousel-track" style="display:none;" data-index="0">
+                  ${trackHtml}
+                </div>
               </div>
               <div class="item-details">
                 <span class="item-ref">${item.ref}</span>
@@ -561,7 +527,7 @@
             </div>`;
         });
         
-        currentTotalGlobal = total; // Guardamos variable
+        currentTotalGlobal = total; 
         document.getElementById('summary-total').innerText = `L ${total}`;
         document.getElementById('stripe-amount-notice').innerText = `L ${total}`;
       }
@@ -572,8 +538,7 @@
         cart[index].qty += delta; 
         calculateCartRules();
         localStorage.setItem('enigme_cart', JSON.stringify(cart)); 
-        renderCart(); 
-        updateCounts();
+        renderCart(); updateCounts();
       } 
     }
     
@@ -581,8 +546,7 @@
       cart.splice(index, 1); 
       calculateCartRules();
       localStorage.setItem('enigme_cart', JSON.stringify(cart)); 
-      renderCart(); 
-      updateCounts();
+      renderCart(); updateCounts();
     }
 
     function validateForm() {
@@ -593,8 +557,7 @@
       const direccion = document.getElementById('cliente-direccion').value.trim();
       
       if(!nombre || !correo || !telefono || !departamento || !direccion) { 
-        alert("Estimado cliente, necesitamos todos sus datos para coordinar correctamente la gestión de pago y envío V.I.P."); 
-        return false; 
+        alert("Estimado cliente, necesitamos todos sus datos."); return false; 
       }
       return {nombre, correo, telefono, departamento, direccion};
     }
@@ -610,177 +573,173 @@
       return {totalGlobal, details};
     }
 
-    function saveToHistory(totalGlobal, paymentMethodText) {
-      const now = new Date();
-      let history = JSON.parse(localStorage.getItem('enigme_solicitudes')) || [];
-      history.unshift({
-        date: now.toLocaleDateString('es-HN', { year: 'numeric', month: 'long', day: 'numeric' }),
-        time: now.toLocaleTimeString('es-HN', { hour: '2-digit', minute:'2-digit' }),
-        items: [...cart],
-        total: totalGlobal,
-        status: paymentMethodText
-      });
-      localStorage.setItem('enigme_solicitudes', JSON.stringify(history));
-    }
-
     function clearCartAndUI() {
-      justOrdered = true; 
-      cart = []; 
-      localStorage.setItem('enigme_cart', JSON.stringify(cart));
-      
+      justOrdered = true; cart = []; localStorage.setItem('enigme_cart', JSON.stringify(cart));
       document.getElementById('cliente-nombre').value = ''; 
       document.getElementById('cliente-correo').value = '';
       document.getElementById('cliente-telefono').value = ''; 
       document.getElementById('cliente-departamento').value = ''; 
       document.getElementById('cliente-direccion').value = '';
-      
-      renderCart(); 
-      renderHistory();
-      updateCounts();
+      renderCart(); updateCounts();
     }
 
-    /* =========================================
-       PROCESOS DE ADQUISICIÓN
-       ========================================= */
-
-    // 1. Pago Vía WhatsApp
     function processWhatsAppOrder() {
       const data = validateForm(); if(!data) return;
       const order = getOrderDetails();
-      
-      let waText = `*LA CASA ÈNIGME - FORMALIZACIÓN V.I.P.*%0A%0AEstimado equipo de ÈNIGME, deseo proceder con la adquisición de mi selección y solicitar los datos bancarios para transferencia:%0A%0A*CLIENTE:* ${data.nombre}%0A*CORREO:* ${data.correo}%0A*TELÉFONO:* ${data.telefono}%0A*DEPARTAMENTO:* ${data.departamento}%0A*PUNTO DE ENCUENTRO:* ${data.direccion}%0A%0A*SELECCIÓN EXCLUSIVA:*%0A${encodeURIComponent(order.details)}%0A━━━━━━━━━━━━━━━━━%0A*INVERSIÓN TOTAL: L ${order.totalGlobal}*%0A━━━━━━━━━━━━━━━━━%0A%0AQuedo atento/a para proceder con el pago y coordinar la entrega.`;
-      
-      saveToHistory(order.totalGlobal, "Gestión WhatsApp (Pendiente de Pago)");
+      let waText = `*LA CASA ÈNIGME - FORMALIZACIÓN V.I.P.*%0A%0ACLIENTE: ${data.nombre}%0ATELÉFONO: ${data.telefono}%0ADEPARTAMENTO: ${data.departamento}%0AEN: ${data.direccion}%0A%0A*SELECCIÓN:*%0A${encodeURIComponent(order.details)}%0A━━━━━━━━━━━━━━━━━%0A*TOTAL: L ${order.totalGlobal}*%0A━━━━━━━━━━━━━━━━━`;
       clearCartAndUI();
       window.open(`https://wa.me/34602149162?text=${waText}`, '_blank');
     }
 
-    // 2. Pago Vía Tarjeta (STRIPE) + Correo Silencioso
     function processStripeOrder() {
       const data = validateForm(); if(!data) return;
       const order = getOrderDetails();
-
       const btnStripe = document.querySelector('.btn-checkout.stripe');
       const originalText = btnStripe.innerHTML;
-      btnStripe.innerHTML = "Procesando...";
-      btnStripe.style.pointerEvents = "none";
+      btnStripe.innerHTML = "Procesando..."; btnStripe.style.pointerEvents = "none";
 
       const payload = {
-        _subject: "💳 NUEVO PAGO TARJETA (STRIPE) - ÈNIGME VIP",
-        Cliente: data.nombre,
-        Correo: data.correo,
-        WhatsApp: data.telefono,
-        Departamento: data.departamento,
-        Direccion_Entrega: data.direccion,
-        Detalles_Pedido: order.details,
-        Total_A_Pagar: "L " + order.totalGlobal,
-        Fecha: new Date().toLocaleString('es-HN')
+        _subject: "💳 PAGO TARJETA - ÈNIGME", Cliente: data.nombre, Correo: data.correo, WhatsApp: data.telefono, Departamento: data.departamento, Direccion: data.direccion, Pedido: order.details, Total: "L " + order.totalGlobal, Fecha: new Date().toLocaleString('es-HN')
       };
 
       fetch("https://formsubmit.co/ajax/info@enigmeofficial.com", {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        },
-        body: JSON.stringify(payload)
-      })
-      .then(response => response.json())
-      .then(result => {
-         finishStripeProcess(order.totalGlobal);
-      })
-      .catch(error => {
-         console.error("Error al enviar notificación:", error);
-         finishStripeProcess(order.totalGlobal);
-      })
-      .finally(() => {
-         btnStripe.innerHTML = originalText;
-         btnStripe.style.pointerEvents = "auto";
-      });
-    }
-
-    function finishStripeProcess(total) {
-      saveToHistory(total, "Pago con Tarjeta (Stripe)");
-      clearCartAndUI();
-      window.open("https://buy.stripe.com/3cIdR9euWg0PbaG50M4sE04", "_blank");
-    }
-
-    /* =========================================
-       HISTORIAL DE PEDIDOS
-       ========================================= */
-    function renderHistory() {
-      const history = JSON.parse(localStorage.getItem('enigme_solicitudes')) || [];
-      const historyWrapper = document.getElementById('history-wrapper');
-      const historyContainer = document.getElementById('history-list-container');
-      
-      if (history.length > 0) {
-        historyWrapper.style.display = 'block'; historyContainer.innerHTML = '';
-        history.forEach((o) => {
-          let itemsHtml = '';
-          o.items.forEach(i => { 
-            let pNum = parseInt(i.price.replace(/\D/g, '')); 
-            itemsHtml += `<div class="history-item-row"><span>${i.qty}x ${i.name} (${i.ref})</span> <span style="color:var(--carbon); font-weight:500;">L ${pNum * i.qty}</span></div>`; 
-          });
-          
-          historyContainer.innerHTML += `
-            <div class="history-card">
-              <div class="history-header">
-                <div class="history-meta">
-                  <span class="history-date">${o.date} · ${o.time}</span>
-                </div>
-                <span class="history-status">${o.status}</span>
-              </div>
-              <div class="history-items" style="margin-bottom: 15px;">${itemsHtml}</div>
-              <div class="history-item-row" style="border-top: 1px solid var(--linea-fina); padding-top: 15px; font-weight: 600; color:var(--carbon); font-size: 0.9rem;">
-                <span style="text-transform: uppercase; letter-spacing: 2px;">Total Adquisición</span>
-                <span>L ${o.total}</span>
-              </div>
-            </div>`;
-        });
-      } else { 
-        historyWrapper.style.display = 'none'; 
-      }
-    }
-
-    function toggleHistory() {
-      const content = document.getElementById('history-content'); 
-      const arrow = document.getElementById('history-arrow');
-      if(content.classList.contains('open')) { content.classList.remove('open'); arrow.innerText = '▼'; } 
-      else { content.classList.add('open'); arrow.innerText = '▲'; }
+        method: "POST", headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(payload)
+      }).then(() => { clearCartAndUI(); window.open("https://buy.stripe.com/3cIdR9euWg0PbaG50M4sE04", "_blank");
+      }).catch(() => { clearCartAndUI(); window.open("https://buy.stripe.com/3cIdR9euWg0PbaG50M4sE04", "_blank");
+      }).finally(() => { btnStripe.innerHTML = originalText; btnStripe.style.pointerEvents = "auto"; });
     }
 
     function updateCounts() {
       const cartItems = JSON.parse(localStorage.getItem('enigme_cart')) || [];
       const favsList = JSON.parse(localStorage.getItem('enigme_favs')) || [];
-      let totalQty = 0;
-      cartItems.forEach(item => totalQty += (item.qty || 1));
-      
+      let totalQty = 0; cartItems.forEach(item => totalQty += (item.qty || 1));
       if(document.getElementById('cart-count')) document.getElementById('cart-count').innerText = totalQty;
       if(document.getElementById('fav-count')) document.getElementById('fav-count').innerText = favsList.length;
     }
 
     /* =========================================
-       LIGHTBOX INMERSIVO ULTRA RÁPIDO (CLIC FUERA/DENTRO PARA CERRAR)
+       LIGHTBOX MULTIMEDIA PARA CARRITO
        ========================================= */
     const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
+    const lbTrack = document.getElementById('lightbox-track');
+    const lbIndicator = document.getElementById('lb-indicator');
+    let lbCurrentIndex = 0; let lbItemsCount = 0;
 
-    function openLightbox(src) {
-      lightboxImg.src = src;
+    function getSoundIcon(isMuted) {
+      if (isMuted) {
+        return '<svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>';
+      } else {
+        return '<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>';
+      }
+    }
+
+    function openLightbox(wrapperElement) {
+      lbTrack.innerHTML = '';
+      if(lbIndicator) lbIndicator.innerHTML = '';
+      
+      let sourceTrack = wrapperElement.querySelector('.carousel-track');
+      let items = sourceTrack.children;
+      lbItemsCount = items.length;
+      lbCurrentIndex = parseInt(sourceTrack.getAttribute('data-index') || 0);
+
+      for(let i=0; i<items.length; i++) {
+        let lbItem = document.createElement('div');
+        lbItem.className = 'lightbox-item';
+        
+        let clone = items[i].cloneNode(true);
+        clone.className = 'lightbox-media';
+        clone.style.pointerEvents = 'none'; 
+        
+        if(clone.tagName.toLowerCase() === 'video') {
+          clone.loop = true; clone.muted = true; clone.setAttribute('playsinline', '');
+          let soundBtn = document.createElement('button');
+          soundBtn.className = 'lb-sound-btn'; soundBtn.innerHTML = getSoundIcon(globalMuted); soundBtn.style.pointerEvents = 'auto'; 
+          
+          soundBtn.onclick = (e) => {
+            e.stopPropagation(); globalMuted = !globalMuted;
+            const audio = document.getElementById('audio-boda');
+            document.querySelectorAll('.lb-sound-btn').forEach(btn => btn.innerHTML = getSoundIcon(globalMuted));
+            if(!globalMuted) audio?.play().catch(e => console.log("Audio prevent")); else audio?.pause();
+          };
+          lbItem.appendChild(clone); lbItem.appendChild(soundBtn);
+        } else {
+          lbItem.appendChild(clone);
+        }
+        lbTrack.appendChild(lbItem);
+
+        if(lbIndicator) {
+           let dot = document.createElement('div');
+           dot.className = 'lb-dot';
+           lbIndicator.appendChild(dot);
+        }
+      }
+
+      updateLightboxPosition();
       lightbox.classList.add('active');
-      document.body.style.overflow = 'hidden'; 
+      document.body.style.overflow = 'hidden';
+    }
+
+    function updateLightboxPosition() {
+      lbTrack.style.transform = `translateX(-${lbCurrentIndex * 100}vw)`;
+      
+      if(lbIndicator) {
+         let dots = lbIndicator.children;
+         for(let i=0; i<dots.length; i++) {
+           if(i === lbCurrentIndex) dots[i].classList.add('active'); else dots[i].classList.remove('active');
+         }
+      }
+
+      let wrappers = lbTrack.children;
+      let audio = document.getElementById('audio-boda');
+      
+      for(let i=0; i<wrappers.length; i++) {
+        let vid = wrappers[i].querySelector('video');
+        if (vid) {
+          if (i === lbCurrentIndex) {
+            vid.currentTime = 0; vid.play().catch(e => console.log("Auto-play prevenido."));
+            if(!globalMuted) audio?.play().catch(e => { globalMuted = true; document.querySelectorAll('.lb-sound-btn').forEach(b => b.innerHTML = getSoundIcon(globalMuted)); });
+          } else { vid.pause(); }
+        }
+      }
+      if(!wrappers[lbCurrentIndex].querySelector('video')) audio?.pause();
     }
 
     function closeLightbox(e) {
-      // Cierra si tocan en cualquier lado oscuro O en la imagen misma (comodidad extrema)
+      if(e && e.target && e.target.closest && e.target.closest('.lb-sound-btn')) return;
       lightbox.classList.remove('active');
       document.body.style.overflow = 'auto'; 
+      lbTrack.querySelectorAll('video').forEach(v => v.pause());
+      document.getElementById('audio-boda')?.pause();
     }
 
-    // Teclado
+    let lbIsDown = false; let lbStartX; let lbIsDragged = false;
+    lbTrack.addEventListener('mousedown', (e) => { lbIsDown = true; lbIsDragged = false; lbStartX = e.pageX; });
+    lbTrack.addEventListener('mousemove', (e) => { if (!lbIsDown) return; if (Math.abs(e.pageX - lbStartX) > 5) lbIsDragged = true; });
+    lbTrack.addEventListener('mouseup', (e) => {
+      lbIsDown = false;
+      if (lbIsDragged) {
+        if (lbStartX > e.pageX) { lbCurrentIndex++; if(lbCurrentIndex >= lbItemsCount) lbCurrentIndex = 0; }
+        else { lbCurrentIndex--; if(lbCurrentIndex < 0) lbCurrentIndex = lbItemsCount - 1; }
+        updateLightboxPosition();
+      } else { closeLightbox(e); }
+    });
+    lbTrack.addEventListener('mouseleave', () => { lbIsDown = false; });
+    lbTrack.addEventListener('touchstart', (e) => { lbStartX = e.touches[0].clientX; lbIsDragged = false; }, {passive: true});
+    lbTrack.addEventListener('touchmove', (e) => { if (Math.abs(e.touches[0].clientX - lbStartX) > 5) lbIsDragged = true; }, {passive: true});
+    lbTrack.addEventListener('touchend', (e) => {
+      if (lbIsDragged) {
+        let endX = e.changedTouches[0].clientX;
+        if (lbStartX > endX) { lbCurrentIndex++; if(lbCurrentIndex >= lbItemsCount) lbCurrentIndex = 0; }
+        else { lbCurrentIndex--; if(lbCurrentIndex < 0) lbCurrentIndex = lbItemsCount - 1; }
+        updateLightboxPosition();
+      } else { closeLightbox(e); }
+    });
+
     document.addEventListener('keydown', (e) => {
-      if (lightbox.classList.contains('active') && e.key === 'Escape') {
-        closeLightbox();
+      if (lightbox.classList.contains('active')) {
+        if (e.key === 'ArrowLeft') { lbCurrentIndex--; if(lbCurrentIndex < 0) lbCurrentIndex = lbItemsCount - 1; updateLightboxPosition(); }
+        else if (e.key === 'ArrowRight') { lbCurrentIndex++; if(lbCurrentIndex >= lbItemsCount) lbCurrentIndex = 0; updateLightboxPosition(); }
+        else if (e.key === 'Escape') closeLightbox();
       }
     });
 
