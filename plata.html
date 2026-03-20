@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Colección Plata de Ley 925 | Alta Joyería en Honduras | La Casa ÈNIGME</title>
-  <meta name="description" content="Descubra la Colección Plata de Ley 925 de La Casa ÈNIGME en Honduras. Joyería exclusiva, anillos de compromiso, collares y pulseras de acero inoxidable y oro. Ofertas y envíos a Choluteca y Valle." />
-  <meta name="keywords" content="joyería en Honduras, plata de ley 925, comprar oro Honduras, joyas de acero inoxidable, anillos de compromiso, collares de plata, ofertas de joyería, Choluteca, Valle, ÈNIGME, Carlos Armas Martínez" />
+  <title>Colección Plata de Ley 925 | Alta Joyería | La Casa ÈNIGME</title>
+  <meta name="description" content="Descubra la Colección Plata de Ley 925 de La Casa ÈNIGME en Honduras. Joyería exclusiva, anillos y pulseras forjadas en metal noble. Envíos a Choluteca y Valle." />
+  <meta name="keywords" content="plata de ley 925, joyería en Honduras, comprar joyas de plata, anillos de plata, pulseras de plata, joyas Choluteca, joyas Valle, ÈNIGME, Carlos Armas Martínez" />
   <meta name="author" content="Carlos Armas Martínez" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   
@@ -14,9 +14,10 @@
   <meta name="geo.placename" content="Choluteca, Valle, Honduras" />
   
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Colección Plata de Ley 925 | La Casa ÈNIGME Honduras" />
-  <meta property="og:description" content="La eternidad forjada en metal noble. Piezas de alta joyería diseñadas para sellar promesas inquebrantables. Envíos exclusivos en Choluteca y Valle." />
-  <meta property="og:image" content="https://via.placeholder.com/1200x630?text=ENIGME+Plata+De+Ley" /> <meta property="og:url" content="https://tu-dominio.com/plata.html" />
+  <meta property="og:title" content="Colección Plata de Ley 925 | La Casa ÈNIGME" />
+  <meta property="og:description" content="La eternidad forjada en metal noble. Piezas diseñadas para sellar promesas inquebrantables. Envíos exclusivos en Choluteca y Valle." />
+  <meta property="og:image" content="https://enigmeofficial.com/pl1.jpg" /> 
+  <meta property="og:url" content="https://enigmeofficial.com/plata.html" />
   <meta property="og:site_name" content="La Casa ÈNIGME" />
 
   <script type="application/ld+json">
@@ -24,26 +25,23 @@
     "@context": "https://schema.org",
     "@type": "JewelryStore",
     "name": "La Casa ÈNIGME",
-    "image": "https://via.placeholder.com/600x600?text=Logo+ENIGME",
-    "description": "Firma de alta joyería y marroquinería. Colecciones exclusivas en Plata de Ley 925, Acero Inoxidable, bolsos boutique y próximamente Oro 14K y 18K.",
-    "url": "https://tu-dominio.com",
-    "telephone": "+34602149162",
-    "email": "info@enigmeofficial.com",
+    "description": "Colección exclusiva de joyería en Plata de Ley 925. Diseños únicos elaborados bajo encargo en Honduras.",
+    "image": "https://enigmeofficial.com/pl1.jpg",
+    "location": {
+      "@type": "Place",
+      "name": "La Casa ÈNIGME (Online)",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Choluteca",
+        "addressRegion": "Choluteca",
+        "addressCountry": "HN"
+      }
+    },
     "founder": {
       "@type": "Person",
       "name": "Carlos Armas Martínez"
     },
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Choluteca",
-      "addressRegion": "Choluteca",
-      "addressCountry": "HN"
-    },
-    "areaServed": ["Choluteca", "Valle", "Francisco Morazán", "Cortés"],
-    "priceRange": "L",
-    "sameAs": [
-      "https://wa.me/34602149162"
-    ]
+    "url": "https://enigmeofficial.com"
   }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -174,7 +172,7 @@
     }
     .product-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.05); border-color: var(--dorado); }
 
-    /* CONTENEDOR FOTOGRÁFICO: SIN BORDES BLANCOS (RETRATO 3/4) */
+    /* CONTENEDOR FOTOGRÁFICO: SIN BORDES BLANCOS */
     .carousel-wrapper { 
       position: relative; background-color: var(--fondo-galeria); width: 100%;
       aspect-ratio: 3/4; /* Formato Retrato */
@@ -182,12 +180,13 @@
       touch-action: pan-y; cursor: pointer; border-bottom: 1px solid var(--linea-fina);
     }
     
-    .carousel-track { display: flex; width: 100%; height: 100%; align-items: center; justify-content: center; }
+    .carousel-track { display: flex; width: 100%; height: 100%; align-items: center; justify-content: flex-start; }
 
+    /* LA REGLA MÁGICA: FLEX 0 0 100% EVITA EL AMONTONAMIENTO */
     .product-media { 
       flex: 0 0 100%; width: 100%; height: 100%; 
-      object-fit: cover; /* Llenar todo el espacio */
-      object-position: top center; /* Anclado arriba para no cortar caras/detalles */
+      object-fit: cover; 
+      object-position: top center; 
       pointer-events: none; display: block; padding: 0;
     }
 
@@ -277,14 +276,14 @@
     .lightbox.active { opacity: 1; pointer-events: auto; }
     
     .lightbox-track {
-      display: flex; width: 100%; height: 100%; align-items: center; justify-content: flex-start; cursor: pointer; transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      display: flex; width: 100%; height: 100%; align-items: center; justify-content: flex-start; cursor: pointer; padding: 20px; transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     
     .lightbox-item { flex: 0 0 100vw; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; position: relative;}
 
     .lightbox-media { 
       max-width: 95vw; max-height: 85vh; object-fit: contain; transform: scale(0.95); 
-      transition: transform 0.3s ease; box-shadow: 0 20px 50px rgba(0,0,0,0.3); background: transparent; border-radius: 4px; pointer-events: none;
+      transition: transform 0.3s ease; box-shadow: 0 20px 50px rgba(0,0,0,0.3); background: transparent; border-radius: 4px; pointer-events: none; padding: 15px;
     }
     .lightbox.active .lightbox-media { transform: scale(1); }
     
@@ -391,7 +390,7 @@
     
     <div class="nav-group right">
       <div class="dropdown right">
-        <button class="nav-link dropbtn">
+        <button class="nav-link dropbtn" style="color:var(--dorado)!important;">
           CATÁLOGO <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z" fill="currentColor"/></svg>
         </button>
         <div class="dropdown-content">
@@ -569,7 +568,7 @@
         <div class="carousel-track" data-index="0">
           <img src="pl7.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=PLATA+7'">
           <img src="pl8.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=PLATA+8'">
-          <video src="vpl4.mp4" class="product-media" playsinline loop></video>
+          <video src="vpl4.mp4" class="product-media" preload="metadata" muted playsinline loop></video>
         </div>
       </div>
       <div class="product-info">
@@ -610,7 +609,7 @@
         <div class="carousel-track" data-index="0">
           <img src="pl9.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=PLATA+9'">
           <img src="pl10.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=PLATA+10'">
-          <video src="vpl5.mp4" class="product-media" playsinline loop></video>
+          <video src="vpl5.mp4" class="product-media" preload="metadata" muted playsinline loop></video>
         </div>
       </div>
       <div class="product-info">
@@ -662,7 +661,7 @@
     <p class="founder-credit">© 2026 ÈNIGME HONDURAS POR CARLOS ARMAS MARTÍNEZ. TODOS LOS DERECHOS RESERVADOS.</p>
   </footer>
 
-  <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+  <div id="lightbox" class="lightbox">
     <div class="lightbox-track" id="lightbox-track"></div>
     <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
     <div class="lb-indicator" id="lb-indicator"></div>
@@ -736,6 +735,7 @@
       if(existing) {
         existing.qty += qtyToAdd;
       } else { 
+        // Marcamos como isSilver para aplicar el 5% si cumple la regla
         cart.push({
           ref: uniqueRef, 
           name: fullName, 
@@ -743,10 +743,11 @@
           img: img, 
           qty: qtyToAdd,
           isSilver: true,
-          baseSilverPrice: "L " + priceStr 
+          baseSilverPrice: "L " + priceStr // Guardamos el precio original intacto
         }); 
       }
 
+      // Calcular cuántas piezas de PLATA hay en total
       let totalSilverItems = 0;
       cart.forEach(item => {
         if(item.isSilver) {
@@ -754,11 +755,12 @@
         }
       });
 
+      // Aplicar 5% de descuento a todas las de plata si hay 2 o más
       cart.forEach(item => {
         if(item.isSilver) {
           let baseNum = parseInt(item.baseSilverPrice.replace(/\D/g, ''));
           if(totalSilverItems >= 2) {
-            let descPrice = Math.round(baseNum * 0.95);
+            let descPrice = Math.round(baseNum * 0.95); // 5% de descuento
             item.price = "L " + descPrice;
           } else {
             item.price = item.baseSilverPrice;
@@ -790,7 +792,7 @@
     }
 
     /* =========================================
-       LIGHTBOX INMERSIVO (TURBO SENSITIVITY Y CIERRE)
+       LIGHTBOX INMERSIVO (TURBO SENSITIVITY Y CIERRE INTERNO)
        ========================================= */
     const lightbox = document.getElementById('lightbox');
     const lbTrack = document.getElementById('lightbox-track');
@@ -821,7 +823,7 @@
         
         let clone = items[i].cloneNode(true);
         clone.className = 'lightbox-media';
-        clone.style.pointerEvents = 'none'; // Permite que el Track lea el click encima de la foto
+        clone.style.pointerEvents = 'none'; // Importante para que el track detecte el clic encima
         
         if(clone.tagName.toLowerCase() === 'video') {
           clone.loop = true;
@@ -831,10 +833,10 @@
           let soundBtn = document.createElement('button');
           soundBtn.className = 'lb-sound-btn';
           soundBtn.innerHTML = getSoundIcon(globalMuted); 
-          soundBtn.style.pointerEvents = 'auto'; 
+          soundBtn.style.pointerEvents = 'auto'; // El botón de sonido sí debe ser clicleable
           
           soundBtn.onclick = (e) => {
-            e.stopPropagation(); 
+            e.stopPropagation(); // No cerrar lightbox al tocar sonido
             globalMuted = !globalMuted;
             const audio = document.getElementById('audio-boda');
             
@@ -903,6 +905,7 @@
     }
 
     function closeLightbox(e) {
+      // Si el evento existe y viene del botón de sonido, no cerrar
       if(e && e.target && e.target.closest && e.target.closest('.lb-sound-btn')) return;
       
       lightbox.classList.remove('active');
@@ -912,30 +915,39 @@
       document.getElementById('audio-boda').pause();
     }
 
-    /* Swipe Logic Sensible + Clic en cualquier lugar para cerrar */
+    /* Swipe Logic Altamente Sensible + Clic DENTRO para cerrar */
     let lbIsDown = false; let lbStartX; let lbIsDragged = false;
     
+    // El listener se aplica a lbTrack, que cubre toda la pantalla.
     lbTrack.addEventListener('mousedown', (e) => { lbIsDown = true; lbIsDragged = false; lbStartX = e.pageX; });
+    
     lbTrack.addEventListener('mousemove', (e) => { 
       if (!lbIsDown) return; 
-      if (Math.abs(e.pageX - lbStartX) > 5) lbIsDragged = true; 
+      if (Math.abs(e.pageX - lbStartX) > 5) lbIsDragged = true; /* Maxima sensibilidad de arrastre */
     });
+    
     lbTrack.addEventListener('mouseup', (e) => {
       lbIsDown = false;
       if (lbIsDragged) {
+        // Lógica de cambio de imagen
         if (lbStartX > e.pageX) { lbCurrentIndex++; if(lbCurrentIndex >= lbItemsCount) lbCurrentIndex = 0; }
         else { lbCurrentIndex--; if(lbCurrentIndex < 0) lbCurrentIndex = lbItemsCount - 1; }
         updateLightboxPosition();
       } else {
-        closeLightbox(e); /* CLIC PURO: CERRAR */
+        // Clic puro (sin arrastre) DENTRO del track: CERRAR
+        closeLightbox(e);
       }
     });
+    
     lbTrack.addEventListener('mouseleave', () => { lbIsDown = false; });
     
+    // Táctil
     lbTrack.addEventListener('touchstart', (e) => { lbStartX = e.touches[0].clientX; lbIsDragged = false; }, {passive: true});
+    
     lbTrack.addEventListener('touchmove', (e) => { 
       if (Math.abs(e.touches[0].clientX - lbStartX) > 5) lbIsDragged = true; 
     }, {passive: true});
+    
     lbTrack.addEventListener('touchend', (e) => {
       if (lbIsDragged) {
         let endX = e.changedTouches[0].clientX;
@@ -943,10 +955,12 @@
         else { lbCurrentIndex--; if(lbCurrentIndex < 0) lbCurrentIndex = lbItemsCount - 1; }
         updateLightboxPosition();
       } else {
-        closeLightbox(e); /* TOQUE PURO: CERRAR */
+        // Toque puro DENTRO del track: CERRAR
+        closeLightbox(e);
       }
     });
 
+    // Teclado
     document.addEventListener('keydown', (e) => {
       if (lightbox.classList.contains('active')) {
         if (e.key === 'ArrowLeft') {
