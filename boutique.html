@@ -79,6 +79,15 @@
     a { text-decoration: none; color: inherit; transition: var(--transition); }
     button { background: none; border: none; font-family: inherit; cursor: pointer; outline: none; }
 
+    /* ELIMINAR BOTÓN DE PLAY EN VIDEOS MÓVILES */
+    video::-webkit-media-controls-start-playback-button,
+    video::-webkit-media-controls-play-button,
+    video::-webkit-media-controls {
+      display: none !important;
+      -webkit-appearance: none !important;
+    }
+    video { pointer-events: none; }
+
     /* =========================================
        NAVBAR SUPER RESPONSIVO
        ========================================= */
@@ -136,18 +145,17 @@
     .trust-text svg { width: 14px; height: 14px; fill: var(--dorado); }
 
     /* =========================================
-       GRID DE PRODUCTOS (SIMETRÍA ESTRICTA)
+       GRID DE PRODUCTOS
        ========================================= */
     .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: clamp(30px, 5vw, 60px) clamp(20px, 3vw, 40px); padding: clamp(40px, 5vw, 60px) 5vw 120px; max-width: 1200px; margin: 0 auto; width: 100%; }
     .product-card { display: flex; flex-direction: column; background: var(--blanco-dior); transition: var(--transition); border: 1px solid var(--linea-fina); height: 100%; }
     .product-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.05); border-color: var(--dorado); }
 
-    /* CONTENEDOR FOTOGRÁFICO: SIN BORDES BLANCOS */
     .carousel-wrapper { position: relative; background-color: var(--fondo-galeria); width: 100%; aspect-ratio: 3/4; overflow: hidden; display: block; touch-action: pan-y; cursor: pointer; border-bottom: 1px solid var(--linea-fina); }
     .carousel-track { display: flex; width: 100%; height: 100%; align-items: center; justify-content: flex-start; transition: transform 0.4s ease; }
-    .product-media { flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; object-position: top center; pointer-events: none; display: block; padding: 0; }
+    
+    .product-media { flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; padding: 0; }
 
-    /* CORAZÓN DE FAVORITOS */
     .btn-fav { position: absolute; top: 12px; right: 12px; width: clamp(28px, 4vw, 32px); height: clamp(28px, 4vw, 32px); background-color: rgba(255, 255, 255, 0.95); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.08); z-index: 10; transition: var(--transition); color: var(--gris-suave); border: 1px solid var(--linea-fina); }
     .btn-fav:hover { transform: scale(1.1); color: var(--carbon); border-color: var(--carbon); }
     .btn-fav svg { width: clamp(12px, 2vw, 14px); height: clamp(12px, 2vw, 14px); fill: none; stroke: currentColor; stroke-width: 2; transition: var(--transition); }
@@ -163,37 +171,20 @@
     .product-code { font-size: clamp(0.45rem, 1vw, 0.5rem); letter-spacing: 3px; color: var(--gris-suave); margin-bottom: 12px; font-weight: 500;}
     
     .product-name { 
-      font-family: 'Cinzel', serif; 
-      font-size: clamp(1.1rem, 3vw, 1.4rem); 
-      letter-spacing: 0.15em; 
-      color: var(--carbon); 
-      margin-bottom: 10px; 
-      text-transform: uppercase; 
-      font-weight: 700; /* Negrita máxima */
-      line-height: 1.2; 
+      font-family: 'Cinzel', serif; font-size: clamp(1.1rem, 3vw, 1.4rem); letter-spacing: 0.15em; color: var(--carbon); 
+      margin-bottom: 10px; text-transform: uppercase; font-weight: 700; line-height: 1.2; 
     }
     
     .product-lema { 
-      font-size: clamp(0.65rem, 1.5vw, 0.75rem); 
-      color: var(--carbon); /* Más oscuro, más imponente */
-      margin-bottom: 25px; 
-      font-weight: 500; /* Mayor presencia */
-      line-height: 1.6; 
-      max-width: 90%;
+      font-size: clamp(0.65rem, 1.5vw, 0.75rem); color: var(--carbon); margin-bottom: 25px; 
+      font-weight: 500; line-height: 1.6; max-width: 90%;
     }
     
-    /* TALLAS TENUES */
     .product-specs { 
-      font-size: clamp(0.45rem, 1vw, 0.5rem); 
-      letter-spacing: 2px; 
-      text-transform: uppercase; 
-      color: var(--gris-suave); 
-      font-weight: 400; /* Mucho más tenue y sutil */
-      opacity: 0.8;
-      margin-bottom: 15px;
+      font-size: clamp(0.45rem, 1vw, 0.5rem); letter-spacing: 2px; text-transform: uppercase; 
+      color: var(--gris-suave); font-weight: 400; opacity: 0.8; margin-bottom: 15px;
     }
 
-    /* PRECIO Y BOTÓN DE AÑADIR */
     .pricing-action-wrapper { width: 100%; margin-top: auto; }
     .price-old { font-size: clamp(0.65rem, 1.5vw, 0.75rem); color: var(--gris-suave); text-decoration: line-through; letter-spacing: 1px; display: block; margin-bottom: 4px; font-weight: 500;}
     .product-price { font-size: clamp(1rem, 2.5vw, 1.2rem); letter-spacing: 2px; color: var(--carbon); font-weight: 700; margin-bottom: 20px; margin-top: 5px;}
@@ -208,7 +199,9 @@
     .btn-cart:hover { background-color: var(--dorado); color: var(--carbon); }
     .btn-cart.added { background: var(--dorado); color: var(--carbon); }
 
-    /* BOTÓN FLOTANTE DESPLEGABLE */
+    /* =========================================
+       BOTÓN FLOTANTE DESPLEGABLE
+       ========================================= */
     .fab-container { position: fixed; bottom: 20px; right: 20px; z-index: 9999; display: flex; flex-direction: column-reverse; align-items: flex-end; gap: 10px; }
     .fab-main { width: clamp(45px, 12vw, 55px); height: clamp(45px, 12vw, 55px); background-color: var(--carbon); color: var(--blanco-dior); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 20px rgba(0,0,0,0.3); cursor: pointer; transition: var(--transition); z-index: 2; border: 1px solid var(--carbon); }
     .fab-main svg { width: clamp(20px, 5vw, 24px); height: clamp(20px, 5vw, 24px); fill: currentColor; transition: transform 0.4s ease; }
@@ -219,7 +212,9 @@
     .fab-item.vip { background: var(--dorado); color: var(--carbon); border-color: var(--dorado); }
     .fab-item:hover { transform: translateX(-5px); background: var(--carbon); color: var(--blanco-dior); border-color: var(--carbon); }
 
-    /* LIGHTBOX INMERSIVO */
+    /* =========================================
+       LIGHTBOX INMERSIVO
+       ========================================= */
     .lightbox { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(15, 15, 15, 0.98); backdrop-filter: blur(15px); z-index: 99999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
     .lightbox.active { opacity: 1; pointer-events: auto; }
     .lightbox-track { display: flex; width: 100%; height: 100%; align-items: center; justify-content: flex-start; cursor: pointer; transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
@@ -262,7 +257,9 @@
     /* RESPONSIVE MÓVIL EN 2 COLUMNAS PERFECTAS */
     @media (max-width: 768px) {
       .navbar { padding: 15px 20px; flex-direction: row; justify-content: space-between; gap: 5px; }
-      .brand { position: static; transform: none; font-size: 1.2rem; flex-grow: 1; text-align: center; margin-top: -3px;}
+      
+      /* CERO CORTES EN LA MARCA */
+      .brand { position: static; transform: none; font-size: 1.3rem; letter-spacing: 0.2em; flex-grow: 1; text-align: center; margin-top: -3px; white-space: nowrap;}
       
       .nav-group { flex-direction: row; gap: 8px; flex-shrink: 0;}
       .nav-group.right { justify-content: flex-end;}
@@ -278,7 +275,6 @@
       .product-grid { grid-template-columns: repeat(2, 1fr); gap: 15px 10px; padding: 20px 10px 100px; }
       .product-info { padding: 15px 8px 10px; }
       
-      /* Ajustes precisos en móvil para la nueva jerarquía */
       .product-name { font-size: 0.95rem; margin-bottom: 6px; min-height: 2.4em; }
       .product-lema { font-size: 0.55rem; margin-bottom: 15px; line-height: 1.4; }
       .product-specs { font-size: 0.35rem; margin-bottom: 10px;}
@@ -440,7 +436,7 @@
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track" data-index="0">
-          <video src="vb3.mp4" class="product-media" preload="metadata" autoplay muted playsinline loop></video>
+          <video src="vb3.mp4" class="product-media" preload="auto" autoplay muted playsinline loop disablePictureInPicture></video>
           <img src="b33.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+3'">
           <img src="b3.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+3'">
         </div>
@@ -509,7 +505,7 @@
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track" data-index="0">
-          <video src="vb5.mp4" class="product-media" preload="metadata" autoplay muted playsinline loop></video>
+          <video src="vb5.mp4" class="product-media" preload="auto" autoplay muted playsinline loop disablePictureInPicture></video>
           <img src="b55.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+5'">
           <img src="b5.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+5'">
         </div>
@@ -544,7 +540,7 @@
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track" data-index="0">
-          <video src="vb6.mp4" class="product-media" preload="metadata" autoplay muted playsinline loop></video>
+          <video src="vb6.mp4" class="product-media" preload="auto" autoplay muted playsinline loop disablePictureInPicture></video>
           <img src="b66.jpg" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+6'">
           <img src="b6.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=BOUTIQUE+6'">
         </div>
@@ -617,6 +613,24 @@
        AUDIO GLOBAL (BODA.MP3)
        ========================================= */
     let globalMuted = true;
+
+    /* REPRODUCCIÓN INTELIGENTE AL PRIMER TOQUE (El secreto V.I.P) */
+    function unlockAudio() {
+      let audio = document.getElementById('audio-boda');
+      if (globalMuted && audio.paused) {
+        audio.play().then(() => {
+          globalMuted = false;
+        }).catch(err => console.log("Navegador esperando acción más fuerte."));
+      }
+      // Se remueve para que no se ejecute miles de veces
+      document.removeEventListener('touchstart', unlockAudio);
+      document.removeEventListener('click', unlockAudio);
+      document.removeEventListener('scroll', unlockAudio);
+    }
+    
+    document.addEventListener('touchstart', unlockAudio, {once:true});
+    document.addEventListener('click', unlockAudio, {once:true});
+    document.addEventListener('scroll', unlockAudio, {once:true});
 
     /* =========================================
        BOTÓN FLOTANTE MÓVIL
@@ -919,12 +933,6 @@
           closeLightbox();
         }
       }
-    });
-
-    // Activar sonido en el primer video al hacer clic en cualquier parte (necesario por navegadores)
-    document.addEventListener('click', function unlockAudio() {
-        globalMuted = false;
-        document.removeEventListener('click', unlockAudio);
     });
 
     window.onload = updateCounts;
