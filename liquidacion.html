@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Acceda a El Archivo de La Casa ÈNIGME. Curaduría exclusiva de alta joyería en acero inoxidable con valores de liquidación privados." />
-  <title>El Archivo | Liquidación | La Casa ÈNIGME</title>
+  <meta name="description" content="Acceda a la Liquidación de La Casa ÈNIGME. Curaduría exclusiva de alta joyería en acero inoxidable con valores especiales." />
+  <title>Liquidación | La Casa ÈNIGME</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,7 +21,7 @@
       --rosa-palo: #D8C3BC;
       --fondo-galeria: #FAFAFA;
       --linea-fina: rgba(216, 195, 188, 0.4);
-      --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -124,14 +124,14 @@
 
     .product-card { 
       display: flex; flex-direction: column; background: var(--blanco-dior); 
-      transition: var(--transition); border: 1px solid var(--linea-fina); height: 100%; /* El secreto de la simetría */
+      transition: var(--transition); border: 1px solid var(--linea-fina); height: 100%;
     }
     .product-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.05); border-color: var(--dorado); }
 
-    /* CONTENEDOR FOTOGRÁFICO INMACULADO */
+    /* CONTENEDOR FOTOGRÁFICO: SIN BORDES BLANCOS */
     .carousel-wrapper { 
       position: relative; background-color: var(--fondo-galeria); width: 100%;
-      aspect-ratio: 1/1; /* Cuadrado estricto */
+      aspect-ratio: 3/4; /* FORMATO RETRATO: Adiós a los lados en blanco */
       overflow: hidden; display: block;
       touch-action: pan-y; cursor: pointer; border-bottom: 1px solid var(--linea-fina);
     }
@@ -139,7 +139,10 @@
     .carousel-track { display: flex; width: 100%; height: 100%; align-items: center; justify-content: center; }
 
     .product-media { 
-      width: 100%; height: 100%; object-fit: contain; pointer-events: none; display: block; padding: 15px; /* Espacio para que la imagen respire */
+      width: 100%; height: 100%; 
+      object-fit: cover; /* Llenar todo el espacio, sin franjas blancas */
+      object-position: top center; /* Anclado arriba para no cortar las caras */
+      pointer-events: none; display: block; padding: 0;
     }
 
     /* CORAZÓN DE FAVORITOS */
@@ -175,7 +178,7 @@
     }
     .spec-material { font-size: clamp(0.45rem, 1.2vw, 0.5rem); letter-spacing: 2px; text-transform: uppercase; color: var(--carbon); border: 1px solid var(--linea-fina); padding: 4px 10px; border-radius: 2px;}
 
-    /* PRECIO Y BOTÓN DE AÑADIR (SIEMPRE AL FONDO) */
+    /* PRECIO Y BOTÓN DE AÑADIR */
     .pricing-action-wrapper { width: 100%; margin-top: auto; }
     .price-old { font-size: clamp(0.65rem, 1.5vw, 0.75rem); color: var(--gris-suave); text-decoration: line-through; letter-spacing: 1px; display: block; margin-bottom: 4px; font-weight: 500;}
     .product-price { font-size: clamp(1rem, 2.5vw, 1.2rem); letter-spacing: 2px; color: var(--carbon); font-weight: 700; margin-bottom: 20px; }
@@ -234,7 +237,7 @@
     
     .lightbox img { 
       max-width: 90vw; max-height: 85vh; object-fit: contain; transform: scale(0.95); 
-      transition: transform 0.4s ease; box-shadow: 0 20px 50px rgba(0,0,0,0.3); background: var(--blanco-dior); border-radius: 4px; cursor: default; padding: 15px;
+      transition: transform 0.4s ease; box-shadow: 0 20px 50px rgba(0,0,0,0.3); background: transparent; border-radius: 4px; cursor: default;
     }
     .lightbox.active img { transform: scale(1); }
     
@@ -266,7 +269,7 @@
     .founder-credit { margin-top: 40px; font-size: clamp(0.45rem, 1vw, 0.55rem); letter-spacing: 0.25em; color: var(--gris-suave); opacity: 0.6; text-transform: uppercase; font-weight: 400; }
 
     /* =========================================
-       SÚPER RESPONSIVO (MÓVIL EN 2 COLUMNAS PERFECTAS)
+       SÚPER RESPONSIVO MÓVIL EN 2 COLUMNAS PERFECTAS
        ========================================= */
     @media (max-width: 768px) {
       .navbar { flex-wrap: wrap; justify-content: space-between; }
@@ -287,7 +290,7 @@
         padding: 20px 10px 100px; 
       }
       
-      /* Reducimos un poco la fuente y los espacios internos para que quepa perfecto en la tarjeta pequeña */
+      /* Reducimos un poco la fuente y los espacios para la tarjeta pequeña */
       .product-info { padding: 12px 8px 8px; }
       .product-name { font-size: 0.8rem; margin-bottom: 4px; min-height: 2.8em; }
       .product-lema { font-size: 0.55rem; margin-bottom: 10px; min-height: 3em; }
@@ -327,7 +330,7 @@
     
     <div class="nav-group right">
       <div class="dropdown right">
-        <button class="nav-link dropbtn">
+        <button class="nav-link dropbtn" style="color:var(--dorado)!important;">
           CATÁLOGO <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z" fill="currentColor"/></svg>
         </button>
         <div class="dropdown-content">
@@ -335,7 +338,7 @@
           <a href="joyeria.html">Alta Joyería</a>
           <a href="boutique.html">Bolsos Boutique</a>
           <a href="plata.html">Colección Plata</a>
-          <a href="liquidacion.html" style="color:var(--dorado)!important;">El Archivo</a>
+          <a href="liquidacion.html" style="color:var(--dorado)!important;">Liquidación</a>
         </div>
       </div>
       <a href="carrito.html" class="btn-menu-brand btn-cart-nav" style="margin-left: 10px;">
@@ -352,7 +355,7 @@
   <div class="fab-container" id="fab-container">
     <div class="fab-menu">
       <a href="catalogo.html" class="fab-item">Catálogo</a>
-      <a href="https://wa.me/34602149162?text=Hola,%20estoy%20en%20El%20Archivo%20y%20deseo%20asesoría%20VIP." class="fab-item vip" target="_blank" rel="noopener noreferrer">Atención VIP</a>
+      <a href="https://wa.me/34602149162?text=Hola,%20estoy%20en%20Liquidación%20y%20deseo%20asesoría%20VIP." class="fab-item vip" target="_blank" rel="noopener noreferrer">Atención VIP</a>
     </div>
     <div class="fab-main" onclick="toggleFabMobile()">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -362,13 +365,13 @@
   </div>
 
   <header class="gallery-header">
-    <p class="gallery-kicker">Private Sales</p>
-    <h1 class="gallery-title">El Archivo</h1>
-    <p class="gallery-desc">La belleza atemporal que trasciende las temporadas. Colección curada de oportunidades exclusivas.</p>
+    <p class="gallery-kicker">Oportunidades Únicas</p>
+    <h1 class="gallery-title">Liquidación</h1>
+    <p class="gallery-desc">La belleza atemporal que trasciende las temporadas. Colección curada con valores exclusivos.</p>
   </header>
 
   <div class="promo-banner">
-    <p>OFERTA EXCLUSIVA: <strong>Precios de liquidación válidos a partir de la adquisición de 2 piezas.</strong> Si adquiere solo 1 pieza de esta colección, aplicará el valor regular (precio tachado).</p>
+    <p>BENEFICIO ESPECIAL: <strong>Precios de liquidación válidos a partir de la adquisición de 2 piezas de esta colección.</strong> (Si adquiere solo 1 pieza, aplicará el precio regular tachado).</p>
   </div>
 
   <main class="product-grid">
@@ -379,7 +382,7 @@
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track">
-          <img src="l1.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+1'">
+          <img src="l1.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=LIQUIDACION+1'">
         </div>
       </div>
       <div class="product-info">
@@ -416,7 +419,7 @@
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track">
-          <img src="l2.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+2'">
+          <img src="l2.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=LIQUIDACION+2'">
         </div>
       </div>
       <div class="product-info">
@@ -453,7 +456,7 @@
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track">
-          <img src="l3.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+3'">
+          <img src="l3.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=LIQUIDACION+3'">
         </div>
       </div>
       <div class="product-info">
@@ -490,7 +493,7 @@
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track">
-          <img src="l4.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+4'">
+          <img src="l4.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=LIQUIDACION+4'">
         </div>
       </div>
       <div class="product-info">
@@ -527,7 +530,7 @@
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track">
-          <img src="l5.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+5'">
+          <img src="l5.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=LIQUIDACION+5'">
         </div>
       </div>
       <div class="product-info">
@@ -564,7 +567,7 @@
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track">
-          <img src="l6.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+6'">
+          <img src="l6.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=LIQUIDACION+6'">
         </div>
       </div>
       <div class="product-info">
@@ -601,7 +604,7 @@
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track">
-          <img src="l7.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+7'">
+          <img src="l7.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=LIQUIDACION+7'">
         </div>
       </div>
       <div class="product-info">
@@ -638,7 +641,7 @@
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track">
-          <img src="l8.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+8'">
+          <img src="l8.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=LIQUIDACION+8'">
         </div>
       </div>
       <div class="product-info">
@@ -675,7 +678,7 @@
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track">
-          <img src="l9.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+9'">
+          <img src="l9.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=LIQUIDACION+9'">
         </div>
       </div>
       <div class="product-info">
@@ -712,7 +715,7 @@
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track">
-          <img src="l10.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+10'">
+          <img src="l10.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=LIQUIDACION+10'">
         </div>
       </div>
       <div class="product-info">
@@ -749,7 +752,7 @@
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track">
-          <img src="l11.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+11'">
+          <img src="l11.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=LIQUIDACION+11'">
         </div>
       </div>
       <div class="product-info">
@@ -782,17 +785,17 @@
 
     <article class="product-card">
       <div class="carousel-wrapper" onclick="openLightbox(this)">
-        <button class="btn-fav" data-ref="LQ012" onclick="toggleFav('LQ012', 'Collar Fe-Male', 'L 299', 'l12.png', this); event.stopPropagation();">
+        <button class="btn-fav" data-ref="LQ012" onclick="toggleFav('LQ012', 'Collar Croix de Perles', 'L 299', 'l12.png', this); event.stopPropagation();">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track">
-          <img src="l12.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+12'">
+          <img src="l12.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=LIQUIDACION+12'">
         </div>
       </div>
       <div class="product-info">
         <div class="product-meta">
           <span class="product-code">REF: LQ012</span>
-          <h2 class="product-name">Collar Fe-Male</h2>
+          <h2 class="product-name">Croix de Perles</h2>
           <p class="product-lema">"La devoción se viste de perlas y acero."</p>
           
           <div class="specs-block">
@@ -811,7 +814,7 @@
               <span id="qty-LQ012">1</span>
               <button onclick="changeCardQty('qty-LQ012', 1)">+</button>
             </div>
-            <button class="btn-cart" onclick="addToCartLiquidation('LQ012', 'Collar Fe-Male', '299', '618', 'l12.png', this, 'qty-LQ012', 'size-LQ012')">Añadir a la Bolsa</button>
+            <button class="btn-cart" onclick="addToCartLiquidation('LQ012', 'Collar Croix de Perles', '299', '618', 'l12.png', this, 'qty-LQ012', 'size-LQ012')">Añadir a la Bolsa</button>
           </div>
         </div>
       </div>
@@ -823,7 +826,7 @@
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track">
-          <img src="l13.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+13'">
+          <img src="l13.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=LIQUIDACION+13'">
         </div>
       </div>
       <div class="product-info">
@@ -860,7 +863,7 @@
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track">
-          <img src="l14.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+14'">
+          <img src="l14.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=LIQUIDACION+14'">
         </div>
       </div>
       <div class="product-info">
@@ -897,7 +900,7 @@
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track">
-          <img src="l15.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+15'">
+          <img src="l15.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=LIQUIDACION+15'">
         </div>
       </div>
       <div class="product-info">
@@ -934,7 +937,7 @@
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track">
-          <img src="l16.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+16'">
+          <img src="l16.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=LIQUIDACION+16'">
         </div>
       </div>
       <div class="product-info">
@@ -971,7 +974,7 @@
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track">
-          <img src="l17.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+17'">
+          <img src="l17.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=LIQUIDACION+17'">
         </div>
       </div>
       <div class="product-info">
@@ -1008,7 +1011,7 @@
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track">
-          <img src="l18.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+18'">
+          <img src="l18.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=LIQUIDACION+18'">
         </div>
       </div>
       <div class="product-info">
@@ -1045,7 +1048,7 @@
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track">
-          <img src="l19.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+19'">
+          <img src="l19.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=LIQUIDACION+19'">
         </div>
       </div>
       <div class="product-info">
@@ -1082,7 +1085,7 @@
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track">
-          <img src="l20.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x600?text=ARCHIVO+20'">
+          <img src="l20.png" loading="lazy" class="product-media" onerror="this.src='https://via.placeholder.com/600x800?text=LIQUIDACION+20'">
         </div>
       </div>
       <div class="product-info">
@@ -1150,7 +1153,7 @@
   <div class="fab-container" id="fab-container">
     <div class="fab-menu">
       <a href="catalogo.html" class="fab-item">Catálogo</a>
-      <a href="https://wa.me/34602149162?text=Hola,%20estoy%20en%20El%20Archivo%20y%20deseo%20asesoría%20VIP." class="fab-item vip" target="_blank" rel="noopener noreferrer">Atención VIP</a>
+      <a href="https://wa.me/34602149162?text=Hola,%20estoy%20en%20Liquidación%20y%20deseo%20asesoría%20VIP." class="fab-item vip" target="_blank" rel="noopener noreferrer">Atención VIP</a>
     </div>
     <div class="fab-main" onclick="toggleFabMobile()">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -1311,6 +1314,7 @@
     }
 
     function closeLightbox(e) {
+      // Evita cerrar si el clic es EN la imagen, pero cierra en cualquier fondo oscuro
       if(e.target.tagName.toLowerCase() !== 'img') {
         lightbox.classList.remove('active');
         document.body.style.overflow = 'auto'; 
