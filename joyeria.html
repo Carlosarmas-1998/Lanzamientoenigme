@@ -46,7 +46,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
     :root {
@@ -131,22 +131,12 @@
     .product-card { display: flex; flex-direction: column; background: var(--blanco-dior); transition: var(--transition); border: 1px solid var(--linea-fina); height: 100%; }
     .product-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.05); border-color: var(--dorado); }
 
-    /* CONTENEDOR FOTOGRÁFICO: (RETRATO 3/4) */
+    /* CONTENEDOR FOTOGRÁFICO: SIN BORDES BLANCOS (RETRATO 3/4) */
     .carousel-wrapper { position: relative; background-color: var(--fondo-galeria); width: 100%; aspect-ratio: 3/4; overflow: hidden; display: block; touch-action: pan-y; cursor: pointer; border-bottom: 1px solid var(--linea-fina); }
-    
-    /* LA REGLA MÁGICA DEL CAROUSEL TRACK (CERO CORTES) */
     .carousel-track { display: flex; width: 100%; height: 100%; align-items: center; justify-content: flex-start; transition: transform 0.4s ease; }
     
-    .product-media { 
-      flex: 0 0 100%; /* Obliga a la imagen a ocupar el 100% de su contenedor padre siempre */
-      width: 100%; 
-      height: 100%; 
-      object-fit: cover; 
-      object-position: top center; 
-      pointer-events: none; 
-      display: block; 
-      padding: 0; 
-    }
+    /* LA REGLA MÁGICA: FLEX 100%, COVER ANCLADO ARRIBA */
+    .product-media { flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; object-position: top center; pointer-events: none; display: block; padding: 0; }
 
     /* CORAZÓN DE FAVORITOS */
     .btn-fav { position: absolute; top: 12px; right: 12px; width: clamp(28px, 4vw, 32px); height: clamp(28px, 4vw, 32px); background-color: rgba(255, 255, 255, 0.95); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.08); z-index: 10; transition: var(--transition); color: var(--gris-suave); border: 1px solid var(--linea-fina); }
@@ -155,21 +145,49 @@
     .btn-fav.active { background-color: var(--carbon); border-color: var(--carbon); }
     .btn-fav.active svg { fill: var(--dorado); stroke: var(--dorado); }
 
-    /* INFO DEL PRODUCTO */
-    .product-info { padding: clamp(15px, 2vw, 25px) 15px 15px; text-align: center; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
+    /* =========================================
+       TEXTOS DE ALTA COSTURA (PRO)
+       ========================================= */
+    .product-info { padding: clamp(20px, 3vw, 30px) 15px 15px; text-align: center; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
     .product-meta { display: flex; flex-direction: column; align-items: center; }
-    .product-code { font-size: clamp(0.45rem, 1vw, 0.5rem); letter-spacing: 3px; color: var(--gris-suave); margin-bottom: 8px; font-weight: 500;}
-    .product-name { font-family: 'Cinzel', serif; font-size: clamp(0.95rem, 2.5vw, 1.15rem); letter-spacing: 0.1em; color: var(--carbon); margin-bottom: 8px; text-transform: uppercase; font-weight: 600; line-height: 1.3; min-height: 2.6em; display: flex; align-items: center; justify-content: center;}
-    .product-lema { font-size: clamp(0.6rem, 1.5vw, 0.7rem); color: var(--gris-suave); margin-bottom: 15px; font-weight: 400; font-style: italic; line-height: 1.5; min-height: 3em; display: flex; align-items: center; justify-content: center; }
     
-    .specs-block { display: flex; flex-direction: column; align-items: center; gap: 6px; margin-bottom: 20px; width: 100%;}
-    .size-select { appearance: none; background: transparent; border: none; border-bottom: 1px solid var(--carbon); font-family: 'Montserrat', sans-serif; font-size: clamp(0.5rem, 1.5vw, 0.6rem); letter-spacing: 2px; color: var(--carbon); font-weight: 600; text-transform: uppercase; padding: 4px 20px 4px 5px; cursor: pointer; outline: none; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231C1C1C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right center; background-size: 10px; margin-bottom: 5px; text-align: center; width: 100%; max-width: 160px; }
-    .spec-material { font-size: clamp(0.45rem, 1.2vw, 0.5rem); letter-spacing: 1px; text-transform: uppercase; color: var(--carbon); border: 1px solid var(--dorado); padding: 4px 10px; border-radius: 2px; background-color: rgba(203, 170, 99, 0.05);}
+    .product-code { font-size: clamp(0.45rem, 1vw, 0.5rem); letter-spacing: 3px; color: var(--gris-suave); margin-bottom: 12px; font-weight: 500;}
+    
+    .product-name { 
+      font-family: 'Cinzel', serif; 
+      font-size: clamp(1.1rem, 3vw, 1.4rem); 
+      letter-spacing: 0.15em; 
+      color: var(--carbon); 
+      margin-bottom: 10px; 
+      text-transform: uppercase; 
+      font-weight: 700; /* Negrita máxima */
+      line-height: 1.2; 
+    }
+    
+    .product-lema { 
+      font-size: clamp(0.65rem, 1.5vw, 0.75rem); 
+      color: var(--carbon); /* Más oscuro, más imponente */
+      margin-bottom: 25px; 
+      font-weight: 500; /* Mayor presencia */
+      line-height: 1.6; 
+      max-width: 90%;
+    }
+    
+    /* TALLAS TENUES */
+    .product-specs { 
+      font-size: clamp(0.45rem, 1vw, 0.5rem); 
+      letter-spacing: 2px; 
+      text-transform: uppercase; 
+      color: var(--gris-suave); 
+      font-weight: 400; /* Mucho más tenue y sutil */
+      opacity: 0.8;
+      margin-bottom: 15px;
+    }
 
     /* PRECIO Y BOTÓN DE AÑADIR */
     .pricing-action-wrapper { width: 100%; margin-top: auto; }
     .price-old { font-size: clamp(0.65rem, 1.5vw, 0.75rem); color: var(--gris-suave); text-decoration: line-through; letter-spacing: 1px; display: block; margin-bottom: 4px; font-weight: 500;}
-    .product-price { font-size: clamp(1rem, 2.5vw, 1.2rem); letter-spacing: 2px; color: var(--carbon); font-weight: 700; margin-bottom: 20px; }
+    .product-price { font-size: clamp(1rem, 2.5vw, 1.2rem); letter-spacing: 2px; color: var(--carbon); font-weight: 700; margin-bottom: 20px; margin-top: 5px;}
     
     .purchase-action { display: flex; border: 1px solid var(--carbon); height: clamp(35px, 5vw, 42px); transition: var(--transition); border-radius: 2px; overflow: hidden;}
     .qty-selector { display: flex; align-items: center; justify-content: space-between; width: clamp(60px, 10vw, 80px); background: var(--fondo-galeria); border-right: 1px solid var(--linea-fina); }
@@ -273,15 +291,15 @@
         padding: 20px 10px 100px; 
       }
       
-      .product-info { padding: 12px 8px 8px; }
-      .product-name { font-size: 0.8rem; margin-bottom: 4px; min-height: 2.8em; }
-      .product-lema { display: none; }
-      .specs-block { margin-bottom: 15px; }
-      .size-select { font-size: 0.45rem; padding: 4px 15px 4px 2px; }
-      .spec-material { font-size: 0.35rem; padding: 2px 4px; letter-spacing: 0.5px;}
+      .product-info { padding: 15px 8px 10px; }
+      
+      /* Ajustes precisos en móvil para la nueva jerarquía */
+      .product-name { font-size: 0.95rem; margin-bottom: 6px; min-height: 2.4em; }
+      .product-lema { font-size: 0.55rem; margin-bottom: 15px; line-height: 1.4; }
+      .product-specs { font-size: 0.35rem; margin-bottom: 10px;}
       
       .price-old { font-size: 0.6rem; }
-      .product-price { font-size: 0.95rem; margin-bottom: 12px; }
+      .product-price { font-size: 1rem; margin-bottom: 15px; margin-top: 5px;}
       
       .purchase-action { height: 32px; }
       .qty-selector { width: 45px; }
@@ -371,12 +389,8 @@
         <div class="product-meta">
           <span class="product-code">REF: J0015</span>
           <h2 class="product-name">Cœur d'Or</h2>
-          <p class="product-lema">"El corazón late al ritmo del oro."</p>
-          
-          <div class="specs-block">
-            <select id="size-J0015" class="size-select"><option value="UNICA">Talla Única</option></select>
-            <span class="spec-material"><strong>Baño Oro 14K / Acero 316L</strong></span>
-          </div>
+          <span class="product-specs">Talla Única | Baño Oro 14K / Acero 316L</span>
+          <p class="product-lema">El corazón late al ritmo del oro. Un romance forjado en metal noble.</p>
         </div>
 
         <div class="pricing-action-wrapper">
@@ -407,12 +421,8 @@
         <div class="product-meta">
           <span class="product-code">REF: J0082</span>
           <h2 class="product-name">L'Eau d'Amour</h2>
-          <p class="product-lema">"Ondas doradas que acarician la piel."</p>
-          
-          <div class="specs-block">
-            <select id="size-J0082" class="size-select"><option value="UNICA">Collar y Pulsera</option></select>
-            <span class="spec-material"><strong>Baño Oro 14K / Acero 316L</strong></span>
-          </div>
+          <span class="product-specs">Collar y Pulsera | Baño Oro 14K / Acero 316L</span>
+          <p class="product-lema">Ondas doradas que acarician la piel. Fluidez y elegancia sin esfuerzo.</p>
         </div>
 
         <div class="pricing-action-wrapper">
@@ -443,12 +453,8 @@
         <div class="product-meta">
           <span class="product-code">REF: J0033</span>
           <h2 class="product-name">Nœud d'Éternité</h2>
-          <p class="product-lema">"Lazos invisibles, ahora en oro visible."</p>
-          
-          <div class="specs-block">
-            <select id="size-J0033" class="size-select"><option value="UNICA">Collar y Aretes</option></select>
-            <span class="spec-material"><strong>Baño Oro 14K / Acero 316L</strong></span>
-          </div>
+          <span class="product-specs">Collar y Aretes | Baño Oro 14K / Acero 316L</span>
+          <p class="product-lema">Lazos invisibles, ahora en oro visible. El símbolo de lo eterno.</p>
         </div>
 
         <div class="pricing-action-wrapper">
@@ -479,12 +485,8 @@
         <div class="product-meta">
           <span class="product-code">REF: J0047</span>
           <h2 class="product-name">Parure Printemps</h2>
-          <p class="product-lema">"El florecer de la elegancia."</p>
-          
-          <div class="specs-block">
-            <select id="size-J0047" class="size-select"><option value="UNICA">Collar y Aretes</option></select>
-            <span class="spec-material"><strong>Baño Oro 14K / Acero 316L</strong></span>
-          </div>
+          <span class="product-specs">Collar y Aretes | Baño Oro 14K / Acero 316L</span>
+          <p class="product-lema">El florecer de la elegancia pura. Una primavera dorada en tu escote.</p>
         </div>
 
         <div class="pricing-action-wrapper">
@@ -515,12 +517,8 @@
         <div class="product-meta">
           <span class="product-code">REF: J0051</span>
           <h2 class="product-name">Cercle Divin</h2>
-          <p class="product-lema">"Perfección geométrica que brilla."</p>
-          
-          <div class="specs-block">
-            <select id="size-J0051" class="size-select"><option value="UNICA">Talla Única</option></select>
-            <span class="spec-material"><strong>Baño Oro 14K / Acero 316L</strong></span>
-          </div>
+          <span class="product-specs">Talla Única | Baño Oro 14K / Acero 316L</span>
+          <p class="product-lema">Perfección geométrica que brilla. El círculo absoluto de la moda.</p>
         </div>
 
         <div class="pricing-action-wrapper">
@@ -551,12 +549,8 @@
         <div class="product-meta">
           <span class="product-code">REF: J0069</span>
           <h2 class="product-name">Grand Set Le Ruban</h2>
-          <p class="product-lema">"El lazo definitivo de la alta sociedad."</p>
-          
-          <div class="specs-block">
-            <select id="size-J0069" class="size-select"><option value="UNICA">Aretes, Collar y Pulsera</option></select>
-            <span class="spec-material"><strong>Baño Oro 14K / Acero 316L</strong></span>
-          </div>
+          <span class="product-specs">Aretes, Collar, Pulsera | Oro 14K / Acero 316L</span>
+          <p class="product-lema">El lazo definitivo de la alta sociedad. Presencia magnética.</p>
         </div>
 
         <div class="pricing-action-wrapper">
@@ -587,12 +581,8 @@
         <div class="product-meta">
           <span class="product-code">REF: J0074</span>
           <h2 class="product-name">Métamorphose</h2>
-          <p class="product-lema">"Alas de oro que elevan tu presencia."</p>
-          
-          <div class="specs-block">
-            <select id="size-J0074" class="size-select"><option value="UNICA">Collar, Pulsera, Aretes</option></select>
-            <span class="spec-material"><strong>Baño Oro 14K / Acero 316L</strong></span>
-          </div>
+          <span class="product-specs">Collar, Pulsera, Aretes | Oro 14K / Acero 316L</span>
+          <p class="product-lema">Alas de oro que elevan tu presencia. Una transformación sublime.</p>
         </div>
 
         <div class="pricing-action-wrapper">
@@ -623,12 +613,8 @@
         <div class="product-meta">
           <span class="product-code">REF: J0088</span>
           <h2 class="product-name">Set Perle Dorée</h2>
-          <p class="product-lema">"El encuentro supremo entre perla y oro."</p>
-          
-          <div class="specs-block">
-            <select id="size-J0088" class="size-select"><option value="UNICA">Collar y Pulsera</option></select>
-            <span class="spec-material"><strong>Baño Oro 14K / Acero 316L</strong></span>
-          </div>
+          <span class="product-specs">Collar y Pulsera | Baño Oro 14K / Acero 316L</span>
+          <p class="product-lema">El encuentro supremo entre perla y oro. Simetría divina.</p>
         </div>
 
         <div class="pricing-action-wrapper">
@@ -659,12 +645,8 @@
         <div class="product-meta">
           <span class="product-code">REF: J0092</span>
           <h2 class="product-name">Goutte Solaire</h2>
-          <p class="product-lema">"Gotas de luz bañadas en oro real."</p>
-          
-          <div class="specs-block">
-            <select id="size-J0092" class="size-select"><option value="UNICA">Talla Única</option></select>
-            <span class="spec-material"><strong>Baño Oro 14K / Acero 316L</strong></span>
-          </div>
+          <span class="product-specs">Talla Única | Baño Oro 14K / Acero 316L</span>
+          <p class="product-lema">Gotas de luz bañadas en oro real. Destellos hipnóticos.</p>
         </div>
 
         <div class="pricing-action-wrapper">
@@ -695,12 +677,8 @@
         <div class="product-meta">
           <span class="product-code">REF: J0105</span>
           <h2 class="product-name">Set Délicatesse</h2>
-          <p class="product-lema">"La fuerza sutil de la verdadera clase."</p>
-          
-          <div class="specs-block">
-            <select id="size-J0105" class="size-select"><option value="UNICA">Collar y Aretes</option></select>
-            <span class="spec-material"><strong>Baño Oro 14K / Acero 316L</strong></span>
-          </div>
+          <span class="product-specs">Collar y Aretes | Baño Oro 14K / Acero 316L</span>
+          <p class="product-lema">La fuerza sutil de la verdadera clase. Imposible de ignorar.</p>
         </div>
 
         <div class="pricing-action-wrapper">
@@ -731,12 +709,8 @@
         <div class="product-meta">
           <span class="product-code">REF: J0118</span>
           <h2 class="product-name">ÈNIGME Perles</h2>
-          <p class="product-lema">"El ícono de la casa. Incomparable."</p>
-          
-          <div class="specs-block">
-            <select id="size-J0118" class="size-select"><option value="UNICA">Collar y Aretes</option></select>
-            <span class="spec-material"><strong>Baño Oro 14K / Acero 316L</strong></span>
-          </div>
+          <span class="product-specs">Collar y Aretes | Baño Oro 14K / Acero 316L</span>
+          <p class="product-lema">El ícono de la casa. Un legado atemporal que enmarca el rostro.</p>
         </div>
 
         <div class="pricing-action-wrapper">
@@ -767,12 +741,8 @@
         <div class="product-meta">
           <span class="product-code">REF: J0123</span>
           <h2 class="product-name">Parure Signature</h2>
-          <p class="product-lema">"Lleva la distinción en cada movimiento."</p>
-          
-          <div class="specs-block">
-            <select id="size-J0123" class="size-select"><option value="UNICA">Collar y Pulsera</option></select>
-            <span class="spec-material"><strong>Baño Oro 14K / Acero 316L</strong></span>
-          </div>
+          <span class="product-specs">Collar y Pulsera | Baño Oro 14K / Acero 316L</span>
+          <p class="product-lema">Lleva la distinción en cada movimiento. Identidad absoluta.</p>
         </div>
 
         <div class="pricing-action-wrapper">
@@ -803,12 +773,8 @@
         <div class="product-meta">
           <span class="product-code">REF: J0137</span>
           <h2 class="product-name">Duo L'Harmonie</h2>
-          <p class="product-lema">"Dos piezas, una sola obra de arte."</p>
-          
-          <div class="specs-block">
-            <select id="size-J0137" class="size-select"><option value="UNICA">Dos Collares</option></select>
-            <span class="spec-material"><strong>Baño Oro 14K / Acero 316L</strong></span>
-          </div>
+          <span class="product-specs">Dos Collares | Baño Oro 14K / Acero 316L</span>
+          <p class="product-lema">Dos piezas, una sola obra de arte inquebrantable.</p>
         </div>
 
         <div class="pricing-action-wrapper">
@@ -828,7 +794,7 @@
 
     <article class="product-card">
       <div class="carousel-wrapper" onclick="openLightbox(this)">
-        <button class="btn-fav" data-ref="J0144" onclick="toggleFav('J0144', 'Aretes Amour Suspendu', 'L 599', 'j14.png', this); event.stopPropagation();">
+        <button class="btn-fav" data-ref="J0144" onclick="toggleFav('J0144', 'Amour Suspendu', 'L 599', 'j14.png', this); event.stopPropagation();">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div class="carousel-track" data-index="0">
@@ -839,12 +805,8 @@
         <div class="product-meta">
           <span class="product-code">REF: J0144</span>
           <h2 class="product-name">Amour Suspendu</h2>
-          <p class="product-lema">"El amor en puntos suspensivos..."</p>
-          
-          <div class="specs-block">
-            <select id="size-J0144" class="size-select"><option value="UNICA">Talla Única</option></select>
-            <span class="spec-material"><strong>Baño Oro 14K / Acero 316L</strong></span>
-          </div>
+          <span class="product-specs">Talla Única | Baño Oro 14K / Acero 316L</span>
+          <p class="product-lema">El amor escrito en puntos suspensivos... Cautivador y delicado.</p>
         </div>
 
         <div class="pricing-action-wrapper">
@@ -856,7 +818,7 @@
               <span id="qty-J0144">1</span>
               <button onclick="changeCardQty('qty-J0144', 1)">+</button>
             </div>
-            <button class="btn-cart" onclick="addToCartBase('J0144', 'Aretes Amour Suspendu', '599', 'j14.png', this, 'qty-J0144', 'size-J0144')">Añadir a la Bolsa</button>
+            <button class="btn-cart" onclick="addToCartBase('J0144', 'Amour Suspendu', '599', 'j14.png', this, 'qty-J0144', 'size-J0144')">Añadir a la Bolsa</button>
           </div>
         </div>
       </div>
@@ -875,12 +837,8 @@
         <div class="product-meta">
           <span class="product-code">REF: J0159</span>
           <h2 class="product-name">Mère Éternelle</h2>
-          <p class="product-lema">"El tributo dorado al origen de todo."</p>
-          
-          <div class="specs-block">
-            <select id="size-J0159" class="size-select"><option value="UNICA">Talla Única</option></select>
-            <span class="spec-material"><strong>Baño Oro 14K / Acero 316L</strong></span>
-          </div>
+          <span class="product-specs">Talla Única | Baño Oro 14K / Acero 316L</span>
+          <p class="product-lema">El tributo dorado al origen de todo. Belleza incuestionable.</p>
         </div>
 
         <div class="pricing-action-wrapper">
@@ -911,12 +869,8 @@
         <div class="product-meta">
           <span class="product-code">REF: J0162</span>
           <h2 class="product-name">Quatre Cœurs</h2>
-          <p class="product-lema">"Cuatro corazones formando un todo."</p>
-          
-          <div class="specs-block">
-            <select id="size-J0162" class="size-select"><option value="UNICA">Talla Única</option></select>
-            <span class="spec-material"><strong>Baño Oro 14K / Acero 316L</strong></span>
-          </div>
+          <span class="product-specs">Talla Única | Baño Oro 14K / Acero 316L</span>
+          <p class="product-lema">Cuatro corazones alineados para formar un todo de alta costura.</p>
         </div>
 
         <div class="pricing-action-wrapper">
@@ -934,7 +888,8 @@
       </div>
     </article>
 
-    <article class="product-card" style="border: 2px solid var(--dorado);"> <div class="carousel-wrapper" onclick="openLightbox(this)">
+    <article class="product-card" style="border: 2px solid var(--dorado);">
+      <div class="carousel-wrapper" onclick="openLightbox(this)">
         <button class="btn-fav" data-ref="J0177" onclick="toggleFav('J0177', 'Parure Papillon Royal', 'L 1299', 'j17.png', this); event.stopPropagation();">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
@@ -946,12 +901,8 @@
         <div class="product-meta">
           <span class="product-code">REF: J0177</span>
           <h2 class="product-name">Papillon Royal</h2>
-          <p class="product-lema">"El vuelo definitivo del lujo absoluto."</p>
-          
-          <div class="specs-block">
-            <select id="size-J0177" class="size-select"><option value="UNICA">Collar y Aretes</option></select>
-            <span class="spec-material" style="background-color: var(--carbon); color: var(--dorado);"><strong>Baño Oro 18K / Acero 316L</strong></span>
-          </div>
+          <span class="product-specs">Collar y Aretes | Baño Oro 18K / Acero 316L</span>
+          <p class="product-lema">El vuelo definitivo del lujo absoluto. Una maravilla dorada en 18K.</p>
         </div>
 
         <div class="pricing-action-wrapper">
