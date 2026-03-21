@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin · Pedidos · Enigme</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <style>
+    :root {
+      --bg:#0a0a0a;--surface:#111111;--surface2:#161616;--border:#222222;
+      --gold:#c9a96e;--gold-dim:#8b7355;--text:#e8e0d4;--text-muted:#6b6259;
+      --pending:#a08840;--shipped:#5a8fa0;--done:#6b9e78;--cancelled:#9e6b6b;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{background:var(--bg);color:var(--text);font-family:'Jost',sans-serif;font-weight:300;min-height:100vh;}
+
+    /* ── LOGIN SCREEN ── */
+    .login-screen {
+      position: fixed; inset: 0; background: var(--bg); z-index: 9999;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .login-box {
+      width: 100%; max-width: 380px; padding: 0 24px;
+      display: flex; flex-direction: column; align-items: center; gap: 0;
+    }
+    .login-mark {
+      width: 44px; height: 1px; background: var(--gold); margin-bottom: 24px; position: relative;
+    }
+    .login-mark::before, .login-mark::after {
+      content: ''; position: absolute; top: -3px; width: 7px; height: 7px;
+      border: 1px solid var(--gold); transform: rotate(45deg);
+    }
+    .login-mark::before { left: -4px; }
+    .login-mark::after  { right: -4px; }
+    .login-title {
+      font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300;
+      letter-spacing: 0.14em; color: var(--text); margin-bottom: 6px; text-align: center;
+    }
+    .login-title em { font-style: italic; color: var(--gold); }
+    .login-sub {
+      font-size: 0.65rem; letter-spacing: 0.26em; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 40px; text-align: center;
+    }
+    .login-input {
+      width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--border);
+      color: var(--text); font-family: 'Jost', sans-serif; font-size: 1rem; font-weight: 300;
+      padding: 12px 0; outline: none; letter-spacing: 0.2em; text-align: center;
+      transition: border-color 0.2s; margin-bottom: 28px;
+    }
+    .login-input:focus { border-bottom-color: var(--gold); }
+    .login-input::placeholder { color: var(--text-muted); letter-spacing: 0.1em; font-size: 0.8rem; }
+    .login-btn {
+      width: 100%; padding: 14px 0; background: transparent; border: 1px solid var(--gold-dim);
+      color: var(--gold); font-family: 'Jost', sans-serif; font-size: 0.72rem;
+      letter-spacing: 0.26em; text-transform: uppercase; cursor: pointer;
+      position: relative; overflow: hidden; transition: color 0.3s, border-color 0.3s;
+    }
+    .login-btn::before {
+      content: ''; position: absolute; inset: 0; background: var(--gold);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.35s cubic-bezier(0.7,0,0.3,1);
+    }
+    .login-btn:hover::before { transform: scaleX(1); }
+    .login-btn:hover { color: #0a0a0a; border-color: var(--gold); }
+    .login-btn span { position: relative; z-index: 1; }
+    .login-error {
+      margin-top: 16px; font-size: 0.68rem; letter-spacing: 0.14em;
+      color: #c0605a; text-transform: uppercase; text-align: center;
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .login-error.show { opacity: 1; }
+    .sidebar{position:fixed;left:0;top:0;bottom:0;width:220px;border-right:1px solid var(--border);padding:36px 24px;display:flex;flex-direction:column;gap:0;z-index:10;background:var(--surface);}
+    .sidebar-brand{display:flex;flex-direction:column;align-items:flex-start;margin-bottom:40px;}
+    .sidebar-brand h2{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;letter-spacing:.12em;}
+    .sidebar-brand h2 em{font-style:italic;color:var(--gold);}
+    .sidebar-brand span{font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--text-muted);margin-top:3px;}
+    .nav-item{display:flex;align-items:center;gap:10px;padding:10px 12px;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);cursor:pointer;border-left:2px solid transparent;transition:all .2s;margin-bottom:2px;}
+    .nav-item.active{color:var(--gold);border-left-color:var(--gold);}
+    .sidebar-footer{margin-top:auto;font-size:.68rem;color:var(--text-muted);letter-spacing:.08em;line-height:1.6;}
+    .main{margin-left:220px;padding:40px 44px;min-height:100vh;}
+    .page-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:36px;animation:fadeDown .6s ease both;}
+    .page-title h1{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;letter-spacing:.06em;}
+    .page-title h1 em{font-style:italic;color:var(--gold);}
+    .page-title p{margin-top:4px;font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-muted);}
+    .header-actions{display:flex;gap:12px;}
+    .btn{padding:10px 22px;font-family:'Jost',sans-serif;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;border:1px solid var(--border);background:transparent;color:var(--text-muted);cursor:pointer;transition:all .2s;}
+    .btn:hover{color:var(--text);border-color:var(--text-muted);}
+    .btn-primary{border-color:var(--gold-dim);color:var(--gold);position:relative;overflow:hidden;}
+    .btn-primary::before{content:'';position:absolute;inset:0;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.7,0,.3,1);}
+    .btn-primary:hover::before{transform:scaleX(1);}
+    .btn-primary:hover{color:#0a0a0a;}
+    .btn-primary span{position:relative;z-index:1;}
+    .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px;animation:fadeUp .6s .1s ease both;}
+    .stat-card{background:var(--surface);border:1px solid var(--border);padding:22px 24px;position:relative;}
+    .stat-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .4s ease;}
+    .stat-card:hover::after{transform:scaleX(1);}
+    .stat-label{font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;}
+    .stat-value{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;color:var(--text);line-height:1;}
+    .stat-value.gold{color:var(--gold);}
+    .filters{display:flex;gap:12px;margin-bottom:20px;align-items:center;animation:fadeUp .6s .15s ease both;flex-wrap:wrap;}
+    .search-box{flex:1;min-width:200px;background:var(--surface);border:1px solid var(--border);padding:9px 16px;color:var(--text);font-family:'Jost',sans-serif;font-size:.85rem;font-weight:300;outline:none;transition:border-color .2s;}
+    .search-box:focus{border-color:var(--gold-dim);}
+    .search-box::placeholder{color:var(--text-muted);}
+    .filter-btn{padding:9px 18px;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;border:1px solid var(--border);background:transparent;color:var(--text-muted);cursor:pointer;transition:all .2s;}
+    .filter-btn.active{border-color:var(--gold-dim);color:var(--gold);}
+    .filter-btn:hover:not(.active){color:var(--text);border-color:#444;}
+    .table-wrapper{background:var(--surface);border:1px solid var(--border);overflow-x:auto;animation:fadeUp .6s .2s ease both;}
+    table{width:100%;border-collapse:collapse;}
+    thead tr{border-bottom:1px solid var(--border);}
+    th{padding:14px 18px;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);text-align:left;font-weight:400;white-space:nowrap;}
+    tbody tr{border-bottom:1px solid var(--border);transition:background .15s;}
+    tbody tr:last-child{border-bottom:none;}
+    tbody tr:hover{background:var(--surface2);}
+    td{padding:14px 18px;font-size:.85rem;color:var(--text);font-weight:300;vertical-align:middle;}
+    .td-name{font-weight:400;}
+    .td-price{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--gold);}
+    .badge{display:inline-flex;align-items:center;padding:3px 10px;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid;}
+    .badge-pending{color:var(--pending);border-color:var(--pending);}
+    .badge-shipped{color:var(--shipped);border-color:var(--shipped);}
+    .badge-done{color:var(--done);border-color:var(--done);}
+    .badge-cancelled{color:var(--cancelled);border-color:var(--cancelled);}
+    .td-actions{display:flex;gap:8px;}
+    .action-btn{padding:4px 10px;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--border);background:transparent;color:var(--text-muted);cursor:pointer;transition:all .18s;}
+    .action-btn:hover{color:var(--text);border-color:#555;}
+    .empty-state{padding:60px 20px;text-align:center;color:var(--text-muted);}
+    .empty-state p{font-size:.8rem;letter-spacing:.12em;margin-top:12px;}
+    .loading-state{padding:60px 20px;text-align:center;}
+    .loading-dots span{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--gold-dim);margin:0 3px;animation:bounce 1.2s infinite ease-in-out;}
+    .loading-dots span:nth-child(2){animation-delay:.15s;}
+    .loading-dots span:nth-child(3){animation-delay:.3s;}
+    .config-banner{margin-bottom:24px;padding:14px 20px;border:1px solid #2a2200;background:#1a1500;font-size:.78rem;color:#a08840;letter-spacing:.04em;line-height:1.6;}
+    .config-banner code{background:#2a2000;padding:1px 6px;font-family:monospace;}
+    .pagination{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-top:1px solid var(--border);font-size:.72rem;letter-spacing:.1em;color:var(--text-muted);}
+    .pag-btns{display:flex;gap:8px;}
+    .pag-btn{padding:6px 14px;border:1px solid var(--border);background:transparent;color:var(--text-muted);cursor:pointer;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;transition:all .2s;}
+    .pag-btn:hover:not(:disabled){color:var(--text);border-color:#444;}
+    .pag-btn:disabled{opacity:.3;cursor:default;}
+    @keyframes fadeDown{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:none}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+    @keyframes bounce{0%,80%,100%{transform:scale(.6);opacity:.5}40%{transform:scale(1);opacity:1}}
+    @media(max-width:900px){.sidebar{display:none}.main{margin-left:0;padding:24px 20px}.stats-row{grid-template-columns:repeat(2,1fr)}}
+  </style>
+</head>
+<body>
+
+<!-- ── PANTALLA DE LOGIN ── -->
+<div class="login-screen" id="loginScreen">
+  <div class="login-box">
+    <div class="login-mark"></div>
+    <h1 class="login-title"><em>Enigme</em></h1>
+    <p class="login-sub">Panel de Administración</p>
+    <input
+      class="login-input" id="loginInput" type="password"
+      placeholder="Introduce la contraseña"
+      onkeydown="if(event.key==='Enter') checkLogin()"
+    />
+    <button class="login-btn" onclick="checkLogin()"><span>Acceder</span></button>
+    <p class="login-error" id="loginError">Contraseña incorrecta</p>
+  </div>
+</div>
+
+<!-- ── PANEL PRINCIPAL (oculto hasta login) ── -->
+<div id="adminPanel" style="display:none">
+
+<aside class="sidebar">
+  <div class="sidebar-brand">
+    <h2><em>Enigme</em></h2>
+    <span>Panel de Admin</span>
+  </div>
+  <div class="nav-item active"><span>◈</span> Pedidos</div>
+  <div class="nav-item" style="opacity:.4;cursor:default"><span>◇</span> Clientes</div>
+  <div class="nav-item" style="opacity:.4;cursor:default"><span>◇</span> Productos</div>
+  <div class="sidebar-footer">Enigme Official<br/>Admin v1.0</div>
+</aside>
+
+<main class="main">
+  <div class="page-header">
+    <div class="page-title">
+      <h1>Gestión de <em>Pedidos</em></h1>
+      <p>Todos los pedidos recibidos</p>
+    </div>
+    <div class="header-actions">
+      <button class="btn" onclick="cargarPedidos()">↻ Actualizar</button>
+      <button class="btn btn-primary" onclick="exportarExcel()"><span>⬇ Exportar Excel</span></button>
+    </div>
+  </div>
+
+  <div class="config-banner" id="configBanner">
+    ⚙️ <strong>Configuración pendiente:</strong> Edita las variables
+    <code>AIRTABLE_TOKEN</code> y <code>BASE_ID</code> en el &lt;script&gt; de este archivo.
+    Consulta el <strong>README.md</strong> adjunto para instrucciones.
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-card"><div class="stat-label">Total pedidos</div><div class="stat-value" id="statTotal">—</div></div>
+    <div class="stat-card"><div class="stat-label">Pendientes</div><div class="stat-value" id="statPending">—</div></div>
+    <div class="stat-card"><div class="stat-label">Completados</div><div class="stat-value" id="statDone">—</div></div>
+    <div class="stat-card"><div class="stat-label">Ingresos totales</div><div class="stat-value gold" id="statRevenue">—</div></div>
+  </div>
+
+  <div class="filters">
+    <input class="search-box" id="searchInput" type="text" placeholder="Buscar por nombre, producto, email..." oninput="filtrarTabla()"/>
+    <button class="filter-btn active" onclick="setFilter('todos',this)">Todos</button>
+    <button class="filter-btn" onclick="setFilter('Pendiente',this)">Pendientes</button>
+    <button class="filter-btn" onclick="setFilter('Enviado',this)">Enviados</button>
+    <button class="filter-btn" onclick="setFilter('En preparación',this)">En preparación</button>
+    <button class="filter-btn" onclick="setFilter('Entregado',this)">Entregados</button>
+  </div>
+
+  <div class="table-wrapper">
+    <div class="loading-state" id="loadingState">
+      <div class="loading-dots"><span></span><span></span><span></span></div>
+    </div>
+    <table id="ordersTable" style="display:none">
+      <thead><tr>
+        <th>Nº Pedido</th><th>Fecha</th><th>Cliente</th><th>Email</th><th>Producto</th>
+        <th>Cant.</th><th>Total</th><th>Pago</th><th>Estado</th><th>Acciones</th>
+      </tr></thead>
+      <tbody id="ordersBody"></tbody>
+    </table>
+    <div class="empty-state" id="emptyState" style="display:none">
+      <span style="font-size:2rem;opacity:.3">◈</span>
+      <p>No se encontraron pedidos</p>
+    </div>
+    <div class="pagination" id="pagination" style="display:none">
+      <span id="paginationInfo"></span>
+      <div class="pag-btns">
+        <button class="pag-btn" id="prevBtn" onclick="changePage(-1)">← Anterior</button>
+        <button class="pag-btn" id="nextBtn" onclick="changePage(1)">Siguiente →</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+  // ══════════════════════════════════════
+  //  ⚙️ CONFIGURACIÓN
+  // ══════════════════════════════════════
+  const AIRTABLE_TOKEN = 'pat2LZxIFoPewNgrs.759ab3d89da157aea371e97c398d831cb8b79c83ac38d3ed5ec90b5882cf9343';
+  const BASE_ID        = 'appul2TWy3wIST2GO';
+  const TABLE_NAME     = 'Pedidos';
+  // ══════════════════════════════════════
+
+  let todosLosPedidos = [];
+  let filtroEstado = 'todos';
+  let paginaActual = 1;
+  const POR_PAGINA = 15;
+
+  window.addEventListener('load', () => {
+    // El panel carga tras el login
+    document.getElementById('loginInput').focus();
+  });
+
+  async function cargarPedidos() {
+    document.getElementById('loadingState').style.display = 'block';
+    document.getElementById('ordersTable').style.display = 'none';
+    document.getElementById('emptyState').style.display = 'none';
+    document.getElementById('pagination').style.display = 'none';
+    try {
+      let url = `https://api.airtable.com/v0/${BASE_ID}/${encodeURIComponent(TABLE_NAME)}?sort[0][field]=Fecha&sort[0][direction]=desc&pageSize=100`;
+      let records = [], offset = null;
+      do {
+        const res = await fetch(offset ? `${url}&offset=${offset}` : url, {
+          headers: { 'Authorization': `Bearer ${AIRTABLE_TOKEN}` }
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error?.message || 'Error Airtable');
+        records = records.concat(data.records);
+        offset = data.offset;
+      } while (offset);
+      todosLosPedidos = records;
+      actualizarStats();
+      renderizarTabla();
+    } catch (err) {
+      document.getElementById('loadingState').innerHTML =
+        `<p style="color:#c0605a;font-size:.8rem;letter-spacing:.1em">Error: ${err.message}</p>`;
+    }
+  }
+
+  function actualizarStats() {
+    const total   = todosLosPedidos.length;
+    const pending = todosLosPedidos.filter(r => r.fields['Estado del Pedido'] === 'Pendiente').length;
+    const done    = todosLosPedidos.filter(r => r.fields['Estado del Pedido'] === 'Entregado').length;
+    const revenue = todosLosPedidos.reduce((s,r) => s + (r.fields['Total'] || 0), 0);
+    document.getElementById('statTotal').textContent   = total;
+    document.getElementById('statPending').textContent = pending;
+    document.getElementById('statDone').textContent    = done;
+    document.getElementById('statRevenue').textContent = `€${revenue.toFixed(2)}`;
+  }
+
+  function setFilter(estado, btn) {
+    filtroEstado = estado; paginaActual = 1;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderizarTabla();
+  }
+
+  function filtrarTabla() { paginaActual = 1; renderizarTabla(); }
+
+  function pedidosFiltrados() {
+    const q = document.getElementById('searchInput').value.toLowerCase();
+    return todosLosPedidos.filter(r => {
+      const f = r.fields;
+      return (filtroEstado === 'todos' || f['Estado del Pedido'] === filtroEstado) &&
+        (!q || (f['Cliente Nombre']||'').toLowerCase().includes(q) ||
+               (f['Cliente Email']||'').toLowerCase().includes(q) ||
+               (f['Productos']||'').toLowerCase().includes(q) ||
+               (f['Número de Pedido']||'').toLowerCase().includes(q));
+    });
+  }
+
+  function renderizarTabla() {
+    const filtered = pedidosFiltrados();
+    const total    = filtered.length;
+    const inicio   = (paginaActual - 1) * POR_PAGINA;
+    const fin      = Math.min(inicio + POR_PAGINA, total);
+    const pagina   = filtered.slice(inicio, fin);
+    document.getElementById('loadingState').style.display = 'none';
+    if (total === 0) {
+      document.getElementById('ordersTable').style.display = 'none';
+      document.getElementById('emptyState').style.display  = 'block';
+      document.getElementById('pagination').style.display  = 'none';
+      return;
+    }
+    document.getElementById('emptyState').style.display  = 'none';
+    document.getElementById('ordersTable').style.display = 'table';
+    const BADGE = {
+      'Pendiente':'badge-pending','Enviado':'badge-shipped',
+      'Entregado':'badge-done','En preparación':'badge-shipped','Cancelado':'badge-cancelled'
+    };
+    document.getElementById('ordersBody').innerHTML = pagina.map(r => {
+      const f = r.fields, estado = f['Estado del Pedido'] || 'Pendiente';
+      const total_val = parseFloat(f['Total'] || 0);
+      return `<tr>
+        <td style="color:var(--gold-dim);font-size:.8rem">${f['Número de Pedido']||'—'}</td>
+        <td>${(f['Fecha']||'—').split('T')[0]}</td>
+        <td class="td-name">${f['Cliente Nombre']||'—'}</td>
+        <td style="color:var(--text-muted);font-size:.8rem">${f['Cliente Email']||'—'}</td>
+        <td>${f['Productos']||'—'}</td>
+        <td style="text-align:center">${f['Cantidad']||'—'}</td>
+        <td class="td-price">$${total_val.toFixed(2)}</td>
+        <td style="color:var(--text-muted);font-size:.8rem">${f['Método de Pago']||'—'}</td>
+        <td><span class="badge ${BADGE[estado]||'badge-pending'}">${estado}</span></td>
+        <td class="td-actions"><button class="action-btn" onclick="cambiarEstado('${r.id}','${estado}')">Estado ↻</button></td>
+      </tr>`;
+    }).join('');
+    document.getElementById('pagination').style.display = 'flex';
+    document.getElementById('paginationInfo').textContent = `Mostrando ${inicio+1}–${fin} de ${total} pedidos`;
+    document.getElementById('prevBtn').disabled = paginaActual === 1;
+    document.getElementById('nextBtn').disabled = fin >= total;
+  }
+
+  function changePage(dir) { paginaActual += dir; renderizarTabla(); window.scrollTo({top:0,behavior:'smooth'}); }
+
+  async function cambiarEstado(recordId, estadoActual) {
+    const estados = ['Pendiente','En preparación','Enviado','Entregado','Cancelado'];
+    const nuevo = estados[(estados.indexOf(estadoActual) + 1) % estados.length];
+    if (!confirm(`¿Cambiar estado a "${nuevo}"?`)) return;
+    try {
+      const res = await fetch(`https://api.airtable.com/v0/${BASE_ID}/${encodeURIComponent(TABLE_NAME)}/${recordId}`, {
+        method: 'PATCH',
+        headers: { 'Authorization': `Bearer ${AIRTABLE_TOKEN}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ fields: { 'Estado del Pedido': nuevo } })
+      });
+      if (!res.ok) throw new Error('Error al actualizar');
+      await cargarPedidos();
+    } catch(err) { alert('Error: ' + err.message); }
+  }
+
+  function exportarExcel() {
+    if (!todosLosPedidos.length) { alert('No hay pedidos para exportar'); return; }
+    const datos = todosLosPedidos.map(r => ({
+      'Número de Pedido':  r.fields['Número de Pedido']||'',
+      'Fecha':             (r.fields['Fecha']||'').split('T')[0],
+      'Cliente Nombre':    r.fields['Cliente Nombre']||'',
+      'Cliente Email':     r.fields['Cliente Email']||'',
+      'Cliente Teléfono':  r.fields['Cliente Teléfono']||'',
+      'Productos':         r.fields['Productos']||'',
+      'Cantidad':          r.fields['Cantidad']||'',
+      'Precio Unitario':   r.fields['Precio Unitario']||'',
+      'Total':             r.fields['Total']||'',
+      'Método de Pago':    r.fields['Método de Pago']||'',
+      'Dirección de Envío':r.fields['Dirección de Envío']||'',
+      'Estado del Pedido': r.fields['Estado del Pedido']||'',
+      'Notas':             r.fields['Notas']||''
+    }));
+    const hoja = XLSX.utils.json_to_sheet(datos);
+    hoja['!cols'] = [{wch:14},{wch:12},{wch:22},{wch:28},{wch:16},{wch:24},{wch:8},{wch:14},{wch:12},{wch:20},{wch:36},{wch:16},{wch:30}];
+    const libro = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(libro, hoja, 'Pedidos');
+    XLSX.writeFile(libro, `enigme_pedidos_${new Date().toISOString().split('T')[0]}.xlsx`);
+  }
+
+  // ── LOGIN ──────────────────────────────────────
+  const ADMIN_PASSWORD = 'Gusiteamo.1998';
+
+  function checkLogin() {
+    const val = document.getElementById('loginInput').value;
+    const err = document.getElementById('loginError');
+    if (val === ADMIN_PASSWORD) {
+      document.getElementById('loginScreen').style.display = 'none';
+      document.getElementById('adminPanel').style.display  = 'block';
+      cargarPedidos();
+    } else {
+      err.classList.add('show');
+      document.getElementById('loginInput').value = '';
+      document.getElementById('loginInput').focus();
+      setTimeout(() => err.classList.remove('show'), 2500);
+    }
+  }
+  // ───────────────────────────────────────────────
+</script>
+</div> <!-- /adminPanel -->
+</body>
+</html>
