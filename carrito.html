@@ -11,7 +11,6 @@
 
   <style>
     :root {
-      /* PALETA DE MARCA ÈNIGME */
       --marfil: #FAF9F6;
       --carbon: #1C1C1C;
       --gris-suave: #888888;
@@ -38,9 +37,6 @@
     a { text-decoration: none; color: inherit; transition: var(--transition); }
     button { background: none; border: none; font-family: inherit; cursor: pointer; outline: none; }
 
-    /* =========================================
-       NAVBAR
-       ========================================= */
     .navbar {
       width: 100%; padding: clamp(15px, 3vw, 25px) 5vw; display: flex; align-items: center; justify-content: space-between;
       border-bottom: 1px solid var(--linea-fina); background: rgba(255, 255, 255, 0.98);
@@ -93,20 +89,13 @@
     .btn-cart-nav:hover { animation: none; }
     .counter-badge { font-weight: 700; }
 
-    /* =========================================
-       HEADER DEL CARRITO
-       ========================================= */
     .page-header { text-align: center; padding: clamp(40px, 8vw, 60px) 20px clamp(20px, 4vw, 30px); border-bottom: 1px solid var(--linea-fina); margin-top: 10px; background-color: var(--fondo-galeria); }
     .page-title { font-family: 'Cinzel', serif; font-size: clamp(2rem, 6vw, 3.5rem); letter-spacing: 0.15em; text-transform: uppercase; color: var(--carbon); margin-bottom: 10px; font-weight: 500;}
     .page-subtitle { font-size: clamp(0.6rem, 1.5vw, 0.7rem); letter-spacing: 4px; text-transform: uppercase; color: var(--dorado); font-weight: 600; }
 
-    /* =========================================
-       CONTENEDOR PRINCIPAL
-       ========================================= */
     .cart-container { max-width: 1300px; margin: 0 auto; padding: 40px 5vw 80px; display: grid; grid-template-columns: 1.8fr 1.2fr; gap: 60px; width: 100%; flex-grow: 1; align-items: start; }
     .cart-container.cart-empty { grid-template-columns: 1fr; }
 
-    /* BANNERS DINÁMICOS DE DESCUENTO */
     .promo-banner {
       background-color: var(--carbon); color: var(--dorado); border-radius: 2px;
       text-align: center; padding: 15px; margin-bottom: 30px; display: none; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 1px solid var(--dorado);
@@ -114,14 +103,10 @@
     .promo-banner p { font-size: clamp(0.55rem, 1.2vw, 0.65rem); letter-spacing: 2px; line-height: 1.6; text-transform: uppercase; font-weight: 500; margin: 5px 0; }
     .promo-banner strong { color: var(--blanco-puro); font-weight: 700; }
 
-    /* =========================================
-       LISTA DE PRODUCTOS
-       ========================================= */
     .cart-items { display: flex; flex-direction: column; gap: 20px; }
     .cart-item { display: grid; grid-template-columns: 110px 1fr auto; gap: 20px; align-items: center; padding: 20px; border: 1px solid var(--linea-fina); background: var(--blanco-puro); transition: var(--transition); border-radius: 2px;}
     .cart-item:hover { border-color: var(--dorado); box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
     
-    /* IMÁGENES DEL CARRITO (RETRATO PERFECTO Y GALERÍA) */
     .item-img-wrapper { width: 110px; aspect-ratio: 3/4; border: 1px solid var(--linea-fina); background: var(--fondo-galeria); overflow: hidden; cursor: zoom-in; position: relative; display: flex; align-items: center; justify-content: center; }
     .item-img-wrapper::after { content: 'GALERÍA'; position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.7); color: #fff; font-size: 0.45rem; letter-spacing: 2px; text-align: center; padding: 6px 0; opacity: 0; transition: var(--transition); text-transform: uppercase; font-weight: 600;}
     .item-img-wrapper:hover::after { opacity: 1; }
@@ -134,7 +119,6 @@
     .item-price { font-size: clamp(0.85rem, 2vw, 1rem); font-weight: 700; color: var(--carbon); margin-top: 5px;}
     .item-promo-tag { font-size: 0.5rem; color: #8A1515; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; margin-top: 2px; display: inline-block; padding: 2px 6px; background: rgba(138, 21, 21, 0.05); border-radius: 2px; width: max-content;}
 
-    /* CONTROLES DE CANTIDAD Y ELIMINAR */
     .item-actions { display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; height: 100%; gap: 20px;}
     .qty-control { display: flex; align-items: center; border: 1px solid var(--linea-fina); border-radius: 2px; overflow: hidden; background: var(--fondo-galeria);}
     .qty-btn { width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--gris-suave); transition: var(--transition);}
@@ -144,9 +128,6 @@
     .btn-remove { font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gris-suave); border-bottom: 1px solid transparent; transition: var(--transition);}
     .btn-remove:hover { color: #b30000; border-color: #b30000; }
 
-    /* =========================================
-       ESTADO VACÍO
-       ========================================= */
     .empty-state-wrapper { text-align: center; padding: 80px 20px; background: var(--blanco-puro); border: 1px solid var(--linea-fina); width: 100%; max-width: 700px; margin: 0 auto; box-shadow: 0 15px 40px rgba(0,0,0,0.03); }
     .empty-state-title { font-family: 'Cinzel', serif; font-size: clamp(1.5rem, 3vw, 2.2rem); letter-spacing: 0.1em; color: var(--carbon); text-transform: uppercase; margin-bottom: 15px; }
     .empty-state-desc { font-size: 0.85rem; line-height: 2; color: var(--gris-suave); margin-bottom: 40px; }
@@ -154,9 +135,6 @@
     .btn-return-home { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 30px; background-color: transparent; color: var(--carbon); font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; border: 1px solid var(--carbon); transition: var(--transition); border-radius: 2px;}
     .btn-return-home:hover { background-color: var(--carbon); color: var(--blanco-puro); }
 
-    /* =========================================
-       FORMULARIO V.I.P Y PAGOS
-       ========================================= */
     .checkout-panel { background: var(--blanco-puro); padding: 40px 35px; border: 1px solid var(--dorado); position: sticky; top: 120px; box-shadow: 0 20px 50px rgba(0,0,0,0.04); border-radius: 2px;}
     .summary-title { font-family: 'Cinzel', serif; font-size: 1.2rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 25px; border-bottom: 1px solid var(--linea-fina); padding-bottom: 15px; text-align: center; color: var(--carbon); font-weight: 600;}
     
@@ -186,9 +164,6 @@
     .btn-checkout.stripe:hover { background-color: var(--carbon); color: var(--blanco-puro); }
     .btn-checkout svg { width: 18px !important; height: 18px !important; fill: currentColor; flex-shrink: 0; }
 
-    /* =========================================
-       LIGHTBOX INMERSIVO MULTIMEDIA
-       ========================================= */
     .lightbox { 
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
       background-color: rgba(15, 15, 15, 0.98); backdrop-filter: blur(15px); 
@@ -196,44 +171,67 @@
       opacity: 0; pointer-events: none; transition: opacity 0.3s ease; 
     }
     .lightbox.active { opacity: 1; pointer-events: auto; }
-    
-    .lightbox-track {
-      display: flex; width: 100%; height: 100%; align-items: center; justify-content: flex-start; cursor: pointer; transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    
+    .lightbox-track { display: flex; width: 100%; height: 100%; align-items: center; justify-content: flex-start; cursor: pointer; transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
     .lightbox-item { flex: 0 0 100vw; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; position: relative;}
-
-    .lightbox-media { 
-      max-width: 95vw; max-height: 85vh; object-fit: contain; transform: scale(0.95); 
-      transition: transform 0.3s ease; box-shadow: 0 20px 50px rgba(0,0,0,0.3); background: transparent; border-radius: 4px; pointer-events: none;
-    }
+    .lightbox-media { max-width: 95vw; max-height: 85vh; object-fit: contain; transform: scale(0.95); transition: transform 0.3s ease; box-shadow: 0 20px 50px rgba(0,0,0,0.3); background: transparent; border-radius: 4px; pointer-events: none;}
     .lightbox.active .lightbox-media { transform: scale(1); }
-    
-    .lightbox-close { 
-      position: absolute; top: clamp(20px, 4vw, 30px); right: clamp(20px, 4vw, 40px); font-size: clamp(2.5rem, 6vw, 3.5rem); color: var(--blanco-dior); 
-      cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 200; line-height: 1; 
-      transition: var(--transition); z-index: 10001; 
-    }
+    .lightbox-close { position: absolute; top: clamp(20px, 4vw, 30px); right: clamp(20px, 4vw, 40px); font-size: clamp(2.5rem, 6vw, 3.5rem); color: var(--blanco-dior); cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 200; line-height: 1; transition: var(--transition); z-index: 10001; }
     .lightbox-close:hover { color: var(--dorado); transform: scale(1.1) rotate(90deg); }
-
-    .lb-sound-btn {
-      position: absolute; bottom: 60px; left: 50%; transform: translateX(-50%);
-      background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.4);
-      color: var(--blanco-puro); border-radius: 50%; width: 50px; height: 50px;
-      display: flex; align-items: center; justify-content: center; cursor: pointer;
-      backdrop-filter: blur(5px); transition: var(--transition); z-index: 10001; pointer-events: auto;
-    }
+    .lb-sound-btn { position: absolute; bottom: 60px; left: 50%; transform: translateX(-50%); background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.4); color: var(--blanco-puro); border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(5px); transition: var(--transition); z-index: 10001; pointer-events: auto; }
     .lb-sound-btn:hover { background: var(--dorado); border-color: var(--dorado); color: var(--carbon); }
     .lb-sound-btn svg { width: 20px; height: 20px; fill: currentColor; }
-
     .lb-indicator { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 10; }
     .lb-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); transition: var(--transition); }
     .lb-dot.active { background: var(--dorado); transform: scale(1.3); }
 
-    /* FOOTER */
     .footer { padding: 50px 5vw; text-align: center; border-top: 1px solid var(--linea-fina); font-size: clamp(0.4rem, 1vw, 0.5rem); letter-spacing: 0.25em; color: var(--gris-suave); text-transform: uppercase; background: var(--blanco-puro); opacity: 0.6; font-weight: 300; margin-top: auto;}
 
-    /* RESPONSIVE MÓVIL */
+    /* ── HISTORIAL V.I.P ── */
+    .historial-section { max-width: 1300px; margin: 0 auto 80px; padding: 0 5vw; width: 100%; }
+    .historial-header { text-align: center; padding: 50px 20px 30px; }
+    .historial-header h2 { font-family: 'Cinzel', serif; font-size: clamp(1.4rem, 3vw, 2rem); letter-spacing: 0.15em; text-transform: uppercase; color: var(--carbon); font-weight: 500; }
+    .historial-header p { font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; color: var(--dorado); margin-top: 8px; font-weight: 600; }
+
+    .historial-tabs { display: flex; gap: 0; margin-bottom: 0; border-bottom: 1px solid var(--linea-fina); }
+    .htab { padding: 14px 30px; font-size: 0.62rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; color: var(--gris-suave); border-bottom: 2px solid transparent; cursor: pointer; transition: var(--transition); background: transparent; margin-bottom: -1px; }
+    .htab.active { color: var(--carbon); border-bottom-color: var(--dorado); }
+    .htab:hover:not(.active) { color: var(--carbon); }
+
+    .historial-panel { display: none; }
+    .historial-panel.active { display: block; }
+
+    .historial-list { display: flex; flex-direction: column; gap: 16px; padding-top: 24px; }
+
+    .historial-item {
+      background: var(--blanco-puro); border: 1px solid var(--linea-fina);
+      padding: 24px 28px; border-radius: 2px; transition: var(--transition);
+      position: relative;
+    }
+    .historial-item:hover { border-color: var(--dorado); }
+    .historial-item::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 3px; background: var(--dorado); border-radius: 2px 0 0 2px;
+    }
+    .historial-item.whatsapp-item::before { background: #25D366; }
+
+    .hi-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; flex-wrap: wrap; gap: 10px; }
+    .hi-fecha { font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gris-suave); }
+    .hi-badge { font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; padding: 4px 10px; border-radius: 2px; }
+    .hi-badge.tarjeta { background: rgba(203,170,99,0.12); color: var(--dorado); border: 1px solid var(--dorado); }
+    .hi-badge.whatsapp { background: rgba(37,211,102,0.1); color: #1a9e4a; border: 1px solid #25D366; }
+
+    .hi-productos { font-size: 0.78rem; line-height: 1.8; color: var(--carbon); margin-bottom: 12px; }
+    .hi-productos strong { font-family: 'Cinzel', serif; font-size: 0.85rem; display: block; margin-bottom: 6px; }
+
+    .hi-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 12px; border-top: 1px solid var(--linea-fina); flex-wrap: wrap; gap: 8px; }
+    .hi-cliente { font-size: 0.65rem; color: var(--gris-suave); letter-spacing: 1px; }
+    .hi-total { font-family: 'Cinzel', serif; font-size: 1.1rem; color: var(--carbon); font-weight: 600; }
+
+    .historial-empty { text-align: center; padding: 50px 20px; color: var(--gris-suave); font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; }
+
+    .btn-limpiar { font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gris-suave); border-bottom: 1px solid transparent; transition: var(--transition); padding: 0; margin-top: 20px; }
+    .btn-limpiar:hover { color: #b30000; border-color: #b30000; }
+
     @media (max-width: 900px) { .cart-container { grid-template-columns: 1fr; gap: 40px; padding: 40px 5vw; } .checkout-panel { position: static; padding: 30px 20px; } }
     @media (max-width: 768px) {
       .navbar { padding: 20px; flex-wrap: wrap; justify-content: space-between; }
@@ -243,7 +241,6 @@
       .nav-group.right .dropdown .dropbtn { width: 100%; justify-content: center; padding: 8px 0; border: 1px solid rgba(203, 170, 99, 0.4); border-radius: 2px;}
       .nav-group.right .btn-cart-nav { order: 2; width: 100%; justify-content: center; margin-left: 0 !important; }
       .nav-group.right a[href="favoritos.html"] { order: 3; width: 100%; justify-content: center; margin-left: 0 !important; }
-
       .cart-item { grid-template-columns: 80px 1fr; gap: 15px; padding: 15px;} 
       .item-actions { grid-column: span 2; flex-direction: row; justify-content: space-between; align-items: center; margin-top: 5px; height: auto;} 
       .item-img-wrapper { width: 80px; aspect-ratio: 3/4; height: auto;} 
@@ -302,7 +299,6 @@
   </header>
 
   <main class="cart-container" id="main-cart-container">
-    
     <div class="cart-items">
       <div id="promo-banner" class="promo-banner"></div>
       <div id="cart-items-container"></div>
@@ -310,7 +306,6 @@
 
     <div class="checkout-panel" id="checkout-panel">
       <h2 class="summary-title">Gestión V.I.P</h2>
-      
       <div class="client-form">
         <div class="form-group">
           <label>Nombre Completo</label>
@@ -356,7 +351,8 @@
       </div>
 
       <div class="stripe-notice">
-        <strong>AVISO STRIPE:</strong> Al hacer clic en "Pagar con Tarjeta", será redirigido a nuestra pasarela bancaria. <br><br>Usted deberá ingresar manualmente el importe exacto de: <strong style="font-size: 0.8rem;" id="stripe-amount-notice">L 0</strong> para completar el pedido.
+        <strong>AVISO STRIPE:</strong> Al hacer clic en "Pagar con Tarjeta", será redirigido a nuestra pasarela bancaria.<br><br>
+        Usted deberá ingresar manualmente el importe exacto de: <strong style="font-size: 0.8rem;" id="stripe-amount-notice">L 0</strong> para completar el pedido.
       </div>
 
       <div class="payment-methods">
@@ -364,7 +360,6 @@
           <svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6z"/></svg>
           Solicitar por WhatsApp
         </button>
-
         <button class="btn-checkout stripe" onclick="processStripeOrder()">
           <svg viewBox="0 0 576 512"><path d="M527.9 32H48.1C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48.1 48h479.8c26.6 0 48.1-21.5 48.1-48V80c0-26.5-21.5-48-48.1-48zM54.1 80h467.8c3.3 0 6 2.7 6 6v42H48.1V86c0-3.3 2.7-6 6-6zm467.8 352H54.1c-3.3 0-6-2.7-6-6V256h479.8v170c0 3.3-2.7 6-6 6zM192 332v40c0 6.6-5.4 12-12 12h-72c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h72c6.6 0 12 5.4 12 12zm192 0v40c0 6.6-5.4 12-12 12H236c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h136c6.6 0 12 5.4 12 12z"/></svg>
           Pagar con Tarjeta
@@ -379,11 +374,173 @@
     <div class="lb-indicator" id="lb-indicator"></div>
   </div>
 
+  <!-- HISTORIAL V.I.P -->
+  <section class="historial-section">
+    <div class="historial-header">
+      <h2>Historial V.I.P</h2>
+      <p>Registro de solicitudes y pagos</p>
+    </div>
+
+    <div class="historial-tabs">
+      <button class="htab active" onclick="switchTab('tarjeta', this)">
+        💳 Pagos con Tarjeta
+      </button>
+      <button class="htab" onclick="switchTab('whatsapp', this)">
+        💬 Solicitudes WhatsApp
+      </button>
+    </div>
+
+    <div class="historial-panel active" id="panel-tarjeta">
+      <div class="historial-list" id="lista-tarjeta"></div>
+    </div>
+
+    <div class="historial-panel" id="panel-whatsapp">
+      <div class="historial-list" id="lista-whatsapp"></div>
+    </div>
+
+    <div style="text-align:center">
+      <button class="btn-limpiar" onclick="limpiarHistorial()">Borrar historial</button>
+    </div>
+  </section>
+
   <footer class="footer">
     © 2026 ÈNIGME HONDURAS · POR CARLOS ARMAS MARTÍNEZ
   </footer>
 
   <script>
+
+    // ═══════════════════════════════════════════════════════
+    // HISTORIAL V.I.P — guarda pedidos en el navegador
+    // ═══════════════════════════════════════════════════════
+    function guardarEnHistorial(data, order, tipo) {
+      const clave = tipo === 'whatsapp' ? 'enigme_historial_wa' : 'enigme_historial_tarjeta';
+      const historial = JSON.parse(localStorage.getItem(clave)) || [];
+
+      const entrada = {
+        fecha: new Date().toLocaleDateString('es-ES', { day:'2-digit', month:'2-digit', year:'numeric' }),
+        hora:  new Date().toLocaleTimeString('es-ES', { hour:'2-digit', minute:'2-digit' }),
+        nombre: data.nombre,
+        correo: data.correo,
+        telefono: data.telefono,
+        direccion: `${data.departamento} — ${data.direccion}`,
+        productos: cart.map(item => {
+          const p = parseInt(item.price.replace(/\D/g, ''));
+          return `${item.qty}x ${item.name} — L ${p * item.qty}`;
+        }),
+        total: order.totalGlobal
+      };
+
+      historial.unshift(entrada); // más reciente primero
+      localStorage.setItem(clave, JSON.stringify(historial));
+      renderHistorial();
+    }
+
+    function renderHistorial() {
+      renderLista('enigme_historial_tarjeta', 'lista-tarjeta', 'tarjeta');
+      renderLista('enigme_historial_wa',      'lista-whatsapp', 'whatsapp');
+    }
+
+    function renderLista(clave, contenedorId, tipo) {
+      const historial = JSON.parse(localStorage.getItem(clave)) || [];
+      const container = document.getElementById(contenedorId);
+      if (!container) return;
+
+      if (historial.length === 0) {
+        container.innerHTML = `<div class="historial-empty">Sin registros aún</div>`;
+        return;
+      }
+
+      container.innerHTML = historial.map(e => `
+        <div class="historial-item ${tipo === 'whatsapp' ? 'whatsapp-item' : ''}">
+          <div class="hi-top">
+            <span class="hi-fecha">📅 ${e.fecha} &nbsp;·&nbsp; 🕐 ${e.hora}</span>
+            <span class="hi-badge ${tipo === 'whatsapp' ? 'whatsapp' : 'tarjeta'}">
+              ${tipo === 'whatsapp' ? '💬 WhatsApp' : '💳 Tarjeta'}
+            </span>
+          </div>
+          <div class="hi-productos">
+            <strong>Productos:</strong>
+            ${e.productos.map(p => `· ${p}`).join('<br>')}
+          </div>
+          <div class="hi-bottom">
+            <span class="hi-cliente">👤 ${e.nombre} &nbsp;·&nbsp; 📍 ${e.direccion}</span>
+            <span class="hi-total">L ${e.total}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function switchTab(tipo, btn) {
+      document.querySelectorAll('.htab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.historial-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(`panel-${tipo}`).classList.add('active');
+    }
+
+    function limpiarHistorial() {
+      if (!confirm('¿Borrar todo el historial de pedidos?')) return;
+      localStorage.removeItem('enigme_historial_wa');
+      localStorage.removeItem('enigme_historial_tarjeta');
+      renderHistorial();
+    }
+    // ═══════════════════════════════════════════════════════
+
+    // ═══════════════════════════════════════════════════════
+    // AIRTABLE — CONEXIÓN AUTOMÁTICA DE PEDIDOS
+    // ═══════════════════════════════════════════════════════
+    const AIRTABLE_TOKEN = 'pat2LZxIFoPewNgrs.759ab3d89da157aea371e97c398d831cb8b79c83ac38d3ed5ec90b5882cf9343';
+    const BASE_ID        = 'appul2TWy3wIST2GO';
+    const TABLE_NAME     = 'Pedidos';
+
+    async function guardarEnAirtable(data, order, metodoPago) {
+      const productosTexto = cart.map(item => {
+        const precio = parseInt(item.price.replace(/\D/g, ''));
+        return `${item.qty}x ${item.name} (${item.ref}) — L ${precio * item.qty}`;
+      }).join(' | ');
+
+      // Precio unitario promedio (referencial)
+      const precioUnitario = cart.length > 0
+        ? parseInt(cart[0].price.replace(/\D/g, ''))
+        : 0;
+
+      const fields = {
+        'Cliente Nombre':     data.nombre,
+        'Cliente Email':      data.correo,
+        'Cliente Teléfono':   data.telefono,
+        'Productos':          productosTexto,
+        'Cantidad':           cart.reduce((s, i) => s + i.qty, 0),
+        'Precio Unitario':    precioUnitario,
+        'Total':              order.totalGlobal,
+        'Método de Pago':     metodoPago,
+        'Dirección de Envío': `${data.departamento} — ${data.direccion}`,
+        'Notas':              'Pedido web enigmeofficial.com',
+        'Fecha':              new Date().toISOString().split('T')[0],
+        'Estado del Pedido':  'Pendiente'
+      };
+
+      try {
+        const res = await fetch(`https://api.airtable.com/v0/${BASE_ID}/${encodeURIComponent(TABLE_NAME)}`, {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${AIRTABLE_TOKEN}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ fields })
+        });
+
+        const result = await res.json();
+
+        if (!res.ok) {
+          // Muestra el error exacto de Airtable en pantalla
+          alert('⚠️ Error Airtable: ' + (result.error?.message || JSON.stringify(result)));
+          console.error('Error Airtable:', result);
+        } else {
+          console.log('✓ Pedido guardado en Airtable:', result.id);
+        }
+      } catch (err) {
+        alert('⚠️ Error de conexión con Airtable: ' + err.message);
+        console.error('Error Airtable:', err);
+      }
+    }
+    // ═══════════════════════════════════════════════════════
+
     let cart = [];
     let justOrdered = false; 
     let currentTotalGlobal = 0;
@@ -391,15 +548,12 @@
 
     function loadCart() {
       const rawCart = JSON.parse(localStorage.getItem('enigme_cart')) || [];
-      cart = rawCart; // Tomamos el carrito completo (que ahora incluye item.media)
+      cart = rawCart;
       calculateCartRules();
       renderCart();
       updateCounts();
     }
 
-    // =========================================
-    // CEREBRO INTELIGENTE DE DESCUENTOS (DOBLE MOTOR)
-    // =========================================
     function calculateCartRules() {
       let totalLqItems = 0;
       let totalSilverItems = 0;
@@ -414,7 +568,6 @@
           if(totalLqItems >= 2) item.price = item.promoPrice;
           else item.price = item.regularPrice;
         }
-        
         if(item.isSilver) {
           let baseNum = parseInt(item.baseSilverPrice.replace(/\D/g, ''));
           if(totalSilverItems >= 2) {
@@ -428,13 +581,8 @@
 
       const promoBanner = document.getElementById('promo-banner');
       let bannerHtml = '';
-
-      if(totalLqItems >= 2) {
-        bannerHtml += '<p><strong>✓ LIQUIDACIÓN:</strong> Valores VIP aplicados a su selección.</p>';
-      }
-      if(totalSilverItems >= 2) {
-        bannerHtml += '<p><strong>✓ PLATA DE LEY:</strong> Descuento del 5% aplicado a su selección.</p>';
-      }
+      if(totalLqItems >= 2) bannerHtml += '<p><strong>✓ LIQUIDACIÓN:</strong> Valores VIP aplicados a su selección.</p>';
+      if(totalSilverItems >= 2) bannerHtml += '<p><strong>✓ PLATA DE LEY:</strong> Descuento del 5% aplicado a su selección.</p>';
 
       if(bannerHtml !== '') {
         promoBanner.innerHTML = bannerHtml;
@@ -466,12 +614,11 @@
             <h2 class="empty-state-title">${titleText}</h2>
             <p class="empty-state-desc">${descText}</p>
             <a href="catalogo.html" class="btn-return-home">EXPLORAR COLECCIONES</a>
-          </div>
-        `;
+          </div>`;
       } else {
         mainContainer.classList.remove('cart-empty');
         panelCheckout.style.display = 'block';
-        justOrdered = false; 
+        justOrdered = false;
 
         let totalLqItems = 0, totalSilverItems = 0;
         cart.forEach(i => {
@@ -491,7 +638,6 @@
              promoTag = `<span class="item-promo-tag">✓ -5% Plata Aplicado</span>`;
           }
 
-          // CONSTRUIMOS EL TRACK DE LA GALERÍA OCULTO PARA EL LIGHTBOX
           let trackHtml = '';
           let mediaArray = item.media || [{type: 'img', src: item.img}];
           mediaArray.forEach(m => {
@@ -506,9 +652,7 @@
             <div class="cart-item">
               <div class="item-img-wrapper" onclick="openLightbox(this)" title="Ver galería íntegra">
                 <img src="${item.img}" alt="${item.name}" class="item-img" onerror="this.src='https://via.placeholder.com/200x250?text=ÈNIGME'">
-                <div class="carousel-track" style="display:none;" data-index="0">
-                  ${trackHtml}
-                </div>
+                <div class="carousel-track" style="display:none;" data-index="0">${trackHtml}</div>
               </div>
               <div class="item-details">
                 <span class="item-ref">${item.ref}</span>
@@ -583,20 +727,33 @@
       renderCart(); updateCounts();
     }
 
-    function processWhatsAppOrder() {
+    // ═══════════════════════════════════════════════════════
+    // CAMBIO 2 — processWhatsAppOrder ahora guarda en Airtable
+    // ═══════════════════════════════════════════════════════
+    async function processWhatsAppOrder() {
       const data = validateForm(); if(!data) return;
       const order = getOrderDetails();
+
+      guardarEnHistorial(data, order, 'whatsapp');        // ← guarda en historial local
+      await guardarEnAirtable(data, order, 'WhatsApp');   // ← guarda en Airtable
+
       let waText = `*LA CASA ÈNIGME - FORMALIZACIÓN V.I.P.*%0A%0ACLIENTE: ${data.nombre}%0ATELÉFONO: ${data.telefono}%0ADEPARTAMENTO: ${data.departamento}%0AEN: ${data.direccion}%0A%0A*SELECCIÓN:*%0A${encodeURIComponent(order.details)}%0A━━━━━━━━━━━━━━━━━%0A*TOTAL: L ${order.totalGlobal}*%0A━━━━━━━━━━━━━━━━━`;
       clearCartAndUI();
       window.open(`https://wa.me/34602149162?text=${waText}`, '_blank');
     }
 
-    function processStripeOrder() {
+    // ═══════════════════════════════════════════════════════
+    // CAMBIO 3 — processStripeOrder ahora guarda en Airtable
+    // ═══════════════════════════════════════════════════════
+    async function processStripeOrder() {
       const data = validateForm(); if(!data) return;
       const order = getOrderDetails();
       const btnStripe = document.querySelector('.btn-checkout.stripe');
       const originalText = btnStripe.innerHTML;
       btnStripe.innerHTML = "Procesando..."; btnStripe.style.pointerEvents = "none";
+
+      guardarEnHistorial(data, order, 'tarjeta');                    // ← guarda en historial local
+      await guardarEnAirtable(data, order, 'Tarjeta de crédito');    // ← guarda en Airtable
 
       const payload = {
         _subject: "💳 PAGO TARJETA - ÈNIGME", Cliente: data.nombre, Correo: data.correo, WhatsApp: data.telefono, Departamento: data.departamento, Direccion: data.direccion, Pedido: order.details, Total: "L " + order.totalGlobal, Fecha: new Date().toLocaleString('es-HN')
@@ -617,9 +774,6 @@
       if(document.getElementById('fav-count')) document.getElementById('fav-count').innerText = favsList.length;
     }
 
-    /* =========================================
-       LIGHTBOX MULTIMEDIA PARA CARRITO
-       ========================================= */
     const lightbox = document.getElementById('lightbox');
     const lbTrack = document.getElementById('lightbox-track');
     const lbIndicator = document.getElementById('lb-indicator');
@@ -636,7 +790,6 @@
     function openLightbox(wrapperElement) {
       lbTrack.innerHTML = '';
       if(lbIndicator) lbIndicator.innerHTML = '';
-      
       let sourceTrack = wrapperElement.querySelector('.carousel-track');
       let items = sourceTrack.children;
       lbItemsCount = items.length;
@@ -645,16 +798,13 @@
       for(let i=0; i<items.length; i++) {
         let lbItem = document.createElement('div');
         lbItem.className = 'lightbox-item';
-        
         let clone = items[i].cloneNode(true);
         clone.className = 'lightbox-media';
-        clone.style.pointerEvents = 'none'; 
-        
+        clone.style.pointerEvents = 'none';
         if(clone.tagName.toLowerCase() === 'video') {
           clone.loop = true; clone.muted = true; clone.setAttribute('playsinline', '');
           let soundBtn = document.createElement('button');
-          soundBtn.className = 'lb-sound-btn'; soundBtn.innerHTML = getSoundIcon(globalMuted); soundBtn.style.pointerEvents = 'auto'; 
-          
+          soundBtn.className = 'lb-sound-btn'; soundBtn.innerHTML = getSoundIcon(globalMuted); soundBtn.style.pointerEvents = 'auto';
           soundBtn.onclick = (e) => {
             e.stopPropagation(); globalMuted = !globalMuted;
             const audio = document.getElementById('audio-boda');
@@ -662,18 +812,10 @@
             if(!globalMuted) audio?.play().catch(e => console.log("Audio prevent")); else audio?.pause();
           };
           lbItem.appendChild(clone); lbItem.appendChild(soundBtn);
-        } else {
-          lbItem.appendChild(clone);
-        }
+        } else { lbItem.appendChild(clone); }
         lbTrack.appendChild(lbItem);
-
-        if(lbIndicator) {
-           let dot = document.createElement('div');
-           dot.className = 'lb-dot';
-           lbIndicator.appendChild(dot);
-        }
+        if(lbIndicator) { let dot = document.createElement('div'); dot.className = 'lb-dot'; lbIndicator.appendChild(dot); }
       }
-
       updateLightboxPosition();
       lightbox.classList.add('active');
       document.body.style.overflow = 'hidden';
@@ -681,17 +823,14 @@
 
     function updateLightboxPosition() {
       lbTrack.style.transform = `translateX(-${lbCurrentIndex * 100}vw)`;
-      
       if(lbIndicator) {
-         let dots = lbIndicator.children;
-         for(let i=0; i<dots.length; i++) {
-           if(i === lbCurrentIndex) dots[i].classList.add('active'); else dots[i].classList.remove('active');
-         }
+        let dots = lbIndicator.children;
+        for(let i=0; i<dots.length; i++) {
+          if(i === lbCurrentIndex) dots[i].classList.add('active'); else dots[i].classList.remove('active');
+        }
       }
-
       let wrappers = lbTrack.children;
       let audio = document.getElementById('audio-boda');
-      
       for(let i=0; i<wrappers.length; i++) {
         let vid = wrappers[i].querySelector('video');
         if (vid) {
@@ -701,7 +840,7 @@
           } else { vid.pause(); }
         }
       }
-      if(!wrappers[lbCurrentIndex].querySelector('video')) audio?.pause();
+      if(!wrappers[lbCurrentIndex]?.querySelector('video')) audio?.pause();
     }
 
     function closeLightbox(e) {
@@ -743,7 +882,7 @@
       }
     });
 
-    window.onload = loadCart;
+    window.onload = () => { loadCart(); renderHistorial(); };
   </script>
 </body>
 </html>
