@@ -186,7 +186,7 @@
     </div>
   </div>
 
-  <div class="config-banner" id="configBanner">
+  <div class="config-banner" id="configBanner" style="display:none">
     ⚙️ <strong>Configuración pendiente:</strong> Edita las variables
     <code>AIRTABLE_TOKEN</code> y <code>BASE_ID</code> en el &lt;script&gt; de este archivo.
     Consulta el <strong>README.md</strong> adjunto para instrucciones.
@@ -250,8 +250,8 @@
   const POR_PAGINA = 15;
 
   window.addEventListener('load', () => {
-    // El panel carga tras el login
     document.getElementById('loginInput').focus();
+    document.getElementById('loginInput').select();
   });
 
   async function cargarPedidos() {
@@ -395,7 +395,7 @@
   }
 
   // ── LOGIN ──────────────────────────────────────
-  const ADMIN_PASSWORD = 'enigme2026';
+  const ADMIN_PASSWORD = 'Gusiteamo.1998';
 
   function checkLogin() {
     const val = document.getElementById('loginInput').value;
